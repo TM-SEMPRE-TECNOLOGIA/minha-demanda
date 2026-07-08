@@ -1,0 +1,47 @@
+import shutil
+from pathlib import Path
+
+def consolidar_planilhas(caminho_raiz):
+    # Converte a string para um objeto Path
+    raiz = Path(caminho_raiz)
+    
+    if not raiz.exists():
+        print(f"Erro: O caminho '{caminho_raiz}' não existe.")
+        return
+
+    # Extensões de planilhas que vamos buscar
+    extensoes = ['*.xlsx', '*.xls', '*.csv', '*.ods']
+    
+    print(f"Iniciando a busca em: {raiz.absolute()}")
+
+    for extensao in extensoes:
+        # rglob busca recursivamente em todas as subpastas
+        for arquivo in raiz.rglob(extensao):
+            
+            # Evita copiar arquivos que já estão na raiz (para não entrar em loop ou erro)
+            if arquivo.parent == raiz:
+                continue
+                
+            destino = raiz / arquivo.name
+            
+            # Tratamento para nomes duplicados na raiz
+            contador = 1
+            while destino.exists():
+                nome_novo = f"{arquivo.stem}_copia{contador}{arquivo.suffix}"
+                destino = raiz / nome_novo
+                contador += 1
+            
+            try:
+                shutil.copy2(arquivo, destino)
+                print(f"Copiado: {arquivo.name} -> {destino.name}")
+            except Exception as e:
+                print(f"Erro ao copiar {arquivo.name}: {e}")
+
+    print("\nProcesso concluído!")
+
+# --- CONFIGURAÇÃO ---
+# Substitua pelo caminho da sua pasta (ex: "C:/Users/Nome/Desktop/MinhaPasta")
+# Use "." para a pasta onde o script está salvo
+pasta_alvo = "./" 
+
+consolidar_planilhas(pasta_alvo)

@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c ' *)",
+      "PowerShell(python \"C:\\\\Users\\\\thiag\\\\.claude\\\\jobs\\\\0f6b925a\\\\tmp\\\\analisar_final.py\" 2>&1)",
+      "Bash(gh repo *)",
+      "Bash(gh api *)"
+    ]
+  }
+}

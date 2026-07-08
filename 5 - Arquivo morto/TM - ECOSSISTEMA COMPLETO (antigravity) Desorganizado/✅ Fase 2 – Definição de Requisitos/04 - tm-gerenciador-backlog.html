@@ -1,0 +1,2512 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backlog - TM Gerenciador de O.S.</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700&family=Inter:wght@400;500;600&family=Roboto+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --TM-navy-deep: #0A1628;
+            --TM-navy-medium: #112240;
+            --TM-navy-light: #1A365D;
+            --TM-neon-green: #64FFDA;
+            --TM-cyan-vibrant: #00D4FF;
+            --TM-text-primary: #E6F1FF;
+            --TM-text-secondary: #8892B0;
+            --TM-text-emphasis: #64FFDA;
+            --TM-warning: #FFA500;
+            --TM-error: #FF6B6B;
+            --TM-success: #10B981;
+            --TM-card-bg: rgba(17, 34, 64, 0.5);
+            --TM-card-border: rgba(100, 255, 218, 0.1);
+            --font-heading: "Exo 2", sans-serif;
+            --font-body: "Inter", sans-serif;
+            --font-mono: "Roboto Mono", monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: linear-gradient(180deg, #0A1628 0%, #112240 50%, #0A1628 100%);
+            color: var(--TM-text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 24px;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding: 32px;
+            background: var(--TM-card-bg);
+            border: 1px solid var(--TM-card-border);
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        .header h1 {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--TM-neon-green);
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+
+        .header .subtitle {
+            color: var(--TM-cyan-vibrant);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .header .version {
+            display: inline-block;
+            background: var(--TM-navy-light);
+            color: var(--TM-neon-green);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-top: 16px;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .metric-card {
+            background: var(--TM-card-bg);
+            border: 1px solid var(--TM-card-border);
+            border-radius: 8px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            transition: all 300ms ease-in-out;
+        }
+
+        .metric-card:hover {
+            border-color: rgba(100, 255, 218, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .metric-label {
+            font-size: 0.75rem;
+            color: var(--TM-text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .metric-value {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--TM-neon-green);
+            margin-bottom: 4px;
+        }
+
+        .metric-desc {
+            font-size: 0.875rem;
+            color: var(--TM-text-secondary);
+        }
+
+        .epic-section {
+            margin-bottom: 32px;
+        }
+
+        .epic-header {
+            background: var(--TM-navy-medium);
+            border: 1px solid var(--TM-card-border);
+            border-radius: 8px;
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 300ms ease-in-out;
+            margin-bottom: 16px;
+        }
+
+        .epic-header:hover {
+            border-color: rgba(100, 255, 218, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .epic-header-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex: 1;
+        }
+
+        .epic-icon {
+            font-size: 2rem;
+        }
+
+        .epic-title-group {
+            flex: 1;
+        }
+
+        .epic-id {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--TM-cyan-vibrant);
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .epic-title {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--TM-neon-green);
+            margin-bottom: 4px;
+        }
+
+        .epic-desc {
+            font-size: 0.875rem;
+            color: var(--TM-text-secondary);
+        }
+
+        .epic-meta {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .epic-stories {
+            font-size: 0.875rem;
+            color: var(--TM-text-primary);
+            background: var(--TM-navy-deep);
+            padding: 6px 12px;
+            border-radius: 4px;
+        }
+
+        .epic-points {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--TM-neon-green);
+        }
+
+        .epic-content {
+            display: none;
+        }
+
+        .epic-content.active {
+            display: block;
+            animation: fadeIn 300ms ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .stories-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .story-card {
+            background: var(--TM-card-bg);
+            border: 1px solid var(--TM-card-border);
+            border-radius: 8px;
+            padding: 16px;
+            backdrop-filter: blur(10px);
+            transition: all 300ms ease-in-out;
+        }
+
+        .story-card:hover {
+            border-color: rgba(100, 255, 218, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .story-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 12px;
+        }
+
+        .story-id {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--TM-cyan-vibrant);
+            font-weight: 600;
+            background: var(--TM-navy-deep);
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        .story-labels {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .label {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border: 1px solid;
+        }
+
+        .label-critical {
+            background: rgba(255, 107, 107, 0.2);
+            color: var(--TM-error);
+            border-color: var(--TM-error);
+        }
+
+        .label-high {
+            background: rgba(255, 165, 0, 0.2);
+            color: var(--TM-warning);
+            border-color: var(--TM-warning);
+        }
+
+        .label-medium {
+            background: rgba(0, 212, 255, 0.2);
+            color: var(--TM-cyan-vibrant);
+            border-color: var(--TM-cyan-vibrant);
+        }
+
+        .label-low {
+            background: rgba(100, 255, 218, 0.2);
+            color: var(--TM-neon-green);
+            border-color: var(--TM-neon-green);
+        }
+
+        .label-mvp {
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--TM-success);
+            border-color: var(--TM-success);
+        }
+
+        .story-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--TM-text-primary);
+            margin-bottom: 8px;
+        }
+
+        .story-desc {
+            font-size: 0.875rem;
+            color: var(--TM-text-secondary);
+            margin-bottom: 12px;
+        }
+
+        .story-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
+            padding-top: 12px;
+            border-top: 1px solid var(--TM-card-border);
+        }
+
+        .detail-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .detail-label {
+            font-size: 0.75rem;
+            color: var(--TM-text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .detail-value {
+            font-size: 0.875rem;
+            color: var(--TM-text-primary);
+            font-weight: 500;
+        }
+
+        .acceptance-criteria {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid var(--TM-card-border);
+        }
+
+        .acceptance-title {
+            font-size: 0.75rem;
+            color: var(--TM-text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .acceptance-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .acceptance-list li {
+            padding: 4px 0;
+            padding-left: 24px;
+            position: relative;
+            font-size: 0.875rem;
+            color: var(--TM-text-primary);
+        }
+
+        .acceptance-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 8px;
+            color: var(--TM-neon-green);
+            font-weight: bold;
+        }
+
+        .filter-bar {
+            background: var(--TM-card-bg);
+            border: 1px solid var(--TM-card-border);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 32px;
+            backdrop-filter: blur(10px);
+        }
+
+        .filter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .filter-label {
+            font-size: 0.75rem;
+            color: var(--TM-text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border: 1px solid var(--TM-card-border);
+            background: var(--TM-navy-deep);
+            color: var(--TM-text-secondary);
+            cursor: pointer;
+            transition: all 150ms ease-in-out;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--TM-neon-green);
+            color: var(--TM-neon-green);
+        }
+
+        .filter-btn.active {
+            background: var(--TM-neon-green);
+            color: var(--TM-navy-deep);
+            border-color: var(--TM-neon-green);
+        }
+
+        .roadmap-section {
+            background: var(--TM-card-bg);
+            border: 1px solid var(--TM-card-border);
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 32px;
+            backdrop-filter: blur(10px);
+        }
+
+        .roadmap-title {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--TM-neon-green);
+            margin-bottom: 24px;
+        }
+
+        .roadmap-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .roadmap-phase {
+            display: flex;
+            gap: 24px;
+            position: relative;
+        }
+
+        .roadmap-phase:not(:last-child):after {
+            content: '';
+            position: absolute;
+            left: 47px;
+            top: 80px;
+            bottom: -32px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--TM-neon-green), transparent);
+        }
+
+        .roadmap-marker {
+            width: 96px;
+            height: 96px;
+            background: var(--TM-navy-medium);
+            border: 2px solid var(--TM-neon-green);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-family: var(--font-heading);
+        }
+
+        .roadmap-phase-label {
+            font-size: 0.75rem;
+            color: var(--TM-text-secondary);
+            text-transform: uppercase;
+        }
+
+        .roadmap-phase-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--TM-neon-green);
+        }
+
+        .roadmap-content {
+            flex: 1;
+        }
+
+        .roadmap-phase-title {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--TM-neon-green);
+            margin-bottom: 8px;
+        }
+
+        .roadmap-phase-duration {
+            font-size: 0.875rem;
+            color: var(--TM-cyan-vibrant);
+            margin-bottom: 12px;
+        }
+
+        .roadmap-phase-desc {
+            font-size: 0.875rem;
+            color: var(--TM-text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .roadmap-epics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .roadmap-epic-tag {
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            background: var(--TM-navy-deep);
+            color: var(--TM-neon-green);
+            border: 1px solid var(--TM-card-border);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 48px;
+            padding-top: 24px;
+            border-top: 1px solid var(--TM-card-border);
+            color: var(--TM-text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .footer-highlight {
+            color: var(--TM-neon-green);
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.75rem;
+            }
+
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .roadmap-phase {
+                flex-direction: column;
+            }
+
+            .roadmap-phase:not(:last-child):after {
+                left: 47px;
+                top: 96px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>MAPA DE FUNCIONALIDADES / BACKLOG</h1>
+            <p class="subtitle">TM Gerenciador de Ordens de Serviço</p>
+            <p style="color: var(--TM-text-secondary); margin-top: 12px;">
+                Épicos, User Stories e Roadmap de Desenvolvimento
+            </p>
+            <span class="version">Versão 1.0 | Novembro 2025</span>
+        </div>
+
+        <!-- Métricas do Backlog -->
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-label">Total de Épicos</div>
+                <div class="metric-value">8</div>
+                <div class="metric-desc">Módulos principais do sistema</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">User Stories</div>
+                <div class="metric-value">42</div>
+                <div class="metric-desc">Funcionalidades mapeadas</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">Story Points</div>
+                <div class="metric-value">213</div>
+                <div class="metric-desc">Esforço total estimado</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">Sprint MVP</div>
+                <div class="metric-value">8-10</div>
+                <div class="metric-desc">Semanas para primeira versão</div>
+            </div>
+        </div>
+
+        <!-- Filtros -->
+        <div class="filter-bar">
+            <div class="filter-grid">
+                <div class="filter-group">
+                    <div class="filter-label">Prioridade</div>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active">Todos</button>
+                        <button class="filter-btn">Crítica</button>
+                        <button class="filter-btn">Alta</button>
+                        <button class="filter-btn">Média</button>
+                        <button class="filter-btn">Baixa</button>
+                    </div>
+                </div>
+                <div class="filter-group">
+                    <div class="filter-label">Fase</div>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active">Todas</button>
+                        <button class="filter-btn">MVP</button>
+                        <button class="filter-btn">Beta</button>
+                        <button class="filter-btn">v1.0</button>
+                        <button class="filter-btn">Futuro</button>
+                    </div>
+                </div>
+                <div class="filter-group">
+                    <div class="filter-label">Módulo</div>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active">Todos</button>
+                        <button class="filter-btn">Backend</button>
+                        <button class="filter-btn">Frontend</button>
+                        <button class="filter-btn">Integração</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Roadmap Visual -->
+        <div class="roadmap-section">
+            <h2 class="roadmap-title">🗓️ Roadmap de Desenvolvimento</h2>
+            <div class="roadmap-timeline">
+                <div class="roadmap-phase">
+                    <div class="roadmap-marker">
+                        <div class="roadmap-phase-label">Fase</div>
+                        <div class="roadmap-phase-number">1</div>
+                    </div>
+                    <div class="roadmap-content">
+                        <div class="roadmap-phase-title">MVP - Fluxo Básico</div>
+                        <div class="roadmap-phase-duration">Semanas 1-8 | 89 Story Points</div>
+                        <div class="roadmap-phase-desc">Implementação do fluxo end-to-end: Importação de O.S.,
+                            atribuição a técnicos, recebimento de pacotes e validação básica.</div>
+                        <div class="roadmap-epics">
+                            <span class="roadmap-epic-tag">E1: Autenticação</span>
+                            <span class="roadmap-epic-tag">E2: Gestão de O.S.</span>
+                            <span class="roadmap-epic-tag">E3: Distribuição</span>
+                            <span class="roadmap-epic-tag">E4: Recebimento</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="roadmap-phase">
+                    <div class="roadmap-marker">
+                        <div class="roadmap-phase-label">Fase</div>
+                        <div class="roadmap-phase-number">2</div>
+                    </div>
+                    <div class="roadmap-content">
+                        <div class="roadmap-phase-title">Beta - Validação e Integração</div>
+                        <div class="roadmap-phase-duration">Semanas 9-12 | 68 Story Points</div>
+                        <div class="roadmap-phase-desc">Interface completa de validação, integração com TM Auto
+                            Relatórios e dashboard com gráficos visuais.</div>
+                        <div class="roadmap-epics">
+                            <span class="roadmap-epic-tag">E5: Validação</span>
+                            <span class="roadmap-epic-tag">E6: Dashboard</span>
+                            <span class="roadmap-epic-tag">E7: Integração</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="roadmap-phase">
+                    <div class="roadmap-marker">
+                        <div class="roadmap-phase-label">Fase</div>
+                        <div class="roadmap-phase-number">3</div>
+                    </div>
+                    <div class="roadmap-content">
+                        <div class="roadmap-phase-title">v1.0 - Lançamento Público</div>
+                        <div class="roadmap-phase-duration">Semanas 13-16 | 56 Story Points</div>
+                        <div class="roadmap-phase-desc">Dashboard em tempo real, relatórios exportáveis, gestão de
+                            técnicos e consolidação de métricas.</div>
+                        <div class="roadmap-epics">
+                            <span class="roadmap-epic-tag">E6: Dashboard (avançado)</span>
+                            <span class="roadmap-epic-tag">E8: Relatórios</span>
+                            <span class="roadmap-epic-tag">E7: Integração (completa)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ÉPICO 1: AUTENTICAÇÃO E CONTROLE DE ACESSO -->
+        <div class="epic-section">
+            <div class="epic-header" onclick="toggleEpic('epic-1')">
+                <div class="epic-header-left">
+                    <span class="epic-icon">🔐</span>
+                    <div class="epic-title-group">
+                        <div class="epic-id">EPIC-001</div>
+                        <div class="epic-title">Autenticação e Controle de Acesso</div>
+                        <div class="epic-desc">Sistema de login, autorização e gestão de perfis de usuário</div>
+                    </div>
+                </div>
+                <div class="epic-meta">
+                    <div class="epic-stories">5 stories</div>
+                    <div class="epic-points">21 pts</div>
+                </div>
+            </div>
+            <div class="epic-content active" id="epic-1">
+                <div class="stories-container">
+                    <div class="story-card">
+                        <div class="story-header">
+                            <span class="story-id">US-001</span>
+                            <div class="story-labels">
+                                <span class="label label-critical">Crítica</span>
+                                <span class="label label-mvp">MVP</span>
+                            </div>
+                        </div>
+                        <div class="story-title">Login com Email e Senha</div>
+                        <div class="story-desc">Como gerente, quero fazer login com meu email e senha para acessar o
+                            sistema de forma segura.</div>
+                        <div class="story-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Story Points</div>
+                                <div class="detail-value">5</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Dependências</div>
+                                <div class="detail-value">Supabase Auth</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Fase</div>
+                                <div class="detail-value">MVP</div>
+                            </div>
+                        </div>
+                        <div class="acceptance-criteria">
+                            <div class="acceptance-title">Critérios de Aceitação</div>
+                            <ul class="acceptance-list">
+                                <li>Tela de login com campos email e senha</li>
+                                <li>Validação de email válido e senha mínima 8 caracteres</li>
+                                <li>Mensagem de erro clara para credenciais inválidas</li>
+                                <li>Redirect para dashboard após login bem-sucedido</li>
+                                <li>Token JWT armazenado com expiração de 7 dias</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="story-card">
+                        <div class="story-header">
+                            <span class="story-id">US-002</span>
+                            <div class="story-labels">
+                                <span class="label label-critical">Crítica</span>
+                                <span class="label label-mvp">MVP</span>
+                            </div>
+                        </div>
+                        <div class="story-title">Controle de Perfis de Acesso</div>
+                        <div class="story-desc">Como sistema, preciso diferenciar perfis (Gerente, Admin, Diretor) e
+                            aplicar permissões corretas.</div>
+                        <div class="story-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Story Points</div>
+                                <div class="detail-value">5</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Dependências</div>
+                                <div class="detail-value">US-001, RLS</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Fase</div>
+                                <div class="detail-value">MVP</div>
+                            </div>
+                        </div>
+                        <div class="acceptance-criteria">
+                            <div class="acceptance-title">Critérios de Aceitação</div>
+                            <ul class="acceptance-list">
+                                <li>RLS (Row Level Security) implementado no Supabase</li>
+                                <li>Gerente acessa CRUD de O.S. e validação</li>
+                                <li>Admin acessa gestão de usuários e contratos</li>
+                                <li>Diretor acessa somente dashboards (leitura)</li>
+                                <li>Tentativa de acesso não autorizado retorna 403</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="story-card">
+                        <div class="story-header">
+                            <span class="story-id">US-003</span>
+                            <div class="story-labels">
+                                <span class="label label-high">Alta</span>
+                                <span class="label label-mvp">MVP</span>
+                            </div>
+                        </div>
+                        <div class="story-title">Logout e Expiração de Sessão</div>
+                        <div class="story-desc">Como gerente, quero fazer logout seguro e ter sessão expirada após
+                            inatividade para proteger minha conta.</div>
+                        <div class="story-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Story Points</div>
+                                <div class="detail-value">3</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Dependências</div>
+                                <div class="detail-value">US-001</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Fase</div>
+                                <div class="detail-value">MVP</div>
+                            </div>
+                        </div>
+                        <div class="acceptance-criteria">
+                            <div class="acceptance-title">Critérios de Aceitação</div>
+                            <ul class="acceptance-list">
+                                <li>Botão "Sair" visível no header</li>
+                                <li>Logout limpa token JWT e redireciona para login</li>
+                                <li>Sessão expira automaticamente após 30 dias de inatividade</li>
+                                <li>Aviso "Sua sessão expirou" ao tentar acessar após expiração</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="story-card">
+                        <div class="story-header">
+                            <span class="story-id">US-004</span>
+                            <div class="story-labels">
+                                <span class="label label-medium">Média</span>
+                            </div>
+                        </div>
+                        <div class="story-title">Recuperação de Senha</div>
+                        <div class="story-desc">Como gerente, quero recuperar minha senha por email caso eu esqueça.
+                        </div>
+                        <div class="story-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Story Points</div>
+                                <div class="detail-value">5</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Dependências</div>
+                                <div class="detail-value">Supabase Auth</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Fase</div>
+                                <div class="detail-value">Beta</div>
+                            </div>
+                        </div>
+                        <div class="acceptance-criteria">
+                            <div class="acceptance-title">Critérios de Aceitação</div>
+                            <ul class="acceptance-list">
+                                <li>Link "Esqueci minha senha" na tela de login</li>
+                                <li>Formulário solicita email cadastrado</li>
+                                <li>Email enviado com link de redefinição (validade 1h)</li>
+                                <li>Tela de redefinição com nova senha e confirmação</li>
+                                <li>Sucesso redireciona para login com mensagem de confirmação</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="story-card">
+                        <div class="story-header">
+                            <span class="story-id">US-005</span>
+                            <div class="story-labels">
+                                <span class="label label-low">Baixa</span>
+                            </div>
+                        </div>
+                        <div class="story-title">Gestão de Perfil do Usuário</div>
+                        <div class="story-desc">Como gerente, quero visualizar e editar minhas informações de perfil.
+                        </div>
+                        <div class="story-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Story Points</div>
+                                <div class="detail-value">3</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Dependências</div>
+                                <div class="detail-value">US-001</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Fase</div>
+                                <div class="detail-value">v1.0</div>
+                            </div>
+                        </div>
+                        <div class="acceptance-criteria">
+                            <div class="acceptance-title">Critérios de Aceitação</div>
+                            <ul class="acceptance-list">
+                                <li>Tela de perfil acessível via menu do usuário</li>
+                                <li>Exibe nome, email, foto, telefone</li>
+                                <li>Permite edição de nome, foto e telefone</li>
+                                <li>Email não pode ser editado (segurança)</li>
+                                <li>Upload de foto de perfil (máx 2MB)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ÉPICO 2: GESTÃO DE ORDENS DE SERVIÇO -->
+        <div class="epic-section">
+            <div class="epic-header" onclick="toggleEpic('epic-2')">
+                <div class="epic-header-left">
+                    <span class="epic-icon">📋</span>
+                    <div class="epic-title-group">
+                        <div class="epic-id">EPIC-002</div>
+                        <div class="epic-title">Gestão de Ordens de Serviço</div>
+                        <div class="epic-desc">Criação, importação, edição e exclusão de O.S.</div>
+                    </div>
+                </div>
+                <div class="epic-meta">
+                    <div class="epic-stories">7 stories</div>
+                    <div class="epic-points">34 pts</div>
+                </div>
+            </div>
+            <div class="epic-content" id="epic-2">
+                <div class="stories-container">
+                    <div class="story-card">
+                        <div class="story-header">
+                            <span class="story-id">US-006</span>
+                            <div class="story-labels">
+                                <span class="label label-critical">Crítica</span>
+                                <span class="label label-mvp">MVP</span>
+                            </div>
+                        </div>
+                        <div class="story-title">Importação em Lote via Excel</div>
+                        <div class="story-desc">Como gerente, quero importar múltiplas O.S. via planilha Excel para
+                            economizar tempo.</div>
+                        <div class="story-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Story Points</div>
+                                <div class="detail-value">8</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Dependências</div>
+                                <div class="detail-value">US-013, US-017</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Fase</div>
+                                <div class="detail-value">MVP</div>
+                            </div>
+                        </div>
+                        <div class="acceptance-criteria">
+                            <div class="acceptance-title">Critérios de Aceitação</div>
+                            <ul class="acceptance-list">
+                                <li>O.S. aparece no app em até 30 segundos após atribuição</li>
+                                <li>Dados completos sincronizados (endereço, prazo, observações)</li>
+                                <li>App funciona 100% offline após sincronização inicial</li>
+                                <li>Sistema de fila garante ordem FIFO de sincronização</li>
+                                <li>Indicador visual de status de sincronização no app</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ÉPICO 4: RECEBIMENTO DE PACOTES -->
+        <div class="epic-section">
+            <div class="epic-header" onclick="toggleEpic('epic-4')">
+                <div class="epic-header-left">
+                    <span class="epic-icon">📦</span>
+                    <div class="epic-title-group">
+                        <div class="epic-id">EPIC-004</div>
+                        <div class="epic-title">Recebimento de Pacotes Fotográficos</div>
+                        <div class="epic-desc">Upload, validação e armazenamento de pacotes ZIP do mobile</div>
+                    </div>
+                </div>
+                <div class="epic-meta">
+                    <div class="epic-stories">5 stories</div>
+                    <div class="epic-points">26 pts</div>
+                </div>
+            </div>
+            <div class="epic-content" id="epic-4">
+                <div class="stories-container">
+                    <div class="story-card">
+                        <div class="story-header">
+                            <span class="story-id">US-019</span>
+                            <div class="story-labels">
+                                <span class="label label-critical">Crítica</span>
+                                <span class="label label-mvp">MVP</span>
+                            </div>
+                        </div>
+                        <div class="story-title">Endpoint de Upload de Pacotes</div>
+                        <div class="story-desc">Como sistema, devo receber pacotes ZIP via REST do app mobile de forma
+                            segura.</div>
+                        <div class="story-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Story Points</div>
+                                <div class="detail-value">8</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Dependências</div>
+                                <div class="detail-value">US-018</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Fase</div>
+                                <div class="detail-value">MVP</div>
+                            </div>
+                        </div>
+                        <div class="acceptance-criteria">
+                            <div class="acceptance-title">Critérios de Aceitação</div>
+                            <ul class="acceptance-list">
+                                <li>Endpoint POST /api/upload-pacote funcional</li>
+                                <li>Aceita multipart/form-data com arquivo ZIP</li>
+                                <li>Validação de JWT no header Authorization</li>
+                                <li>Retorna 201 com package_id em até 5 segundos</li>
+                                <li>Suporta uploads simultâneos de múltiplos técnicos</li>
+                                <li>Tamanho máximo: 100 MB</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="story-card">
+                        <div class="story-header">
+                            <span class="story-id">US-020</span>
+                            <div class="story-labels">
+                                <span class="label label-critical">Crítica</span>
+                                <span class="label label-mvp">MVP</span>
+                            </div>
+                        </div>
+                        <div class="story-title">Validação de Integridade</div>
+                        <div class="story-desc">Como sistema, devo validar checksum do arquivo para garantir que não foi
+                            corrompido.</div>
+                        <div class="story-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Story Points</div>
+                                <div class="detail-value">3</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Dependências</div>
+                                <div class="detail-value">US-019</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Fase</div>
+                                <div class="detail-value">MVP</div>
+                            </div>
+                        </div>
+                        <div class="acceptance-criteria">
+                            <div class="acceptance-title">Critérios de Aceitação</div>
+                            <ul class="acceptance-list">
+                                <li>App mobile envia checksum SHA256 no header</li>
+                                <li>Servidor calcula hash do arquivo recebido</li>
+                                <li>Rejeita arquivo se checksums não coincidem</li>
+                                <li>Validação completa em menos de 1 segundo</li>
+                                <li>Mensagem clara em caso de falha</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="story-card">
+                        <div class="story-header">
+                            <span class="story-id">US-021</span>
+                            <div class="story-labels">
+                                <span class="label label-critical">Crítica</span>
+                                <span class="label label-mvp">MVP</span>
+                            </div>
+                        </div>
+                        <div class="story-title">Extração e Armazenamento de Fotos</div>
+                        <div class="story-desc">Como sistema, devo extrair fotos do ZIP e armazená-las no Supabase
+                            Storage.</div>
+                        <div class="story-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Story Points</div>
+                                <div class="detail-value">8</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Dependências</div>
+                                <div class="detail-value">US-019</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Fase</div>
+                                <div class="detail-value">MVP</div>
+                            </div>
+                        </div>
+                        <div class="acceptance-criteria">
+                            <div class="acceptance-title">Critérios de Aceitação</div>
+                            <ul class="acceptance-list">
+                                <li>Descompacta ZIP e extrai todas as fotos</li>
+                                <li>Organiza por O.S. e ambiente no Storage</li>
+                                <li>Gera URLs públicas acessíveis</li>
+                                <li>Cria thumbnails (300x300px) para preview</li>
+                                <li>Registra metadados (GPS, timestamp) no banco</li>
+                                <li>Processamento completo em até 2 minutos</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="story-card">
+                        <div class="story-header">
+                            <span class="story-id">US-022</span>
+                            <div class="story-labels">
+                                <span class="label label-critical">Crítica</span>
+                                <span class="label label-mvp">MVP</span>
+                            </div>
+                        </div>
+                        <div class="story-title">Parse e Validação do JSON</div>
+                        <div class="story-desc">Como sistema, devo parsear JSON do pacote e validar estrutura
+                            obrigatória.</div>
+                        <div class="story-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Story Points</div>
+                                <div class="detail-value">5</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Dependências</div>
+                                <div class="detail-value">US-019</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Fase</div>
+                                <div class="detail-value">MVP</div>
+                            </div>
+                        </div>
+                        <div class="acceptance-criteria">
+                            <div class="acceptance-title">Critérios de Aceitação</div>
+                            <ul class="acceptance-list">
+                                <li>Valida campos obrigatórios: ambientes, observações, GPS</li>
+                                <li>Rejeita JSON malformado com mensagem clara</li>
+                                <li>Associa dados do JSON às fotos correspondentes</li>
+                                <li>Armazena estrutura completa no PostgreSQL</li>
+                                <li>Validação completa em menos de 1 segundo</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="story-card">
+                        <div class="story-header">
+                            <span class="story-id">US-023</span>
+                            <div class="story-labels">
+                                <span class="label label-critical">Crítica</span>
+                                <span class="label label-mvp">MVP</span>
+                            </div>
+                        </div>
+                        <div class="story-title">Associação Pacote → O.S.</div>
+                        <div class="story-desc">Como sistema, devo vincular automaticamente o pacote à O.S.
+                            correspondente.</div>
+                        <div class="story-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Story Points</div>
+                                <div class="detail-value">3</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Dependências</div>
+                                <div class="detail-value">US-021, US-022</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Fase</div>
+                                <div class="detail-value">MVP</div>
+                            </div>
+                        </div>
+                        <div class="acceptance-criteria">
+                            <div class="acceptance-title">Critérios de Aceitação</div>
+                            <ul class="acceptance-list">
+                                <li>Identifica O.S. via ID único enviado no pacote</li>
+                                <li>Atualiza status da O.S. para "Aguardando Validação"</li>
+                                <li>Notifica gerente responsável via dashboard</li>
+                                <li>Registra data/hora de recebimento</li>
+                                <li>Pacote fica visível na fila de validação</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ÉPICO 5: VALIDAÇÃO DE PACOTES -->
+        <div class="epic-section">
+            <div class="epic-header" onclick="toggleEpic('epic-5')">
+                <div class="epic-header-left">
+                    <span class="epic-icon">✅</span>
+                    <div class="epic-title-group">
+                        <div class="epic-id">EPIC-005</div>
+                        <div class="epic-title">Validação de Pacotes Fotográficos</div>
+                        <div class="epic-desc">Interface de revisão, aprovação e rejeição de levantamentos</div>
+                    </div>
+                </div>
+                <div class="epic-meta">
+                    <div class="epic-stories">5 stories</div>
+                    <div class="epic-points">24 pts</div>
+                </div>
+            </div>
+            <div class="epic-content" id="epic-5">
+                <div class="stories-container">
+                    <div class="story-card">
+                        <div class="story-header">
+                            <span class="story-id">US-024</span>
+                            <div class="story-labels">
+                                <span class="label label-critical">Crítica</span>
+                                <span class="label label-mvp">MVP</span>
+                            </div>
+                        </div>
+                        <div class="story-title">Fila de Pacotes Aguardando Validação</div>
+                        <div class="story-desc">Como gerente, quero ver lista de pacotes pendentes de validação.</div>
+                        <div class="story-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Story Points</div>
+                                <div class="detail-value">3</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Dependências</div>
+                                <div class="detail-value">US-023</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Fase</div>
+                                <div class="detail-value">MVP</div>
+                            </div>
+                        </div>
+                        <div class="acceptance-criteria">
+                            <div class="acceptance-title">Critérios de Aceitação</div>
+                            <ul class="acceptance-list">
+                                <li>Lista ordenada por data de recebimento (FIFO)</li>
+                                <li>Exibe: Número O.S., Técnico, Data, Quantidade de fotos</li>
+                                <li>Preview rápido com thumbnail da primeira foto</li>
+                                <li>Indicador de tempo aguardando validação</li>
+                                <li>Filtros: Por técnico, contrato, urgência</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="story-card">
+                        <div class="story-header">
+                            <span class="story-id">US-025</span>
+                            <div class="story-labels">
+                                <span class="label label-critical">Crítica</span>
+                            </div>
+                        </div>
+                        <div class="story-title">Galeria de Fotos Interativa</div>
+                        <div class="story-desc">Como gerente, quero visualizar todas as fotos com zoom e navegação.
+                        </div>
+                        <div class="story-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Story Points</div>
+                                <div class="detail-value">8</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Dependências</div>
+                                <div class="detail-value">US-024</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Fase</div>
+                                <div class="detail-value">Beta</div>
+                            </div>
+                        </div>
+                        <div class="acceptance-criteria">
+                            <div class="acceptance-title">Critérios de Aceitação</div>
+                            <ul class="acceptance-list">
+                                <li>Grid de thumbnails organizado por ambiente</li>
+                                <li>Clique abre modal com foto em alta resolução</li>
+                                <li>Zoom in/out funcional (pinch e botões)</li>
+                                <li>Navegação entre fotos (setas do teclado)</li>
+                                <li>Exibe metadados: GPS, timestamp, dispositivo</li>
+                                <li>Carregamento lazy de imagens para performance</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="story-card">
+                        <div class="story-header">
+                            <span class="story-id">US-026</span>
+                            <div class="story-labels">
+                                <span class="label label-critical">Crítica</span>
+                            </div>
+                        </div>
+                        <div class="story-title">Exibição de Dados Coletados</div>
+                        <div class="story-desc">Como gerente, quero ver todos os dados coletados pelo técnico
+                            (observações, medições).</div>
+                        <div class="story-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Story Points</div>
+                                <div class="detail-value">3</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Dependências</div>
+                                <div class="detail-value">US-024</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Fase</div>
+                                <div class="detail-value">Beta</div>
+                            </div>
+                        </div>
+                        <div class="acceptance-criteria">
+                            <div class="acceptance-title">Critérios de Aceitação</div>
+                            <ul class="acceptance-list">
+                                <li>Card para cada ambiente vistoriado</li>
+                                <li>Exibe observações textuais completas</li>
+                                <li>Exibe medições e dados técnicos</li>
+                                <li>Exibe coordenadas GPS do local</li>
+                                <li>Timestamp de cada captura</li>
+                                <li>Layout organizado e fácil de ler</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="story-card">
+                        <div class="story-header">
+                            <span class="story-id">US-027</span>
+                            <div class="story-labels">
+                                <span class="label label-critical">Crítica</span>
+                            </div>
+                        </div>
+                        <div class="story-title">Aprovação/Rejeição de Pacote</div>
+                        <div class="story-desc">Como gerente, quero aprovar ou rejeitar um pacote com motivo
+                            obrigatório.</div>
+                        <div class="story-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Story Points</div>
+                                <div class="detail-value">5</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Dependências</div>
+                                <div class="detail-value">US-025, US-026</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Fase</div>
+                                <div class="detail-value">Beta</div>
+                            </div>
+                        </div>
+                        <div class="acceptance-criteria">
+                            <div class="acceptance-title">Critérios de Aceitação</div>
+                            <ul class="acceptance-list">
+                                <li>Botões "Aprovar" (verde) e "Rejeitar" (vermelho)</li>
+                                <li>Rejeição exige motivo obrigatório (campo texto)</li>
+                                <li>Modal de confirmação antes de aprovar/rejeitar</li>
+                                <li>Aprovação atualiza status para "Aprovado"</li>
+                                <li>Rejeição atualiza para "Rejeitado" e notifica técnico</li>
+                                <li>Registro no histórico com data/hora e gerente</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="story-card">
+                        <div class="story-header">
+                            <span class="story-id">US-028</span>
+                            <div class="story-labels">
+                                <span class="label label-critical">Crítica</span>
+                            </div>
+                        </div>
+                        <div class="story-title">Notificação de Rejeição</div>
+                        <div class="story-desc">Como técnico, quero receber notificação com motivo detalhado se pacote
+                            for rejeitado.</div>
+                        <div class="story-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Story Points</div>
+                                <div class="detail-value">5</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Dependências</div>
+                                <div class="detail-value">US-027</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Fase</div>
+                                <div class="detail-value">Beta</div>
+                            </div>
+                        </div>
+                        <div class="acceptance-criteria">
+                            <div class="acceptance-title">Critérios de Aceitação</div>
+                            <ul class="acceptance-list">
+                                <li>Push notification enviada imediatamente</li>
+                                <li>Título: "Levantamento Rejeitado"</li>
+                                <li>Mensagem inclui número da O.S. e motivo</li>
+                                <li>Toque abre O.S. no app para retrabalho</li>
+                                <li>O.S. volta ao status "Atribuída"</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ÉPICO 6: DASHBOARD E MONITORAMENTO -->
+        <div class="epic-section">
+            <div class="epic-header" onclick="toggleEpic('epic-6')">
+                <div class="epic-header-left">
+                    <span class="epic-icon">📊</span>
+                    <div class="epic-title-group">
+                        <div class="epic-id">EPIC-006</div>
+                        <div class="epic-title">Dashboard e Monitoramento</div>
+                        <div class="epic-desc">KPIs, gráficos, alertas e monitoramento de SLA</div>
+                    </div>
+                </div>
+                <div class="epic-meta">
+                    <div class="epic-stories">6 stories</div>
+                    <div class="epic-points">31 pts</div>
+                </div>
+            </div>
+            <div class="epic-content" id="epic-6">
+                <div class="stories-container">
+                    <div class="story-card">
+                        <div class="story-header">
+                            <span class="story-id">US-029</span>
+                            <div class="story-labels">
+                                <span class="label label-critical">Crítica</span>
+                                <span class="label label-mvp">MVP</span>
+                            </div>
+                        </div>
+                        <div class="story-title">Dashboard Principal com KPIs</div>
+                        <div class="story-desc">Como gerente, quero visualizar KPIs consolidados em cards no dashboard.
+                        </div>
+                        <div class="story-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Story Points</div>
+                                <div class="detail-value">5</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Dependências</div>
+                                <div class="detail-value">US-008</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Fase</div>
+                                <div class="detail-value">MVP</div>
+                            </div>
+                        </div>
+                        <div class="acceptance-criteria">
+                            <div class="acceptance-title">Critérios de Aceitação</div>
+                            <ul class="acceptance-list">
+                                <li>Cards: O.S. Totais, Pendentes, Em Execução, Concluídas</li>
+                                <li>Card adicional: Taxa de Cumprimento de SLA</li>
+                                <li>Ícones consistentes com Design System</li>
+                                <li>Hover effect e animação de entrada</li>
+                                <li>Dashboard carrega em menos de 2 segundos</li>
+                                <li>Grid responsivo (4 cols desktop, 2 tablet, 1 mobile)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="story-card">
+                        <div class="story-header">
+                            <span class="story-id">US-030</span>
+                            <div class="story-labels">
+                                <span class="label label-high">Alta</span>
+                            </div>
+                        </div>
+                        <div class="story-title">Gráfico de Distribuição por Status</div>
+                        <div class="story-desc">Como gerente, quero ver gráfico visual de distribuição de O.S. por
+                            status.</div>
+                        <div class="story-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Story Points</div>
+                                <div class="detail-value">5</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Dependências</div>
+                                <div class="detail-value">US-029</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Fase</div>
+                                <div class="detail-value">Beta</div>
+                            </div>
+                        </div>
+                        <div class="acceptance-criteria">
+                            <div class="acceptance-title">Critérios de Aceitação</div>
+                            <ul class="acceptance-list">
+                                <li>Gráfico de pizza (donut) ou barra horizontal</li>
+                                <li>Cores consistentes com Design System</li>
+                                <li>Hover mostra número exato e porcentagem</li>
+                                <li>Legenda abaixo do gráfico</li>
+                                <li>Clique em fatia filtra lista de O.S.</li>
+                                <li>Renderiza em menos de 1 segundo</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="story-card">
+                        <div class="story-header">
+                            <span class="story-id">US-031</span>
+                            <div class="story-labels">
+                                <span class="label label-critical">Crítica</span>
+                            </div>
+                        </div>
+                        <div class="story-title">Lista de O.S. em Risco</div>
+                        <div class="story-desc">Como gerente, quero ver lista destacada de O.S. com risco de atraso.
+                        </div>
+                        <div class="story-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Story Points</div>
+                                <div class="detail-value">5</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Dependências</div>
+                                <div class="detail-value">US-029</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Fase</div>
+                                <div class="detail-value">Beta</div>
+                            </div>
+                        </div>
+                        <div class="acceptance-criteria">
+                            <div class="acceptance-title">Critérios de Aceitação</div>
+                            <ul class="acceptance-list">
+                                <li>Widget "⚠️ O.S. em Risco" no dashboard</li>
+                                <li>Cálculo: SLA < 20% do prazo restante</li>
+                                <li>Máximo 10 O.S. mais críticas</li>
+                                <li>Indicador visual: Vermelho (crítico), Laranja (alto)</li>
+                                <li>Ordenação: Vencidas primeiro, depois por % restante</li>
+                                <li>Email automático ao entrar em risco crítico</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="story-card">
+                        <div class="story-header">
+                            <span class="story-id">US-032</span>
+                            <div class="story-labels">
+                                <span class="label label-high">Alta</span>
+                            </div>
+                        </div>
+                        <div class="story-title">Filtros Avançados</div>
+                        <div class="story-desc">Como gerente, quero filtrar O.S. por múltiplos critérios combinados.
+                        </div>
+                        <div class="story-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Story Points</div>
+                                <div class="detail-value">5</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Dependências</div>
+                                <div class="detail-value">US-008</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Fase</div>
+                                <div class="detail-value">Beta</div>
+                            </div>
+                        </div>
+                        <div class="acceptance-criteria">
+                            <div class="acceptance-title">Critérios de Aceitação</div>
+                            <ul class="acceptance-list">
+                                <li>Filtros: Status, Técnico, Contrato, Período</li>
+                                <li>Combinação múltipla de filtros (AND logic)</li>
+                                <li>Filtro persiste ao navegar entre páginas</li>
+                                <li>Botão "Limpar Filtros"</li>
+                                <li>Contador "X resultados encontrados"</li>
+                                <li>Aplicação de filtros em menos de 500ms</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="story-card">
+                        <div class="story-header">
+                            <span class="story-id">US-033</span>
+                            <div class="story-labels">
+                                <span class="label label-high">Alta</span>
+                            </div>
+                        </div>
+                        <div class="story-title">Busca Inteligente</div>
+                        <div class="story-desc">Como gerente, quero buscar O.S. por número ou endereço com autocomplete.
+                        </div>
+                        <div class="story-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Story Points</div>
+                                <div class="detail-value">3</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Dependências</div>
+                                <div class="detail-value">US-008</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Fase</div>
+                                <div class="detail-value">Beta</div>
+                            </div>
+                        </div>
+                        <div class="acceptance-criteria">
+                            <div class="acceptance-title">Critérios de Aceitação</div>
+                            <ul class="acceptance-list">
+                                <li>Campo de busca com ícone de lupa</li>
+                                <li>Debounce de 300ms para evitar múltiplas queries</li>
+                                <li>Busca parcial em número e endereço</li>
+                                <li>Autocomplete com sugestões (máximo 5)</li>
+                                <li>Destaca termo buscado nos resultados</li>
+                                <li>Tecla Enter executa busca completa</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="story-card">
+                        <div class="story-header">
+                            <span class="story-id">US-034</span>
+                            <div class="story-labels">
+                                <span class="label label-high">Alta</span>
+                            </div>
+                        </div>
+                        <div class="story-title">Atualização em Tempo Real</div>
+                        <div class="story-desc">Como gerente, quero ver dashboard atualizar automaticamente sem reload.
+                        </div>
+                        <div class="story-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Story Points</div>
+                                <div class="detail-value">8</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Dependências</div>
+                                <div class="detail-value">US-029</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Fase</div>
+                                <div class="detail-value">v1.0</div>
+                            </div>
+                        </div>
+                        <div class="acceptance-criteria">
+                            <div class="acceptance-title">Critérios de Aceitação</div>
+                            <ul class="acceptance-list">
+                                <li>Polling a cada 30 segundos ou WebSocket</li>
+                                <li>KPIs atualizam sem piscar a tela</li>
+                                <li>Indicador "Última atualização há X segundos"</li>
+                                <li>Botão "Atualizar Agora" para refresh manual</li>
+                                <li>Animação suave ao atualizar números</li>
+                                <li>Não interrompe interação do usuário</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ÉPICO 7: INTEGRAÇÕES -->
+        <div class="epic-section">
+            <div class="epic-header" onclick="toggleEpic('epic-7')">
+                <div class="epic-header-left">
+                    <span class="epic-icon">🔗</span>
+                    <div class="epic-title-group">
+                        <div class="epic-id">EPIC-007</div>
+                        <div class="epic-title">Integrações do Ecossistema</div>
+                        <div class="epic-desc">APIs REST e webhooks para TM Levantamentos, Auto Relatórios e Painel do
+                            Diretor</div>
+                    </div>
+                </div>
+                <div class="epic-meta">
+                    <div class="epic-stories">5 stories</div>
+                    <div class="epic-points">26 pts</div>
+                </div>
+            </div>
+            <div class="epic-content" id="epic-7">
+                <div class="stories-container">
+                    <div class="story-card">
+                        <div class="story-header">
+                            <span class="story-id">US-035</span>
+                            <div class="story-labels">
+                                <span class="label label-critical">Crítica</span>
+                                <span class="label label-mvp">MVP</span>
+                            </div>
+                        </div>
+                        <div class="story-title">API REST para TM Levantamentos</div>
+                        <div class="story-desc">Como app mobile, preciso de endpoints REST para sincronização
+                            bidirecional.</div>
+                        <div class="story-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Story Points</div>
+                                <div class="detail-value">8</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Dependências</div>
+                                <div class="detail-value">US-013, US-019</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Fase</div>
+                                <div class="detail-value">MVP</div>
+                            </div>
+                        </div>
+                        <div class="acceptance-criteria">
+                            <div class="acceptance-title">Critérios de Aceitação</div>
+                            <ul class="acceptance-list">
+                                <li>GET /api/service-orders - Lista O.S. do técnico</li>
+                                <li>GET /api/service-orders/:id - Detalhes de uma O.S.</li>
+                                <li>POST /api/upload-pacote - Upload de ZIP</li>
+                                <li>PATCH /api/service-orders/:id/status - Atualizar status</li>
+                                <li>Documentação OpenAPI/Swagger completa</li>
+                                <li>Rate limiting: 100 req/min por usuário</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="story-card">
+                        <div class="story-header">
+                            <span class="story-id">US-036</span>
+                            <div class="story-labels">
+                                <span class="label label-critical">Crítica</span>
+                            </div>
+                        </div>
+                        <div class="story-title">Encaminhamento ao TM Auto Relatórios</div>
+                        <div class="story-desc">Como sistema, devo enviar pacotes aprovados para geração automática de
+                            relatórios.</div>
+                        <div class="story-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Story Points</div>
+                                <div class="detail-value">5</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Dependências</div>
+                                <div class="detail-value">US-027</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Fase</div>
+                                <div class="detail-value">Beta</div>
+                            </div>
+                        </div>
+                        <div class="acceptance-criteria">
+                            <div class="acceptance-title">Critérios de Aceitação</div>
+                            <ul class="acceptance-list">
+                                <li>POST para https://auto-relatorios.maffeng.com/api/generate</li>
+                                <li>Payload inclui: package_id, template_id, dados completos</li>
+                                <li>Resposta inclui job_id para tracking</li>
+                                <li>Retry automático em caso de falha (até 3x)</li>
+                                <li>Log completo da integração para auditoria</li>
+                                <li>Timeout de 10 segundos para a requisição</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="story-card">
+                        <div class="story-header">
+                            <span class="story-id">US-037</span>
+                            <div class="story-labels">
+                                <span class="label label-critical">Crítica</span>
+                            </div>
+                        </div>
+                        <div class="story-title">Callback de Conclusão de Relatório</div>
+                        <div class="story-desc">Como sistema, devo receber webhook quando TM Auto Relatórios finalizar
+                            relatório.</div>
+                        <div class="story-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Story Points</div>
+                                <div class="detail-value">5</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Dependências</div>
+                                <div class="detail-value">US-036</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Fase</div>
+                                <div class="detail-value">Beta</div>
+                            </div>
+                        </div>
+                        <div class="acceptance-criteria">
+                            <div class="acceptance-title">Critérios de Aceitação</div>
+                            <ul class="acceptance-list">
+                                <li>Endpoint POST /api/callback/report-completed</li>
+                                <li>Validação de webhook secret no header</li>
+                                <li>Atualiza status da O.S. para "Relatório Concluído"</li>
+                                <li>Armazena URL do relatório gerado</li>
+                                <li>Notifica gerente sobre conclusão</li>
+                                <li>Responde 200 OK imediatamente</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="story-card">
+                        <div class="story-header">
+                            <span class="story-id">US-038</span>
+                            <div class="story-labels">
+                                <span class="label label-high">Alta</span>
+                            </div>
+                        </div>
+                        <div class="story-title">Consolidação de Métricas para Painel do Diretor</div>
+                        <div class="story-desc">Como sistema, devo consolidar KPIs agregados para envio ao TM Painel do
+                            Diretor.</div>
+                        <div class="story-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Story Points</div>
+                                <div class="detail-value">5</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Dependências</div>
+                                <div class="detail-value">US-029</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Fase</div>
+                                <div class="detail-value">v1.0</div>
+                            </div>
+                        </div>
+                        <div class="acceptance-criteria">
+                            <div class="acceptance-title">Critérios de Aceitação</div>
+                            <ul class="acceptance-list">
+                                <li>Endpoint GET /api/metrics/consolidated</li>
+                                <li>Retorna: Total O.S., Taxa conclusão, SLA compliance</li>
+                                <li>Agregação por contrato, período, técnico</li>
+                                <li>Formato JSON padronizado</li>
+                                <li>Atualização a cada 5 minutos (cache)</li>
+                                <li>Documentação de schema completa</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="story-card">
+                        <div class="story-header">
+                            <span class="story-id">US-039</span>
+                            <div class="story-labels">
+                                <span class="label label-high">Alta</span>
+                            </div>
+                        </div>
+                        <div class="story-title">Logs de Auditoria de Integrações</div>
+                        <div class="story-desc">Como admin, quero ver logs de todas as chamadas de API para auditoria.
+                        </div>
+                        <div class="story-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Story Points</div>
+                                <div class="detail-value">3</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Dependências</div>
+                                <div class="detail-value">US-035, US-036</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Fase</div>
+                                <div class="detail-value">v1.0</div>
+                            </div>
+                        </div>
+                        <div class="acceptance-criteria">
+                            <div class="acceptance-title">Critérios de Aceitação</div>
+                            <ul class="acceptance-list">
+                                <li>Tabela de logs com: Timestamp, Endpoint, Status, Duração</li>
+                                <li>Filtros: Tipo de integração, Status (sucesso/falha), Período</li>
+                                <li>Detalhes completos: Request/Response payload</li>
+                                <li>Retenção de logs: 30 dias</li>
+                                <li>Exportação em CSV</li>
+                                <li>Busca por package_id ou job_id</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ÉPICO 8: RELATÓRIOS E EXPORTAÇÃO -->
+        <div class="epic-section">
+            <div class="epic-header" onclick="toggleEpic('epic-8')">
+                <div class="epic-header-left">
+                    <span class="epic-icon">📄</span>
+                    <div class="epic-title-group">
+                        <div class="epic-id">EPIC-008</div>
+                        <div class="epic-title">Relatórios e Exportação</div>
+                        <div class="epic-desc">Geração de relatórios em PDF/Excel e exportações</div>
+                    </div>
+                </div>
+                <div class="epic-meta">
+                    <div class="epic-stories">4 stories</div>
+                    <div class="epic-points">16 pts</div>
+                </div>
+            </div>
+            <div class="epic-content" id="epic-8">
+                <div class="stories-container">
+                    <div class="story-card">
+                        <div class="story-header">
+                            <span class="story-id">US-040</span>
+                            <div class="story-labels">
+                                <span class="label label-medium">Média</span>
+                            </div>
+                        </div>
+                        <div class="story-title">Exportação de Lista em Excel</div>
+                        <div class="story-desc">Como gerente, quero exportar lista filtrada de O.S. em formato .xlsx.
+                        </div>
+                        <div class="story-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Story Points</div>
+                                <div class="detail-value">3</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Dependências</div>
+                                <div class="detail-value">US-008</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Fase</div>
+                                <div class="detail-value">Beta</div>
+                            </div>
+                        </div>
+                        <div class="acceptance-criteria">
+                            <div class="acceptance-title">Critérios de Aceitação</div>
+                            <ul class="acceptance-list">
+                                <li>Botão "Exportar Excel" na listagem</li>
+                                <li>Exporta apenas O.S. filtradas/buscadas</li>
+                                <li>Colunas: Todos os campos da O.S.</li>
+                                <li>Nome do arquivo: OS_Export_YYYY-MM-DD.xlsx</li>
+                                <li>Download automático após geração</li>
+                                <li>Geração de 1000 linhas em menos de 5 segundos</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="story-card">
+                        <div class="story-header">
+                            <span class="story-id">US-041</span>
+                            <div class="story-labels">
+                                <span class="label label-medium">Média</span>
+                            </div>
+                        </div>
+                        <div class="story-title">Relatório de Status para Cliente (PDF)</div>
+                        <div class="story-desc">Como gerente, quero gerar PDF executivo com resumo de O.S. para enviar
+                            ao cliente.</div>
+                        <div class="story-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Story Points</div>
+                                <div class="detail-value">5</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Dependências</div>
+                                <div class="detail-value">US-029</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Fase</div>
+                                <div class="detail-value">v1.0</div>
+                            </div>
+                        </div>
+                        <div class="acceptance-criteria">
+                            <div class="acceptance-title">Critérios de Aceitação</div>
+                            <ul class="acceptance-list">
+                                <li>Template profissional com logo da empresa</li>
+                                <li>Resumo: Total O.S., Concluídas, Em andamento, Atrasadas</li>
+                                <li>Gráfico de distribuição por status</li>
+                                <li>Lista detalhada de O.S. por categoria</li>
+                                <li>Assinatura digital e data de geração</li>
+                                <li>Geração em menos de 10 segundos</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="story-card">
+                        <div class="story-header">
+                            <span class="story-id">US-042</span>
+                            <div class="story-labels">
+                                <span class="label label-low">Baixa</span>
+                            </div>
+                        </div>
+                        <div class="story-title">Relatório de Produtividade por Técnico</div>
+                        <div class="story-desc">Como gerente, quero ver relatório de performance individual de cada
+                            técnico.</div>
+                        <div class="story-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Story Points</div>
+                                <div class="detail-value">5</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Dependências</div>
+                                <div class="detail-value">US-029</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Fase</div>
+                                <div class="detail-value">Futuro</div>
+                            </div>
+                        </div>
+                        <div class="acceptance-criteria">
+                            <div class="acceptance-title">Critérios de Aceitação</div>
+                            <ul class="acceptance-list">
+                                <li>Métricas: O.S./dia, Taxa de conclusão, Tempo médio</li>
+                                <li>Comparação entre técnicos (ranking)</li>
+                                <li>Gráfico de evolução ao longo do tempo</li>
+                                <li>Filtro por período (última semana, mês, ano)</li>
+                                <li>Exportação em PDF ou Excel</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="story-card">
+                        <div class="story-header">
+                            <span class="story-id">US-043</span>
+                            <div class="story-labels">
+                                <span class="label label-medium">Média</span>
+                            </div>
+                        </div>
+                        <div class="story-title">Relatório de Cumprimento de SLA</div>
+                        <div class="story-desc">Como gerente, quero relatório de cumprimento de prazos agregado por
+                            contrato.</div>
+                        <div class="story-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Story Points</div>
+                                <div class="detail-value">3</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Dependências</div>
+                                <div class="detail-value">US-031</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Fase</div>
+                                <div class="detail-value">v1.0</div>
+                            </div>
+                        </div>
+                        <div class="acceptance-criteria">
+                            <div class="acceptance-title">Critérios de Aceitação</div>
+                            <ul class="acceptance-list">
+                                <li>% de O.S. concluídas no prazo por contrato</li>
+                                <li>Identificação de contratos críticos</li>
+                                <li>Gráfico de tendência ao longo do tempo</li>
+                                <li>Drill-down para ver O.S. específicas</li>
+                                <li>Exportação em PDF com gráficos</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong class="footer-highlight">TM Gerenciador de O.S.</strong> - Mapa de Funcionalidades / Backlog</p>
+            <p style="margin-top: 8px;">Preparado por: <span class="footer-highlight">Thiago Nascimento Barbosa</span> |
+                TM – Sempre Tecnologia</p>
+            <p style="margin-top: 4px;">Ecossistema MAFFENG | Novembro 2025</p>
+            <p style="margin-top: 16px; font-size: 0.75rem; color: var(--TM-text-secondary);">
+                Este backlog consolida PRD, FRD, NFRD e Plano Mestre 2.0 em user stories acionáveis
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function toggleEpic(epicId) {
+            const content = document.getElementById(epicId);
+            content.classList.toggle('active');
+        }
+
+        // Filtros interativos
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Toggle active state
+                    const group = button.parentElement;
+                    const buttonsInGroup = group.querySelectorAll('.filter-btn');
+
+                    // Se for "Todos/Todas", desativa os outros
+                    if (button.textContent.includes('Todo')) {
+                        buttonsInGroup.forEach(btn => btn.classList.remove('active'));
+                        button.classList.add('active');
+                    } else {
+                        // Remove "Todos" e toggle o clicado
+                        buttonsInGroup[0].classList.remove('active');
+                        button.classList.toggle('active');
+                    }
+                });
+            });
+
+            // Inicializar primeiro épico aberto
+            const firstEpic = document.getElementById('epic-1');
+            if (firstEpic) {
+                firstEpic.classList.add('active');
+            }
+        });
+    </script>
+</body>
+
+</html>Dependências</div>
+<div class="detail-value">US-002</div>
+</div>
+<div class="detail-item">
+    <div class="detail-label">Fase</div>
+    <div class="detail-value">MVP</div>
+</div>
+</div>
+<div class="acceptance-criteria">
+    <div class="acceptance-title">Critérios de Aceitação</div>
+    <ul class="acceptance-list">
+        <li>Upload de arquivo .xlsx via drag-and-drop ou botão</li>
+        <li>Validação de campos obrigatórios: numero_os, endereco, cliente, prazo</li>
+        <li>Preview de dados antes de confirmar importação</li>
+        <li>Linhas com erro destacadas em vermelho com tooltip explicativo</li>
+        <li>Importação de 100 O.S. completa em menos de 5 segundos</li>
+        <li>Template de exemplo disponível para download</li>
+    </ul>
+</div>
+</div>
+
+<div class="story-card">
+    <div class="story-header">
+        <span class="story-id">US-007</span>
+        <div class="story-labels">
+            <span class="label label-medium">Média</span>
+            <span class="label label-mvp">MVP</span>
+        </div>
+    </div>
+    <div class="story-title">Criação Manual de O.S.</div>
+    <div class="story-desc">Como gerente, quero criar uma O.S. individual via formulário para casos urgentes.</div>
+    <div class="story-details">
+        <div class="detail-item">
+            <div class="detail-label">Story Points</div>
+            <div class="detail-value">5</div>
+        </div>
+        <div class="detail-item">
+            <div class="detail-label">Dependências</div>
+            <div class="detail-value">US-002</div>
+        </div>
+        <div class="detail-item">
+            <div class="detail-label">Fase</div>
+            <div class="detail-value">MVP</div>
+        </div>
+    </div>
+    <div class="acceptance-criteria">
+        <div class="acceptance-title">Critérios de Aceitação</div>
+        <ul class="acceptance-list">
+            <li>Formulário com todos os campos de O.S.</li>
+            <li>Validação em tempo real (onBlur)</li>
+            <li>Verificação de unicidade do número de O.S.</li>
+            <li>Botão "Salvar" desabilitado se houver erros</li>
+            <li>Redirect para detalhes da O.S. após criação</li>
+        </ul>
+    </div>
+</div>
+
+<div class="story-card">
+    <div class="story-header">
+        <span class="story-id">US-008</span>
+        <div class="story-labels">
+            <span class="label label-critical">Crítica</span>
+            <span class="label label-mvp">MVP</span>
+        </div>
+    </div>
+    <div class="story-title">Listagem e Busca de O.S.</div>
+    <div class="story-desc">Como gerente, quero visualizar lista completa de O.S. com busca e filtros.</div>
+    <div class="story-details">
+        <div class="detail-item">
+            <div class="detail-label">Story Points</div>
+            <div class="detail-value">5</div>
+        </div>
+        <div class="detail-item">
+            <div class="detail-label">Dependências</div>
+            <div class="detail-value">US-006, US-007</div>
+        </div>
+        <div class="detail-item">
+            <div class="detail-label">Fase</div>
+            <div class="detail-value">MVP</div>
+        </div>
+    </div>
+    <div class="acceptance-criteria">
+        <div class="acceptance-title">Critérios de Aceitação</div>
+        <ul class="acceptance-list">
+            <li>Tabela com colunas: Número, Endereço, Status, Técnico, Prazo, Ações</li>
+            <li>Paginação (20 itens por página)</li>
+            <li>Busca por número ou endereço (debounce 300ms)</li>
+            <li>Filtros: Status, Técnico, Contrato, Data</li>
+            <li>Indicadores visuais de SLA (verde, amarelo, vermelho)</li>
+        </ul>
+    </div>
+</div>
+
+<div class="story-card">
+    <div class="story-header">
+        <span class="story-id">US-009</span>
+        <div class="story-labels">
+            <span class="label label-medium">Média</span>
+        </div>
+    </div>
+    <div class="story-title">Edição de O.S. Pendentes</div>
+    <div class="story-desc">Como gerente, quero editar O.S. pendentes antes de atribuí-las.</div>
+    <div class="story-details">
+        <div class="detail-item">
+            <div class="detail-label">Story Points</div>
+            <div class="detail-value">3</div>
+        </div>
+        <div class="detail-item">
+            <div class="detail-label">Dependências</div>
+            <div class="detail-value">US-008</div>
+        </div>
+        <div class="detail-item">
+            <div class="detail-label">Fase</div>
+            <div class="detail-value">MVP</div>
+        </div>
+    </div>
+    <div class="acceptance-criteria">
+        <div class="acceptance-title">Critérios de Aceitação</div>
+        <ul class="acceptance-list">
+            <li>Botão "Editar" visível apenas para O.S. pendentes</li>
+            <li>Formulário preenchido com dados atuais</li>
+            <li>Número de O.S. não pode ser alterado</li>
+            <li>Histórico de alterações registrado automaticamente</li>
+            <li>Mudanças refletidas imediatamente na listagem</li>
+        </ul>
+    </div>
+</div>
+
+<div class="story-card">
+    <div class="story-header">
+        <span class="story-id">US-010</span>
+        <div class="story-labels">
+            <span class="label label-critical">Crítica</span>
+            <span class="label label-mvp">MVP</span>
+        </div>
+    </div>
+    <div class="story-title">Bloqueio de Exclusão de O.S.</div>
+    <div class="story-desc">Como sistema, devo impedir exclusão de O.S. atribuídas ou em andamento.</div>
+    <div class="story-details">
+        <div class="detail-item">
+            <div class="detail-label">Story Points</div>
+            <div class="detail-value">3</div>
+        </div>
+        <div class="detail-item">
+            <div class="detail-label">Dependências</div>
+            <div class="detail-value">US-008</div>
+        </div>
+        <div class="detail-item">
+            <div class="detail-label">Fase</div>
+            <div class="detail-value">MVP</div>
+        </div>
+    </div>
+    <div class="acceptance-criteria">
+        <div class="acceptance-title">Critérios de Aceitação</div>
+        <ul class="acceptance-list">
+            <li>Botão "Excluir" visível apenas para O.S. pendentes</li>
+            <li>Modal de confirmação antes de excluir</li>
+            <li>Tentativa de excluir O.S. bloqueada retorna erro 403</li>
+            <li>Mensagem clara explicando motivo do bloqueio</li>
+            <li>Exclusão permitida remove registro permanentemente</li>
+        </ul>
+    </div>
+</div>
+
+<div class="story-card">
+    <div class="story-header">
+        <span class="story-id">US-011</span>
+        <div class="story-labels">
+            <span class="label label-high">Alta</span>
+        </div>
+    </div>
+    <div class="story-title">Histórico de Alterações</div>
+    <div class="story-desc">Como gerente, quero ver histórico completo de mudanças em cada O.S.</div>
+    <div class="story-details">
+        <div class="detail-item">
+            <div class="detail-label">Story Points</div>
+            <div class="detail-value">5</div>
+        </div>
+        <div class="detail-item">
+            <div class="detail-label">Dependências</div>
+            <div class="detail-value">US-009</div>
+        </div>
+        <div class="detail-item">
+            <div class="detail-label">Fase</div>
+            <div class="detail-value">Beta</div>
+        </div>
+    </div>
+    <div class="acceptance-criteria">
+        <div class="acceptance-title">Critérios de Aceitação</div>
+        <ul class="acceptance-list">
+            <li>Timeline vertical com eventos cronológicos</li>
+            <li>Registra: criação, edição, atribuição, mudança de status</li>
+            <li>Exibe usuário, data/hora e valores alterados</li>
+            <li>Filtro por tipo de evento e período</li>
+            <li>Exportação do histórico em PDF/CSV</li>
+        </ul>
+    </div>
+</div>
+
+<div class="story-card">
+    <div class="story-header">
+        <span class="story-id">US-012</span>
+        <div class="story-labels">
+            <span class="label label-medium">Média</span>
+        </div>
+    </div>
+    <div class="story-title">Detalhes da O.S.</div>
+    <div class="story-desc">Como gerente, quero visualizar todos os detalhes de uma O.S. em tela dedicada.</div>
+    <div class="story-details">
+        <div class="detail-item">
+            <div class="detail-label">Story Points</div>
+            <div class="detail-value">5</div>
+        </div>
+        <div class="detail-item">
+            <div class="detail-label">Dependências</div>
+            <div class="detail-value">US-008</div>
+        </div>
+        <div class="detail-item">
+            <div class="detail-label">Fase</div>
+            <div class="detail-value">Beta</div>
+        </div>
+    </div>
+    <div class="acceptance-criteria">
+        <div class="acceptance-title">Critérios de Aceitação</div>
+        <ul class="acceptance-list">
+            <li>Card com informações completas da O.S.</li>
+            <li>Timeline de progresso visual</li>
+            <li>Dados do técnico atribuído (se houver)</li>
+            <li>Link para pacote de levantamento (se disponível)</li>
+            <li>Botões de ação contextuais (Editar, Atribuir, etc.)</li>
+        </ul>
+    </div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ÉPICO 3: DISTRIBUIÇÃO E ATRIBUIÇÃO -->
+<div class="epic-section">
+    <div class="epic-header" onclick="toggleEpic('epic-3')">
+        <div class="epic-header-left">
+            <span class="epic-icon">👥</span>
+            <div class="epic-title-group">
+                <div class="epic-id">EPIC-003</div>
+                <div class="epic-title">Distribuição e Atribuição de O.S.</div>
+                <div class="epic-desc">Atribuição de O.S. para técnicos com notificações e sincronização</div>
+            </div>
+        </div>
+        <div class="epic-meta">
+            <div class="epic-stories">6 stories</div>
+            <div class="epic-points">29 pts</div>
+        </div>
+    </div>
+    <div class="epic-content" id="epic-3">
+        <div class="stories-container">
+            <div class="story-card">
+                <div class="story-header">
+                    <span class="story-id">US-013</span>
+                    <div class="story-labels">
+                        <span class="label label-critical">Crítica</span>
+                        <span class="label label-mvp">MVP</span>
+                    </div>
+                </div>
+                <div class="story-title">Atribuição de O.S. para Técnico</div>
+                <div class="story-desc">Como gerente, quero atribuir uma O.S. pendente a um técnico disponível.</div>
+                <div class="story-details">
+                    <div class="detail-item">
+                        <div class="detail-label">Story Points</div>
+                        <div class="detail-value">5</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Dependências</div>
+                        <div class="detail-value">US-008</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Fase</div>
+                        <div class="detail-value">MVP</div>
+                    </div>
+                </div>
+                <div class="acceptance-criteria">
+                    <div class="acceptance-title">Critérios de Aceitação</div>
+                    <ul class="acceptance-list">
+                        <li>Modal com lista de técnicos disponíveis</li>
+                        <li>Exibe carga atual de cada técnico</li>
+                        <li>Confirmação atualiza status para "Atribuída"</li>
+                        <li>Registra data/hora e gerente responsável</li>
+                        <li>Atribuição completa em menos de 3 segundos</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="story-card">
+                <div class="story-header">
+                    <span class="story-id">US-014</span>
+                    <div class="story-labels">
+                        <span class="label label-high">Alta</span>
+                        <span class="label label-mvp">MVP</span>
+                    </div>
+                </div>
+                <div class="story-title">Atribuição Múltipla</div>
+                <div class="story-desc">Como gerente, quero selecionar múltiplas O.S. e atribuí-las em lote.</div>
+                <div class="story-details">
+                    <div class="detail-item">
+                        <div class="detail-label">Story Points</div>
+                        <div class="detail-value">5</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Dependências</div>
+                        <div class="detail-value">US-013</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Fase</div>
+                        <div class="detail-value">MVP</div>
+                    </div>
+                </div>
+                <div class="acceptance-criteria">
+                    <div class="acceptance-title">Critérios de Aceitação</div>
+                    <ul class="acceptance-list">
+                        <li>Checkbox na tabela para seleção múltipla</li>
+                        <li>Contador "X O.S. selecionadas"</li>
+                        <li>Opções: atribuir todas para um técnico ou distribuir entre vários</li>
+                        <li>Atribuição em lote de 50 O.S. em menos de 10 segundos</li>
+                        <li>Falha em uma atribuição não bloqueia as demais</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="story-card">
+                <div class="story-header">
+                    <span class="story-id">US-015</span>
+                    <div class="story-labels">
+                        <span class="label label-medium">Média</span>
+                    </div>
+                </div>
+                <div class="story-title">Visualização de Carga de Trabalho</div>
+                <div class="story-desc">Como gerente, quero ver carga atual de cada técnico para distribuir melhor.
+                </div>
+                <div class="story-details">
+                    <div class="detail-item">
+                        <div class="detail-label">Story Points</div>
+                        <div class="detail-value">3</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Dependências</div>
+                        <div class="detail-value">US-013</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Fase</div>
+                        <div class="detail-value">Beta</div>
+                    </div>
+                </div>
+                <div class="acceptance-criteria">
+                    <div class="acceptance-title">Critérios de Aceitação</div>
+                    <ul class="acceptance-list">
+                        <li>Badge numérico ao lado do nome do técnico</li>
+                        <li>Barra de progresso visual (verde, amarelo, vermelho)</li>
+                        <li>Tooltip com detalhamento ao hover</li>
+                        <li>Ordenação padrão: técnicos com menor carga primeiro</li>
+                        <li>Atualização em tempo real ao atribuir nova O.S.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="story-card">
+                <div class="story-header">
+                    <span class="story-id">US-016</span>
+                    <div class="story-labels">
+                        <span class="label label-high">Alta</span>
+                    </div>
+                </div>
+                <div class="story-title">Reatribuição de O.S.</div>
+                <div class="story-desc">Como gerente, quero reatribuir uma O.S. de um técnico para outro.</div>
+                <div class="story-details">
+                    <div class="detail-item">
+                        <div class="detail-label">Story Points</div>
+                        <div class="detail-value">5</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Dependências</div>
+                        <div class="detail-value">US-013</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Fase</div>
+                        <div class="detail-value">Beta</div>
+                    </div>
+                </div>
+                <div class="acceptance-criteria">
+                    <div class="acceptance-title">Critérios de Aceitação</div>
+                    <ul class="acceptance-list">
+                        <li>Botão "Reatribuir" visível em O.S. atribuídas</li>
+                        <li>Modal solicita novo técnico e motivo obrigatório</li>
+                        <li>Ambos técnicos (anterior e novo) são notificados</li>
+                        <li>Histórico registra reatribuição com motivo</li>
+                        <li>O.S. removida do app do técnico anterior imediatamente</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="story-card">
+                <div class="story-header">
+                    <span class="story-id">US-017</span>
+                    <div class="story-labels">
+                        <span class="label label-critical">Crítica</span>
+                        <span class="label label-mvp">MVP</span>
+                    </div>
+                </div>
+                <div class="story-title">Notificação Push para Técnico</div>
+                <div class="story-desc">Como técnico, quero receber notificação no app mobile quando O.S. for atribuída.
+                </div>
+                <div class="story-details">
+                    <div class="detail-item">
+                        <div class="detail-label">Story Points</div>
+                        <div class="detail-value">5</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Dependências</div>
+                        <div class="detail-value">US-013, TM Levantamentos</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Fase</div>
+                        <div class="detail-value">MVP</div>
+                    </div>
+                </div>
+                <div class="acceptance-criteria">
+                    <div class="acceptance-title">Critérios de Aceitação</div>
+                    <ul class="acceptance-list">
+                        <li>Notificação entregue em até 10 segundos</li>
+                        <li>Título: "Nova O.S. Atribuída"</li>
+                        <li>Mensagem: "Você recebeu a O.S. #12345 - [Endereço]"</li>
+                        <li>Toque na notificação abre detalhes da O.S. no app</li>
+                        <li>Retry automático em caso de falha (até 3 tentativas)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="story-card">
+                <div class="story-header">
+                    <span class="story-id">US-018</span>
+                    <div class="story-labels">
+                        <span class="label label-critical">Crítica</span>
+                        <span class="label label-mvp">MVP</span>
+                    </div>
+                </div>
+                <div class="story-title">Sincronização com App Mobile</div>
+                <div class="story-desc">Como técnico, quero ter O.S. atribuídas sincronizadas automaticamente no app.
+                </div>
+                <div class="story-details">
+                    <div class="detail-item">
+                        <div class="detail-label">Story Points</div>
+                        <div class="detail-value">8</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">

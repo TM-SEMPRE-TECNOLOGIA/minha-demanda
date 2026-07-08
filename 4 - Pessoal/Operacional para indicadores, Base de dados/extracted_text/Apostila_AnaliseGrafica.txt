@@ -1,0 +1,1272 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Apostila de  
+Análise Gráfica 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Contatos Bradesco Corretora 
+E-mail: faq@bradescobbi.com.br  
+Cliente Varejo: 11 2178-5757 
+Cliente Prime:  11 2178-5722  
+www.bradescocorretora.com.br 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Apostila de Análise Gráfica    
+ 
+Esse texto foi desenvolvido pela Bradesco Corretora e não constitui uma recomendação de investimento. Para mais 
+esclarecimentos, sugerimos entrar em contato com o setor de atendimento da Corretora. 
+ 
+É expressamente proibida a reprodução de parte ou da totalidade de seu conteúdo, mediante qualquer forma ou meio, 
+sem prévia e formal autorização, nos termos da Lei 9.610/98. 
+ 
+ 
+ 
+ 
+2
+APOSTILA DE ANÁLISE GRÁFICA 
+Elaborada pela Equipe de Análise Gráfica da Bradesco Corretora 
+ 
+ÍNDICE 
+1.  O que é Análise Gráfica............................................................................ 3 
+ 
+2.  Estilos de Análise do Mercado.................................................................. 4 
+ 
+3. Tipos de Gráficos .................................................................................... .5 
+ 
+        3.1.  Linhas............................................................................................. 5 
+ 
+ 3.2.  Barras............................................................................................. 6 
+ 
+ 3.3.  Candlesticks................................................................................... 6 
+ 
+4. Suportes e Resistências........................................................................... 7 
+ 
+5.  Tendências e Linhas de Tendência........................................................... 8 
+ 
+6.  Sinais de topos e fundos......................................................................... 11 
+ 
+7.  Sinais de Reversão.................................................................................. 19 
+ 
+8.  Indicadores............................................................................................. 21 
+ 
+ 8.1.  Rastreadores de Tendência............................................................ 21 
+ 
+ 8.2.  Osciladores..................................................................................... 22 
+ 
+ 8.3.  Outros indicadores......................................................................... 24 
+ 
+9.  Disciplina Operacional............................................................................ 24 
+ 
+10. Conclusão................................................................................................ 25 
+Apostila de Análise Gráfica    
+ 
+Esse texto foi desenvolvido pela Bradesco Corretora e não constitui uma recomendação de investimento. Para mais 
+esclarecimentos, sugerimos entrar em contato com o setor de atendimento da Corretora. 
+ 
+É expressamente proibida a reprodução de parte ou da totalidade de seu conteúdo, mediante qualquer forma ou meio, 
+sem prévia e formal autorização, nos termos da Lei 9.610/98. 
+ 
+ 
+ 
+ 
+3
+1.  O que é Análise Gráfica 
+A análise gráfica é o estudo que visa monitorar o comportamento dos preços de mercado 
+baseado em uma representação gráfica destes preços. Essa movimentação dos ativos, 
+apresentada através de um gráfico, tem como objetivo verificar o c omportamento da 
+“Lei da oferta e da procura”, a partir de onde conseguimos rastrear a tendência de um 
+ativo. 
+Além do próprio comportamento dos preços, ainda temos a ajuda  de diversas 
+ferramentas que nos ajudam a operar de acordo com a tendência do m ercado ou fazer 
+operações em mercados sem tendência, são os osciladores e rastreadores. Além disso, a 
+análise gráfica nos auxilia em relação ao timing (momento ideal  de entrada/saída) da 
+operação. Essas ferramentas complementam os nossos estudos, ajudand o a descobrir 
+em quais ativos devemos nos posicionar e também o momento exat o para a montagem 
+de uma operação e a hora certa de desfazê-la. 
+  
+Apostila de Análise Gráfica    
+ 
+Esse texto foi desenvolvido pela Bradesco Corretora e não constitui uma recomendação de investimento. Para mais 
+esclarecimentos, sugerimos entrar em contato com o setor de atendimento da Corretora. 
+ 
+É expressamente proibida a reprodução de parte ou da totalidade de seu conteúdo, mediante qualquer forma ou meio, 
+sem prévia e formal autorização, nos termos da Lei 9.610/98. 
+ 
+ 
+ 
+ 
+4
+2.  Estilos de Análise do Mercado 
+ 
+O mercado é composto de diversos estilos de análises utilizad as pelos investidores.  Os 
+estilos mais comuns são: os fundamentalistas, os ”loucos” e os grafistas. Existem ainda 
+aqueles conhecidos como “insiders”, cujo estilo não deve ser c onsiderado uma opção, 
+por utilizarem práticas ilegais, como será explicado abaixo.  
+ 
+Os fundamentalistas são os investidores que pesquisam por con ta própria e levam em 
+consideração dados macroeconômicos locais e internacionais qu e afetam o desempenho 
+de setores da atividade e/ou das empresas. O objetivo é realizar pr ojeções de 
+resultados, estimar retornos para os próximos períodos, projet ar crescimento futuro via 
+fusões, aquisições ou crescimento orgânico e outros indicad ores que sustentem suas 
+opiniões, preços relativos e múltiplos de mercado. 
+ 
+O objetivo é sempre projetar maior consistência no futuro e chegar a um preço alvo para 
+as ações, buscando maximizar retornos das aplicações. Em função  disso, é essencial a 
+avaliação passada de demonstrativos, integração com dirigentes de empresas e projeção 
+de cenários. 
+ 
+Os chamados “loucos” são aqueles que não baseiam seus investiment os em qualquer 
+tipo de análise própria ou de terceiros, fazendo-os simplesmente por vontades ou 
+inspirações, reportagens de televisão, conversa entre amigos ou qu alquer outro tipo de 
+informação que não deveria ser suficiente para fundamentar uma comp ra ou venda do 
+ativo. 
+ 
+Os “insiders” são aqueles que, por algum motivo, possuem inf ormações privilegiadas 
+sobre determinado assunto e usam essas informações de maneira i legal, para tirar 
+vantagem e obter lucros para si ou para terceiros. Essas pessoas podem ser desde 
+funcionários da própria empresa em questão até funcionários de fundos de investimento 
+ou semelhantes que desenvolvem estudos específicos sobre algum setor ou empresa, ou 
+ainda funcionários do governo. É importante ressaltar a ilegal idade desse tipo de 
+operação com informações privilegiadas, sendo passível de puni ção pela CVM (Comissão 
+de Valores Mobiliários) e órgãos fiscalizadores do mercado financeiro. 
+ 
+Finalmente, os grafistas são aqueles que tentam rastrear a lei da o ferta e da demanda 
+dentro do mercado. Esse rastreamento é feito através de uma ponderaç ão entre as 
+diversas forças de cada escola que movimenta o mercado, decidin do, assim, o rumo que 
+as ações tomarão. Em geral, a análise gráfica apresenta momentos determ inados para 
+operação em pontos específicos de entrada e saída de suas operações . Seu principal 
+objetivo é seguir o mercado em geral, jamais lutando contra sua t endência ou tentando 
+fazê-la mudar à força. A escola gráfica utiliza suas ferramentas p ara tentar identificar 
+essas forças atuantes no mercado através de seus gráficos, buscand o assim aproveitar 
+as melhores oportunidades de força nos ativos. 
+Apostila de Análise Gráfica  
+ 
+Esse texto foi desenvolvido pela Bradesco Corretora 
+esclarecimentos, sugerimos entrar em contato com o setor de atendimento da 
+ 
+É expressamente proibida a reprodução de parte ou da totalidade de seu conteúdo, mediante qualquer forma ou meio, 
+sem prévia e formal autorização, nos termos da Lei 9.610/98. 
+ 
+ 
+ 
+ 
+3.  Tipos de Gráficos 
+Os gráficos analisados e mencionados nesta apostila, apesar das dif erenças existentes 
+entre eles, são todos compostos por um eixo vertical represent ando a variação dos 
+preços do ativo e um eixo horizontal que representa o passar d o tempo. Essas são as 
+premissas básicas de qualquer um dos gráficos citados a seguir , podendo variar na linha 
+horizontal a duração do período, que pode ser desde intradiár io até gráficos de perí 
+maiores que um pregão. 
+ 
+3.1 Linhas 
+ 
+O gráfico de linhas é o mais simples, mas é o que proporcion a menos informações ao 
+analista, já que não oferece qualquer tipo de informação sobre qual  foi exatamente o 
+comportamento do papel durante o período apresentado. Esse tipo de gráfico apresenta 
+sim plesmente uma linha ligando os valores de fechamento dos períod os, e, apesar de 
+ser um bom sinalizador para a identificação de sinais de to pos e fundos, ele tem a 
+desvantagem de não permitir a visualização dos gaps entre um e outro período. 
+ 
+Mas o que são esses topos,  
+(seja para cima ou para baixo) em linha reta, e sim através de movi mentos de 
+ziguez agues. Supondo um movimento 
+pernada de alta do zigue zagu 
+que a pernada de alta é encerrada e come 
+“topo” no gráfico. O caso si métrico acontece 
+encerra e o papel volta ao movimen 
+gráficos. Aprofundaremos esse 
+ 
+Já os gaps são espaços nos gráficos onde não houve negociações. Por exempl o, um 
+fechamento de um período gráfico em sua máxima a R$ 10,00, com  a abertura do 
+período seguinte em R$ 10,50, deixou um espaço de R$ 0,50 sem negociação. Este gap 
+será considerado fechado s 
+houver alguma negociação igual ou menor que R$ 10,00. 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+Bradesco Corretora  e não constitui uma recomendação de investimento. Para mais 
+esclarecimentos, sugerimos entrar em contato com o setor de atendimento da Corretora. 
+É expressamente proibida a reprodução de parte ou da totalidade de seu conteúdo, mediante qualquer forma ou meio, 
+autorização, nos termos da Lei 9.610/98.  
+Os gráficos analisados e mencionados nesta apostila, apesar das dif erenças existentes 
+entre eles, são todos compostos por um eixo vertical represent ando a variação dos 
+preços do ativo e um eixo horizontal que representa o passar d o tempo. Essas são as 
+premissas básicas de qualquer um dos gráficos citados a seguir , podendo variar na linha 
+horizontal a duração do período, que pode ser desde intradiár io até gráficos de perí 
+O gráfico de linhas é o mais simples, mas é o que proporcion a menos informações ao 
+analista, já que não oferece qualquer tipo de informação sobre qual  foi exatamente o 
+comportamento do papel durante o período apresentado. Esse tipo de gráfico apresenta 
+plesmente uma linha ligando os valores de fechamento dos períod os, e, apesar de 
+ser um bom sinalizador para a identificação de sinais de to pos e fundos, ele tem a 
+desvantagem de não permitir a visualização dos gaps entre um e outro período. 
+ fundos e gaps? É sabido que os ativos não se movimentam 
+(seja para cima ou para baixo) em linha reta, e sim através de movi mentos de 
+agues. Supondo um movimento de alta de determinado ativo, imaginamos 
+zagu e obviamente maior do que a de baixa, com isso cada vez 
+que a pernada de alta é encerrada e come ça o pequeno movimento de queda 
+métrico acontece no “fundo” quando a pernada de baixa se 
+encerra e o papel volta ao movimen to de alta , ou seja, são os vértices desenhados nos 
+esse assunto no decorrer da apostila. 
+são espaços nos gráficos onde não houve negociações. Por exempl o, um 
+fechamento de um período gráfico em sua máxima a R$ 10,00, com  a abertura do 
+período seguinte em R$ 10,50, deixou um espaço de R$ 0,50 sem negociação. Este gap 
+será considerado fechado s omente quando em um tempo posterior à sua abertura, 
+houver alguma negociação igual ou menor que R$ 10,00.   
+ 
+                        Figura 1 
+ 
+recomendação de investimento. Para mais 
+É expressamente proibida a reprodução de parte ou da totalidade de seu conteúdo, mediante qualquer forma ou meio, 
+5
+Os gráficos analisados e mencionados nesta apostila, apesar das dif erenças existentes 
+entre eles, são todos compostos por um eixo vertical represent ando a variação dos 
+preços do ativo e um eixo horizontal que representa o passar d o tempo. Essas são as 
+premissas básicas de qualquer um dos gráficos citados a seguir , podendo variar na linha 
+horizontal a duração do período, que pode ser desde intradiár io até gráficos de perí odos 
+O gráfico de linhas é o mais simples, mas é o que proporcion a menos informações ao 
+analista, já que não oferece qualquer tipo de informação sobre qual  foi exatamente o 
+comportamento do papel durante o período apresentado. Esse tipo de gráfico apresenta 
+plesmente uma linha ligando os valores de fechamento dos períod os, e, apesar de 
+ser um bom sinalizador para a identificação de sinais de to pos e fundos, ele tem a 
+desvantagem de não permitir a visualização dos gaps entre um e outro período.  
+É sabido que os ativos não se movimentam 
+(seja para cima ou para baixo) em linha reta, e sim através de movi mentos de 
+de determinado ativo, imaginamos logo a 
+e obviamente maior do que a de baixa, com isso cada vez 
+ça o pequeno movimento de queda temos um 
+quando a pernada de baixa se 
+, ou seja, são os vértices desenhados nos 
+são espaços nos gráficos onde não houve negociações. Por exempl o, um 
+fechamento de um período gráfico em sua máxima a R$ 10,00, com  a abertura do 
+período seguinte em R$ 10,50, deixou um espaço de R$ 0,50 sem negociação. Este gap 
+omente quando em um tempo posterior à sua abertura, 
+Apostila de Análise Gráfica  
+ 
+Esse texto foi desenvolvido pela Bradesco Corretora 
+esclarecimentos, sugerimos entrar em contato com o setor de atendimento da 
+ 
+É expressamente proibida a reprodução de parte ou da totalidade de seu conteúdo, mediante qualquer forma ou meio, 
+sem prévia e formal autorização, nos termos da Lei 9.610/98. 
+ 
+ 
+ 
+ 
+3.2 Barras 
+ 
+O gráfico de barras é 
+composto de barras verticais, cujo comprimento representa a 
+variação entre o valor máximo e o valor mínimo alcançados em u m período pelo ativo. 
+Em sua composição também é apresentado um pequeno traço vertical  do lado esquerdo 
+representando o valor de aber 
+valor de fechamento no período. 
+ 
+ 
+                           Figura 
+                                                                                                                     
+ 
+3.3 Candlesticks 
+ 
+O gráfico de Candlesticks, ou simplesmente de Candles (ou velas , em português) é 
+gráfico mais usado para análise 
+seus elementos e as velas caseiras. 
+ 
+Ele consiste basicamente 
+nas 
+com algumas particularidades que facilitam a visualização da mo vimentação ocor 
+dentro do período. São estas particularidades que fazem uma grande diferença na 
+análise dos candles, principalmente nas identificações de topos e fundos como veremos 
+mais à frente. Além das informações apresentadas nos gráficos de b arras, a diferença 
+crucial no gráfico de candles é o fato 
+“pavios” (ou sombras), que são trechos mais finos da barra, vi sualizados no topo e/ou 
+abaixo do corpo real da figura. Esse destaque pode ser 
+vazado , quando temos o preço de fechamento maior que o preço de abert ura, ou 
+preenchido, com o preço de fechamento abaixo do preço de abertura.
+ 
+Os pavios superiores e inferiores representam os valores máximos e mínimos negociados 
+durante o período analisado, 
+também os valores de abertura e/ 
+mais distante o valor do extremo de negociação no período está de sua abertura ou 
+fechamento. 
+ 
+ 
+  
+Bradesco Corretora  e não constitui uma recomendação de investimento. Para mais 
+esclarecimentos, sugerimos entrar em contato com o setor de atendimento da Corretora. 
+É expressamente proibida a reprodução de parte ou da totalidade de seu conteúdo, mediante qualquer forma ou meio, 
+autorização, nos termos da Lei 9.610/98.  
+composto de barras verticais, cujo comprimento representa a 
+variação entre o valor máximo e o valor mínimo alcançados em u m período pelo ativo. 
+Em sua composição também é apresentado um pequeno traço vertical  do lado esquerdo 
+representando o valor de aber tura do período e outro no lado direito representando o 
+valor de fechamento no período.  
+             
+Figura 2           Figura 3 
+                                                                                                                      
+O gráfico de Candlesticks, ou simplesmente de Candles (ou velas , em português) é 
+gráfico mais usado para análise gráfica. Ele possui este nome devido à semelhança entre 
+seus elementos e as velas caseiras.  
+nas mesmas informações contidas no gráfico de barras, porém 
+com algumas particularidades que facilitam a visualização da mo vimentação ocor 
+dentro do período. São estas particularidades que fazem uma grande diferença na 
+análise dos candles, principalmente nas identificações de topos e fundos como veremos 
+mais à frente. Além das informações apresentadas nos gráficos de b arras, a diferença 
+crucial no gráfico de candles é o fato de cada barra apresentar o que chamamos de 
+“pavios” (ou sombras), que são trechos mais finos da barra, vi sualizados no topo e/ou 
+do corpo real da figura. Esse destaque pode ser verificado de duas formas: 
+, quando temos o preço de fechamento maior que o preço de abert ura, ou 
+preenchido, com o preço de fechamento abaixo do preço de abertura.
+Os pavios superiores e inferiores representam os valores máximos e mínimos negociados 
+durante o período analisado, el es não existem quando essas máximas e mínimas forem 
+também os valores de abertura e/ ou fechamento do período. Quanto maior um pavio, 
+mais distante o valor do extremo de negociação no período está de sua abertura ou 
+ 
+recomendação de investimento. Para mais 
+É expressamente proibida a reprodução de parte ou da totalidade de seu conteúdo, mediante qualquer forma ou meio, 
+6
+composto de barras verticais, cujo comprimento representa a 
+variação entre o valor máximo e o valor mínimo alcançados em u m período pelo ativo. 
+Em sua composição também é apresentado um pequeno traço vertical  do lado esquerdo 
+tura do período e outro no lado direito representando o 
+ 
+Figura 3        
+O gráfico de Candlesticks, ou simplesmente de Candles (ou velas , em português) é  o 
+gráfica. Ele possui este nome devido à semelhança entre 
+mesmas informações contidas no gráfico de barras, porém 
+com algumas particularidades que facilitam a visualização da mo vimentação ocor rida 
+dentro do período. São estas particularidades que fazem uma grande diferença na 
+análise dos candles, principalmente nas identificações de topos e fundos como veremos 
+mais à frente. Além das informações apresentadas nos gráficos de b arras, a diferença 
+de cada barra apresentar o que chamamos de 
+“pavios” (ou sombras), que são trechos mais finos da barra, vi sualizados no topo e/ou 
+verificado de duas formas: 
+, quando temos o preço de fechamento maior que o preço de abert ura, ou 
+preenchido, com o preço de fechamento abaixo do preço de abertura. 
+Os pavios superiores e inferiores representam os valores máximos e mínimos negociados 
+es não existem quando essas máximas e mínimas forem 
+ou fechamento do período. Quanto maior um pavio, 
+mais distante o valor do extremo de negociação no período está de sua abertura ou 
+Apostila de Análise Gráfica  
+ 
+Esse texto foi desenvolvido pela Bradesco Corretora 
+esclarecimentos, sugerimos entrar em contato com o setor de atendimento da 
+ 
+É expressamente proibida a reprodução de parte ou da totalidade de seu conteúdo, mediante qualquer forma ou meio, 
+sem prévia e formal autorização, nos termos da Lei 9.610/98. 
+ 
+ 
+ 
+ 
+                   Figura 4 
+4.  Suportes e Resistências 
+ 
+Os suportes são regiões de preço com uma gra 
+isso, tendem a se apresentar como pontos de estancamento 
+que a fartura de compradores pode conseguir reverter o movimento  de curtíssimo prazo 
+do papel. Esses suportes são representados em geral por fundos anteriores e também  
+por antigas resistências já rompidas, sendo os fundos anterior
+suporte mais fortes do que as antigas resistências. 
+suporte, quando rompida, se transforma numa área de resistência, e vice 
+ 
+As resistências são opostas 
+aos 
+concentração de vendedores e, com isso, se apresentam como pontos  de exaustão de 
+alta , ou seja, esse movimento de alta já durou bastante tempo e pode c hegar ao fim ao 
+menos momentaneamente.  
+grande e esse tamanho pode ser suficiente inclusive para terminar m omentaneamente 
+um processo de alta, já que os compradores neste preço podem n ão ser suficientes para 
+garantir a ultrapassagem desta região de preço. São áreas de topos ou fundos anter 
+já rompidos, sendo os topos mais fortes do que os antigos suportes. 
+ 
+Estes suportes e resistências 
+memória em relação ao comportamento de determinado ativo ao passar pela mesm a 
+região de preço anteri ormente. 
+investidores em momentos como este seria: “se 
+esta região de preço, ele não a ultrapassou, 
+pensamento dá início a um círcu 
+resistência cada vez mais forte de acordo com a quantidade de vezes  que for testada e 
+respeitada.   
+ 
+Esses pontos de força nos fazem pensar automaticamente em outra f erramenta vital 
+para a operação de um analista gráfico, que é o uso do stop. O stop é simplesmente  
+uma ordem de venda pré- programada, sendo ela disparada automaticamente quando o 
+papel é negociado abaixo de um valor determinado em sua ordem. A ex plicação da sua 
+importância é que tendências po 
+  
+Bradesco Corretora  e não constitui uma recomendação de investimento. Para mais 
+esclarecimentos, sugerimos entrar em contato com o setor de atendimento da Corretora. 
+É expressamente proibida a reprodução de parte ou da totalidade de seu conteúdo, mediante qualquer forma ou meio, 
+autorização, nos termos da Lei 9.610/98.  
+           
+                Figura 5 
+Suportes e Resistências  
+Os suportes são regiões de preço com uma gra nde concentração de compradores 
+tendem a se apresentar como pontos de estancamento de processos de queda, já 
+que a fartura de compradores pode conseguir reverter o movimento  de curtíssimo prazo 
+suportes são representados em geral por fundos anteriores e também  
+por antigas resistências já rompidas, sendo os fundos anterior es considerados pontos de 
+suporte mais fortes do que as antigas resistências.  Ou seja, um a antiga área de 
+suporte, quando rompida, se transforma numa área de resistência, e vice 
+aos suportes, já que elas são uma área de 
+concentração de vendedores e, com isso, se apresentam como pontos  de exaustão de 
+, ou seja, esse movimento de alta já durou bastante tempo e pode c hegar ao fim ao 
+ Esses pontos são locais onde o número de vendedo 
+grande e esse tamanho pode ser suficiente inclusive para terminar m omentaneamente 
+um processo de alta, já que os compradores neste preço podem n ão ser suficientes para 
+desta região de preço. São áreas de topos ou fundos anter 
+já rompidos, sendo os topos mais fortes do que os antigos suportes. 
+Estes suportes e resistências  têm sua força no fato de os investidores possuírem 
+em relação ao comportamento de determinado ativo ao passar pela mesm a 
+ormente. A explicação para o comportamento psicológico dos 
+investidores em momentos como este seria: “se na última vez que o ativo chegou até 
+esta região de preço, ele não a ultrapassou, por que seria diferente agora?”. Esse 
+pensamento dá início a um círcu lo vicioso no papel, tornando uma área de suporte ou 
+resistência cada vez mais forte de acordo com a quantidade de vezes  que for testada e 
+Esses pontos de força nos fazem pensar automaticamente em outra f erramenta vital 
+analista gráfico, que é o uso do stop. O stop é simplesmente  
+programada, sendo ela disparada automaticamente quando o 
+papel é negociado abaixo de um valor determinado em sua ordem. A ex plicação da sua 
+importância é que tendências po dem ser perdidas caso o papel venha a romper suportes 
+ 
+recomendação de investimento. Para mais 
+É expressamente proibida a reprodução de parte ou da totalidade de seu conteúdo, mediante qualquer forma ou meio, 
+7
+ 
+Figura 5  
+nde concentração de compradores  e, por 
+de processos de queda, já 
+que a fartura de compradores pode conseguir reverter o movimento  de curtíssimo prazo 
+suportes são representados em geral por fundos anteriores e também  
+es considerados pontos de 
+Ou seja, um a antiga área de 
+suporte, quando rompida, se transforma numa área de resistência, e vice -versa. 
+suportes, já que elas são uma área de  preço com grande 
+concentração de vendedores e, com isso, se apresentam como pontos  de exaustão de 
+, ou seja, esse movimento de alta já durou bastante tempo e pode c hegar ao fim ao 
+Esses pontos são locais onde o número de vendedo res é 
+grande e esse tamanho pode ser suficiente inclusive para terminar m omentaneamente 
+um processo de alta, já que os compradores neste preço podem n ão ser suficientes para 
+desta região de preço. São áreas de topos ou fundos anter iores 
+já rompidos, sendo os topos mais fortes do que os antigos suportes.  
+os investidores possuírem 
+em relação ao comportamento de determinado ativo ao passar pela mesm a 
+comportamento psicológico dos 
+na última vez que o ativo chegou até 
+por que seria diferente agora?”. Esse 
+lo vicioso no papel, tornando uma área de suporte ou 
+resistência cada vez mais forte de acordo com a quantidade de vezes  que for testada e 
+Esses pontos de força nos fazem pensar automaticamente em outra f erramenta vital 
+analista gráfico, que é o uso do stop. O stop é simplesmente  
+programada, sendo ela disparada automaticamente quando o 
+papel é negociado abaixo de um valor determinado em sua ordem. A ex plicação da sua 
+dem ser perdidas caso o papel venha a romper suportes 
+Apostila de Análise Gráfica    
+ 
+Esse texto foi desenvolvido pela Bradesco Corretora e não constitui uma recomendação de investimento. Para mais 
+esclarecimentos, sugerimos entrar em contato com o setor de atendimento da Corretora. 
+ 
+É expressamente proibida a reprodução de parte ou da totalidade de seu conteúdo, mediante qualquer forma ou meio, 
+sem prévia e formal autorização, nos termos da Lei 9.610/98. 
+ 
+ 
+ 
+ 
+8
+ou resistências anteriores. Por isso, uma vez que a tendência não est eja mais a seu 
+favor, a sugestão é sair do papel e aguardar um melhor momento para se posicionar de 
+acordo com a direção da força do papel. 
+ 
+ 
+ 
+                                                                Figura 6 
+ 
+ 
+ 
+5.  Tendências e Linhas de Tendência 
+ 
+Tendências são configuradas pela sucessão de topos e fundos nos gráficos de preço, que 
+podem ser ascendentes, descendentes ou sem tendência (quando não há u ma sincronia 
+desses topos e fundos no gráfico). Os grafistas têm como p rincipal objetivo o 
+rastreamento dessas tendências para segui-las. 
+ 
+Existem três tipos de tendências, de acordo com a posição da seq üência de topos e 
+fundos: 
+ 
+ 
+● Tendência de Alta  
+ 
+É caracterizada graficamente por uma sucessão de topos e fundos ascendentes, sendo 
+esta tendência perdida somente quando o fundo anterior é perdido. 
+ 
+ 
+
+Apostila de Análise Gráfica    
+ 
+Esse texto foi desenvolvido pela Bradesco Corretora e não constitui uma recomendação de investimento. Para mais 
+esclarecimentos, sugerimos entrar em contato com o setor de atendimento da Corretora. 
+ 
+É expressamente proibida a reprodução de parte ou da totalidade de seu conteúdo, mediante qualquer forma ou meio, 
+sem prévia e formal autorização, nos termos da Lei 9.610/98. 
+ 
+ 
+ 
+ 
+9
+ 
+                                                  Figura 7 
+ 
+ 
+● Tendência de Baixa 
+ 
+É caracterizada graficamente por uma sucessão de topos e fundos d escendentes, sendo 
+esta perdida somente quando o topo anterior é rompido. 
+ 
+ 
+Figura 8 
+ 
+ 
+ 
+● Sem tendência ou congestão 
+ 
+É caracterizada graficamente por uma sucessão de topos e fundos irregulares e sem 
+obedecer nenhum tipo de seqüência.  
+ 
+Essa situação possui alguns tipos de características particul ares, como o fato de que 
+quanto mais tempo durar este processo, mais ele se potencializ a e se torna forte, ou 
+seja, quanto mais vezes o ativo tocar a linha de uma das extremidad es da congestão, 
+mais forte esta linha ficará. 
+ 
+
+Apostila de Análise Gráfica    
+ 
+Esse texto foi desenvolvido pela Bradesco Corretora e não constitui uma recomendação de investimento. Para mais 
+esclarecimentos, sugerimos entrar em contato com o setor de atendimento da Corretora. 
+ 
+É expressamente proibida a reprodução de parte ou da totalidade de seu conteúdo, mediante qualquer forma ou meio, 
+sem prévia e formal autorização, nos termos da Lei 9.610/98. 
+ 
+ 
+ 
+ 
+10 
+ 
+ 
+Figura 9 
+ 
+A representação das tendências também nos apresenta outra ferrament a auxiliadora: as 
+linhas de tendência. Essas linhas são traçadas a partir dos fundo s ascendentes, no caso 
+de uma tendência de alta, ou a partir dos topos descendentes, no caso de uma 
+tendência de baixa. Uma boa utilização de linhas de tendências é como  ponto para 
+estancar as realizações em pequenos movimentos contra a tendência. El a pode se 
+apresentar como um bom ponto de entrada, mediante algum sinal de esgotamento do 
+pequeno movimento contra a tendência. 
+ 
+No exemplo abaixo temos um papel em clara tendência de alta, onde o teste da linha de 
+tendência de alta (LTA) caracteriza vários pontos de entrada medi ante sinais de fundos 
+confirmados. Essas operações apresentam também uma boa vantagem, já q ue seus 
+stops costumam ser bastante curtos. 
+ 
+ 
+ 
+                                                  Figura 10 
+ 
+
+Apostila de Análise Gráfica    
+ 
+Esse texto foi desenvolvido pela Bradesco Corretora e não constitui uma recomendação de investimento. Para mais 
+esclarecimentos, sugerimos entrar em contato com o setor de atendimento da Corretora. 
+ 
+É expressamente proibida a reprodução de parte ou da totalidade de seu conteúdo, mediante qualquer forma ou meio, 
+sem prévia e formal autorização, nos termos da Lei 9.610/98. 
+ 
+ 
+ 
+ 
+11 
+ 
+ 
+6.  Sinais de topos e fundos 
+ 
+Apresentaremos aqui os principais sinais de topos e fundos  visualizados em gráficos de 
+candlesticks. Essas são interpretações dos movimentos dentro d o período, visando 
+principalmente buscar pequenas alterações nas movimentações dos períodos anteriores 
+para os seguintes. Esses sinais são também utilizados por algun s investidores para 
+indicar pontos de entrada e saída do mercado, principalmente qu ando se trata de 
+mercados em tendência. 
+ 
+● Martelo ou Hammer 
+ 
+É um sinal de fundo muito comum, representado por um candle em formato parecido 
+com um martelo (figuras 11 e 12), caracterizado por uma abert ura e posterior queda, 
+apresentando melhora até o final do período, conseguindo um fec hamento próximo da 
+abertura. Nestes casos o corpo real do candle pode ser até um terço  do tamanho total 
+do candle e necessita de confirmação através de uma nova barra de alt a no período 
+seguinte com fechamento acima da máxima do martelo. É também im portante que não 
+haja pavio superior, ou que este seja muito pequeno. Por ser um s inal de fundo é 
+necessário que ele esteja após algum movimento de queda, mesmo que s eja somente 
+uma realização dentro de uma tendência de alta.  
+ 
+ 
+                                        
+Figura 11                                         Figu ra 12  
+ 
+ 
+● Shooting Star 
+ 
+Sua apresentação é muito parecida com a do martelo, porém invertida (figuras 13 e 14). 
+Ela é um sinal de topo, caracterizada por um mercado que se des envolveu para cima 
+após a abertura e voltou fechando próximo a este valor de início de negociação no 
+período. Essa formação também necessita de confirmação, com um f echamento no 
+período seguinte abaixo da mínima do período do shooting star. Não pode apresentar 
+pavio inferior, mas, se apresentar, este precisa ser muito pequeno. 
+
+Apostila de Análise Gráfica    
+ 
+Esse texto foi desenvolvido pela Bradesco Corretora e não constitui uma recomendação de investimento. Para mais 
+esclarecimentos, sugerimos entrar em contato com o setor de atendimento da Corretora. 
+ 
+É expressamente proibida a reprodução de parte ou da totalidade de seu conteúdo, mediante qualquer forma ou meio, 
+sem prévia e formal autorização, nos termos da Lei 9.610/98. 
+ 
+ 
+ 
+ 
+12 
+ 
+ 
+                                 Figura 13      Figura  14 
+ 
+ 
+● Enforcado ou Hanging Man 
+ 
+A configuração gráfica do candle é idêntica ao martelo, só que ele se encontra em uma 
+região de topo e a confirmação se dá com um fechamento no período seguinte abaixo da 
+mínima do enforcado. 
+ 
+                                  
+Figura 15      Figura 16 
+ 
+ 
+ 
+● Martelo Invertido (Inverted Hammer) 
+ 
+Sua configuração gráfica é a mesma do shooting star, porém esta f igura se apresenta 
+como um sinal de fundo. A confirmação se dá através de um fecham ento do período 
+seguinte acima da máxima do martelo invertido. 
+ 
+
+Apostila de Análise Gráfica    
+ 
+Esse texto foi desenvolvido pela Bradesco Corretora e não constitui uma recomendação de investimento. Para mais 
+esclarecimentos, sugerimos entrar em contato com o setor de atendimento da Corretora. 
+ 
+É expressamente proibida a reprodução de parte ou da totalidade de seu conteúdo, mediante qualquer forma ou meio, 
+sem prévia e formal autorização, nos termos da Lei 9.610/98. 
+ 
+ 
+ 
+ 
+13 
+ 
+                                      Figura 17                      Figura 18 
+ 
+● Estrelas (Stars) 
+ 
+São clássicos sinais de indefinição, e podem se transformar em sinais de topos ou 
+fundos. Sua particularidade é um fechamento igual (padrão cha mado de dojis ou muito 
+próximo ao valor da abertura (spinning tops), podendo ter o corrido um movimento para 
+cima e/ou para baixo durante o período.  
+ 
+Esses sinais representam uma briga igualitária entre papéis compr ados e vendidos 
+dentro do período, e podem passar a representar mudanças de direç ão do mercado a 
+partir de um novo fechamento acima de sua máxima (caso esteja em um  fundo) ou 
+abaixo de sua mínima (caso esteja em um topo). 
+ 
+Os spinning tops têm a mesma funcionalidade dos dojis. Estes  dojis têm nomes 
+específicos quando se transformam em sinais de topos ou fun dos, chamados de estrela 
+da noite quando sinais de topo e estrela da manhã quando sinais de fundo. 
+ 
+Em relação ao posicionamento da abertura e fechamento quanto ao desen rolar do 
+período, os dojis possuem dois casos mais específicos e co m nomes próprios: são as 
+lápides, onde a abertura, o fechamento e a mínima do dia são no mesmo  valor e têm a 
+mesma funcionalidade que os shooting stars ou martelos inver tidos. O outro caso 
+particular são os dragões voadores, onde a abertura, o fechamento e a máxima do dia 
+têm o mesmo valor, ou valores bem próximos. Sua funcionalidad e é a mesma dos 
+martelos ou enforcados. 
+ 
+
+Apostila de Análise Gráfica    
+ 
+Esse texto foi desenvolvido pela Bradesco Corretora e não constitui uma recomendação de investimento. Para mais 
+esclarecimentos, sugerimos entrar em contato com o setor de atendimento da Corretora. 
+ 
+É expressamente proibida a reprodução de parte ou da totalidade de seu conteúdo, mediante qualquer forma ou meio, 
+sem prévia e formal autorização, nos termos da Lei 9.610/98. 
+ 
+ 
+ 
+ 
+14 
+ 
+             Figura 19 
+ 
+ 
+ 
+  
+                   Figura 20              Figura 21 
+ 
+ 
+● Engolfo (Engulfing) 
+ 
+Os engolfos de fundo (bullish engulfing) são compostos por um dia com fechamento 
+abaixo da abertura e devem se localizar no fundo de uma seqüência de quedas. O dia 
+seguinte deve ter uma abertura abaixo do fechamento do dia anterior e o novo 
+fechamento acima da abertura deste. Ou seja, os corpos reais dos doi s candles têm 
+cores diferentes e o primeiro está totalmente dentro do corpo do segundo. 
+ 
+Engolfos de topo (bearish engulfing) têm a mesma formatação d os engolfos de fundo, 
+simplesmente com as indicações e direções opostas, como o ocor rido em uma região de 
+topo, com o primeiro dia de alta e o segundo de baixa. 
+ 
+ 
+
+Apostila de Análise Gráfica    
+ 
+Esse texto foi desenvolvido pela Bradesco Corretora e não constitui uma recomendação de investimento. Para mais 
+esclarecimentos, sugerimos entrar em contato com o setor de atendimento da Corretora. 
+ 
+É expressamente proibida a reprodução de parte ou da totalidade de seu conteúdo, mediante qualquer forma ou meio, 
+sem prévia e formal autorização, nos termos da Lei 9.610/98. 
+ 
+ 
+ 
+ 
+15 
+ 
+Figura 22 
+ 
+   
+Figura 23     Figura 24 
+ 
+ 
+ 
+● Piercing 
+ 
+É um sinal de fundo parecido com o engolfo de fundo, com a diferença que a alta do 
+segundo dia não supera a abertura do primeiro. O primeiro dia ap resenta um 
+fechamento abaixo da abertura, enquanto o segundo abre com um gap d e queda e sua 
+recuperação vai até a região intermediária do corpo real do candle d o primeiro dia. Sua 
+localização também é no fim de um processo de queda, precisando ainda de um 
+fechamento do pregão posterior acima da abertura do primeiro d ia, para caracterizar a 
+confirmação do sinal de fundo. 
+ 
+
+Apostila de Análise Gráfica    
+ 
+Esse texto foi desenvolvido pela Bradesco Corretora e não constitui uma recomendação de investimento. Para mais 
+esclarecimentos, sugerimos entrar em contato com o setor de atendimento da Corretora. 
+ 
+É expressamente proibida a reprodução de parte ou da totalidade de seu conteúdo, mediante qualquer forma ou meio, 
+sem prévia e formal autorização, nos termos da Lei 9.610/98. 
+ 
+ 
+ 
+ 
+16 
+  
+Figura 25        Figura 26 
+ 
+ 
+● Dark Cloud Cover (Tempestade a vista) 
+ 
+Padrão de topo parecido com a formação do Piercing, se apresentando no final de uma 
+seqüência de altas. Sua configuração específica consiste em um pr egão com fechamento 
+superior à abertura e o pregão seguinte com uma abertura em alta, s eguido de uma 
+reversão da direção intradiária, terminando com o fechamento do pregão situado entre a 
+abertura e fechamento do pregão anterior. É necessário também um fec hamento 
+posterior abaixo da abertura do primeiro pregão para indicar a  confirmação do sinal de 
+topo. 
+ 
+   
+Figura 27        Figura 28 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+Apostila de Análise Gráfica    
+ 
+Esse texto foi desenvolvido pela Bradesco Corretora e não constitui uma recomendação de investimento. Para mais 
+esclarecimentos, sugerimos entrar em contato com o setor de atendimento da Corretora. 
+ 
+É expressamente proibida a reprodução de parte ou da totalidade de seu conteúdo, mediante qualquer forma ou meio, 
+sem prévia e formal autorização, nos termos da Lei 9.610/98. 
+ 
+ 
+ 
+ 
+17 
+● Bebê abandonado 
+ 
+São padrões de topo ou fundo que possuem a mesma apresentação, depen dendo 
+somente de sua localização para serem diferenciados. Sua definição, quando em padrões 
+de alta, é um período com uma abertura com gap de alta em relação à m áxima do 
+período anterior, se mantendo por todo o período acima do gap. Após o fechamento 
+desse segundo período, temos a abertura do terceiro período com um gap de queda em 
+relação à mínima do anterior. Esse padrão deixa um candle sozinho em uma região de 
+topo e volta a cair forte, indicando assim um novo sinal de t opo no ativo. Em resumo, se 
+trata de um candle em uma região de topo, isolado de seu período anterior e posterior 
+por gaps em relação à sua mínima. 
+ 
+A definição para bebês abandonados em regiões de fundo é exatamente a m esma, 
+somente ressaltando a nova posição no gráfico, passando a ser enco ntrado após 
+seqüências de baixas. 
+  
+ 
+ 
+Figura 29        Figura 30 
+ 
+ 
+● Ilhas de reversão 
+ 
+Sua consistência é exatamente igual a de bebês abandonados, com a dif erença de não 
+ser somente um período na região isolado por gaps, mas sim uma quantidade maior de 
+candles. É visto em gráficos de barras. 
+ 
+ 
+
+Apostila de Análise Gráfica    
+ 
+Esse texto foi desenvolvido pela Bradesco Corretora e não constitui uma recomendação de investimento. Para mais 
+esclarecimentos, sugerimos entrar em contato com o setor de atendimento da Corretora. 
+ 
+É expressamente proibida a reprodução de parte ou da totalidade de seu conteúdo, mediante qualquer forma ou meio, 
+sem prévia e formal autorização, nos termos da Lei 9.610/98. 
+ 
+ 
+ 
+ 
+18 
+  
+Figura 31       Figura 32 
+ 
+ 
+● Harami 
+Outra configuração que pode ser indicativo de um sinal de to po ou fundo, dependendo 
+de sua localização no gráfico. Sua consistência gráfica no har ami de fundo é 
+representada por um período de fechamento inferior à abertura, com  o período seguinte 
+apresentando uma abertura em alta e o fechamento abaixo da máxima do pregão 
+anterior. Com essa apresentação o corpo real do segundo período passa a se encontrar 
+totalmente inserido dentro do corpo real do período anterior. O padrão necessita de uma 
+confirmação no período seguinte com um fechamento acima da máxi ma do primeiro 
+período do harami. A configuração do harami de topo é exatamente s imétrica a 
+observada em sinais de fundo, precisando também de uma confirmação. 
+ 
+ 
+   
+Figura 33        Figura 34 
+ 
+ 
+ 
+
+Apostila de Análise Gráfica    
+ 
+Esse texto foi desenvolvido pela Bradesco Corretora e não constitui uma recomendação de investimento. Para mais 
+esclarecimentos, sugerimos entrar em contato com o setor de atendimento da Corretora. 
+ 
+É expressamente proibida a reprodução de parte ou da totalidade de seu conteúdo, mediante qualquer forma ou meio, 
+sem prévia e formal autorização, nos termos da Lei 9.610/98. 
+ 
+ 
+ 
+ 
+19 
+7.  Sinais de Reversão 
+ 
+São padrões de candles que indicam uma iminente reversão de tendênc ia no papel, 
+tendo um objetivo determinado a partir do rompimento da fig ura. Veremos a seguir 
+como estabelecer esses objetivos e características gerais dos padr ões conhecidos, bem 
+como estabelecer como e quando se dá o rompimento das figuras. 
+ 
+● Ombro Cabeça Ombro (OCO) e Ombro Cabeça Ombro Invertido (OCOI) 
+ 
+Os OCOs são padrões de reversão de tendências de alta, portanto precisam se 
+apresentar no topo de uma tendência altista. Esse padrão é representado  por um 
+pequeno sinal de topo, seguido de realização até uma área de suporte que será chamada 
+de neck line (ou linha de pescoço), na seqüência o topo anterior será rompido e marcado 
+um novo em um valor acima do anterior, voltando novamente a test ar a neck line. Após 
+esses dois topos, será configurado um novo sinal de topo na mesma região do primeiro, 
+voltando mais uma vez para o suporte do neck line. Com isso a figura apresentou três 
+sinais de topo, sendo que o do meio se encontra em nível ma is elevado que os outros 
+dois, que se encontram na mesma altura ou em valores bem próxim os um do outro, por 
+isso o nome do padrão, que lembra a figura de dois ombros com uma cabeça no meio. 
+ 
+Após a configuração do padrão, a figura precisa ser rompida a partir de um rompimento 
+do neck line, seguindo assim em busca de seu novo objetivo que será a mesma distância 
+do neck line para o topo central, só que desta vez para baixo. 
+ 
+A configuração e objetivo do OCOI são exatamente simétricos ao OCO, sendo este um 
+sinal de reversão de tendências de baixa e após a figura rompida, seu objetivo é montar 
+uma nova tendência de alta. 
+ 
+ 
+   
+Figura 35        Figura 36 
+ 
+ 
+  
+ 
+      
+
+Apostila de Análise Gráfica    
+ 
+Esse texto foi desenvolvido pela Bradesco Corretora e não constitui uma recomendação de investimento. Para mais 
+esclarecimentos, sugerimos entrar em contato com o setor de atendimento da Corretora. 
+ 
+É expressamente proibida a reprodução de parte ou da totalidade de seu conteúdo, mediante qualquer forma ou meio, 
+sem prévia e formal autorização, nos termos da Lei 9.610/98. 
+ 
+ 
+ 
+ 
+20 
+ 
+                          Figura 37                                                                               Figura 38  
+  
+ 
+● Topos duplos (M) e Fundos duplos (W) 
+ 
+O M’s e W’s são figuras de reversão que têm suas definições iguais, porém simétricas. 
+ 
+Um topo duplo é uma configuração que somente aparece em uma tendên cia de alta. 
+Para que ele aconteça, determinado ativo testa uma região, a partir da qu al inicia um 
+processo de correção e logo em seguida volta a subir. Seu movim ento pára novamente 
+na mesma região onde havia parado o primeiro movimento altista. Co m essa nova 
+interrupção da alta, o ativo volta a cair e rompe a região de su porte definida pelo seu 
+fundo anterior, a partir de onde tem sua figura rompida e tem co mo objetivo o início da 
+primeira pernada de alta antes do ativo configurar seu primeiro topo. 
+ 
+A configuração dos fundos duplos é a mesma, porém com a si metria de se encontrar em 
+uma tendência de queda e seu processo de reversão ser composto de uma nova série de 
+alta. 
+ 
+    
+Figura 39        Figura 40  
+
+Apostila de Análise Gráfica    
+ 
+Esse texto foi desenvolvido pela Bradesco Corretora e não constitui uma recomendação de investimento. Para mais 
+esclarecimentos, sugerimos entrar em contato com o setor de atendimento da Corretora. 
+ 
+É expressamente proibida a reprodução de parte ou da totalidade de seu conteúdo, mediante qualquer forma ou meio, 
+sem prévia e formal autorização, nos termos da Lei 9.610/98. 
+ 
+ 
+ 
+ 
+21 
+8.  Indicadores 
+ 
+São ferramentas desenvolvidas a partir de fórmulas matemáticas advin das de diversos 
+tipos de diferentes combinações dos valores do comportamento do ativo, sejam eles 
+relacionados às máximas, mínimas, fechamento, volume ou qualquer o utro dado do 
+ativo. Apesar de suas fórmulas que são, muitas vezes, complicadas para se fazer à mão, 
+as diversas plataformas gráficas disponíveis fazem esses cálculos já pré-programados. 
+ 
+São ainda divididos entre rastreadores de tendência, osciladores e algumas fórmulas que 
+não se encaixam em nenhuma dessas duas definições. 
+ 
+ 
+8.1.  Rastreadores de Tendência 
+ 
+São estudos que indicam e monitoram o desenvolvimento de uma t endência e são 
+usados para ajudar o investidor a se manter posicionado enquanto  o mercado não 
+mostrar fraqueza ou mudança. O principal objetivo destes rastr eadores é ajudar para 
+que o investidor esteja sempre posicionado de acordo com a for ça do mercado e jamais 
+fique posicionado contra a tendência e remando contra a maré. 
+ 
+Alguns dos rastreadores de tendência mais conhecidos estão dispostos abaixo: 
+ 
+● Movimento Direcional (AD+, AD- e ADX) 
+ 
+Indicador utilizado para verificar a existência ou não de uma tendência no mercado. 
+Composto por três linhas, uma contínua (ad+), uma tracejada (ad- ) e uma pontilhada 
+(adx). 
+ 
+A tendência é indicada pelas linhas contínua e tracejada, sabendo qu e quando temos a 
+linha contínua por cima indicamos uma tendência de alta e vice versa. A linha pontilhada 
+serve para medir a aceleração da tendência, obviamente somente quando esta tendência 
+existir. 
+ 
+A ausência de tendência se dá quando temos a linha pontilhada abaixo das outras duas 
+ou quando a linha pontilhada estiver caindo e tiver valor menor ou igual a 32.  
+ 
+● Médias Móveis 
+ 
+São indicadores muito comuns que consistem na média dos preços de fechamento de “n” 
+períodos, sendo as mais comuns a aritmética e a exponencial. 
+ 
+Essas médias podem ser usadas de diversas maneiras, como por exempl o, sendo 
+suporte para o ativo, usando-se uma MM de período maior. É bast ante utilizada também 
+como ferramenta de timing de entrada na operação através do cruzamen to de duas 
+médias móveis de períodos diferentes.   
+ 
+Uma das principais ferramentas na qual se utiliza as médias móvei s é o Didi Índex, 
+popularmente conhecida como Agulhada do Didi, que falaremos a seguir. 
+Apostila de Análise Gráfica    
+ 
+Esse texto foi desenvolvido pela Bradesco Corretora e não constitui uma recomendação de investimento. Para mais 
+esclarecimentos, sugerimos entrar em contato com o setor de atendimento da Corretora. 
+ 
+É expressamente proibida a reprodução de parte ou da totalidade de seu conteúdo, mediante qualquer forma ou meio, 
+sem prévia e formal autorização, nos termos da Lei 9.610/98. 
+ 
+ 
+ 
+ 
+22 
+ 
+ 
+● Didi Index (Agulhadas) 
+ 
+Este indicador foi criado pelo grafista brasileiro Odir Aguiar, o Didi, que percebeu um 
+comportamento particular das médias móveis de 3, 8 e 20 períodos. 
+ 
+Quando temos as três médias colocadas como indicador, divid imos todas pela média de 
+8 períodos, de modo que esta fique sempre constante na horizontal . Quando temos uma 
+junção das médias de 3 e 20 dias em cima da linha da média de oit o períodos e a partir 
+desta junção vai uma linha para cada lado, temos uma agulhada. Se a méd ia de três 
+dias sair para cima e a média de 20 dias sair para baixo, temos u ma agulhada de 
+compra, caso contrário, teremos uma agulhada de venda. 
+ 
+É importante observar que as agulhadas sempre devem vir acompanhadas  de tendência 
+no mesmo sentido da agulhada, segundo o Adx. Caso não haja a tendên cia, a agulhada 
+não é válida. 
+ 
+8.2.  Osciladores 
+ 
+São padrões estatísticos que trazem informações sobre possívei s exaustões e/ou 
+reversões de curto prazo no mercado. É importante ressaltar qu e estes osciladores são 
+usados em mercados sem tendência definida, principalmente em congestões. 
+ 
+ 
+● IFR (Índice de Força Relativa) 
+ 
+É um dos osciladores mais conhecidos e utilizados pelos ana listas gráficos. Ele mede a 
+velocidade da variação do valor do ativo. Sua variação é de 0 a 100, tendo o nível 
+sobrecomprado acima dos 70 e sobrevendido abaixo dos 30.  
+ 
+Seu cálculo é feito da seguinte forma: IFR = 100 – (100/(1+(A/B)), onde: 
+ 
+“A” é a média dos preços de fechamento dos dias de alta do perí odo e “B” é a média dos 
+preços de fechamento dos dias de baixa do período. Este perí odo também varia de 
+acordo com a preferência do usuário, sendo os mais comuns de 9, 14 e 25 períodos, 
+onde quanto menor, mais volátil fica o indicador e vice versa. 
+ 
+A principal utilidade desse indicador é a sinalização de diver gências altistas e baixistas. 
+Se tivermos dois topos ascendentes no gráfico de candles, e n o IFR houver dois topos 
+descendentes, temos uma divergência baixista. Em contrapartida, se t ivermos dois 
+fundos descendentes no gráfico de candles, e no IFR houver do is fundos ascendentes, 
+teremos uma divergência altista. 
+ 
+● CCI (Commodity Channel Índex) 
+ 
+Este oscilador é composto de duas linhas horizontais denom inadas +100 e -100. 
+Segundo seu criador, após estes extremos que estão localizadas as  maiores 
+Apostila de Análise Gráfica    
+ 
+Esse texto foi desenvolvido pela Bradesco Corretora e não constitui uma recomendação de investimento. Para mais 
+esclarecimentos, sugerimos entrar em contato com o setor de atendimento da Corretora. 
+ 
+É expressamente proibida a reprodução de parte ou da totalidade de seu conteúdo, mediante qualquer forma ou meio, 
+sem prévia e formal autorização, nos termos da Lei 9.610/98. 
+ 
+ 
+ 
+ 
+23 
+probabilidades de ganhos maiores. O CCI foi criado origina lmente para operação de 
+commodities, porém é utilizado também nas análises de ações, opções e índices. 
+ 
+Seu funcionamento operacional, segundo seu criador e os usuári os do sistema, se dá da 
+seguinte maneira: se o indicador cruzar de baixo para cima a l inha +100 é dada a 
+compra no ativo, que deve ser zerada quando o indicador cruzar  novamente para baixo 
+a linha +100. No caso de uma operação vendida, esta deverá ser feita no corte de cima 
+para baixo da linha -100 e deverá ser zerada quando cortá-la novamente para cima. 
+ 
+● Estocástico 
+ 
+É um oscilador que mede a capacidade das forças compradoras fech arem o candle em 
+sua máxima e a capacidade das forças vendedoras fecharem o candle em s ua mínima. É 
+composto de uma linha rápida e uma linha mais suavizada através de médias. 
+ 
+A linha rápida é a representação percentual da diferença do fechamen to do período para 
+a sua mínima, dividido pela diferença entre a máxima do período e a sua mínima. A linha 
+lenta é exatamente este mesmo cálculo, porém a média dos últimos três  candles, ou 
+seja, a média das últimas três linhas rápidas. 
+ 
+Este oscilador tem ainda suas regiões default de sobrecompra aci ma dos 80 e de 
+sobrevenda abaixo dos 20. Por ser um oscilador, tende a indicar reversões de tendências 
+com variações bruscas e rápidas. 
+ 
+● Trix 
+ 
+O indicador é uma taxa percentual de um período de três vezes a méd ia móvel 
+exponencial, sendo que o período desta média é definido de acordo com o perfil de cada 
+usuário e usado somente em momentos em que o Adx não indica tendência no mercado.  
+ 
+O motivo do uso de um fator exponencial triplo é fazer co m que a ferramenta considere 
+somente os ciclos significantes do mercado, desprezando outros pequenos movimentos. 
+ 
+Usualmente também é inserida no seu gráfico uma média móvel para f acilidade na 
+leitura das inversões do indicador. Sugerimos o uso de uma média de quatro períodos. 
+ 
+● Momento & ROC (Rate of Change) 
+ 
+O momento é uma contínua comparação entre preços em intervalos d e tempo variáveis 
+no tempo, porém fixos de espaço. Por exemplo, para calcularmos o momento de uma 
+taxa de espaço de dez dias, pegaremos o fechamento de um dia e diminu iremos do 
+fechamento de dez dias antes. Obviamente, este valor será positivo c aso do ativo tenha 
+uma valorização durante os dez dias e negativo caso ele tenha se desvalorizado. 
+ 
+O ROC é um caso especial dessa medição do momento, onde executam os o quociente 
+entre os fechamentos e não mais a diferença, como explicado no caso anterior. 
+ 
+Apostila de Análise Gráfica    
+ 
+Esse texto foi desenvolvido pela Bradesco Corretora e não constitui uma recomendação de investimento. Para mais 
+esclarecimentos, sugerimos entrar em contato com o setor de atendimento da Corretora. 
+ 
+É expressamente proibida a reprodução de parte ou da totalidade de seu conteúdo, mediante qualquer forma ou meio, 
+sem prévia e formal autorização, nos termos da Lei 9.610/98. 
+ 
+ 
+ 
+ 
+24 
+Seu funcionamento operacional se dá, segundo a técnica, com co mpras quando a linha 
+cortar o eixo 1 de baixo para cima e vendas quando o cruzamento  se der de cima para 
+baixo. 
+ 
+8.3.  Outros indicadores 
+ 
+● Bandas de Bollinger 
+ 
+Está ligado à volatilidade do papel, usado basicamente para descobri rmos a hora certa 
+de entrada no papel, quando do rompimento de uma resistência junt amente com o 
+começo de abertura das bandas, quando temos possibilidades de co meçarmos um 
+movimento mais forte. 
+ 
+Durante os períodos de menor volatilidade, estas bandas tendem a se estreitar e se 
+aproximar uma da outra. A indicação de que um movimento mais fo rte no ativo estaria 
+prestes a começar, seria o estreitamento dessas bandas, com posterior  rompimento 
+delas pelos candles. Caso o candle siga o movimento na direção d o seu rompimento, 
+confirmaremos sua indicação de movimento. 
+ 
+● OBV (On Balance Volume) 
+ 
+Indicador de simples compreensão e cálculo, usado com o intui to de descobrir a direção 
+do fluxo de volume no ativo.  
+ 
+É calculado pela diferença da soma dos volumes de negociação dos dias de alta com os 
+volumes de negociação dos dias de baixa do ativo. Exemplificando, se tivemos um dia de 
+alta no ativo, somamos esse volume ao saldo anterior, caso tenh amos um dia de baixa, 
+diminuímos esse volume do saldo anterior. 
+ 
+Assim como o IFR, esse indicador é utilizado para se detectar d ivergências altistas e 
+baixistas.  
+ 
+● Volatilidade Histórica 
+ 
+Este indicador mostra o desvio do logaritmo neperiano da tax a média de retorno diária 
+do valor de um ativo. Esta volatilidade histórica é calculada a p artir do comportamento 
+passado do ativo, supondo-se a continuidade e reflexo desse comportamento no ativo no 
+futuro, estimando seu grau de variação de preço. 
+ 
+9.  Disciplina Operacional 
+ 
+A disciplina operacional é o ponto onde definimos toda noss a estratégia antes de nos 
+expormos ao mercado e seus possíveis prejuízos. A importânci a de termos uma 
+estratégia que envolva ponto de entrada no ativo, ponto de saída co m lucro no ativo e 
+principalmente seu ponto de saída do ativo, caso este não se c omporte da maneira que 
+você esperava, é a sua garantia de sobrevivência no mercado. 
+ 
+Apostila de Análise Gráfica    
+ 
+Esse texto foi desenvolvido pela Bradesco Corretora e não constitui uma recomendação de investimento. Para mais 
+esclarecimentos, sugerimos entrar em contato com o setor de atendimento da Corretora. 
+ 
+É expressamente proibida a reprodução de parte ou da totalidade de seu conteúdo, mediante qualquer forma ou meio, 
+sem prévia e formal autorização, nos termos da Lei 9.610/98. 
+ 
+ 
+ 
+ 
+25 
+A melhor maneira de garantir que essa saída seja efetuada corretament e no momento 
+predeterminado é através da ferramenta de stop, que deve ser programada assim que 
+for efetuado o posicionamento no ativo. O motivo da necessidad e de programação 
+imediata ao se posicionar é o lado psicológico do investidor , que pode ter suas decisões 
+afetadas caso deixe para programar seus pontos de saída durante o des enrolar do ativo 
+pelo fato de eventualmente já se encontrar com algum prejuízo na operação. Isso pode 
+começar a influenciar suas decisões, fazendo com que a operação anal isada mais 
+indicada anteriormente seja alterada de forma negativa, podendo aumen tar o prejuízo e 
+principalmente fazer com que o investidor se torne um torcedor. 
+ 
+Ao se posicionar em algum ativo, começamos sempre nos prevenin do para o pior e um 
+possível prejuízo que será limitado pelo uso do stop. Uma vez  que a operação comece a 
+dar lucros e possibilidades de aumentarmos o valor do preço de stop para garantir algum 
+percentual de lucro, ou ao menos diminuir o prejuízo potenci al da operação, este deverá 
+ser feito. Os stops, principalmente em operações de curto prazo, devem ser sempre 
+alterados para cima quando o comportamento do ativo permitir esta ação, 
+independentemente da técnica de elaboração de stop usada pelo investid or. Vale 
+ressaltar que o valor do stop jamais deverá ser alterado para baixo , já que isto seria 
+uma demonstração do emocional do investidor alterando sua estr atégia que havia sido 
+elaborada antes da entrada no ativo e com isso uma garantia de cabeça f ria e sem 
+qualquer tipo de envolvimento emocional com o papel. 
+ 
+10.  Conclusão 
+ 
+Após essa quantidade imensa de informações passadas com a intenção  de enriquecer 
+suas análises, é preciso praticar. Somente com essa prática e o “trei namento dos olhos” 
+será possível fazer análises cada vez mais completas, confiáveis e rápidas. Um olho bem 
+treinado e acostumado a analisar os gráficos, não demorará mais do que alguns 
+segundos para fazer uma análise completa de um ativo e todos os seus indicadores. 
+ 
+A sugestão, após essa leitura de apresentação da análise gráfica, é sempre buscar novos 
+aprofundamentos em assuntos específicos, como candles e indicadores, através de livros 
+específicos de cada um dos assuntos e cursos completos. Deste modo, entraremos cada 
+vez mais em um estilo de análise confiável e que visa sempre a o timizar todas as 
+operações mediante rastreamento de tendência de mercado e o contínuo  uso da 
+ferramenta de stop.  

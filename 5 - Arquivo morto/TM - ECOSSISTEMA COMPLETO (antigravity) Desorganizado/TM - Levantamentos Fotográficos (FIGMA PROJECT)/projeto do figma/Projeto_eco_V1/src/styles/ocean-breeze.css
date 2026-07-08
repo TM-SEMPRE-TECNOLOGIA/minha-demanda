@@ -1,0 +1,186 @@
+/* 
+   OCEAN BREEZE DESIGN SYSTEM (v2.0) + SERVICE CHAT EXTENSIONS 
+*/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    /* Cores - Modo Claro */
+    --TM-background: #f0f8ff;
+    --TM-foreground: #374151;
+    --TM-card: #ffffff;
+    --TM-card-foreground: #374151;
+    --TM-popover: #ffffff;
+    --TM-popover-foreground: #374151;
+    --TM-primary: #22c55e;
+    --TM-primary-foreground: #ffffff;
+    --TM-secondary: #e0f2fe;
+    --TM-secondary-foreground: #4b5563;
+    --TM-muted: #f3f4f6;
+    --TM-muted-foreground: #6b7280;
+    --TM-accent: #d1fae5;
+    --TM-accent-foreground: #374151;
+    --TM-destructive: #ef4444;
+    --TM-destructive-foreground: #ffffff;
+    --TM-border: #e5e7eb;
+    --TM-input: #e5e7eb;
+    --TM-ring: #22c55e;
+
+    /* WhatsApp Layout Mapped to Ocean Breeze (Light) */
+    --wa-bg-app: var(--TM-background);
+    --wa-bg-sidebar: var(--TM-card);
+    /* Changed to card for cleaner look */
+    --wa-header: var(--TM-secondary);
+    /* Slight contrast */
+    --wa-panel-header-icon: var(--TM-foreground);
+    --wa-primary: var(--TM-primary);
+    --wa-message-out: var(--TM-primary);
+    --wa-message-in: #ffffff;
+    --wa-input-bg: #ffffff;
+    --wa-text-primary: var(--TM-foreground);
+    --wa-text-secondary: var(--TM-muted-foreground);
+    --wa-border: var(--TM-border);
+    --wa-system-message: var(--TM-muted);
+
+    /* Gráficos */
+    --TM-chart-1: #22c55e;
+    --TM-chart-2: #10b981;
+    --TM-chart-3: #059669;
+    --TM-chart-4: #047857;
+    --TM-chart-5: #065f46;
+
+    /* Sidebar */
+    --TM-sidebar: #e0f2fe;
+    --TM-sidebar-foreground: #374151;
+    --TM-sidebar-primary: #22c55e;
+    --TM-sidebar-primary-foreground: #ffffff;
+    --TM-sidebar-accent: #d1fae5;
+    --TM-sidebar-accent-foreground: #374151;
+    --TM-sidebar-border: #e5e7eb;
+    --TM-sidebar-ring: #22c55e;
+
+    /* Tipografia */
+    --TM-font-sans: "DM Sans", sans-serif;
+    --TM-font-serif: "Lora", serif;
+    --TM-font-mono: "IBM Plex Mono", monospace;
+
+    /* Radius */
+    --TM-radius-sm: calc(0.5rem - 4px);
+    --TM-radius-md: calc(0.5rem - 2px);
+    --TM-radius-lg: 0.5rem;
+    --TM-radius-xl: calc(0.5rem + 4px);
+
+    /* Sombras */
+    --TM-shadow-2xs: 0px 4px 8px -1px rgba(0, 0, 0, 0.05);
+    --TM-shadow-xs: 0px 4px 8px -1px rgba(0, 0, 0, 0.05);
+    --TM-shadow-sm: 0px 4px 8px -1px rgba(0, 0, 0, 0.10), 0px 1px 2px -2px rgba(0, 0, 0, 0.10);
+    --TM-shadow: 0px 4px 8px -1px rgba(0, 0, 0, 0.10), 0px 1px 2px -2px rgba(0, 0, 0, 0.10);
+    --TM-shadow-md: 0px 4px 8px -1px rgba(0, 0, 0, 0.10), 0px 2px 4px -2px rgba(0, 0, 0, 0.10);
+    --TM-shadow-lg: 0px 4px 8px -1px rgba(0, 0, 0, 0.10), 0px 4px 6px -2px rgba(0, 0, 0, 0.10);
+    --TM-shadow-xl: 0px 4px 8px -1px rgba(0, 0, 0, 0.10), 0px 8px 10px -2px rgba(0, 0, 0, 0.10);
+    --TM-shadow-2xl: 0px 4px 8px -1px rgba(0, 0, 0, 0.25);
+}
+
+.dark {
+    --TM-background: #0f172a;
+    --TM-foreground: #d1d5db;
+    --TM-card: #1e293b;
+    --TM-card-foreground: #d1d5db;
+    --TM-popover: #1e293b;
+    --TM-popover-foreground: #d1d5db;
+    --TM-primary: #34d399;
+    --TM-primary-foreground: #0f172a;
+    --TM-secondary: #2d3748;
+    --TM-secondary-foreground: #a1a1aa;
+    --TM-muted: #19212e;
+    --TM-muted-foreground: #6b7280;
+    --TM-accent: #374151;
+    --TM-accent-foreground: #a1a1aa;
+    --TM-destructive: #ef4444;
+    --TM-destructive-foreground: #0f172a;
+    --TM-border: #4b5563;
+    --TM-input: #4b5563;
+    --TM-ring: #34d399;
+
+    --wa-bg-app: #0b141a;
+    --wa-bg-sidebar: #111b21;
+    --wa-header: #202c33;
+    --wa-panel-header-icon: #aebac1;
+    --wa-primary: var(--TM-primary);
+    --wa-message-out: #005c4b;
+    --wa-message-in: #202c33;
+    --wa-input-bg: #2a3942;
+    --wa-text-primary: #e9edef;
+    --wa-text-secondary: #8696a0;
+    --wa-border: #2f3b43;
+    --wa-system-message: #182229;
+
+    --TM-sidebar: #1e293b;
+    --TM-sidebar-foreground: #d1d5db;
+    --TM-sidebar-primary: #34d399;
+    --TM-sidebar-primary-foreground: #0f172a;
+    --TM-sidebar-accent: #374151;
+    --TM-sidebar-accent-foreground: #a1a1aa;
+    --TM-sidebar-border: #4b5563;
+    --TM-sidebar-ring: #34d399;
+}
+
+body {
+    font-family: var(--TM-font-sans);
+    background: var(--TM-background);
+    color: var(--TM-foreground);
+    line-height: 1.6;
+    transition: background 0.3s ease, color 0.3s ease;
+    overflow: hidden;
+    /* App like */
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(128, 128, 128, 0.2);
+    border-radius: 3px;
+}
+
+/* Chat Pattern */
+.wa-chat-bg {
+    background-color: var(--wa-bg-app);
+    background-image: linear-gradient(var(--wa-bg-app), var(--wa-bg-app)), url("https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png");
+    background-blend-mode: overlay;
+    background-repeat: repeat;
+}
+
+/* Utility Classes reused from Ocean Breeze */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: var(--TM-radius-md);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.input {
+    width: 100%;
+    padding: 10px 12px;
+    background: var(--TM-background);
+    border: 1px solid var(--TM-input);
+    border-radius: var(--TM-radius-md);
+    color: var(--TM-foreground);
+}
+
+.card {
+    background: var(--TM-card);
+    color: var(--TM-card-foreground);
+    border: 1px solid var(--TM-border);
+    border-radius: var(--TM-radius-lg);
+    box-shadow: var(--TM-shadow-sm);
+}

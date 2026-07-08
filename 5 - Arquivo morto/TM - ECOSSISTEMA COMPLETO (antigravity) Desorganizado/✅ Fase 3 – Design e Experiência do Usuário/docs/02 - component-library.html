@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Component Library - MAFFENG TM</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700&family=Inter:wght@400;500;600&family=Roboto+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../design-system/index.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        body {
+            padding: 40px 20px;
+            background: linear-gradient(135deg, var(--TM-navy-deep) 0%, var(--TM-navy-medium) 100%);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding-bottom: 40px;
+            border-bottom: 2px solid var(--TM-card-border);
+        }
+
+        h1 {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            margin-bottom: 16px;
+            background: linear-gradient(90deg, var(--TM-neon-green), var(--TM-cyan-vibrant));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section {
+            background: var(--TM-card-bg);
+            border: 1px solid var(--TM-card-border);
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 40px;
+            backdrop-filter: blur(10px);
+        }
+
+        h2 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--TM-neon-green);
+            margin-bottom: 24px;
+        }
+
+        h3 {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            color: var(--TM-cyan-vibrant);
+            margin: 24px 0 12px 0;
+        }
+
+        .component-demo {
+            background: rgba(10, 22, 40, 0.5);
+            padding: 32px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border: 1px solid var(--TM-card-border);
+        }
+
+        .component-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .code-block {
+            background: rgba(10, 22, 40, 0.8);
+            padding: 16px;
+            border-radius: 6px;
+            border-left: 4px solid var(--TM-neon-green);
+            margin: 16px 0;
+            overflow-x: auto;
+        }
+
+        .code-block code {
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            color: var(--TM-text-secondary);
+            display: block;
+            white-space: pre;
+        }
+
+        .property-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+        }
+
+        .property-table th,
+        .property-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--TM-card-border);
+        }
+
+        .property-table th {
+            background: rgba(10, 22, 40, 0.5);
+            color: var(--TM-text-secondary);
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+
+        .property-table td {
+            color: var(--TM-text-primary);
+            font-size: 0.875rem;
+        }
+
+        .badge-inline {
+            display: inline-block;
+            background: var(--TM-neon-green);
+            color: var(--TM-navy-deep);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+
+        .variant-showcase {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 16px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Component Library</h1>
+            <p style="color: var(--TM-text-secondary); font-size: 1.125rem;">
+                Biblioteca de Componentes Reutilizáveis - MAFFENG TM
+            </p>
+            <p style="margin-top: 12px; color: var(--TM-text-secondary); font-size: 0.875rem;">
+                Versão 1.0 | Última atualização: Novembro 2025
+            </p>
+        </header>
+
+        <!-- Buttons -->
+        <section class="section">
+            <h2>🔘 Buttons</h2>
+            <p style="color: var(--TM-text-secondary); margin-bottom: 24px;">
+                Botões são elementos de ação primários. Use variantes apropriadas para diferentes níveis de importância.
+            </p>
+
+            <h3>Variantes</h3>
+            <div class="component-demo">
+                <div class="variant-showcase">
+                    <button class="btn btn-primary">Primary Button</button>
+                    <button class="btn btn-secondary">Secondary Button</button>
+                    <button class="btn btn-ghost">Ghost Button</button>
+                    <button class="btn btn-primary" disabled>Disabled</button>
+                </div>
+            </div>
+
+            <h3>Tamanhos</h3>
+            <div class="component-demo">
+                <div class="variant-showcase">
+                    <button class="btn btn-primary btn-sm">Small</button>
+                    <button class="btn btn-primary">Default</button>
+                    <button class="btn btn-primary" style="padding: 16px 32px; font-size: 1.125rem;">Large</button>
+                </div>
+            </div>
+
+            <h3>Com Ícones</h3>
+            <div class="component-demo">
+                <div class="variant-showcase">
+                    <button class="btn btn-primary"><i class="ph ph-plus"></i> Novo</button>
+                    <button class="btn btn-secondary"><i class="ph ph-download-simple"></i> Download</button>
+                    <button class="btn btn-ghost"><i class="ph ph-gear"></i></button>
+                </div>
+            </div>
+
+            <div class="code-block">
+                <code>&lt;button class="btn btn-primary"&gt;Primary Button&lt;/button&gt;
+&lt;button class="btn btn-secondary"&gt;Secondary Button&lt;/button&gt;
+&lt;button class="btn btn-ghost"&gt;Ghost Button&lt;/button&gt;</code>
+            </div>
+
+            <h3>Propriedades CSS</h3>
+            <table class="property-table">
+                <thead>
+                    <tr>
+                        <th>Classe</th>
+                        <th>Descrição</th>
+                        <th>Uso</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>.btn-primary</code></td>
+                        <td>Ação principal (neon-green)</td>
+                        <td>CTAs, confirmações</td>
+                    </tr>
+                    <tr>
+                        <td><code>.btn-secondary</code></td>
+                        <td>Ação secundária (outline)</td>
+                        <td>Ações alternativas</td>
+                    </tr>
+                    <tr>
+                        <td><code>.btn-ghost</code></td>
+                        <td>Botão transparente</td>
+                        <td>Ações terciárias</td>
+                    </tr>
+                    <tr>
+                        <td><code>.btn-sm</code></td>
+                        <td>Tamanho pequeno</td>
+                        <td>Espaços compactos</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Inputs -->
+        <section class="section">
+            <h2>📝 Form Inputs</h2>
+
+            <h3>Text Input</h3>
+            <div class="component-demo">
+                <div class="input-group" style="max-width: 400px;">
+                    <i class="ph ph-user input-icon"></i>
+                    <input type="text" class="input-field" placeholder="Nome completo">
+                </div>
+            </div>
+
+            <h3>Input com Label</h3>
+            <div class="component-demo">
+                <div style="max-width: 400px;">
+                    <label class="input-label">E-mail Corporativo</label>
+                    <input type="email" class="input-field" placeholder="usuario@maffeng.com">
+                </div>
+            </div>
+
+            <h3>Select Dropdown</h3>
+            <div class="component-demo">
+                <select class="input-field" style="max-width: 300px;">
+                    <option>Selecione um técnico</option>
+                    <option>Carlos Silva</option>
+                    <option>João Mendes</option>
+                    <option>Ana Lima</option>
+                </select>
+            </div>
+
+            <div class="code-block">
+                <code>&lt;div class="input-group"&gt;
+    &lt;i class="ph ph-user input-icon"&gt;&lt;/i&gt;
+    &lt;input type="text" class="input-field" placeholder="Nome"&gt;
+&lt;/div&gt;</code>
+            </div>
+        </section>
+
+        <!-- Cards -->
+        <section class="section">
+            <h2>🃏 Cards</h2>
+
+            <h3>Basic Card</h3>
+            <div class="component-demo">
+                <div class="card" style="max-width: 400px;">
+                    <h3 style="margin-top: 0;">Título do Card</h3>
+                    <p style="color: var(--TM-text-secondary);">
+                        Conteúdo do card com informações relevantes e descrição detalhada.
+                    </p>
+                    <button class="btn btn-primary btn-sm" style="margin-top: 16px;">Ação</button>
+                </div>
+            </div>
+
+            <h3>Metric Card</h3>
+            <div class="component-demo">
+                <div class="component-grid">
+                    <div class="card">
+                        <div style="color: var(--TM-text-secondary); font-size: 0.875rem; margin-bottom: 8px;">Total de
+                            O.S.</div>
+                        <div style="font-size: 2rem; font-weight: 700; color: var(--TM-neon-green);">142</div>
+                        <div style="color: var(--TM-success); font-size: 0.875rem; margin-top: 8px;">
+                            <i class="ph ph-arrow-up"></i> +12% vs mês anterior
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div style="color: var(--TM-text-secondary); font-size: 0.875rem; margin-bottom: 8px;">Pendentes
+                        </div>
+                        <div style="font-size: 2rem; font-weight: 700; color: var(--TM-warning);">23</div>
+                        <div style="color: var(--TM-text-secondary); font-size: 0.875rem; margin-top: 8px;">
+                            Aguardando distribuição
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="code-block">
+                <code>&lt;div class="card"&gt;
+    &lt;h3&gt;Título&lt;/h3&gt;
+    &lt;p&gt;Conteúdo&lt;/p&gt;
+&lt;/div&gt;</code>
+            </div>
+        </section>
+
+        <!-- Badges -->
+        <section class="section">
+            <h2>🏷️ Badges & Status</h2>
+
+            <h3>Status Badges</h3>
+            <div class="component-demo">
+                <div class="variant-showcase">
+                    <span class="badge badge-success">Concluída</span>
+                    <span class="badge badge-warning">Em Andamento</span>
+                    <span class="badge badge-error">Atrasada</span>
+                    <span class="badge">Pendente</span>
+                </div>
+            </div>
+
+            <div class="code-block">
+                <code>&lt;span class="badge badge-success"&gt;Concluída&lt;/span&gt;
+&lt;span class="badge badge-warning"&gt;Em Andamento&lt;/span&gt;
+&lt;span class="badge badge-error"&gt;Atrasada&lt;/span&gt;</code>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <section class="section">
+            <h2>🧭 Navigation</h2>
+
+            <h3>Sidebar Navigation</h3>
+            <div class="component-demo">
+                <div style="background: rgba(10, 22, 40, 0.95); padding: 24px; border-radius: 8px; max-width: 260px;">
+                    <div
+                        style="margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--TM-card-border);">
+                        <div style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700;">
+                            MAFFENG <span style="color: var(--TM-neon-green);">.OS</span>
+                        </div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 8px;">
+                        <a href="#"
+                            style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 4px; color: var(--TM-text-secondary); text-decoration: none; transition: 0.3s;">
+                            <i class="ph ph-squares-four"></i> Dashboard
+                        </a>
+                        <a href="#"
+                            style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 4px; background: rgba(100, 255, 218, 0.1); color: var(--TM-neon-green); text-decoration: none;">
+                            <i class="ph ph-list-dashes"></i> Ordens de Serviço
+                        </a>
+                        <a href="#"
+                            style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 4px; color: var(--TM-text-secondary); text-decoration: none; transition: 0.3s;">
+                            <i class="ph ph-users-three"></i> Distribuição
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tables -->
+        <section class="section">
+            <h2>📊 Data Tables</h2>
+
+            <div class="component-demo">
+                <table style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr style="background: rgba(10, 22, 40, 0.5); border-bottom: 1px solid var(--TM-card-border);">
+                            <th
+                                style="padding: 12px; text-align: left; color: var(--TM-text-secondary); font-size: 0.875rem;">
+                                O.S.</th>
+                            <th
+                                style="padding: 12px; text-align: left; color: var(--TM-text-secondary); font-size: 0.875rem;">
+                                Cliente</th>
+                            <th
+                                style="padding: 12px; text-align: left; color: var(--TM-text-secondary); font-size: 0.875rem;">
+                                Status</th>
+                            <th
+                                style="padding: 12px; text-align: left; color: var(--TM-text-secondary); font-size: 0.875rem;">
+                                Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid var(--TM-card-border);">
+                            <td style="padding: 12px; font-family: var(--font-mono); color: var(--TM-neon-green);">
+                                OS-4092</td>
+                            <td style="padding: 12px;">Construtora Alpha</td>
+                            <td style="padding: 12px;"><span class="badge badge-success">Concluída</span></td>
+                            <td style="padding: 12px;"><button class="btn btn-ghost btn-sm">Ver</button></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--TM-card-border);">
+                            <td style="padding: 12px; font-family: var(--font-mono); color: var(--TM-neon-green);">
+                                OS-4093</td>
+                            <td style="padding: 12px;">Shopping Center</td>
+                            <td style="padding: 12px;"><span class="badge badge-warning">Em Andamento</span></td>
+                            <td style="padding: 12px;"><button class="btn btn-ghost btn-sm">Ver</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Loading States -->
+        <section class="section">
+            <h2>⏳ Loading States</h2>
+
+            <h3>Button Loading</h3>
+            <div class="component-demo">
+                <button class="btn btn-primary" disabled>
+                    <span class="loading-spinner"></span> Carregando...
+                </button>
+            </div>
+
+            <h3>Skeleton Loader</h3>
+            <div class="component-demo">
+                <div style="max-width: 400px;">
+                    <div
+                        style="height: 20px; background: rgba(255,255,255,0.1); border-radius: 4px; margin-bottom: 12px; animation: pulse 1.5s ease-in-out infinite;">
+                    </div>
+                    <div
+                        style="height: 20px; background: rgba(255,255,255,0.1); border-radius: 4px; width: 80%; animation: pulse 1.5s ease-in-out infinite;">
+                    </div>
+                </div>
+            </div>
+
+            <style>
+                @keyframes pulse {
+
+                    0%,
+                    100% {
+                        opacity: 1;
+                    }
+
+                    50% {
+                        opacity: 0.5;
+                    }
+                }
+
+                .loading-spinner {
+                    display: inline-block;
+                    width: 16px;
+                    height: 16px;
+                    border: 2px solid rgba(255, 255, 255, 0.3);
+                    border-top-color: white;
+                    border-radius: 50%;
+                    animation: spin 0.6s linear infinite;
+                }
+
+                @keyframes spin {
+                    to {
+                        transform: rotate(360deg);
+                    }
+                }
+            </style>
+        </section>
+
+        <!-- Best Practices -->
+        <section class="section">
+            <h2>✅ Best Practices</h2>
+
+            <div
+                style="background: rgba(10, 22, 40, 0.5); padding: 20px; border-radius: 8px; border-left: 4px solid var(--TM-neon-green); margin-bottom: 16px;">
+                <h3 style="margin-top: 0;">Consistência</h3>
+                <p style="color: var(--TM-text-secondary);">Use sempre os componentes da biblioteca para manter
+                    consistência visual em todo o sistema.</p>
+            </div>
+
+            <div
+                style="background: rgba(10, 22, 40, 0.5); padding: 20px; border-radius: 8px; border-left: 4px solid var(--TM-cyan-vibrant); margin-bottom: 16px;">
+                <h3 style="margin-top: 0;">Acessibilidade</h3>
+                <p style="color: var(--TM-text-secondary);">Sempre inclua labels, aria-labels e estados de foco visíveis
+                    para elementos interativos.</p>
+            </div>
+
+            <div
+                style="background: rgba(10, 22, 40, 0.5); padding: 20px; border-radius: 8px; border-left: 4px solid var(--TM-warning);">
+                <h3 style="margin-top: 0;">Performance</h3>
+                <p style="color: var(--TM-text-secondary);">Evite animações pesadas e otimize imagens. Use loading
+                    states para operações assíncronas.</p>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>

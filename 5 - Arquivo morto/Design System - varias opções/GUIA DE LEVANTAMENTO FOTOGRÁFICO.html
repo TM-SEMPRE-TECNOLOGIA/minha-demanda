@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia de Levantamento Fotográfico | Maffeng</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d0a0a 100%);
+            color: #f5f5f5;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #8B0000 0%, #4a0000 100%);
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(139, 0, 0, 0.3);
+            border-bottom: 3px solid #DC143C;
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+
+        .author-info {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .author-info p {
+            margin: 5px 0;
+            font-size: 1.1em;
+        }
+
+        .intro {
+            background: rgba(139, 0, 0, 0.2);
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            border-left: 5px solid #DC143C;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            border: 1px solid rgba(139, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 25px rgba(139, 0, 0, 0.4);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #DC143C;
+        }
+
+        .section-number {
+            background: linear-gradient(135deg, #DC143C 0%, #8B0000 100%);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-right: 20px;
+            box-shadow: 0 3px 10px rgba(220, 20, 60, 0.4);
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            color: #DC143C;
+        }
+
+        .content p {
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .code-block {
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #DC143C;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1em;
+            color: #00ff00;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, rgba(220, 20, 60, 0.3) 0%, rgba(139, 0, 0, 0.3) 100%);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #DC143C;
+        }
+
+        .checklist {
+            background: rgba(139, 0, 0, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 40px;
+        }
+
+        .checklist h2 {
+            color: #DC143C;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            margin: 10px 0;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+
+        .checklist-item:hover {
+            background: rgba(220, 20, 60, 0.2);
+        }
+
+        .checkmark {
+            color: #DC143C;
+            font-size: 1.5em;
+            margin-right: 15px;
+        }
+
+        .warning {
+            background: rgba(220, 20, 60, 0.2);
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid #DC143C;
+            margin: 20px 0;
+        }
+
+        .warning strong {
+            color: #DC143C;
+            font-size: 1.2em;
+        }
+
+        ul {
+            margin-left: 30px;
+            margin-top: 15px;
+        }
+
+        li {
+            margin: 10px 0;
+            font-size: 1.1em;
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            text-align: center;
+            margin-top: 60px;
+            border-top: 1px solid rgba(139, 0, 0, 0.3);
+            font-size: 0.9em;
+            opacity: 0.7;
+        }
+
+        .emoji {
+            font-size: 1.3em;
+            margin-right: 8px;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            .section-title {
+                font-size: 1.4em;
+            }
+
+            .section-number {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>📸 Guia de Levantamento Fotográfico</h1>
+        <p class="subtitle">Padrão para envio de fotos via WhatsApp</p>
+        <div class="author-info">
+            <p><strong>Thiago Nascimento</strong></p>
+            <p>Auxiliar de Engenharia</p>
+            <p>Maffeng</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="intro">
+            <h2 style="color: #DC143C; margin-bottom: 15px;">🎯 Objetivo</h2>
+            <p>Este guia mostra, na prática, como deve ser feito o envio de um levantamento fotográfico no WhatsApp. A maior dificuldade dos relatórios não é falta de foto — é falta de <strong>medidas, contexto e informação de descontos</strong>.</p>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">1</div>
+                <h2 class="section-title">Início de um Ambiente</h2>
+            </div>
+            <div class="content">
+                <h3 style="color: #DC143C; margin-bottom: 15px;">📸 Foto Ampla do Ambiente</h3>
+                <p>Tire <strong>uma foto aberta</strong>, mostrando todo o ambiente de forma panorâmica.</p>
+                
+                <div class="code-block">
+(SAA)
+                </div>
+                
+                <div class="highlight">
+                    <p><strong>⚠️ Regra de Ouro:</strong></p>
+                    <p>A partir desse momento, tudo que for enviado é referente a esse ambiente. Não precisa repetir "(SAA)" em toda foto, só quando iniciar ou retomar o ambiente.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">2</div>
+                <h2 class="section-title">Foto da Parede + Medidas</h2>
+            </div>
+            <div class="content">
+                <h3 style="color: #DC143C; margin-bottom: 15px;">📏 Informações Essenciais</h3>
+                <p>Tire uma foto enquadrando bem a parede que será trabalhada.</p>
+                
+                <div class="code-block">
+Parede – 11,74 x 2,80
+Desconto: 2 portas e 10 janelas
+Portas: 2,10 x 0,90
+                </div>
+                
+                <div class="warning">
+                    <p><strong>OBRIGATÓRIO:</strong></p>
+                    <ul>
+                        <li>📏 <strong>Comprimento x Altura</strong> são informações obrigatórias</li>
+                        <li>🚪 <strong>Portas</strong> são padrão (2,10 x 0,90) → só informar quantidade</li>
+                        <li>🪟 <strong>Janelas NÃO são padrão</strong> → precisam ser informadas como desconto com medidas</li>
+                    </ul>
+                </div>
+                
+                <p style="color: #DC143C; font-weight: bold; margin-top: 20px;">⚠️ Se não tiver essa informação escrita, o relatório trava.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">3</div>
+                <h2 class="section-title">Fotos de Detalhe</h2>
+            </div>
+            <div class="content">
+                <h3 style="color: #DC143C; margin-bottom: 15px;">🎯 Use Lógica, Não Exagere</h3>
+                <p>A quantidade de fotos de detalhe deve ser proporcional ao tamanho da parede:</p>
+                
+                <ul>
+                    <li><strong>Parede pequena (interna):</strong> máximo 2 fotos de detalhe</li>
+                    <li><strong>Parede grande (10m ou mais):</strong> mínimo 4 fotos de detalhe</li>
+                </ul>
+                
+                <div class="highlight">
+                    <p><span class="emoji">💡</span><strong>Princípio:</strong> Quanto maior a parede, mais detalhes são necessários. Não é quantidade por quantidade — é lógica e cobertura completa.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">4</div>
+                <h2 class="section-title">Início de Outro Ambiente</h2>
+            </div>
+            <div class="content">
+                <p>Ao iniciar um novo ambiente, repita o processo completo:</p>
+                
+                <ol style="margin-left: 20px;">
+                    <li>Nova foto ampla do ambiente</li>
+                    <li>Identificação com <strong>(SAA)</strong></li>
+                    <li>Foto da parede</li>
+                    <li>Medidas + descontos</li>
+                    <li>Fotos de detalhe</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">5</div>
+                <h2 class="section-title">Retomando um Ambiente Antigo</h2>
+            </div>
+            <div class="content">
+                <div class="warning">
+                    <p><strong>⚠️ Ponto Crítico:</strong></p>
+                    <p>Sempre que voltar a falar de um ambiente já enviado anteriormente, <strong>mande uma nova foto ampla</strong> e recomece o processo.</p>
+                </div>
+                
+                <div class="code-block">
+(SAA)
+                </div>
+                
+                <p>Depois disso, siga a sequência completa: fotos, medidas e detalhes.</p>
+            </div>
+        </div>
+
+        <div class="checklist">
+            <h2>✅ Checklist de Verificação</h2>
+            
+            <div class="checklist-item">
+                <span class="checkmark">✔</span>
+                <span>Foto ampla do ambiente</span>
+            </div>
+            
+            <div class="checklist-item">
+                <span class="checkmark">✔</span>
+                <span>Identificação do ambiente (SAA)</span>
+            </div>
+            
+            <div class="checklist-item">
+                <span class="checkmark">✔</span>
+                <span>Foto da parede</span>
+            </div>
+            
+            <div class="checklist-item">
+                <span class="checkmark">✔</span>
+                <span>Medida: comprimento x altura</span>
+            </div>
+            
+            <div class="checklist-item">
+                <span class="checkmark">✔</span>
+                <span>Descontos informados (portas e janelas)</span>
+            </div>
+            
+            <div class="checklist-item">
+                <span class="checkmark">✔</span>
+                <span>Fotos de detalhe com lógica (proporcional ao tamanho)</span>
+            </div>
+        </div>
+
+        <div class="section" style="background: linear-gradient(135deg, rgba(139, 0, 0, 0.3) 0%, rgba(220, 20, 60, 0.2) 100%); text-align: center;">
+            <h2 style="color: #DC143C; font-size: 2em; margin-bottom: 20px;">💡 Lembre-se</h2>
+            <p style="font-size: 1.3em; line-height: 1.8;">
+                <strong>Foto sem medida vira dúvida.</strong><br>
+                <strong>Dúvida vira retrabalho.</strong><br>
+                <strong>Retrabalho atrasa o relatório.</strong>
+            </p>
+            <p style="margin-top: 30px; font-size: 1.2em;">
+                Seguindo esse padrão, o relatório flui, o orçamento sai certo e o serviço anda.
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <p>Documento elaborado por Thiago Nascimento | Auxiliar de Engenharia | Maffeng</p>
+        <p style="margin-top: 10px;">© 2024 - Guia de Levantamento Fotográfico</p>
+    </footer>
+</body>
+</html>

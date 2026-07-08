@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - TM Gerenciador de O.S.</title>
+    <link rel="stylesheet" href="../design-system/index.css">
+    <style>
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(100, 255, 218, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(0, 212, 255, 0.05) 0%, transparent 20%);
+        }
+
+        .login-card {
+            width: 100%;
+            max-width: 420px;
+            padding: 40px;
+            border-top: 2px solid var(--TM-neon-green);
+        }
+
+        .brand-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .brand-logo {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--TM-text-primary);
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+        }
+
+        .brand-logo span {
+            color: var(--TM-neon-green);
+        }
+
+        .brand-subtitle {
+            color: var(--TM-cyan-vibrant);
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .login-footer {
+            margin-top: 24px;
+            text-align: center;
+            font-size: 0.875rem;
+            color: var(--TM-text-secondary);
+        }
+
+        .login-footer a:hover {
+            color: var(--TM-neon-green);
+            text-decoration: underline;
+        }
+
+        /* Loading State */
+        .btn-loading {
+            position: relative;
+            color: transparent !important;
+        }
+
+        .btn-loading::after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--TM-navy-deep);
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 0.8s linear infinite;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        @keyframes spin {
+            to {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <div class="card login-card animate-fade-in">
+            <div class="brand-header">
+                <div class="brand-logo">MAFFENG <span>.OS</span></div>
+                <div class="brand-subtitle">Automação Técnica</div>
+            </div>
+
+            <form id="loginForm" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label for="email" class="form-label">Email Corporativo</label>
+                    <input type="email" id="email" class="form-input" placeholder="nome@empresa.com.br" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="form-label">Senha</label>
+                    <input type="password" id="password" class="form-input" placeholder="••••••••" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block" id="loginBtn">
+                    ACESSAR SISTEMA
+                </button>
+            </form>
+
+            <div class="login-footer">
+                <a href="#">Esqueci minha senha</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function handleLogin(e) {
+            e.preventDefault();
+            const btn = document.getElementById('loginBtn');
+            const email = document.getElementById('email').value;
+
+            // Simulação de loading
+            btn.classList.add('btn-loading');
+            btn.disabled = true;
+
+            setTimeout(() => {
+                // Simulação de sucesso
+                // Em produção, aqui validaria com Supabase Auth
+                console.log(`Login attempt for: ${email}`);
+                window.location.href = '02-dashboard.html';
+            }, 1500);
+        }
+    </script>
+</body>
+
+</html>

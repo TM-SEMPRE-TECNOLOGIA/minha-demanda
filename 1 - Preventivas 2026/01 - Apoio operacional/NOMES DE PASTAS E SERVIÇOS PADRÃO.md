@@ -1,0 +1,4535 @@
+# Estrutura de Pastas - 1.1 - Enviados - 2025
+
+- 1 - Recebido - Março
+  - 01 - Arcos - Enviado
+    - - Envio portal
+    - - Área externa
+      - 1 - Pintura acrílica
+      - 3 - Telhado
+      - 4 - SPDA
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+        - 1.2 Substituição de  lâmpada
+        - 1.3 - Substituição de piso tátil
+      - 4 - Sala de reunião
+      - 5 - Suporte
+      - 6 - CAIEX
+      - 7 - Cozinha
+      - 8 - Banheiros
+        - 8.1 - Substituição de ducha higiênica
+        - 8.3 - Substituição de torneiras
+  - 02 - Pains - Enviado
+    - - Envio portal
+    - - Área externa
+      - 1 - Pintura Automotiva
+      - 2 - Substituição de película e policarbonato
+        - - Detalhes
+      - 3 - Pictograma
+      - 4 - Ferrragens e mola de piso
+    - - Área interna
+      - 2 - Atendimento
+        - - Vista ampla
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+        - 2.2 - Infiltração
+        - 2.3 - Pintura esmalte em porta
+      - 3 - Corredor de aceso
+        - - Vista ampla
+        - 3.1 - Pintura acrílica
+          - - Detalhes
+        - 3.2 - Pintura esmalte em porta
+      - 4 - Banheiro Feminino
+        - 4.1 - Substituição de ducha higiênica
+        - 4.2 - Substituição de assento
+  - 03 - Lagoa Dourada - Enviado
+    - - Envio portal
+    - - Área externa
+      - - Vista ampla
+      - 1 - Pintura acrílica
+        - - Detalhes
+      - 10 - Telhado
+      - 2 - Pintura esmalte metal
+        - - Detalhes
+      - 4 - Pictograma
+      - 5 - Substituição de película e policarbonato
+        - - Detalhes
+      - 6 - Substituição de puxador
+      - 7 - Substituição de mola de piso
+      - 8 - Substituição de ferragens
+      - 9 - Substituição de lâmpadas
+        - - Detalhes
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+        - 1.2 - Piso tátil
+        - 1.4 - Ajuste de luminária
+          - - Detalhes
+        - 1.5 - Pintura automotiva
+        - 1.6 - Substituição de lâmpadas
+      - 2 - Atendimento
+        - - Vista ampla
+        - 2.1 - Pintura acrílica
+          - -  Detalhes
+        - 2.3 - Ponto elétrico
+        - 2.4 - Piso tátil
+        - 2.5 - Substituição de divisória
+          - - Detalhes
+      - 3 - Corredor de acesso
+        - - Vista ampla
+        - 3.1 - Pintura acrílica
+        - 3.2 - Pintura esmalte em porta
+          - - Detalhes
+  - 04 - São Tiago - Enviado
+    - - Área externa
+      - 3 - Substituição de película e policarbonato
+        - - Detalhes
+      - 5 - Faixa de segurança
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+        - 1.3 - Substituição de lâmpadas
+        - 1.4 - Substituição de puxador
+        - 1.5 - Piso tátil
+          - - Detalhes
+      - 2 - Atendimento
+        - - Vista ampla
+        - 2.2 - Pintura esmalte
+          - - Detalhes
+      - 3 - Atendimento segundo piso
+        - 3.1 - Pintura acrilica
+          - - Detalhes
+        - 3.2 - Ponto elétrico
+      - 4 - Corredor de acesso
+        - - Vista ampla
+        - 4.1 - Pintura acrílica
+          - - Detalhes
+        - 4.2 - Pintura esmalte em porta
+          - - Detalhes
+      - 7 - Banheiro feminino
+      - 8 - Corredor de abastecimento
+        - - Vista ampla
+        - 8.1 - Pintura acrílica
+  - 05 - Araujos - Enviado
+    - - Envio portal
+    - - Área externa
+      - - Vista ampla
+      - 1 - Pintura acrílica
+        - - Detalhes
+      - 2 - Pintura automotiva
+        - - Detalhes
+      - 3 - Substituição de puxador
+        - - Detalhes
+      - 4 - Piso cerâmico
+        - - Detalhes
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - Vista ampla
+      - 2 - Atendimento
+        - 2.1 - Ponto elétrico e lógico
+        - 2.2 - Pintura esmalte metal
+          - - Detalhes
+        - 2.3 - Fita de led
+      - 3 - Banheiro feminino
+        - 3.1 - Substituição de torneira
+        - 3.2 - Substituição de ducha higiênica
+          - - Detalhes
+        - 3.3 - Pintura esmalte em porta
+      - 4 - Banheiro masculino
+        - 4.1 - Pintura esmalte em porta
+        - 4.2 - Substituição de torneira
+          - - Detalhes
+        - 4.3 - Substituição de ducha higiênica
+          - - Detalhes
+      - 5 -Copa
+        - 5.1 - Pintura acrílica
+          - - Detalhes
+        - 5.2 - Substituição de torneira
+          - - Detalhes
+        - 5.3 - Pintura esmalte em porta
+      - 7 - Escadas
+  - 06 - Nova Serrana - Enviado
+    - - Área externa
+      - 1 - Pintura acrílica
+        - - Detalhes
+      - 2 - Pintura automotiva
+        - - Detalhes
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+        - 1.2 - Sinalização de piso
+          - - Descrição
+        - 1.4 - Fechadura eletromagnética
+        - 1.5 - Substituição de lâmpadas
+        - 1.6 - Pintura automotiva
+          - - Detalhes
+      - 10 - Corredor de acesso segundo piso
+        - - Vista ampla
+        - 10.1 - Pintura acrílica
+        - 10.2 - Pintura esmalte em porta
+      - 2 - Atendimento
+        - 2.1 - Pintura acrílica
+        - 2.2 - Pintura esmalte em porta
+      - 3 - Corredor de abastecimento
+        - 3.1 - Pintura acrílica
+          - - Detalhes
+        - 3.3 - Sensor de presença
+      - 4 - Banheiro cliente
+        - 4.1 - Pintura esmalte em porta
+        - 4.2 - Substituição de sifão
+        - 4.3  - Substituição de registro
+        - 4.4 - Substituição de ducha higiênica
+        - 4.5 - Substituição de torneira
+        - 4.6 - Remoção de mictório
+      - 5 - Banheiro feminino
+        - 5.1 - Forro
+          - - Detalhes
+          - - Detalhes á cima do forro
+        - 5.2 - Vazamento
+        - 5.3 - Pintura esmalte em porta
+      - 8 - Escadas
+        - 8.2 - Pintura esmalte metal
+      - 9 - Atendimento segundo piso
+        - 9.1 - Pintura acrílica
+          - - Detalhes
+        - 9.2 - Pintura esmalte em porta
+  - 07 - Lagoa da Prata - Enviado
+    - - Envio portal
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+        - 1.2 - Pintura automotiva
+          - - Detalhes
+        - 1.3 - Pintura esmalte metal
+        - 1.4 - Substituição de lâmpadas
+      - 2 - Atendimento
+        - - Vista ampla
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+        - 2.2 - Forro de fibra mineral
+          - - Detalhes
+      - 3 - Corredor de acesso
+        - - Vista ampla
+        - 3.1 - Pintura acrílica
+        - 3.3 - Pintura esmalte em porta
+        - 3.4 - Substituição de fechadura
+      - 4 - Banheiros
+        - 4.2 - Substituição de reparo kit caixa acoplada
+        - 4.3 - Remoção de mictório
+        - 4.4 - Assento
+      - 5 - Suporte
+      - 7 - Tesouraria
+  - 08 - Itapecerica - Enviado
+    - - Envio portal
+    - - Área externa
+      - - Vista ampla
+      - 1 -Pintura acrílica
+        - - Detalhes
+      - 2 -Pintura automotiva
+        - - Detalhes
+      - 3 - Substituição de puxador
+      - 4 - Telhado
+      - 5 - SPDA
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - 1.1 - Pintura acrílica
+        - 1.2 - Piso tátil inox
+        - 1.3 - Substituição de lâmpadas
+      - 2 - Atendimento
+        - - Vista ampla
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+        - 2.2 - Pintura esmalte metal
+          - - Detalhes
+        - 2.3 - Pintura esmalte em porta
+          - - Detalhes
+      - 3 - CAIEX
+        - 3.1 - Pintura acrílica
+      - 4 - Banheiros
+        - 4.2 - Substituição de ducha higiênica
+        - 4.3 - Substituição de espude
+      - 5 - Suporte
+        - - Vista ampla
+        - 5.1 - Pintura acrílica
+          - - Detalhes
+        - 5.2 - Pintura esmalte metal
+          - - Detalhes
+        - 5.3 - Substituição de lâmpada
+      - 6 - Corredor de abastecimento
+        - - Vista ampla
+        - 6.1 - Pintura acrílica
+          - - Detalhes
+  - 09 - Rua Goiás - Divinópolis - Enviado
+    - - Área externa
+      - 1 - Pintura acrílica
+        - - Detalhes
+      - 3 - Pintura automotiva
+        - - Detalhes
+      - 4 - Telhado
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+        - 1.2 - Pintura automotiva
+          - - Detalhes
+        - 1.3 - Substituição de lâmpadas
+          - - Detalhes
+        - 1.4 - Faixa de piso
+          - - Detalhes
+      - 2 - Atendimento
+        - 2.2 - Pintura esmalte metal
+          - - Detalhes
+        - 2.3 - Pintura esmalte em porta
+        - 2.4 - Piso tátil
+      - 3 - Corredor de abastecimento
+        - - Vista ampla
+        - 3.1 - Pintura acrílica
+          - - Detalhes
+      - 4 - Corredor de acesso
+        - - Vista ampla
+        - 4.1 - Pintura acrílica
+          - - Detalhes
+      - 6 - Escada
+        - 6.1 - Pintura acrílica
+  - 10 - PETROLEO BRASILEIRO SA - Enviado
+    - PETROLEO BRASILEIRO SA 0175.26
+      - - Área interna
+        - 1 - SAA (sala de autoatendimento)
+          - 1.2 - Forro de fibra mineral
+  - 11- FORUM CACHOEIRA PAULISTA - Enviado
+    - FORUM CACHOEIRA PAULISTA 3029.06
+      - - Área externa
+        - - Vista ampla
+      - - Área interna
+        - - Vista ampla
+        - 1 - Remanejar placa de sinalização
+        - 2 - Ponto elétrico
+        - 3 - Identificação de quadro elétrico
+        - 4 - Organização de Rack
+        - 5 - Remanejamento
+        - 6 - Substituição de lâmpadas
+  - 12 - CRUZEIRO - Enviado
+    - CRUZEIRO 0449.00
+      - - Área interna
+        - 16 - Corredor acesso sala de reunião
+          - 16.3 - Recomposição de piso
+          - 16.4 - Pintura esmalte em porta
+            - - Detalhes
+          - 16.5 - Substituição de interruptor
+- 10 - Dezembro
+- 2 - Recebido - Abril
+  - 1 -JARDIM SATÉLITE - Enviado
+    - JARDIM SATÉLITE 1213.00
+      - - Segundo piso
+        - 1 - Atendimento segundo piso
+          - - Vista ampla
+          - 1.1 - Pintura acrílica
+            - - Detalhes
+          - 1.2 - Piso tátil
+          - 1.3 - Pintura esmalte metal
+            - - Detalhes
+          - 1.4 - Vedação de janela
+            - - Danos internos
+        - 2 - CAIEX segundo piso
+          - - Vista ampla
+          - 2.1 - Pintura acrílica
+          - 2.2 - Forro
+            - - Detalhes
+          - 2.3 - Substituição de lâmpadas
+        - 3 - Suporte segundo piso
+          - 3.1 - Pintura acrílica
+          - 3.2 - Pintura esmalte em porta
+      - - Área externa
+        - 1 - Pintura automotiva
+          - - Detalhes
+        - 2 - Substituição de película e policarbonato
+          - - Detalhes
+        - 3 - Substituição de pictograma
+        - 4 - Substituição do grafema
+          - - Detalhes
+        - 5 - Substituição de puxador
+        - 6 - Telhado
+          - 6.1 - Impermeabilização de calha
+            - - Detalhes
+      - - Área interna
+        - 1 - SAA (sala de autoatendimento)
+          - - Vista ampla
+          - 1.1 - Pintura acrílica
+            - - Detalhes
+          - 1.2 - Pintura automotiva
+            - - Detalhes
+          - 1.3 - Forro
+            - - Detalhes
+          - 1.4 - Substituição de lâmpadas
+          - 1.5 - Faixa de piso
+          - 1.6 - Piso tátil
+          - 1.7 - Ponto lógico e elétrico
+          - 1.8 - Fita de led
+          - 1.9 - Substituição de capacho
+            - - Detalhes
+        - 10 - Copa
+          - 10.1 - Pintura acrílica
+          - 10.2 - Pintura esmalte em porta
+        - 2 - Atendimento
+          - - Vista ampla
+          - 2.1 - Pintura acrílica
+            - - Detalhes
+          - 2.2 - Pintura esmalte em porta
+          - 2.3 - Substituição de lâmpadas
+        - 3 - Suporte
+          - - Vista ampla
+          - 3.1 - Substiutuição de lâmpadas
+          - 3.2 - Vedação de janela
+        - 4 - Tesouraria
+          - - Vista ampla
+        - 5 - Corredor de abastecimento
+          - - Vista ampla
+        - 6 - Sala online
+          - - Vista ampla
+        - 7 - Banheiro feminino
+          - 7.1 - Pintura esmalte em porta
+          - 7.2 - Substituição de torneiras
+            - - Detalhes
+        - 8 - Banheiro masculino
+          - 8.1 - Pintura esmalte em porta
+          - 8.2 - Substituiçaõ de torneira
+            - - Detalhes
+        - 9 - Corredor de acesso
+          - 9.1 - Pintura acrílica
+          - 9.2 - Pintura esmalte em porta
+    - NOME DA UNIDADE 1234
+      - - Primeiro piso
+      - - Área externa
+  - 12 - SIDROLANDIA 1147.00 - Enviado
+    - - Área externa
+      - 4 - Telhado
+      - 5 - Pintura esmalte metal
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+        - 1.2 - Porta de vidro
+        - 1.3 - Recuperação metálica
+      - 2 - Atendimento
+        - - Vista ampla
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+  - 13 - COXIM 0552.00 - Enviado - Retificado
+    - - Envio portal
+    - - Área externa
+      - 1 - Pintura acrílica
+        - - Detalhes
+      - 2 - Pintura de piso
+        - - Detalhes
+  - 14 - RIO VERDE MATO GROSSO 0753.00 - Enviado - Retificado
+    - - Envio portal
+    - - Área externa
+      - 1 - Pintura acrílica
+        - - Detalhes
+      - 2 - Pintura de piso
+        - - Detalhes
+      - 3 - Pintura esmalte metal
+      - 4 - Vedação de janela
+      - 5 - Puxador
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+        - 1.2 - Substituição de lâmpadas
+      - 2 - Atendimento
+        - - Vista ampla
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+        - 2.2 - Ponto elétrico
+        - 2.3 - Fechadura
+        - 2.4 - Pintura esmalte em porta
+        - 2.5 - Substituição de lâmpada
+        - 2.6 - Pintura automotiva
+      - 3 - Suporte
+        - 3.1 - Pintura acrílica
+          - - Detalhes
+        - 3.2 - Pintura esmalte em porta
+          - - Detalhes
+        - 3.3 - Controle de acesso
+  - 15 - NOBRES 2342.00 - Enviado
+    - - Envio portal
+    - - Área externa
+      - 1 - Pintura acrílica
+        - - Detalhes
+      - 2 - Pintura de piso
+      - 3 - Pintura esmalte metal
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - Vista ampla
+        - 1.1 - Adesivo
+        - 1.2 - Pintura automotiva
+        - 1.3 - Substituição de piso
+          - - Detalhes
+        - 1.4 - Substituição de trinco de piso
+        - 1.5 - Substituição de ferragens
+        - 1.6 - Ajuste mola de piso
+      - 10 - Cozinha
+        - - Vista ampla
+        - 4.1 - Tampa cega
+        - 4.2 - Substituição lâmpada
+      - 11 - CAIEX
+      - 12 - Sala de reunião
+        - - Vista ampla
+      - 2 - Atendimento
+        - - Vista ampla
+      - 3 - Suporte
+        - - Vista ampla
+      - 4 - Banheiro PNE
+        - - Vista ampla
+        - 2.1 - Alarme PNE
+      - 5 - Banheiro masculino
+        - - Vista ampla
+        - 3.1 - Substituição de sifão
+        - 3.2 - Substituição de porta papel
+      - 6 - Corredor
+        - - Vista ampla
+      - 7 - Banheiro feminino
+        - - Vista ampla
+      - 8 - Quadro elétrico
+  - 16 - ROSÁRIO OESTE 0667.00 - Enviado
+    - - Envio portal
+    - - Área externa
+      - 1 - Pintura acrílica
+        - - Detalhes
+      - 3 - Pintura esmalte em porta
+    - - Área interna
+      - 2 - Banheiro masculino
+        - 2.1 - Substituição de ducha higiênica
+        - 2.2 - Reparo de válvula de descarga
+      - 3 - Banheiro feminino
+        - 3.1 - Substituição de assento
+      - 4 - Corredor banheiros
+        - 4.1 - Ponto elétrico
+      - 5 - Acesso restrito
+      - 6 - Sala de atendimento
+        - 6.1 - Ponto lógico
+      - 7 - Sala de reunião
+        - 7.1 - Pintura acrílica
+      - 8 - CAIEX
+        - 8.1 - Pintura acrílica
+          - - Detalhes
+  - 17 - ESTILO SÃO JOSE DOS CAMPOS 4858.00 - Enviado
+    - - Área externa
+      - - Vista ampla
+      - 1 - Pintura acrílica
+        - - Detalhes
+      - 3 - Substituição de lâmpadas
+    - - Área interna
+      - 1 - Autoatendimento
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+        - 1.2 - Piso tátil
+          - - Detalhes
+        - 1.4 - Luminária de emergência
+      - 2 - Atendimento
+        - - Vista ampla
+        - 2.1 - Pintura acrílica
+        - 2.2 - Pintura esmalte em porta
+      - 3 - Copa
+      - 4 - Banheiro clientes
+        - 4.1 - Substituição de torneira
+        - 4.2 - Pintura esmalte em porta
+      - 5 - Corredor de acesso
+        - 5.1 - Pintura acrílica
+        - 5.2 - Pintura esmalte em porta
+      - 6 - Suporte
+        - 6.3 - Substituição de lâmpada
+  - 2 - XV DE NOVEMBRO - Enviado
+    - XV DE NOVEMBRO 3443.00
+      - - Área externa
+        - 1 - Pintura acrílica
+          - - Detalhes
+        - 2 - Pintura esmalte metal
+        - 3 - Pintura automotiva
+          - - Detalhes
+        - 4 - Substituição de puxador
+      - - Área interna
+        - 1 - SAA (sala de autoatendimento)
+          - - Vista ampla
+          - 1.1 - Pintura acrílica
+            - - Detalhes
+          - 1.2 -Pintura esmalte metal
+            - - Detalhes
+          - 1.3 - Fita de piso
+            - - Detalhes
+          - 1.4 - Piso tátil
+        - 2 - Atendimento
+          - - Vista ampla
+          - 2.1 - Pintura acrílica
+            - - Detalhes
+          - 2.2 - Pintura esmalte metal
+            - - Detalhes
+        - 3 - Suporte
+          - 3.1 - Pintura acrílica
+          - 3.2 - Piso tátil
+            - - Detalhes
+        - 4 - Banheiros
+          - 4.1 - Substituição de ducha higiênica
+          - 4.2 - Substituição de engate e sifão
+          - 4.3 - Substituição de torneira automática
+          - 4.4 - Substituição de assento
+          - 4.5 - Pintura esmalte em porta
+  - 5 - JACAREI - Enviado
+    - - Segundo Piso
+      - 4 - Tesouraria
+        - 4.1 - Pintura acrílica
+          - - Detalhes
+      - 5 - Corredor de abastecimento
+        - 5.1 - Pintura acrílica
+          - - Detalhes
+      - 6 - Sala online
+    - - Área externa
+      - - Vista ampla
+      - 1 - Pintura acrílica
+        - - Detalhes
+      - 2 - Pintura esmalte metal
+        - - Detalhes
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+      - 2 - Atendimento
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+        - 2.3 - Manutenção em ponto lógico e duplo
+          - - Detalhes
+  - 6 - ANDROMEDA  - Devolvido
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+      - 2 - Atendimento
+      - 3 - CAIEX
+      - 4 - Copa
+      - 5 - Tesouraria
+  - 7 - ESCRITÓRIO SETOR PÚBLICO 3834.00 - Enviado
+    - - Envio portal
+    - - Área interna
+      - - Vistas amplas
+      - 2 - Suporte
+        - 2.1 - Sinalização
+      - 3 - Copa
+        - 3.1 - Sinalização
+      - 4 - Banheiro masculino
+        - 4.1 - Válvula de mictório
+        - 4.2 - Desentupimento de mictório
+  - 8 - DOM BOSCO 2363.00 - Enviado
+    - - Envio portal
+    - - Área externa
+      - 1 - Pintura acrílica
+        - - Detalhes
+      - 2 - Pintura esmalte em porta
+      - 3 - Substituição de lâmpadas
+        - - Detalhes
+  - 9 - FORUM SÃO JOSE DOS CAMPOS 5971.00 - Concluída
+    - - Área interna
+      - 2 - Atendimento
+        - - Vista ampla
+        - 1 - SAA (sala de autoatendimento)
+          - - Vista ampla
+      - 4 - Suporte
+        - - Vista ampla
+      - 5 - Copa
+        - - Vista ampla
+      - 6 - Banheiros
+- 3 - Recebido - Maio
+  - 1 - ESCRIT. CORPORATE BANKING 3358 - Concluída
+    - - Segundo piso
+      - - Vista ampla
+      - 1 - Suporte
+        - - Vista ampla
+    - - Área externa
+      - - Vista ampla
+    - - Área interna
+      - 1 - Atendimento
+        - - Vista ampla
+      - 2 - Hall principal
+        - - Vista ampla
+      - 3 - Sala de Reunião
+        - - Vista ampla
+      - 5 - Corredor de acesso
+        - - Vista ampla
+      - 6 - Banheiro feminino
+        - - Vista ampla
+      - 8 - Sala de Reunião 2
+        - - Vista ampla
+  - 10 - ESTILO CASTEJON 8642.00 - Enviado
+    - - Envio portal
+    - - Área externa
+      - 2 - Marquise
+      - 3 - Pintura automotiva
+      - 4 - Puxador
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - 1.1 - Pintura acrílica
+        - 1.2 - Substituição de lâmpadas
+        - 1.3 - Forro
+      - 2 - Atendimento
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+        - 2.2 - Substituição de lâmpadas
+      - 3 - Sala de reunião
+        - - Vista ampla
+        - 3.1 - Pintura acrílica
+          - - Detalhes
+        - 3.2 - Substituição de lâmpadas
+        - 3.3 - Pintura esmalte em porta
+          - - Detalhes
+      - 4 - Sala do gerente
+        - - Vista ampla
+        - 4.1 - Pintura acrílica
+        - 4.2 - Pintura esmalte em porta
+        - 4.3 - Piso
+        - 4.4 - Forro
+      - 5 - Corredor de acesso
+        - 5.1 - Pintura acrílica
+        - 5.2 - Piso
+        - 5.3 - Substituição de lâmpadas
+        - 5.4 - Pintura esmalte em porta
+        - 5.5 - Forro
+      - 6 - Suporte
+        - - Vista ampla
+        - 6.2 - Pintura esmalte em porta
+        - 6.3 - Substituição de lâmpadas
+        - 6.4 - Forro
+          - - Detalhes
+      - 7 - QVT
+        - 7.1 - Pintura acrílica
+        - 7.2 - Substituição de lâmpada
+        - 7.3 - Pintura esmalte em porta
+        - 7.4 - Luminária de emergência
+  - 12 - ESCOLA DE ESPECIALISTAS DA AERONAUTICA 0306.01 - Enviado
+    - - Envio portal
+    - - Área externa
+      - 1 - Pintura acrílica
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+        - 1.2 - Substituição de lâmpadas
+        - 1.3 - Mola de piso
+      - 2 - Atendimento
+        - - Vista ampla
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+        - 2.2 - Substituição de lâmpadas
+      - 3 - Área restrita
+        - 3.1 - Pintura acrílica
+        - 3.2 - Pintura esmalte em porta
+          - - Detalhes
+        - 3.3 - Forro de fibra mineral
+      - 4 - Corredor de abastecimento
+        - 4.1 - Pintura acrílica
+          - - Detalhes
+  - 13 - SANTANA DO PARAIBA 6869.00 - Enviado
+    - - Envio portal
+    - - Área externa
+      - 1 - Pintura acrílica
+        - - Detalhes
+      - 3 - Pintura esmalte metal
+        - - Detalhes
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+        - 1.2 - Pintura automotiva
+        - 1.3 - Fita de piso
+        - 1.4 - Piso tátil
+          - - Detalhes
+      - 2 - Atendimento
+        - - Vista ampla
+        - 2.1 - Pintura acrílica
+        - 2.2 - Pintura esmalte em porta
+          - - Detalhes
+        - 2.3 - Ponto lógico
+        - 2.4 - Pintura automotiva
+      - 3 - Banheiro masculino
+        - 3.1 - Torneira
+      - 4 - Banheiro feminino
+        - - Detalhes
+  - 14 - TREMEMBE 6773.00 - Enviado - faltou item
+    - - Envio portal
+    - - Segundo piso
+      - 1 - Atendimento
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+      - 4 - Área restrita
+        - 4.1 - Pintura acrílica
+          - - Detalhes
+        - 4.2 - Pintura esmalte em porta
+          - - Detalhes
+      - 5 - Sala de vigilantes
+        - 5.1 - Pintura acrílica
+          - - Detalhes
+        - 5.2 - Pintura esmalte em porta
+          - - Detalhes
+      - 6 - CAIEX
+        - 6.1 - Pintura acrílica
+        - 6.2 - Pintura esmalte em porta
+          - - Detallhes
+      - 7 - Tesouraria
+        - 7.1 - Pintura acrílica
+          - - Detalhes
+        - 7.2 - Pintura esmalte em porta
+          - - Detalhes
+      - 8 - Sala online
+        - 8.1 - Pintura acrílica
+          - - Detalhes
+    - - Área externa
+      - 1 - Pintura acrílica
+        - - Detalhes
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+        - 1.2 - Piso tátil e fita de piso
+        - 1.3 - Pintura automotiva
+          - - Detalhes
+        - 1.4 - Substituição de lâmpadas
+      - 2 - Atendimento
+        - - Vista ampla
+      - 3 - Escadas
+        - 3.1 - Pintura acrílica
+          - - Detalhes
+      - 4 - Corredor de abastecimento
+        - 4.1 - Pintura acrílica
+          - - Detalhes
+  - 15 - PINDAMONHANGABA 0574.00 - Enviado
+    - - Envio portal
+    - - Segundo piso
+      - 1 - Atendimento
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+      - 3 - Suporte
+        - 3.1 - Pintura acrílica
+          - - Detalhes
+        - 3.2 - Pintura esmalte em porta
+      - 4 - Copa
+        - 4.1 - Pintura esmalte em porta
+          - - Detalhes
+      - 5 - Sala de reunião
+        - 5.1 - Pintura acrílica
+          - - Detalhes
+        - 5.2 - Pintura esmalte em porta
+      - 6 - QVT
+        - 6.2 - Pintura esmalte em porta
+          - - Detalhes
+    - - Área externa
+      - - Vista ampla
+      - 1 - Pintura acrílica
+        - - Detalhes
+      - 2 - Pintura automotiva
+  - 16 - SUPER REGIONAL VAREJO RONDONOPOLIS 8838.00 - Enviado
+    - - Envio Portal
+    - - Área interna
+      - 1 - Corredor de entrada
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+        - 1.2 - Pintura esmalte em porta
+      - 2 - Sala de reunião
+        - - Vista ampla
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+        - 2.2 - Ponto lógico
+      - 3 - Escadas
+        - - Vista ampla
+        - 3.1 - Pintura acrílica
+          - - Detalhes
+      - 5 - Sala gerente
+        - - Vista ampla
+        - 5.1 - Pintura acrílica
+          - - Detalhes
+  - 17 - CATEDRAL 6513.00 - Enviado
+    - - Área externa
+      - 1 - Pintura acrílica
+        - - Detalhes
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - Vista ampla
+        - 1.2 - Piso
+        - 1.3 - Pintura automotiva
+          - - Detalhes
+      - 10 - Banheiro unissex
+        - - Vista ampla
+        - 10.1 - Pintura esmalte em porta
+      - 11 - Corredor interno
+        - 11.1 - Pintura acrílica
+          - - Detalhes
+        - 11.2 - Pintura esmalte em porta
+          - - Detalhes
+      - 2 - Atendimento
+        - - Vista ampla
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+      - 5 - CAIEX
+        - 5.2 - Pintura esmalte em porta
+          - - Detalhes
+      - 6 - Corredor de abastecimento
+        - 6.1 - Pintura acrílica
+          - - Detalhes
+        - 6.2 - Pintura esmalte em porta
+          - - Detalhes
+      - 7 - Tesouraria
+        - 7.1 - Pintura acrílica
+          - - Detalhes
+        - 7.2 - Pintura esmalte em porta
+          - - Detalhes
+      - 8 - Acesso escadas
+        - 8.1 - Pintura acrílica
+          - - Detalhes
+      - 9 - Sala de reunião
+        - 9.1 - Pintura acrílica
+          - - Detalhes
+        - 9.2 - Pintura esmalte em porta
+          - - Detalhes
+  - 18 - GUARATINGUETA 0306.00 - Enviado
+    - - Envio portal
+    - - Segundo piso
+      - 1 - Atendimento
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+        - 1.2 - Substituição de lâmpadas
+        - 1.3 - Pintura esmalte em porta
+      - 2 - Sala do gerente
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+        - 2.2 - Pintura esmalte em porta
+          - - Detalhes
+      - 3 - Estilo
+        - 3.1 - Pintura acrílica
+          - - Detalhes
+      - 4 - Sala online
+        - 4.1 - Pintura acrílica
+          - - Detalhes
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+        - 1.2 - Substituição de lâmpadas
+        - 1.3 - Fita de piso
+          - - Detalhes
+        - 1.4 - Pintura esmalte metal
+          - - Detalhes
+      - 2 - Atendimento
+        - - Vista ampla
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+      - 3 - Banheiro
+        - - Vista ampla
+        - 3.1 - Pintura esmalte em porta
+      - 4 - Suporte
+        - 4.1 - Pintura acrílica
+          - - Detalhes
+        - 4.2 - Substituição de lâmpadas
+        - 4.3 - Pintura esmalte em porta
+          - - Detalhes
+      - 5 - Área restrita
+        - 5.1 - Pintura acrílica
+          - - Detalhes
+        - 5.2 - Pintura esmalte em porta
+          - - Detalhes
+        - 5.3 - Tampa cega
+      - 6 - CAIEX
+        - 6.1 - Pintura acrílica
+          - - Detalhes
+        - 6.2 - Pintura esmalte em porta
+      - 7 - Tesouraria
+        - 7.1 - Pintura acrílica
+          - - Detalhes
+        - 7.2 - Pintura esmalte em porta
+          - - Detalhes
+      - 8 - Acesso banheiro
+        - 8.1 - Revestimento
+      - 9 - Escadas
+        - 9.1 - Pintura acrílica
+          - - Detalhes
+        - 9.2 - Forro de fibra mineral
+  - 2 - PRAÇA DO ROSARIO 6541.00 - Enviado
+    - - Área interna
+      - 11 - Acesso almoxarifado
+        - 11.1 - Pintura acrílica
+          - - Detalhes
+      - 2 - Atendimento
+        - - Vista ampla
+        - 2.2 - Substituição de carpete
+          - - Detalhes
+        - 2.3 - Ponto elétrico e lógico
+      - 3 - Corredor de aceeso ao banheiro
+        - - Vista ampla
+        - 3.1 - Pintura acrílica
+          - - Detalhes
+      - 4 - CAIEX
+        - - Vista ampla
+        - 4.1 - Pintura acrílica
+          - - Detalhes
+      - 5 - Acesso segundo piso
+        - 5.1 - Pintura acrílica
+          - - Detalhes
+      - 7 - Tesouraria
+        - - Vista ampla
+        - 7.1 - Pintura acrílica
+          - - Detalhes
+      - 8 - Sala online
+        - - Vista ampla
+        - 8.1 - Pintura acrílica
+          - - Detalhes
+      - 9 - Suporte
+        - 9.1 - Pintura acrílica
+          - - Detalhes
+  - 20 - BIRITIBA 1645.00 - Enviado
+    - - Área externa
+      - 1 - Pintura acrílica
+        - - Detalhes
+      - 2 - Marquise
+        - - Detalhes
+      - 3 - Pintura automotiva
+        - - Detalhes
+      - 4 - Substituição de película e policarbonato
+      - 5 - Pintura esmalte metal
+        - - Detalhes
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+        - 1.3 - Fita de piso
+          - - Detalhes
+        - 1.4 - Pintura automotiva
+          - - Detalhes
+        - 1.5 - Piso tátil
+          - - Detalhes
+      - 10 - Sala entre CAIEX e suporte
+        - 10.1 - Substituição de caroete
+      - 2 - Atendimento
+        - - Vista ampla
+        - 2.1 - Substituição de carpete
+          - - Detalhes
+        - 2.2 - Piso tátil
+        - 2.4 - Realocação de ponto lógico e elétrico
+      - 4 - Sala online
+        - - Vista ampla
+        - 4.1 - Pintura acrílica
+        - 4.2 - Pintura esmalte em porta
+        - 4.3 - Piso elevado
+      - 5 - Casa de maquinas
+        - - Vista ampla
+      - 6 - Suporte
+        - - Vista ampla
+        - 6.1 Pintura acrílica
+          - - Detalhes
+      - 7 - Tesouraria
+        - 7.1 - Pintura acrílica
+          - - Detalhes
+      - 8 - Caiex
+        - 8.1 - Pintura acrílica
+          - - Detalhes
+  - 21 - VILA AURORA  4931.00  - Enviado
+    - - Área interna
+      - 1 - CAIEX
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+        - 1.2 - Ponto lógico
+          - - Detalhes
+      - 2 - Corredor interno
+        - - Vista ampla
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+        - 2.2 - Quadro de elétrico
+  - 3 - VALE DO PARAIBA 6565.00 - Enviado - Retifícado
+    - - Área externa
+      - 1 - Pintura acrílica
+        - - Detalhes
+      - 2 - Pintura esmalte metal
+        - - Detalhes
+    - - Área interna
+      - 1 - Autoatendimento
+        - 1.3 - Substituição de lâmpadas
+        - 1.4 - Pintura automotiva
+          - - Detalhes
+          - - Vista ampla
+      - 2 - Atendimento
+        - - Vista ampla
+        - 2.1 - Pintura acrílica
+        - 2.2 - Pintura esmalte em porta
+        - 2.3 - Substituição de lâmpadas
+      - 3 - CAIEX
+        - 3.1 - Pintura acrílica
+        - 3.2 - Substituição de lâmpadas
+      - 4 - Banheiro feminino
+        - 4.2 - Ducha higiênica
+      - 5 - Banheiro masculino
+        - 5.1 - Substituição de torneira
+          - - Detalhes
+        - 5.2 - Ducha higiênica
+        - 5.3 - Substituição de lâmpadas
+  - 4 - FORUM PINDAMONHANGABA 6536.01 - Enviado
+    - - Envio portal
+    - 1 - Atendimento
+      - 1.1 - Pintura acrílica
+        - - Detalhes
+      - 1.2 - Forro
+      - 1.3 - Pintura esmalte em porta
+    - 2 - Tesouraria
+      - 2.1 - Pintura acrílica
+  - 5 - INSTITUTO DE PESQUISAS ESPACIAIS 7027.02 - Enviado
+    - - Área externa
+      - - Vista ampla
+      - 1 - Pintura automotiva
+        - - Detalhes
+      - 2 - Puxador
+      - 3 - Mola de piso
+        - - Detalhes
+      - 4 - Telhado
+        - - Vista ampla
+    - - Área interna
+      - 1 - Autoatendimento
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+        - 1.2 - Forro
+        - 1.3 - Fita de piso
+          - - Detalhes
+        - 1.4 - Piso tátil
+          - - Detalhes
+      - 2 - Atendimento
+        - 2.1 - Pintura acrílica
+        - 2.2 - Forro
+        - 2.3 - Ponto elétrico e lógico
+          - - Detalhes
+        - 2.5 - Substituição de carpete
+          - - Detalhes
+      - 3 - CAIEX
+      - 4 - Corredor de abastecimento
+        - - Vista ampla
+        - 4.1 - Forro
+          - - Detalhes
+        - 4.2 - Piso cerâmico
+      - 5 - Suporte
+        - - Vista ampla
+        - 5.1 - Pintura acrílica
+          - - Detalhes
+        - 5.3 - Forro de fibra mineral
+        - 5.4 - Substituição de lâmpadas
+      - 6 -Sala online
+        - 6.1 - Pintura acrílica
+        - 6.2 - Forro de fibra mineral
+        - 6.3 - Piso elevado
+        - 6.4 - Quadro elétrico
+      - 7 - Banheiro
+        - 7.1 - Ducha higiênica
+        - 7.2 - Substituição de torneira
+        - 7.3 - Ponto elétrico
+      - 8 - Tesouraria
+        - 8.1 - Substituição de fechadura
+          - - Detalhes
+        - 8.2 - Substituição de lâmpadas
+  - 6 - VILA TATETUBA 7027.00 - Enviado
+    - - Envio Complementar
+      - - Envio portal
+    - - Envio portal
+    - - Área externa
+      - - Vista ampla
+      - 1 - Pintura acrílica
+        - - Detalhes
+      - 2 - Pintura esmalte metal
+        - - Detalhes
+      - 3 - Pintura piso
+        - - Detalhes
+      - 4 - Mola de piso
+      - 5 - Puxador
+      - 6 - Pintura automotiva
+        - - Detalhes
+    - - Área interna
+      - 1 - Autoatendimento
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+        - 1.2 - Pintura automotiva
+          - - Detalhes
+        - 1.3 - Piso tátil
+          - - Detalhes
+      - 2 - Atendimento
+        - - Vista ampla
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+        - 2.2 - Pintura esmalte em porta
+      - 3 - CAIEX
+        - 3.1 - Pintura acrílica
+      - 4 - Banheiro masculino
+        - 4.1 - Substituição de torneira
+  - 7 - PAIAGUAS 2128.00 - Enviado
+    - - Envio portal
+    - - Área externa
+      - 1 - Pintura acrílica
+        - - Detalhes
+    - - Área interna
+      - 1 - Autoatendimento
+        - 1.1 Pintura acrílica
+        - 1.2 - Fita de piso
+      - 2 - Banheiro masculino
+        - 2.1 - Válvula de descarga
+        - 2.2 - Ponto elétrico
+        - 2.3 - Ralo
+        - 2.4 - Dispenser de sabão liquido
+      - 3 - Banheiro feminino
+        - 3.1 - Ponto elétrico
+      - 5 - Copa
+        - 5.1 - Ponto lógico
+        - 5.2 - Fita de piso
+      - 6 - Suporte
+        - 6.1 - Fita de piso
+        - 6.2 - Substituição de lâmpadas
+  - 8 - CASTEJON 3574.00 -  Enviado
+    - - Envio portal
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+        - 1.2 - Piso tátil
+          - - Vista ampla
+        - 1.3 - Substituição de lâmpadas
+        - 1.4 - Forro
+      - 10 - Tesouraria
+        - 10.1 - Forro
+          - - Danos internos
+      - 2 - Atendimento
+        - - Vista ampla
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+        - 2.2 - Piso tátil
+        - 2.3 - Pintura esmalte metal
+          - - Detalhes
+        - 2.4 - Fechadura
+          - - Detalhes
+        - 2.5 - Pintura esmalte em porta
+        - 2.6 - Forro
+      - 3 - CAIEX
+        - 3.1 - Pintura acrílica
+      - 4 - Corredor de acesso
+        - - Vista ampla
+        - 4.1 - Pintura acrílica
+          - - Detalhes
+        - 4.2 - Pintura esmalte em porta
+        - 4.3 - Luminária de emergência
+      - 5 - Sala de máquinas
+        - - Vista ampla
+        - 5.1 - Pintura acrílica
+          - - Detalhes
+      - 6 - Banheiro feminino
+        - 6.1 - Substituição de torneira
+          - - Detalhes
+        - 6.2 - Pintura esmalte em porta
+      - 7 - Banheiro masculino
+        - 7.1 - Subtituição de torneira
+          - - Detalhes
+      - 8 - Banheiro PNE
+        - 8.1 - Pintura esmalte em porta
+      - 9 - Sala online
+        - 9.1 - Pintura esmalte em porta
+  - 9 - RUA ANDRADAS 6536.00 - Enviado
+    - - Segundo piso
+      - 1 - Escadas de acesso
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+      - 3 - Atendimento
+        - 3.1 - Pintura acrílica
+          - - Detalhes
+    - - Área externa
+      - - Vista ampla
+      - 1 - Pintura acrílica
+        - - Detalhes
+      - 2 - Pintura de piso
+        - - Detalhes
+      - 3 - Telhado
+      - 4 - Garagem
+        - - Vista ampla
+        - 4.1 - Pintura acrílica
+          - - Detalhes
+        - 4.2 - Pintura de piso
+          - - Detalhes
+    - - Área interna
+      - 3 - Banheiro
+      - 4 - Corredor de acesso
+        - 4.1 - Pintura acrílica
+          - - Detalhes
+        - 4.3 - Substituição de lâmpadas
+      - 5 - Escadas
+        - 5.1 - Pintura acrílica
+          - - Detalhes
+      - 7 - Tesouraria
+        - 7.1 - Pintura acrílica
+          - - Detalhes
+        - 7.2 - Pintura esmalte em porta
+          - - Detalhes
+        - 7.3 - Forro
+      - 8 - Corredor de abastecimento
+        - 8.1 - Pintura acrílica
+          - - Detalhes
+        - 8.2 - Substituição de lâmpadas
+        - 8.3 - Forro de fibra mineral
+      - 9 - Copa
+        - 9.1 - Pintura esmalte em porta
+          - - Detalhes
+- 4 - Recebido  - Junho
+  - 12 - ILHA BELA 4694.00 - Enviado
+    - - Área externa
+      - 1 - Pintura acrílica
+        - - Detalhes
+    - - Área interna
+      - 2 - Atendimento
+        - - Vista ampla
+        - 2.1 - Pintura acrílica
+        - 2.2 - Pintura esmalte em porta
+          - - Detalhes
+        - 2.3 - Carpete
+        - 2.4 - Piso
+      - 3 - Acesso caixas
+        - 3.1 - Pintura acrílica
+        - 3.2 - Pintura esmalte em porta
+          - - Detalhes
+      - 4 - Escadas
+        - 4.1 - Pintura acrílica
+          - - Detalhes
+      - 5 - Corredeor de abastecimento
+        - 5.1 - Pintura acrílica
+          - - Detalhes
+  - 13 - ESCRITORIO PRIVATE 9309.00 - Concluído
+    - - Envio portal
+  - 14 - ESCRIT. CORPORATE BANKING 2609,00 - Concluído
+    - - Envio portal
+  - 15 - JARDIM TIJUCA 6993.00 - Enviado
+    - - Envio portal
+    - - Área externa
+      - 1 - Pintura acrílica
+        - - Detalhes
+      - 2 - Pintura esmalte metal
+        - - Detalhes
+      - 3 - Recomposição de piso
+      - 4 - Marquise
+        - - Detalhes
+      - 5 - Pintura automotiva
+        - - Detalhes
+      - 6 - Pintura de piso
+        - - Detalhes
+      - 7 - Impermeabilização de rachaduras
+        - - Detalhes
+    - - Área interna
+      - 1 - SAA
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+        - 1.2 - Piso tátil inox
+          - - Detalhes
+      - 2 - Atendimento
+        - - Vista ampla
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+        - 2.2 - Ponto elétrico
+      - 3 - Corredor interno
+        - - Pintura esmalte em porta
+          - - Detalhes
+      - 5 - Corredor de abastecimento
+        - - Pintura acrílica
+          - - Detalhes
+        - - Substituição de lâmpadas
+  - 16 - AVENIDA CORONEL ANTONINO 2959.00 - Enviado
+    - - Envio portal
+    - - Área externa
+      - - Vista ampla
+      - 1 - Pintura acrílica
+        - - Detalhes
+      - 2 - Pintura de piso
+        - - Detalhes
+      - 3 - Pintura esmalte metal
+      - 4 - Pintura esmalte em porta
+      - 5 - ACM
+      - 6 - Tampa cega
+    - - Área interna
+      - 2 - Atendimento
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+      - 3 - QVT
+        - - Vista ampla
+        - 3.1 - Pintura acrílica
+          - - Detalhes
+      - 5 - Corredor interno
+        - 5.1 - Pintura acrílica
+          - - Detalhes
+        - 5.3 - Quadro de comando
+      - 6 - Suporte
+        - 6.1 - Pintura acrílica
+          - - Detalhes
+      - 7 - CAIEX
+        - 7.1 - Pintura acrílica
+          - - Detalhes
+  - 17 - ESCRITÓRIO PRIVATE 9307.00 - Correção
+    - - Envio portal
+    - - Área interna
+      - 1 - Sala de Atendimento
+        - - Vista ampla
+        - 1.1 - Ponto elétrico
+        - 1.2 - Ponto lógico
+  - 19 - NOVA MUTUM 3228.00  - Enviado
+    - - Envio portal
+    - - Segundo piso
+      - 1 - Sala de atendimento
+        - 1.1 - Pintura acrílica
+    - - Área externa
+      - 1 - Pintura acrílica
+      - 2 - Pintura automotiva
+        - - Detalhes
+      - 3 - Pintura esmalte metal
+      - 4 - Substituição de luminárias
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - 1.1 - Forro
+          - - Detalhes
+        - 1.2 - Piso porcelanato
+      - 10 - Banheiro feminino
+        - 10.1 - Dispenser de papel toalha
+      - 2 - Atendimento
+        - 2.1 - Forro
+        - 2.2 - Substituição de lâmpadas
+      - 3 - Sala de suporte
+        - 3.1 - Pintura de forro
+        - 3.2 - Pintura esmalte em porta
+        - 3.3 - Substituição de fechadura eletromagnética
+      - 4 - Sala de reunião
+        - 4.1 - Forro de fibra mineral
+        - 4.2 - Pintura esmalte em porta
+      - 5 - Sala de arquivo
+        - 5.1 - Forro de fibra mineral
+      - 6 - Tesouraria
+        - 6.1 - Pintura acrílica
+      - 7- Corredor de acesso
+      - 8 - Escadas de acesso
+        - 8.1 - Fita de piso
+      - 9 - Banheiro masculino
+        - 9.4 - Assento
+  - 2 - TRIBUNAL REGIONAL DO TRABALHO 2128.22 - Concluído
+    - - Envio portal
+    - - Vista ampla da agência
+  - 20 - CHAPADA DOS GUIMARÃES 1772.00 - Enviado
+    - - Envio Portal
+    - - Área externa
+      - 1 - Pintura acrílica
+        - - Detalhes
+      - 2 - Pintura automotiva
+        - - Detalhes
+      - 3 - Pintura de piso
+        - - Detalhes
+      - 4 - Pintura esmalte metal
+        - - Detalhes
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+        - 1.2 - Piso tátil
+          - - Detalhes
+      - 2 - Atendimento
+        - - Vista ampla
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+        - 2.2 - Pintura esmalte em porta
+  - 21 - NOVA UBIRATA 4112.00 - Enviado
+    - - Área externa
+      - 1 - Pintura acrílica
+        - - Detalhes
+      - 2 - Marquise
+      - 3 - Remoção de entulho
+      - 4 - Correção de vazamento
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+        - 1.2 - Forro
+        - 1.3 - Capacho
+        - 1.4 - Puxador
+          - - Detalhes
+      - 2 - Atendimento
+        - - Vista ampla
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+        - 2.2 - Pintura de forro
+          - - Detalhes
+      - 3 - Sala de arquivo
+        - 3.1 - Pintura acrílica
+          - - Detalhes
+        - 3.2 - Pintura de forro
+          - - Detalhes
+        - 3.3 - Substituição de luminárias
+      - 6 - Banheiro masculino
+        - 6.1 - Correção de vazamento
+          - - Detalhes
+      - 7 - Banheiro feminino
+        - 7.1 - Ajuste de porta
+          - - Detalhes
+        - 7.2 - Correção de vaazamento
+          - - Detalhes
+      - 8 - Corredor de abastecimento
+        - - Vista ampla
+        - 8.1 - Pintura acrílica
+          - - Detalhes
+        - 8.2 - Pintura de forro
+          - - Detalhes
+        - 8.3 - Remoção de grelha
+  - 22 - CONFRESA - 3989.00 - Enviado
+    - - Área externa
+      - - Vista ampla
+      - 1 - Pintura acrílica
+        - - Detalhes
+      - 3 - Pintura esmalte metal
+        - - Detalhes
+      - 4 - Casa de máquinas
+        - 3.1 - Pintura acrílica
+      - 5 - Casa do gerador
+        - 4.1 - Pintura acrílica
+          - - Detalhes
+      - 6 - Substituição de lâmpadas
+      - 7 - Substituição fotocelula
+      - 8 - Substituição de Luminárias
+      - 9 - Substituição de refletores
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+        - 1.10 - Substituição de Adesivo
+        - 1.11 - Substituição de Grafema
+        - 1.2 - Pintura de forro
+          - - Detalhes
+        - 1.3 - Substituição de luminárias
+        - 1.4 - Fita de led e fonte
+        - 1.5 - Ferragens
+        - 1.6 - Fita de piso
+          - - Detalhes
+        - 1.7 - Ajuste de carenagem
+          - - Detalhes
+        - 1.8 - Substituição de policarbonato
+        - 1.9 - Substituição de lâmpadas
+      - 10 - Corredor de acesso a tesouraria
+        - 9.1 - Pintura de alçapão
+      - 2 - Atendimento
+        - - Vista ampla
+        - 2.1 - Pintura Acrílica
+          - - Detalhes
+      - 3 - CAIEX
+        - - Vista ampla
+        - 3.1 - Pintura acrílica
+          - - Detalhes
+        - 3.2 - Recomposição de forro
+          - - Detalhes
+        - 3.3 - Fita de led e fonte
+        - 3.4 - Substituição de espelho
+        - 3.5 - Ponto elétrico
+      - 4 - Banheiro feminino PNE
+        - 4.1 - Substituição de torneira
+      - 5 - Banheiro masculino PNE
+      - 6 - Corredor de acesso aos banheiros
+        - 6.1 - Pintura acrília
+          - - Detalhes
+      - 7 - Suporte
+        - 7.1 - Recomposição de forro
+        - 7.2 - Pintura do forro
+          - - Detalhes
+      - 8 - Sala de máquinas
+        - 8.1 - Substituição de interruptor
+        - 8.2 - Substituição de lâmpadas
+      - 9 - Sala Operacional
+        - - Vista ampla
+        - 9.1 - Pintura de forro
+  - 7 - AVENIDA RUBENS DE MENDONCA 3499.00 - Enviado
+    - - Área externa
+      - 1 - Pintura acrílica
+        - - Detalhes
+      - 2 - Pintura automotiva
+        - - Detalhes
+      - 3 - Pintura esmalte metal
+        - - Detalhes
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+      - 2 - Atendimento
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+        - 2.2 - Substituição de luminária
+      - 4 - Banheiros
+        - 4.1 - Espelho
+        - 4.2 - Piso cerâmico
+        - 4.3 - Chapa de inox para porta
+  - 8 - EMPRESA CUIABA 0046.00 - Enviado
+    - - Envio portal
+    - - Área interna
+      - 1 - Sala cliente
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+      - 10 - Acesso proibido
+        - 10.1 - Pintura esmalte em porta
+      - 11 - Almoxarifado
+        - 11.1 - Pintura esmalte em porta
+      - 12 - QVT
+        - 12.1 - Pintura acrílica
+          - - Detalhes
+      - 13 - Sala suporte
+        - 13.1 - Pintura acrílica
+          - - Detalhes
+        - 13.2 - Substituição de lâmpadas
+      - 14 - Cozinha
+        - 14.1 - Substituição de luminária
+      - 15 - Sala de reunião
+        - 15.1 - Pintura acrílica
+          - - Detalhes
+      - 16 - Escadaria de acesso
+        - 16.1 - Fita de piso
+      - 2 - Corredor acesso banheiro
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+        - 2.2 - Substituição de porta
+          - - Detalhes
+      - 3 - Atendimento
+        - 3.1 - Pintura acrílica
+          - - Detalhes
+        - 3.2 - Pintura esmalte em porta
+      - 4 - Corredor de suporte
+        - 4.1 - Pintura acrílica
+          - - Detalhes
+        - 4.2 - Pintura esmalte em porta
+        - 4.3 - Substituição de luminária
+        - 4.4 - Fita de piso
+      - 5 - Sala online
+        - 5.1 - Pintura esmalte em porta
+          - - Detalhes
+      - 6 - Sala arquivo
+        - 6.1 - Pintura esmalte em porta
+      - 7 - Acesso externo
+        - 7.1 - Pintura esmalte em porta
+      - 8 - Banheiro feminino
+        - 8.1 - Pintura esmalte em porta
+      - 9 - Banheiro masculino
+        - 9.1 - Pintura esmalte em porta
+  - 9 - PRIMAVERA DO LESTE 3290.00 - Enviado
+    - - Área interna
+      - 2 - Sala de reunião
+        - 2.2 - Pintura esmalte em porta
+          - - Detalhes
+      - 3 - Sala online
+        - 3.1 - Pintura esmalte em porta
+          - - Detalhes
+      - 4 - Banheiro PNE
+        - 4.1 - Pintura acrílica
+          - - Detalhes
+        - 4.2 - Pintura esmalte em porta
+          - - Detalhes
+      - 5 - Banheiro feminino
+        - 5.1 - Pintura acrílica
+          - - Detalhes
+        - 5.2 - Forro
+          - - Detalhes
+        - 5.3 - Pintura esmalte em porta
+        - 5.4 - Espelho
+      - 6 - Banheiro masculino
+        - 6.1 - Pintura acrílica
+          - - Detalhes
+        - 6.2 - Forro
+          - - Detalhes
+        - 6.3 - Pintura esmalte em porta
+          - - Detalhes
+- 5 - Recebido - Julho
+  - 1 - ESCOLA FEDERAL DE ENGENHARIA DE ITAJUBA 0308.01 - Enviado
+    - - Envio portal
+    - - Área interna
+      - 1 - SAA (sala de autoatendiemento)
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+      - 2 - Atendimento
+        - 2.2 - Substituição de carpete
+          - - Detalhes
+      - 3 - Corredor de abastecimento
+        - 3.1 - Pintura acrílica
+        - 3.2 - Pintura esmalte em porta
+          - - Detalhes
+      - 4 - Tesouraria
+        - 5.1 - Pintura acrílica
+          - - Detalhes
+  - 10 - SANTA ISABEL 2578.00 - Enviado
+    - - Envio portal
+    - - Área externa
+      - - Vista ampla
+      - 1 - Pintura acrílica
+        - - Detalhes
+      - 2 - Substituição de película e policarbonato
+        - - Detalhes
+      - 3 - Adesivo
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+        - 1.2 - Pintura esmalte metal
+          - - Detalhes
+        - 1.3 - Pintura automotiva
+          - - Detalhes
+        - 1.4 - Fita de piso
+          - - Detalhes
+        - 1.5 - Piso tátil
+      - 2 - Atendimento
+        - - Vista ampla
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+      - 3 - Corredor de acesso CAIEX
+        - 3.1 - Pintura acrílica
+          - - Detalhes
+      - 5 - Acesso segundo piso
+        - - VIsta ampla
+        - 5.1 - Pintura acrílica
+          - - Detalhes
+  - 11 - PEIXOTO DE AZEVEDO 5916.00 - Enviado
+    - - Envio portal
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+        - 1.2 - Mola de piso
+        - 1.3 - Ferragens
+        - 1.4 - Capacho
+        - 1.5 - Piso tátil
+      - 2 - Corredor de abastecimento
+        - - Vista ampla
+        - 2.1 - Forro de fibra mineral
+      - 3 - Depósito
+        - - Vista ampla
+        - 3.1 - Forro de fibra mineral
+      - 4 - Suporte
+        - - Vista ampla
+        - 4.1 - Ponto lógico
+      - 5 - Banheiro masculino
+        - - Vista ampla
+        - 5.1 - Substituição de sifão
+        - 5.2 - Dispenser de papel higiênico
+        - 5.3 - Desentupimento de ralo
+      - 6 - Banheiro PNE
+        - - Vista ampla
+        - 6.1 - Substituição de torneira
+        - 6.2 - Substituição de lâmpadas
+      - 7 - Banehrio femninino
+        - - Vista ampla
+        - 7.1 - Dispenser de papel higiênico
+      - 8 - Copa
+        - 8.1 - Desentupimento de ralo
+      - 9 - Corredor dos banheiros
+        - - Vista ampla
+        - 9.1 - Fita de piso
+  - 12 - DIAMANTINO 0787.00 - Enviado
+    - - Envio portal
+    - - Área externa
+      - 1 - Pintura acrílica
+        - - Detalhes
+    - - Área interna
+      - 2 - Atendimento
+        - - Vista ampla
+      - 3 - Tesouraria
+        - 3.1 - Substituição de luminárias
+      - 4 - Banheiro masculino
+        - 4.1 - Desentupimento
+      - 6 - Copa
+        - - Vista ampla
+        - 6.1 - Ajuste de fechadura
+        - 6.2 - Substituição de torneira
+  - 13 - CAMPOS DE JULIO 4111.00 - Enviado
+    - - Envio Portal
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+        - 1.10 - Fita de piso
+          - - Detalhes
+        - 1.11 - Ferragem
+          - - Detalhes
+        - 1.2 - Pintura de piso
+          - - Detalhes
+        - 1.3 - Pintura automotiva
+          - - Detalhes
+        - 1.4 - Pintura esmalte metal
+          - - Detalhes
+        - 1.5 - Piso porcelanato
+          - - Detalhes
+        - 1.6 - Piso tátil
+        - 1.7 - Mola de piso
+        - 1.8 -  Carenagens
+        - 1.9 - Retirada e recolocação de vidro
+      - 10 - Copa
+        - 10.1 - Pintura esmalte em porta
+          - - Detalhes
+      - 11 - Banheiro masculino
+        - - Vista ampla
+        - 11.1 - Pintura esmalte em porta
+          - - Detalhes
+        - 11.2 - Tampa de ralo
+      - 12 - Banheiro PNE
+        - - Vista ampla
+        - 12.1 - Pintura esmalte em porta
+          - - Detalhes
+        - 12.2 - Ponto elétrico
+        - 12.3 - Torneira PNE
+      - 13 - Banheiro feminino
+        - - Vista ampla
+        - 13.1 - Pintura esmalte em porta
+          - - Detalhes
+        - 13.2 - Manutenção caixa acoplada
+        - 13.2 - Tampa de ralo
+      - 2 - Atendimento
+        - - Vista ampla
+        - 2.1  - Pintura acrílica
+          - - Detalhes
+        - 2.2 - Pintura de piso
+          - - Detalhes
+        - 2.3 - Piso porcelanato
+          - - Detalhes
+        - 2.4 - Piso tátil
+        - 2.5 - Ponto lógico e elétrico
+        - 2.6 - Ajuste biombo
+        - 2.7 - Carenagem
+        - 2.8 - Retirada e recolocação de vidro
+      - 3 - Sala de arquivo
+      - 4 - Acesso ao CAIEX
+        - 4.1 - pintura esmalte em porta
+          - - Detalhes
+      - 5 - Suporte
+        - 5.1 - Pintura acrílica
+        - 5.2 - Pintura esmalte em porta
+          - - Detalhes
+      - 6 - Sala de reunião
+        - - Vista ampla
+        - 6.1 - Pintura acrílica
+          - - Detalhes
+        - 6.2 - Pintura esmalte em porta
+          - - Detalhes
+        - 6.3 - Ponto elétrico
+      - 7 - Acesso copa
+        - 7.1 - Pintura esmalte em porta
+          - - Detalhes
+      - 8 - Corredor de acesso
+        - - Vista ampla
+        - 8.1 - Pintura acrílica
+          - - Detalhes
+  - 14 - VARZELANDIA 2767.00 - Enviado
+    - - Área externa
+      - 1 - Pintura acrílica
+      - 2 - Pintura esmalte metal
+        - - Detalhes
+      - 3 - Pintura automotiva
+        - - Detalhes
+      - 4 - Recomposição de pavimento
+        - - Detalhes
+      - 5 - Telhado
+      - 6 - SPDA
+        - 6.1 - Fixação de objeto
+  - 15 - ITAOBIM 2163.00 - Concluído
+    - - Envio Portal
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - VIsta ampla
+      - 10 - Sala online
+        - - Vista ampla
+      - 11 - Telhado
+        - - Vista ampla
+      - 2 - Atendimento
+        - - Vista ampla
+      - 3 - CAIEX
+      - 4 - Copa
+        - - Vista ampla
+      - 5 - Banheiro masculino
+        - - Vista ampla
+      - 6 - Banheiro feminino
+        - - Vista ampla
+      - 7 - Suporte
+        - - Vista ampla
+      - 8 - Sala de máquinas
+        - - Vista ampla
+      - 9 - Tesouraria
+        - - Vista ampla
+  - 16 - SIMONESIA 4991.00 - Concluído
+    - - Envio portal
+    - - Área externa
+      - - Vista ampla
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - Vista ampla
+      - 2 - Atendimento
+        - - Vista ampla
+      - 3 - Sala de arquivo
+        - - Vista ampla
+      - 4 - Corredor interno
+        - - Vista ampla
+  - 17 - CANAA 1587.00 - Enviado
+    - - Envio portal
+    - - Segundo Piso
+      - 1 - Atendimento
+        - - Ajuste de carenagem
+        - - Pintura acrílica
+          - - Detalhes
+        - - Pintura esmalte em porta
+          - - Detalhes
+        - - Tampa cega
+        - - Vista ampla
+      - 2 - Acesso restrito
+        - - Vista ampla
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+        - 2.2 - Pintura esmalte em porta
+        - 2.3 - Pintura esmalte metal
+        - 2.4 - Ponto elétrico
+      - 3 - Corredor de acesso restrito
+        - - Vista ampla
+        - 3.1 - Pintura acrílica
+          - - Detalhes
+        - 3.2 - Pintura esmalte em porta
+          - - Detalhes
+        - 3.3 - Pintura esmalte metal
+        - 3.4 - Quadro de comando e elétrico
+        - 3.5 - Tampa cega
+      - 4 - Banheiro PNE Feminino
+        - 4.1 - Forro
+          - - Detalhes
+        - 4.2 - Sabonateira
+        - 4.3 - Subtituição de torneira
+        - 4.5 - Assento
+      - 5 - Banheiro PNE masculino
+        - - Alarme
+        - - Dispenser de papel toalha
+        - - Substuição de torneira
+    - - Área externa
+      - - Vista ampla
+      - 1 - Pintura acrílica
+        - - Detalhes
+      - 3 - Pintura esmalte metal
+        - - Detalhes
+      - 4 - Pintura esmalte em porta
+        - - Detalhes
+      - 6 - Banheiro externo
+        - - Vista ampla
+        - 6.1 - Dispenser de sabão
+        - 6.2 - Dispenser de papel higiênico
+        - 6.3 - Assento
+      - 7 - Telhado
+        - - Vista ampla
+        - 7.1 - Impermeabilização de laje
+        - 7.2 - SPDA
+        - 7.3 - Caixa dágua
+      - 8 - Letreiro
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - Vista ampla
+        - 1.1 - Pintura acríiica
+          - - Detalhes
+        - 1.2 - Pintura utomotiva
+          - - Detalhes
+        - 1.3 - Piso tátil
+        - 1.4 - Fita de piso
+        - 1.6 - Caixa de passagem
+          - - Detalhes
+        - 1.7 - Fita de LED
+        - 1.8 - Lâmpadas
+      - 11 - Sala do gerente
+        - - Vista ampla
+        - 11.2 - Ponto elétrico
+      - 12 - Tesouraria
+        - - Vista ampla
+        - 12.1 - Ponto elétrico
+      - 13 - Corredor de abastecimento
+        - - Vista ampla
+        - 13.1 - Pintura acrílica
+          - - Detalhes
+        - 13.4 - Tampa cega
+      - 14 - Sala online
+        - - Vista ampla
+        - 14.1 - Pintura acrílica
+          - - Detalhes
+        - 14.2 - Ajuste de piso elevado
+        - 14.3 - Quadro de comando e elétrico
+        - 14.5 - Lâmpadas
+      - 2 - Atendimento
+        - - Vista ampla
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+        - 2.2 - Pintura esmalte metal
+          - - Detalhes
+        - 2.3 - Pintura esmalte em porta
+          - - Detalhes
+        - 2.4 - Ponto elétrico
+      - 3 - Acesso banheiro
+        - - Vista ampla
+        - 3.1 - Pintura acrílica
+        - 3.2 - Pintura esmalte em porta
+          - - Detalhes
+        - 3.3 - Adequação de luminária
+        - 3.4 - Manutenção quadro elétrico
+      - 4 - Sala de máquinas
+        - - Vista ampla
+        - 4.1 - Pintura acrílica
+        - 4.2 - Pintura esmalte em porta
+          - - Detalhes
+        - 4.3 - Ponto elétrico
+      - 5 - Banheiro PNE
+        - - Vista ampla
+        - 2.1 - Alarme
+        - 2.2 - Registro
+        - 2.3 - Torneira PNE
+      - 6 - Banheiro feminino
+        - 6.3 - Substituição de torneira
+        - 6.4 - Substituição de sifão
+      - 7 - Copa
+        - 7.1 - Pintura acrílica
+          - - Detalhes
+        - 7.2 - Revestimento
+          - - Detalhes
+        - 7.5 - Ponto elétrico
+      - 8 - Acesso segundo piso
+        - - Vista ampla
+        - 8.1 - Pintura acrílica
+        - 8.2 - Pintura esmalte metal
+          - - Detalhes
+        - 8.3 - Fita de piso
+          - - Detalhes
+      - 9 - Suporte
+        - - Vista ampla
+        - 9.1 - Pintura acrílica
+          - - Detalhes
+        - 9.2 - Pintura esmalte em porta
+          - - Detalhes
+        - 9.3 - Adição de ponto elétrico
+        - 9.4 - Ponto elétrico
+        - 9.5 - Ajuste de luminária
+  - 18 - JOAIMA 2217.00 - Enviado
+    - - Segundo piso
+      - 1 - Atendimento
+        - 1.2 - Pintura esmalte em porta
+          - - Detalhes
+        - 1.3 - Substituição de carpete
+          - - Detalhes
+      - 2 - Sala de reunião
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+    - - Área externa
+      - - Vista ampla
+      - 2 - Pintura de piso
+        - - Detalhes
+      - 3 - Pintura automotiva
+        - - Detalhes
+      - 4 - Telhado
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+        - 1.3 -  Pintura automotiva
+          - - Detalhes
+        - 1.4 - Fita de piso
+          - - Detalhes
+        - 1.5 - Piso tátil
+        - 1.6 - Lente de carenagem
+        - 1.7 - Piso porcelanato
+          - - Detalhes
+      - 2 - Atendimento
+        - - Vista ampla
+        - 2.1 - Substituição de luminárias
+        - 2.2 - Substituição de lâmpadas
+      - 3 - Banheiro feminino PNE
+        - 3.1 - Pintura acrílica
+        - 3.2 - Pintura esmalte em porta
+          - - Detalhes
+        - 3.3 - Torneira PNE
+      - 5 - Sala de arquivo
+        - 5.1 - Pintura acrílica
+          - - Detalhes
+        - 5.2 - Pintura esmalte em porta
+          - - Detalhes
+      - 6 - Sala de apoio operacional
+        - 6.1 - Substituição de lâmpadas
+      - 7 - Tesouraria
+        - - Vista ampla
+        - 7.1 - Fechadura eletromagnética
+        - 7.2 - Substituição de lâmpadas
+      - 8 - Sala online
+        - - Vista ampla
+      - 9 - CAIEX
+        - 9.1 - Ajuste de piso elevado
+  - 2 - CHAPADA DOS GUIMARAES 1772.00 - Enviado
+    - - Área externa
+      - 1 - Pintura acrílica
+        - - Detalhes
+      - 2 - Pintura automotiva
+        - - Detalhes
+      - 3 - Pintura de piso
+        - - Detalhes
+      - 4 - Pintura esmalte metal
+        - - Detalhes
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+        - 1.2 - Piso tátil
+          - - Detalhes
+      - 2 - Atendimento
+        - - Vista ampla
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+        - 2.2 - Pintura esmalte em porta
+  - 3 - COTRIGUAÇU 8231.00 - Devolvida
+    - - Envio portal
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - Vista ampla
+      - 2 - Atendimento
+        - - Vista ampla
+      - 3 - Banheiro
+        - - Vista ampla
+  - 4 -  SÃO JOSÉ DO BARREIRO 6680.00 - Complemento Enviado
+    - - Área interna
+      - 1 - Substituição de carpete
+        - - Detalhes
+  - 5 - TRÊS CORAÇÕES 0012.00 - Enviado
+    - - Envio portal
+    - - Segundo piso
+      - 1 - Copa
+        - - Vista ampla
+      - 2 - Suporte
+        - - Vista ampla
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+      - 3 - Sala online
+        - - Vista ampla
+    - - Área externa
+      - 1 - Estacionamento
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+        - 1.2 - Pintura automotiva
+          - - Detalhes
+      - 2 - Atendimento
+        - - Vista ampla
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+        - 2.2 - Substituição de carpete
+          - - Detalhes
+        - 2.3 - Manutenção pontos elétricos e lógicos
+      - 3 - Corredor de acesso a sala online
+        - 3.1 - Pintura acrílica
+          - - Detalhes
+      - 4 - Corredor de acesso ao abastecimento
+        - 4.1 - Pintura acrílica
+          - - Detalhes
+      - 5 - Corredor de abastecimento
+        - 5.1 - Pintura acrílica
+          - - Detalhes
+      - 6 - Corredor de acesso a copa
+        - 6.1 - Pintura acrílica
+          - - Detalhes
+      - 7 - Acesso ao segundo piso
+        - 7.1 - Pintura acrílica
+          - - Detalhes
+  - 6 - EMPRESA SINOP 4270.00 - Enviado
+    - - Envio portal
+    - - Área interna
+      - 1 - Atendimento expresso
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+      - 2 - Sala de reunião
+        - - Vista ampla
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+      - 3 - Copa
+        - 3.1 - Substituição de revestimento do piso
+          - - Detalhes
+        - 3.2 - Fixação de persiana
+          - - Detalhes
+      - 4 - Sala de apoio administrativo
+        - 4.1 - Pintura acrílica
+          - - Detalhes
+  - 7 - UNAI 0508.00 - Enviado
+    - - Envio Portal
+    - - Área externa
+      - - Vista ampla
+      - 1 - Pintura acrílica
+        - - Detalhes
+      - 2 - Pintura esmalte em porta
+        - - Detalhes
+      - 3 - Pintura esmalte metal
+        - - Detalhes
+      - 4 - Letreiro
+        - - Detalhes
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+        - 1.2 - Pintura automotiva
+          - - Detalhes
+        - 1.3 - Piso tátil de inox
+          - - Detalhes
+      - 2 - Atendimento
+        - - Vista ampla
+        - 2.1 - Biombo
+          - - Detalhes
+      - 3 - CAIEX
+        - - Vista ampla
+        - 3.1 - Pintura acrílica
+        - 3.2 - Pintura esmalte metal
+          - - Detalhes
+        - 3.3 - Acrílico
+      - 4 - Suporte
+        - - Vista ampla
+        - 4.1 - Ajuste de persiana
+        - 4.2 - Ponto lógico
+      - 5 - Cozinha
+        - - Vista ampla
+        - 5.1 - Ponto elétrico
+  - 8 - MINAS NOVAS 1097.00 - Enviado
+    - - Área interna
+      - 3 - CAIEX
+        - - Pintura esmalte em porta
+        - - Retirada de luminárias
+        - - Substituição de fechadura
+        - - Vista ampla
+      - 4 - Sala do gerente
+        - - Persianas
+          - - Detalhes
+      - 5 - Sala de reunião
+        - - Vista ampla
+        - 5.1 - Pintura acrílica
+        - 5.2 - Pintura esmalte em porta
+          - - Detalhes
+  - 9 - PORTO DOS GAÚCHOS - 1116.00 - Enviado
+    - - Envio portal
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - Vista ampla
+        - 1.1 - Forro de fibra mineral
+          - - Detalhes
+        - 1.2 - Piso tátil
+        - 1.3 - Ajuste de carenagem
+        - 1.4 - Mola de piso
+        - 1.5 - Fechadura
+          - - Detalhes
+      - 10 - QVT
+        - - Vista ampla
+        - 10.1 - Pintura acrílica
+          - - Detalhes
+        - 10.2 - Forro
+          - - Detalhes
+      - 2 - Atendimento
+        - - Vista ampla
+        - 2.1 - Forro de fibra mineral
+        - 2.2 - Rodapé
+      - 3 - CAIEX
+        - - Vista ampla
+        - 3.1 - Forro de fibra mineral
+          - - Detalhes
+        - 3.2 - Rodepé de granito
+          - - Detalhes
+      - 5 - Banheiro feminino
+        - - Vista ampla
+        - 5.1 - Desentupimento de ralo
+        - 5.2 - Correção de vazamento
+          - - Detalhes
+      - 6 - DML
+        - - Vista ampla
+        - 6.1 - Desentupimento de ralo
+          - - Detalhes
+      - 7 - Copa
+        - 7.1 - Desentupimento de ralo
+        - 7.2 - Fixação de pia
+      - 8 - Corredor interno
+        - - Vista ampla
+        - 8.1 - Forro de fibra mineral
+          - - Detalhes
+        - 8.2 - Piso porcelanato
+      - 9 - Suporte
+        - - Vista ampla
+        - 9.1 - Forro de fibra mineral
+- 6 - Recebido - Agosto
+  - 1 - POA 2466.00 - Enviado
+    - - Envio Portal
+    - - Segundo piso
+      - 1 - Atendimento
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+        - 1.2 - Substituição de carpete
+      - 2 - Suporte
+        - - Vista ampla
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+      - 3 - Sala de reunião
+        - - Vista ampla
+        - 3.1 - Pintura acrílica
+          - - Detalhes
+      - 4 - Sala online
+        - - Vista ampla
+        - 4.1 - Pintura acrílica
+          - - Detalhes
+    - - Área externa
+      - - Vista ampla
+      - 1 - Pintura acrílica
+        - - Detalhes
+      - 2 - Pintura esmalte metal
+        - - Detalhes
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+        - 1.2 - Piso tátil
+          - - Detalhes
+      - 2 - Atendimento
+        - - Vista ampla
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+        - 2.2 - Substituição de carpete
+      - 3 - CAIEX
+        - - Vista ampla
+        - 3.1 - Pintura acrílica
+          - - Detalhes
+      - 4 - Acesso ao segundo piso
+        - - Vista ampla
+        - 4.1 - Pintura acrílica
+          - - Detalhes
+  - 2 - PERDÕES 2433.00 - Enviado
+    - - Envio Portal
+    - - Área externa
+      - 1 - Pintura acrílica
+        - - Detalhes
+      - 2 - Telhado
+        - - Vista ampla
+        - 2.1 - Substituição de telhas
+        - 2.2 - Manta aluminizada
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+        - 1.2 - Forro
+        - 1.3 - Puxador
+        - 1.4 - Substituição de lâmpadas
+      - 2 - Atendimento
+        - - Vista ampla
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+        - 2.2 - Piso e carpete
+        - 2.3 - Substituição de lâmpadas
+      - 3 - Sala de reunião
+        - - Vista ampla
+        - 3.1 - Pintura acrílica
+          - - Detalhes
+      - 4 - Corredor interno
+        - 4.1 - Pintura acrílica
+          - - Detalhes
+        - 4.2 - Pintura esmalte em porta
+      - 5 - Suporte
+        - - Vista ampla
+        - 5.1 - Pintura acrílica
+          - - Detalhes
+        - 5.2 - Pintura esmalte em porta
+      - 6 - Área restrita
+        - - Vista ampla
+        - 6.1 - Pintura acrílica
+          - - Detalhes
+        - 6.2 - Substituição de lâmpada
+      - 7 - CAIEX
+        - 7.1 - Pintura acrílica
+          - - Detalhes
+        - 7.2 - Ajuste de piso elevado
+          - - Detalhes
+      - 8 - Corredor de abastecimento
+        - 8.1 - Pintura acrílica
+          - - Detalhes
+        - 8.2 - Substituição de lâmpadas
+      - 9 - Sala telefonista
+        - 9.1 - Pintura acrílica
+          - - Detalhes
+  - 3 - FRANCISCO BADARO 4126.00 - Enviado
+    - - Envio portal
+    - - Área externa
+      - - Vista ampla
+      - 1 - Pintura acrílica
+        - - Detalhes
+      - 2 - Pintura automotiva
+        - - Detalhes
+      - 3 - Pintura esmalte metal
+        - - Detalhes
+      - 4 - Substituição de lâmpadas
+      - 5 - Adesivo
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+        - 1.2 - Pintura automotiva
+          - - Detalhes
+        - 1.3 - Piso tátil
+        - 1.4 - Fita de piso
+      - 2 - Atendimento
+        - - Vista ampla
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+        - 2.2 - Pintura esmalte em porta
+      - 3 - Corredor de acesso
+        - - Vista ampla
+        - 3.1 - Pintura acrílica
+          - - Detalhes
+        - 3.2 - Pintura esmalte em porta
+          - - Detalhes
+        - 3.3 - Ponto lógico
+        - 3.4 - Substituição de lâmpadas
+        - 3.5 - Substituição de fechadura
+      - 4 - Banheiro
+      - 5 - Corredor de abastecimento
+        - - Vista ampla
+        - 5.1 - Pintura acrílica
+      - 6 - Sala online
+        - 6.1 - Ponto lógico
+  - 5 - MONTALVÂNIA 8202.00 - Aguardando correção
+    - - Envio portal
+    - - Área externa
+      - - Lateral da agência
+      - - Pictograma
+      - - Pintura automotiva
+        - - Detalhes
+      - - Puxador
+      - - Telhado
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+      - 2 - Atendimento
+        - - Mola de piso
+        - - Piso tatil
+        - - Vista ampla
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+      - 3 -  Banheiro PNE
+        - - Vista ampla
+      - 4 - Sala interna
+        - - Vista ampla
+        - 4.1 - Pintura acrílica
+          - - Detalhes
+      - instruções
+- 7 - Recebido - Setembro
+  - 1 - ITACARAMBI 2149.00 - Enviado
+    - - Envio Portal
+    - - Área externa
+      - - Vista ampla
+      - 1 - Pintura acrílica
+        - - Detalhes
+      - 2 - Marquise
+        - - Detalhes
+      - 3 - Pintura esmalte metal
+        - - Detalhes
+      - 4 - Pictograma
+      - 5 - Sala de máquinas
+      - 6 - Telhado
+        - - Vista ampla
+        - 6.1 - Impermeabilização de laje
+          - - Detalhes
+      - 7 - SPDA
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - Vista ampla
+        - 1.1 - Piso tátil
+          - - Detalhes
+        - 1.2 - Fita de piso
+          - - Detalhes
+        - 1.3 - Ponto elétrico
+      - 2 - Atendimento
+        - - Vista ampla
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+        - 2.2 - Forro
+          - - Detalhes
+      - 3 - CAIEX
+        - - Vista ampla
+        - 3.1 - Pintura acrílica
+          - - Detalhes
+        - 3.2 - Forro
+          - - Detalhes
+        - 3.3 - Piso elevado
+        - 3.4 - Placa áerea
+      - 4 - Corredor interno
+        - - Vista ampla
+        - 4.1 - Pintura acrílica
+          - - Detalhes
+      - 5 - Banheiro masculino
+        - - Vista ampla
+        - 5.1 - Pintura esmalte em porta
+          - - Detalhes
+      - 6 - Banheiro feminino
+        - - Vista ampla
+        - 6.1 - Pintura esmalte em porta
+          - - Detalhes
+      - 7 - DML
+        - - Vista ampla
+        - 7.1 - Pintura esmalte em porta
+          - - Detalhes
+      - 8 - Suporte e Arquivo
+        - - Vista ampla
+        - 8.1 - Ponto elétrico
+      - 9 - Sala online
+        - - Vista ampla
+  - 1 - SÃO FELIX DO ARAGUAIA 1135 - Enviado
+    - - Envio Portal
+    - - Área externa
+      - - Vista ampla
+      - 1 - Pintura acrílica
+        - - Detalhes
+      - 10 - Retirada de tubulação e fiação
+        - - Detalhes
+      - 2 - Pintura de piso
+        - - Detalhes
+      - 3 - Pintura automotiva
+        - - Detalhes
+      - 4 - Pintura esmalte metal
+        - - Detalhes
+      - 5 - Recuperação de meio fio
+        - - Detalhes
+      - 6 - Correção de vazamento
+      - 7 - Tampa de ferro
+      - 8 - Marquise
+        - - Detalhes
+      - 9 - Telhado
+        - - Vista ampla
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+        - 1.2 - Pintura automotiva
+          - - Detalhes
+        - 1.3 - Mola de piso
+        - 1.4 - Forro
+          - - Detalhes
+        - 1.5 - Manutenção controle de acesso
+        - 1.6 - Fechadura eletromagnética
+        - 1.7 - Fita de piso
+          - - Detalhes
+        - 1.8 - Manutenção em carenagem
+      - 10 - Banheiro masculino
+        - 10.1 - Substituição de torneira
+        - 10.2 - Substituição de válvula
+          - - Detalhes
+      - 2 - Atendimento
+        - - Vista ampla
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+        - 2.2 - Pintura esmalte em porta
+          - - Detalhes
+        - 2.3 - Forro
+          - - Pintura de forro
+            - - Detalhes
+          - - Recomposição de forro
+        - 2.4 - Substituição de lâmpadas
+        - 2.5 - Adesivo
+      - 3 - Tesouraria
+        - - Manutenção controle de acesso
+      - 4 - Sala online
+        - 4.1 - Manutenção de controle de acesso
+      - 5 - Sala de reunião
+        - 5.1 - Pintura acrílica
+          - - Detalhes
+        - 5.2 - Piso de cerâmica
+          - - Detalhes
+        - 5.3 - Forro
+          - - Detalhes
+      - 6 - Sala de arquivos
+        - 6.1 - Substituição de lâmpadas
+      - 7 - Corredor de acesso
+        - 7.1 - Substituição de lâmpadas
+        - 7.2 - Tampa cega
+      - 8 - Almoxarifado
+        - 8.1 - Forro
+          - - Detalhes
+        - 8.2 - Substituição de lâmpadas
+      - 9 - Banheiro feminino
+        - 9.1 - Substituição de torneira
+  - 1 - VIRGINOPOLIS 2780 -  Enviado
+    - - Envio portal
+    - - Área externa
+      - 1 - Pintura acrílica
+        - - Detalhes
+      - 2 - Pintura automotiva
+        - - Detalhes
+      - 3 - Substituição de película e policarbonato
+        - - Detalhes
+      - 4 - Substituição de lâmpadas
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+        - 1.2 - Pintura automotiva
+          - - Detalhes
+        - 1.3 - Mola de piso
+        - 1.4 - Piso tátil
+          - - Detalhes
+        - 1.5 - Substituição de fechadura
+        - 1.6 - Substituição de lâmpadas
+      - 10 - Tesouraria
+        - - Vista ampla
+        - 10.1 - Controle de acesso
+      - 11 - Sala de máquinas
+        - - Vista ampla
+      - 12 - Corredor de abastecimento
+        - - Vista ampla
+        - 12.1 - Pintura acrílica
+          - - Detalhes
+      - 2 - Atendimento
+        - - Vista ampla
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+        - 2.2 - Ponto lógico e elétrico
+        - 2.3 - Piso tatil
+          - - Detalhes
+      - 3 - Sala do gerente
+        - - Vista ampla
+        - 3.1 - Pintura acrílica
+          - - Detalhes
+        - 3.2 - Ponto lógico e elétrico
+      - 4 - CAIEX
+        - - Vista ampla
+        - 4.1 - Ajuste de piso elevado
+          - - Detalhes
+        - 4.2 - Ponto elétrico e lógico
+        - 4.3 - Ajuste de mobiliário
+        - 4.4 - Substituição de fechadura
+      - 5 - Acesso restrito
+        - - Vista ampla
+        - 5.1 - Pintura acrílica
+          - - Detalhes
+        - 5.2 - Pintura esmalte em porta
+          - - Detalhes
+        - 5.3 - Quadro elétrico
+      - 6 - Copa
+        - - Vista ampla
+        - 6.1 - Ponto elétrico
+        - 6.2 - Substituição de torneira
+        - 6.3 - Ajuste de dobradiça
+      - 7 - Banheiro masculino
+        - - Vista ampla
+        - 7.1 - Substituição de torneira
+          - - Detalhes
+        - 7.2 - Ducha higiênica
+        - 7.3 - Espelho
+          - - Detalhes
+      - 8 - Banheiro feminino
+        - - Vista ampla
+        - 8.1 - Ponto elétrico
+        - 8.2 - Alarme
+        - 8.3 - Ducha higiênica
+        - 8.4 - Sifão
+      - 9 - Sala online
+        - - Vista ampla
+  - 1 DENISE 3669 - 3575 - AGUARDANDO CORREÇÃO
+    - - ENVIO PORTAL
+    - - Área externa
+      - - Vista ampla
+      - 1 - Pintura acrílica
+        - - Detalhes
+      - 2 - Pintura de piso
+        - - Detalhes
+      - 3 - Pintura automotiva
+      - 4 - Pintura esmalte metal
+        - - Detalhes
+      - 5 - Substituição de película e policarbonato
+        - - Detalhes
+      - 6 - Telhado
+        - - Vista ampla
+        - - Vista sobre forro
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+        - 1.2 - Forro de fibra mineral
+      - 10 - Sala telefonista
+        - 10.1 - Pintura esmalte em porta
+        - 10.2 - Forro de fibra mineral
+        - 10.3 - Substituição de lâmpadas
+      - 11 - Corredor de abastecimento
+        - - Vista ampla
+      - 2 - Atendimento
+        - - Vista ampla
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+        - 2.2- Forro de fibra mineral
+        - 2.3 - Piso tatil
+      - 3 - Corredor de acesso a copa
+        - - Vista ampla
+        - 3.1 - Pintura acrílica
+          - - Detalhes
+        - 3.2 - Forro de fibra mineral
+      - 4 - Corredor de acesso aos banheiros
+        - 4.1 - Pintura acrílica
+          - - Detalhes
+      - 5 - Banheiro PNE
+        - - Vista ampla
+        - 5.1 - Pintura esmalte em porta
+      - 6 - Banheiro feminino
+        - - Vista ampla
+        - 6.1 - Pintura esmalte em porta
+        - 6.2 - Forro de fibra mineral
+        - 6.3 - Substituição de sifão
+      - 7 - Banheiro masculino
+        - - Vista ampla
+        - 7.1 - Pintura esmalte em porta
+        - 7.2 - Forro de fibra mineral
+        - 7.3 - Substituição de ralo
+        - 7.4 - Subtituição de sifão
+      - 8 - Arquivo
+        - - Vista ampla
+        - 8.1 - Pintura esmalte em porta
+      - 9 - Suporte
+        - - Vista ampla
+        - 9.1 - Pintura esmalte em porta
+  - 2 - BRASÍLIA DE MINAS  0902 - Enviado
+    - - Envio Portal
+    - - Segundo piso
+      - 1 - Atendimento
+        - - Vista ampla
+        - 1.1 - Carpete
+          - - Detalhes
+        - 1.2 - Ponto elétrico e lógico
+        - 1.3 - Porta
+          - - Detalhes
+        - 1.4 - Lâmpadas
+      - 2 - Ar condicionado
+        - - Vista ampla
+      - 3 - Banheiro masculino
+        - - Vista ampla
+        - 3.1 - Forro
+          - - Detalhes
+        - 3.2 - Dispenser de sabão
+      - 4 - Banheiro feminino
+        - - Vista ampla
+        - 4.1 - Correção de vazamento
+        - 4.2 - Dispenser de  papel higiênico
+    - - Área externa
+      - - Vista ampla
+      - 1 - Pintura acrílica
+        - - Detalhes
+      - 2 - Pintura automotiva
+        - - Detalhes
+      - 3 - Pintura esmalte metal
+        - - Detalhes
+      - 4 - Pictograma
+      - 5 - Telhado
+        - - Vista ampla
+      - 6 - SPDA
+        - - Vista ampla
+      - 7 - Laje cobertura
+        - 7.1 - Impermeabilização
+          - - Detalhes
+      - 8 - Calha
+        - 8.1 - Impermeabilização
+          - - Detalhes
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+        - 1.2 - Piso tátil
+        - 1.3 - Mola de piso
+          - - Detalhes
+        - 1.4 - Ferragens
+        - 1.5 - Fita de piso
+        - 1.6 - Lâmpadas
+        - 1.7 - Adesivo
+          - - Detalhes
+      - 10 - Sala de múltiplo uso
+        - - Vista ampla
+      - 11 - Sala telefonista
+        - - Vista ampla
+      - 12 - DML
+        - - Vista ampla
+      - 13 - Arquivo
+        - - Vista ampla
+      - 14 - Banheiro masculino
+        - - Vista ampla
+        - 14.1 - Forro
+          - - Detalhes
+        - 14.2 - Dispenser de sabão
+        - 14.3 - Assento sanitário
+          - - Detalhes
+        - 14.4 - Registro
+          - - Detalhes
+      - 15 - Banheiro feminino
+        - - Vista ampla
+        - 15.1 - Revestimento de parede
+        - 15.2 - Dispenser de papel higiênico
+      - 16 - Banheiro PNE
+        - - Vista ampla
+        - 16.1 - Forro
+          - - Detalhes
+        - 16.2 - Torneira
+        - 16.3 - Válvula de descarga
+      - 2 - Atendimento
+        - - Vista ampla
+        - 2.1 - Piso tátil
+          - - Detalhes
+        - 2.2 - Lâmpadas
+      - 3 - CAIEX
+        - - Vista ampla
+        - 3.1 - Pintura acrílica
+          - - Detalhes
+        - 3.2 - Ajuste de piso elevado
+          - - Detalhes
+      - 4 - Sala online
+      - 5 - Corredor de abastecimento
+        - - Vista ampla
+      - 6 - Corredor interno
+        - - Vista ampla
+      - 7 - Escada interna
+        - - Vista ampla
+        - 7.1 - Correção de vazamento
+          - - Detalhes
+          - - Vista sobre forro
+      - 8 - Corredor de acesso á copa
+        - - Vista ampla
+      - 9 - Copa
+        - - Vista ampla
+  - 2 - SANTA MARIA DO SUACUI 0489  - Enviado
+    - - Envio portal
+    - - Segundo piso
+      - 1 - Atendimento
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+      - 2 - Sala de reunião
+        - - Vista ampla
+      - 3 - Suporte
+        - - Vista ampla
+      - 4 - Banheiro feminino
+        - - Acabamento de válvula
+        - - Pintura esmalte em porta
+        - - Vista ampla
+      - 5 - Banheiro masculino
+        - - Desentupimento de mictório
+        - - Forro
+          - - Detalhes
+        - - Vista ampla
+      - 6 - CAIEX
+        - - Vista ampla
+        - 6.1 - Ajuste de piso elevado
+          - - Detalhes
+      - 7 - Sala de máquinas
+        - - Vista ampla
+      - 8 - Sala online
+        - - Vista ampla
+        - Nova pasta
+    - - Área externa
+      - - Vista ampla
+      - 1 - Pintura acrílica
+        - - Detalhes
+      - 2 - Pintura esmalte metal
+        - - Detalhes
+      - 3 - Pictograma
+      - 4 - Laterais e fundos
+        - - Vista ampla
+        - 4.1 - Substituição de lâmpadas
+      - 5 - Sala de maquinas
+      - 6 - Dreno do ar condicionado
+      - 7 - Placa de sinalização
+      - 8 - SPDA
+      - 9 - Telhado
+        - - Vista ampla
+        - 9.1 - Substituição de telhas
+          - - Danos internos
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+          - - Detlhes
+        - 1.10 - Piso tátil
+        - 1.11 - Substituição de lâmpadas
+        - 1.2 - Pintura de forro
+          - - Detalhes
+        - 1.3 - Substituição de rodapé
+        - 1.4 - Substituição de grafema
+          - - Detalhes
+        - 1.5 - Adesivo
+          - - Detalhes
+        - 1.6 - Luminária de emergência
+          - - Detalhes
+        - 1.7 - Ponto elétrico
+          - - Detalhes
+        - 1.8 - Mola de piso
+        - 1.9 - Reparo de carenagem
+          - - Detalhes
+      - 10 - Corredor de abastecimento
+        - - Vista ampla
+        - 10 .1 - Ponto lógico e elétrico
+        - 10.2 - Substituição de lâmpadas
+      - 2 - Corredor interno
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+        - 2.2 - Pintura esmalte em porta
+          - - Detalhes
+      - 3 - Escadas de acesso
+        - - Vista ampla
+        - 3.1 - Pintura acrílica
+          - - Detalhes
+      - 4 - Tesouraria
+        - - Vista ampla
+        - 4.1 - Pintura acrílica
+        - 4.2 - Fechamento em alvenaria
+      - 5 - Sala de vigilantes
+        - - Vista ampla
+        - 5.1 - Pintura acrílica
+          - - Detalhes
+      - 6 - DML
+        - - Vista ampla
+      - 7 - Copa
+        - - Vista ampla
+      - 8 - Banheiro masculino
+        - - Vista ampla
+        - 8.1 - Pintura esmalte em porta
+          - - Detalhes
+        - 8.2 - Válvula de descarga
+        - 8.3 - Registro
+      - 9 - Banheiro feminino
+        - - Vista ampla
+        - 9.1 - Placa de sinalização
+  - 3 -  ITANHOMI 1077 - Enviado
+    - - Envio portal
+    - - Área externa
+      - - Vista ampla
+      - 1 - Pintura acrílica
+        - - Detalhes
+      - 10 - Espelho
+      - 2 - Pintura de piso
+        - - Detalhes
+      - 3 - Pintura esmalte metal
+        - - Detalhes
+      - 4 - Película e policarbonato
+        - - Detalhes
+      - 5 - Pintura automotiva
+        - - Detalhes
+      - 6 - Concretagem
+        - - Detalhes
+      - 7 - Grafema
+        - - Detalhes
+      - 8 - Lâmpadas
+        - - Detalhes
+      - 9 - Torneira
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+        - 1.2 - Pintura automotiva
+          - - Detalhes
+        - 1.3 - Forro de fibra mineral
+        - 1.4 - Mola de piso e ferragens
+        - 1.5 - Fita de piso
+          - - Detalhes
+        - 1.6 - Ponto elétrico
+        - 1.7 - Ponto lógico
+        - 1.8 - Luminária de emergência
+      - 10 - Banheiro feminino
+        - - Vista ampla
+        - 10.1 - Forro
+          - - Detalhes
+        - 10.2 - Ponto elétrico
+      - 11 - Copa
+        - - Vista ampla
+      - 12 - Corredor interno
+        - - Vista ampla
+        - 12.1 - Pintura acrílica
+          - - Detalhes
+        - 12.2 - Tampa cega
+      - 13 - Sala online
+        - - Vista ampla
+        - 13.1 - Pintura acrílica
+          - - Detalhes
+        - 13.2 - Ajuste de piso elevado
+          - - Detalhes
+        - 13.3 - Quadro de comando
+        - 13.4 - Controle de acesso
+        - 13.5 - Tampa cega
+      - 14 - Banheiro vigilantes
+        - - Vista ampla
+        - 14.1 - Registro e válvula
+        - 14.2 - Sifão
+        - 14.3 - Torneira automática
+      - 15 - Tesouraria
+        - - Vista ampla
+      - 16 - Acesso ao telhado
+        - - Fechadura
+        - - Vista ampla
+      - 17 - Reservatório
+        - - Detalhes
+      - 2 - Atendimento
+        - - Vista ampla
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+        - 2.2 - Pintura esmalte em porta
+          - - Detalhes
+        - 2.3 - Pintura esmalte metal
+          - - Detalhes
+        - 2.4 - Ponto elétrico e lógico
+        - 2.5 - Quadro de comando
+        - 2.6 - Ajuste de carenagem
+        - 2.7 - Tampa cega
+      - 3 - Suporte
+        - - Vista ampla
+        - 3.1 - Pintura acrílica
+          - - Detalhes
+        - 3.2 - Pintura esmalte em porta
+          - - Detalhes
+        - 3.3 - Ponto elétrico
+        - 3.4 - Luminária de emergência
+      - 4 - Sala do gerente
+        - - Vista ampla
+        - 4.1 - Pintura acrílica
+          - - Detalhes
+        - 4.2 - Ponto elétrico
+      - 5 - Sala de máquinas
+        - - Vista ampla
+        - 5.1 - Pintura esmalte em porta
+          - - Detalhes
+        - 5.2 - Forro de fibra mineral
+          - - Detalhes
+        - 5.3 - Quadro de comando
+        - 5.4 - Fechadura
+        - 5.5 - Fechadura tubular
+        - 5.6 - Puxador
+        - 5.7 - Torneira
+      - 6 - CAIEX
+        - - Vista ampla
+        - 6.1 - Pintura acrílica
+          - - Detalhes
+        - 6.2 - Ajuste de piso elevado
+          - - Detalhes
+        - 6.3 - Ponto elétrico
+      - 7 - Corredor de acesso aos banheiros
+        - - Vista ampla
+        - 7.1 - Pintura acrílica
+          - - Detalhes
+        - 7.2 - Pintura esmalte em porta
+          - - Detalhes
+        - 7.3 - Alarme
+      - 8 - Banheiro PNE
+        - - Vista ampla
+        - 8.1 - Forro
+          - - Detalhes
+        - 8.2 - Válvula montana
+        - 8.3 - Torneira automática
+        - 8.4 - Alarme
+      - 9 - Banheiro masculino
+        - - Vista ampla
+        - 9.1 - Pintura acrílica
+          - - Detalhes
+        - 9.2 - Forro
+          - - Detalhes
+        - 9.3 - Lâmpadas
+        - 9.4 - Assento sanitário
+          - - Detalhes
+        - 9.5 - Ajuste de mobiliário
+  - 4 - CARAI 1742 - Enviado
+    - - Envio portal
+    - - Área externa
+      - 1 - Pintura acrílica
+        - - Detalhes
+      - 2 - Pintura de piso
+        - - Detalhes
+      - 3 - Pintura automotiva
+        - - Detalhes
+      - 4 - Pintura esmalte metal
+        - - Detalhes
+      - 5 - Película e policarbonato
+        - - Detalhes
+      - 6 - Lâmpadas
+      - 7 - Pictograma
+      - 8 - Letreiro
+      - 9 - A agência não possui telhado próprio
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+        - 1.2 - Pintura automotiva
+          - - Detalhes
+        - 1.3 - Piso tátil
+          - - Detalhes
+        - 1.4 - Fita de piso
+          - - Detalhes
+        - 1.5 - Lâmpadas de TAA
+          - - Detalhes
+      - 10 - Tesouraria
+        - - Vista ampla
+        - 10.1 - Pintura acrílica
+          - - Detalhes
+      - 11 - Corredor de abastecimento
+        - - Vista ampla
+        - 11.1 - Pintura acrílica
+          - - Detalhes
+      - 12 - Sala online o Gerente dispensou serviços
+      - 2 - Atendimento
+        - - Vista ampla
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+        - 2.2 - Pintura esmalte em porta
+          - - Detalhes
+        - 2.3 - Ponto lógico e elétrico
+        - 2.4 - Lâmpadas
+      - 3 - CAIEX
+        - - Vista ampla
+        - 3.1 - Pintura acrílica
+          - - Detalhes
+        - 3.2 - Pintura esmalte em porta
+          - - Detalhes
+        - 3.3 - Ajuste de piso elevado
+          - - Detalhes
+        - 3.4 - Ajuste de mobiliário
+        - 3.5 - Ponto lógico e elétrico
+      - 4 - Área restrita
+        - - Lâmpadas
+        - - Vista ampla
+        - 4.1 - Pintura acrílica
+          - - Detalhes
+        - 4.2 - Pintura esmalte em portas
+          - - Detalhes
+        - 4.3 - Fechadura
+      - 5 - QVT
+        - - Vista ampla
+      - 6 - Banheiro masculino
+        - - Vista ampla
+        - 6.1 - Alarme de emergência
+        - 6.2 - Tampa cega
+        - 6.3 - Ducha higiênica
+      - 7 - Banheiro feminino
+        - - Vista ampla
+      - 8 - Copa
+        - - Vista ampla
+        - 8.1 - Dobradiças
+        - 8.2 - Torneira
+      - 9 - Sala de máquinas
+        - - Vista ampla
+        - 9.1 - Pintura esmalte em porta
+          - - Detalhes
+        - 9.2 - Alarme de emergência
+  - 4 - COMERCINHO 1782 - Enviado
+    - - Envio portal
+    - - Área externa
+      - - Vista ampla
+      - 1 - Pintura acrílica
+        - - Detalhes
+      - 2 - Pintura automotiva
+        - - Detalhes
+      - 3 - Pintura esmalte metal
+        - - Detalhes
+      - 4 - Fita antiderrapante
+        - - Detalhes
+      - 5 - Telhado
+        - - Vista ampla
+        - 5.1 - Pintura acrílica
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+        - 1.2 - Pintura automotiva
+          - - Detalhes
+        - 1.3 - Piso porcelanato
+      - 2 - Atendimento
+        - - Vista ampla
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+        - 2.2 - Pintura esmalte em porta
+          - - Detalhes
+        - 2.2 - Piso porcelanato
+      - 3 - Suporte
+        - 3.1 - Pintura acrílica
+          - - Detalhes
+        - 3.2 - Pintura esmalte em porta
+          - - Detalhes
+      - 4 - Banheiro PNE
+        - 4.1 - Pintura esmalte em porta
+          - - Detalhes
+        - 4.2 - Sensor de presença
+        - 4.3 - Ponto elétrico
+      - 5 - Corredor de abastecimento
+        - 5.1 - Pintura acrílica
+          - - Detalhes
+      - 6 - Tesouraria
+        - 6.1 - Pintura acrílica
+      - 7 - Sala online
+        - 7.1 - Pintura acrílica
+      - 8 - CAIEX
+        - 8.1 - Ajuste de piso elevado
+          - - Detalhes
+        - 8.2 - Ajuste de carenagem
+  - 4 - MALACACHETA 5996 - Enviado
+    - - Envio Portal
+    - - Área externa
+      - - Vista ampla
+      - 1 - Pintura acrílica
+        - - Detalhes
+      - 2 - Pintura de piso
+      - 3 - Pintura esmalte metal
+      - 4 - Pintura automotiva
+      - 5 - Substituição de película e policarbonato
+      - 6 - Puxador
+      - 7 - Telhado
+        - - Vista ampla
+      - 8 - Não tem SPDA
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+        - 1.2 - Fita de piso
+        - 1.3 - Piso tátil
+        - 1.4 - Substituição de lâmpadas
+      - 10 - Banheiro feminino
+        - - Vista ampla
+        - 10.1 - Ajuste de porta
+        - 10.2 - Saboneteira
+        - 10.3 - Dispenser de toalha de papel
+      - 11 - Sala de apoio operacional
+        - - Vista ampla
+        - 11.1 - Pintura acrílica
+          - - Detalhes
+      - 12 - Tesouraria
+        - - Vista ampla
+      - 13 - Corredor de abastecimento
+        - - Vista ampla
+        - 13.1 - Pintura acrílica
+          - - Detalhes
+        - 13.2 - Pintura de luminárias
+      - 14 - Sala online
+        - - Vista ampla
+        - 14.1 - Pintura acrílica
+          - - Detalhes
+      - 15 - Sala de máquinas
+        - - Vista ampla
+        - 15.1 - Pintura esmalte metal
+        - 15.2 - Quadro de comando
+        - 15.3 - Tampa cega
+      - 2 - Atendimento
+        - - Vista ampla
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+        - 2.2 - Piso tátil
+          - - Detalhes
+        - 2.3 - Ponto lógico
+      - 3 - CAIEX
+        - - Vista ampla
+        - 3.1 - Pintura esmalte em porta
+          - - Detalhes
+        - 3.2 - Ajuste de carenagem
+      - 4 - Sala de atendimento
+        - - Vista ampla
+        - 4.1 - Pintura acrílica
+          - - Detalhes
+      - 5 - Suporte
+        - - Vista ampla
+        - 5.1 - Pintura acrílica
+          - - Detalhes
+        - 5.2 - Fita de piso
+      - 6 - Corredor interno
+        - - Vista ampla
+        - 6.1 - Pintura acrílica
+          - - Detalhes
+        - 6.2 - Pintura esmalte em porta
+          - - Detalhes
+        - 6.3 - Pintura esmalte em porta
+        - 6.4 - Placas de sinalização
+      - 7 - Banheiro PNE
+        - - Alarme
+        - - Vista ampla
+      - 8 - Banheiro unissex
+        - - Vista ampla
+      - 9 - Banheiro masculino
+        - - Vista ampla
+        - 9.1 - Fechadura
+        - 9.2 - Válvula para mictório
+        - 9.3 - Saboneteira
+        - 9.4 - Dispenser de toalhas de papel
+  - 5 - ARAPUTANGA - Enviado
+    - - DANOS INTERNOS CALHAS
+    - - Envio portal
+    - - Área externa
+      - - Vista ampla
+      - 1 - Pintura de piso
+        - - Detalhes
+      - 2 - Pintura esmalte metal
+        - - Detalhes
+      - 3 - Fundo e corredor lateral
+        - - Vista ampla
+        - 3.1 - Pintura acrílica
+          - - Detalhes
+        - 3.2 - Pintura esmalte metal
+          - - Detalhes
+        - 3.3 - Torneira
+          - - Detalhes
+      - 4 - Telhado
+        - - Vista ampla
+        - 4.1 - Substituição de calhas (pt 1)
+          - - Detalhes
+        - 4.2 - Substituição de calhas (pt2)
+          - - Detalhes
+        - 4.3 - Substituição de calhas (pt3)
+          - - Detalhes
+        - 4.4 - Substituição de calhas (pt4)
+          - - Detalhes
+        - 4.5 - Correção de vazamento
+          - 1º lado pontos de agua fria
+            - - Vista térrea
+          - 2º lado ponto de água fria
+            - - Detalhes
+        - 4.6 - Aplicação de manta aluminizada em calha
+          - - Detalhes
+        - 4.7 - Aplicação de PU em calha
+          - - Detalhes
+        - 4.8 - Fixar telha
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+        - 1.2 - Forro
+          - - Detalhes
+        - 1.3 - Pintura automotiva
+          - - Detalhes
+        - 1.4 - Piso tátil
+        - 1.5 - Lâmpadas
+          - - Detalhes
+        - 1.6 - Ponto elétrico
+        - 1.7 - Fita de piso
+          - - Detalhes
+        - 1.8 - Capacho
+      - 2 - Atendimento
+        - - Vista ampla
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+        - 2.2 - Forro
+          - - Detalhes
+        - 2.3 - Pintura esmalte em porta
+          - - Detalhes
+        - 2.4 - Lâmpadas
+          - - Detalhes
+      - 3 - Corredor de acesso
+        - - Vista ampla
+        - 3.1 - Pintura acrílica
+          - - Detalhes
+        - 3.2 - Pintura esmalte em porta
+          - - Detalhes
+      - 4 - Sala de reunião
+        - - Vista ampla
+        - 4.1 - Pintura acrílica
+          - - Detalhes
+        - 4.2 - Forro
+          - - Detalhes
+        - 4.3 - Lâmpadas
+      - 5 - Suporte
+        - - Vista ampla
+        - 5.1 - Piso cerâmico
+          - - Detalhes
+        - 5.2 - Lâmpadas
+          - - Detalhes
+      - 6 - Banheiro PNE
+        - - Vista ampla
+        - 5.1 - Torneira automática
+        - 5.2 - Assento sanitário
+        - 5.3 - Tampa de ralo
+        - 5.4 - Barra de apoio
+      - 7 - Corredor da tesouraria
+        - - Vista ampla
+        - 7.1 - Pintura acrílica
+          - - Detalhes
+      - 8 - Corredor de abastecimento
+        - - Vista ampla
+        - 8.1 - Pintura acrílica
+          - - Detalhes
+        - 8.2 - Forro
+          - - Detalhes
+        - 8.3 - Ponto elétrico
+          - - Detalhes
+        - 8.4 - Ponto lógico
+      - 9 - Corredor de acesso ao cofre
+        - 9.1 - Forro
+          - - Detalhes
+  - 5 - NOVO CRUZEIRO 2360 - Enviado
+    - - Envio portal
+    - - Área externa
+      - - Vista ampla
+      - 1 - Pintura acrílica
+        - - Detalhes
+      - 2 - Pintura de piso
+      - 3 - Pintura esmalte metal
+        - - Detalhes
+      - 4 - Pintura automotiva
+      - 5 - Grafema
+        - - Detalhes
+      - 6 - Faixa adesiva
+      - 7 - Puxador
+      - 8 - Telhado
+        - - Vista ampla
+      - 9 - SPDA
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+        - 1.2 - Pintura automotiva
+          - - Detalhes
+        - 1.3 - Forro
+        - 1.4 - Fita de piso
+        - 1.5 - Lâmpadas
+        - 1.6 - Puxador
+      - 10 - Banheiro feminino
+        - - Vista ampla
+        - 10.1 - Lâmpadas
+        - 10.2 - Assento sanitário
+      - 11 - Tesouraria
+        - - Vista ampla
+        - 11.1 - Pintura acrílica
+          - - Detalhes
+        - 11.2 - Alçapão
+        - 11.3 - Lâmpadas
+      - 2 - Atendimento
+        - - Vista ampla
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+        - 2.2 - Fita de piso
+        - 2.3 - Ponto elétrico
+        - 2.4 - Lâmpadas
+      - 3 - CAIEX
+        - - Vista ampla
+        - 3.1 - Lâmpadas
+      - 4 - Corredor interno
+        - - Vista ampla
+        - 4.1 - Pintura acrílica
+          - - Detalhes
+        - 4.2 - Pintura esmalte em porta
+        - 4.3 - Pintura esmalte metal
+        - 4.4 - Fita de piso
+        - 4.5 - Ponto elétrico
+        - 4.6 - Lâmpadas
+      - 5 - Suporte
+        - - Vista ampla
+        - 5.1 - Pintura acrílica
+          - - Detalhes
+        - 5.2 - Lâmpadas
+      - 6 - Banheiro masculino
+        - - Vista ampla
+        - 6.1 - Torneira automática
+        - 6.2 - Assento sanitário
+        - 6.3 - Alarme de emergência
+      - 7 - Corredor de abastecimento
+        - - Vista ampla
+        - 7.1 - Pintura acrílica
+          - - Detalhes
+        - 7.2 - Ponto elétrico
+        - 7.3 - Lâmpadas
+      - 8 - Sala online
+        - - Vista ampla
+        - 8.1 - Pintura acrílica
+          - - Detalhes
+        - 8.2 - Pintura esmalte metal
+        - 8.3 - Ponto elétrico
+        - 8.4 - Lâmpadas
+      - 9 - Copa
+        - - Vista ampla
+        - 9.1 - Pintura acrílica
+          - - Detalhes
+        - 9.2 - Pintura esmalte em porta
+        - 9.3 - Pintura esmalte metal
+  - 6 - SAPEZAL 1590 - Enviado
+    - - Envio portal
+    - - Área externa
+      - - Vista ampla
+      - 1 - Pintura acrílica
+        - - Detalhes
+      - 2 - Pintura de piso
+        - - Detalhes
+      - 3 - Pintura esmalte metal
+        - - Detalhes
+      - 4 - Pintura automotiva
+        - - Detalhes
+      - 5 - Fita de piso
+      - 6 - Tampa cega
+      - 7 - Telhado
+        - - Vista ampla
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+        - 1.2 - Forro de fibra mineral
+        - 1.3 - Substituição de luminária
+      - 2 - Atendimento
+        - - Vista ampla
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+        - 2.2 - Forro de fibra mineral
+      - 3 - Suporte
+        - - Vista ampla
+        - 3.1 - Pintura acrílica
+          - - Detalhes
+        - 3.2 - Pintura esmalte em porta
+          - - Detalhes
+      - 4 - Acesso restrito
+        - - Vista ampla
+        - 4.1 - Pintura acrílica
+          - - Detalhes
+        - 4.2 - Pintura esmalte em porta
+          - - Detalhes
+      - 5 - Arquivo
+        - - Vista ampla
+        - 5.1 - Pintura acrílica
+          - - Detalhes
+        - 5.2 - Pintura esmlate em porta
+      - 6 - Copa
+        - - Vista ampla
+        - 6.1 - Pintura esmalte em porta
+          - - Detalhes
+  - 7 - AVENIDA DONATO QUINTINO 8062 - Enviado
+    - - Envio Portal
+    - - Área externa
+      - - Vista ampla
+      - 1 - Pintura acrílica
+        - - Detalhes
+      - 2 - Pintura automotiva
+        - - Detalhes
+      - 3 - Pintura esmalte metal
+        - - Detalhes
+      - 4 - Puxador
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+        - 1.2 - Pintura automotiva
+          - - Detalhes
+        - 1.3 - Fita de piso
+          - - Detalhes
+        - 1.4 - Substituição de lâmpadas de bulbo
+          - - Detalhes
+      - 2 - Atendimento
+        - - Vista ampla
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+        - 2.2 - Pintura esmalte em porta
+      - 3 - Sala online
+        - - Vista ampla
+      - 4 - Corredor de abastecimento
+        - 4.1 - Pintura acrílica
+        - 4.2 - Pintura esmalte em porta
+      - 5 - CAIEX
+        - 5.1 - Pintura acrílica
+      - 6 - Sala do gerente
+        - - Vista ampla
+        - 6.1 - Pintura acrílica
+        - 6.2 - Pintura esmalte em porta
+      - 7 - Corredor de acesso
+        - 7.1 - Pintura acrílica
+        - 7.2 - Pintura esmalte em porta
+        - 7.3 - Forro
+- 8 - Recebido - Outubro
+  - 1 - ACESITA 2864 - Enviado
+    - - Envio portal
+    - - Área do segundo piso
+      - 1 - Atendimento
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+      - 10 - Banheiro unissex 2
+        - - Vista ampla
+        - 10.1 - Sifão
+        - 10.2 - Ducha higiênica
+        - 10.3 - Dispenser de sabonete
+      - 11 - Banheiro masculino
+        - - Vista ampla
+        - 11.1 - Pinturta esmalte em porta
+          - - Detalhes
+        - 11.2 - Ponto elétrico
+        - 11.3 - Torneira automática
+        - 11.4 - Assento sanitário
+      - 12 - Banheiro feminino
+        - - Vista ampla
+        - 12.1 - Pintura esmalte em porta
+          - - Detalhes
+        - 12.2 - Ponto elétrico
+        - 12.3 - Dispenser de sabonete
+        - 12.4 - Ducha higiênica
+        - 12.5 - Assento sanitário
+          - - Detalhes
+      - 13 - Escadas de acesso casa de maquinas e telhado
+        - - Vista ampla
+        - 13.1 - Pintura acrílica
+          - - Detalhes
+      - 2 - Acesso restrito
+        - - Vista ampla
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+      - 3 - Suporte
+        - - Vista ampla
+        - 3.1 - Pintura acrílica
+          - - Detalhes
+        - 3.2 - Pintura esmalte em porta
+      - 4 - Sala de apoio operacional
+        - - Vista ampla
+      - 5 - Sala de reunião
+        - - Vista ampla
+        - 5.1 - Pintura acrílica
+          - - Detalhes
+      - 6 - Sala online
+        - - Vista ampla
+        - 6.1 - Pintura acrílica
+          - - Detalhes
+        - 6.2 - Pintura esmalte em porta
+          - - Detalhes
+        - 6.3 - Pintura esmalte metal
+        - 6.4 - Piso elevado
+          - - Detalhes
+        - 6.5 - Patch cord
+      - 7 - Arquivo
+        - - Vista ampla
+        - 7.1 - Forro de fibra mineral
+      - 8 - Corredor de acesso ao banheiro unissex
+        - - Vista ampla
+        - 8.1 - Pintura acrílica
+          - - Detalhes
+        - 8.2 - Pintura esmalte em porta
+      - 9 - Banheiro unissex 1
+        - - Vista ampla
+        - 9.1 - Alarme de emergência
+        - 9.2 - Sifão
+    - - Área do terceiro piso
+      - 1 - Casa de máquinas
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+        - 1.2 - Ponto elétrico
+    - - Área externa
+      - - Vista ampla
+      - 1 - Pintura acrílica
+        - - Detalhes
+      - 2 - Pintura automotiva
+        - - Detalhes
+      - 3 - Pintura esmalte metal
+        - - Detalhes
+      - 4 - Telhado
+        - - Vista ampla
+      - 5 - SPDA
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+        - 1.2 - Pintura automotiva
+        - 1.3 - Fita de led
+          - - Detalhes
+        - 1.4 - Lâmpadas
+      - 10 - Banheiro unissex 2
+        - - Vista ampla
+        - 10.1 - Assento sanitário
+        - 10.2 - Dispenser de sabonete
+        - 10.3 - Sifão
+      - 11 - Casa de máquinas
+        - - Vista ampla
+        - 11.1 - Pintura esmalte em porta
+          - - Detalhes
+        - 11.2 - Pintura esmalte metal
+        - 11.3 - Instalação de luminária
+      - 12 - Suporte
+        - - Vista ampla
+        - 12.1 - Pintura acrílica
+          - - Detalhes
+        - 12.2 - Pintura esmalte em porta
+          - - Detalhes
+      - 13 - Corredor de abastecimento
+        - - Vista ampla
+        - 13.1 - Pintura acrílica
+          - - Detalhes
+        - 13.2 - Pintura esmalte metal
+      - 14 - Tesouraria
+        - - Vista ampla
+        - 14.1 - Ponto lógico
+      - 15 - Copa
+        - - Vista ampla
+        - 15.1 - Tampa de ralo
+      - 16 - Escadas de acesso
+        - - Vista ampla
+        - 16.1 - Pintura acrílica
+          - - Detalhes
+        - 16.2 - Pintura automotiva
+      - 17 - Corredor interno 3
+        - - Vista ampla
+        - 17.1 - Pintura acrílica
+          - - Detalhes
+        - 17.2 - Pintura esmalte em porta
+        - 17.3 - Lâmpadas
+        - 17.4 - Pintura esmalte metal
+      - 2 - Atendimento
+        - - Vista ampla
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+        - 2.2 - Fita de led
+          - - Detalhes
+        - 2.3 - Lâmpadas
+      - 3 - Banheiro unissex 1
+        - - Vista ampla
+        - 3.1 - Pintura acrílica
+          - - Detalhes
+      - 4 - Sala de acesso a tesouraria
+        - - Vista ampla
+        - 4.1 - Sifão
+      - 5 - QVT
+        - - Vista ampla
+        - 5.1 - Pintura esmalte em porta
+          - - Detalhes
+      - 6 - Corredor interno 1
+        - - Vista ampla
+        - 6.1 - Pintura acrílica
+          - - Detalhes
+        - 6.2 - Pintura esmalte metal
+      - 7 - Corredor interno 2
+        - - Vista ampla
+        - 7.1 - Pintura acrílica
+          - - Vista ampla
+        - 7.2 - Pintura esmalte metal
+        - 7.3 - Quadro de comando
+        - 7.4 - Ponto elétrico
+      - 8 - Banheiro masculino
+        - - Vista ampla
+        - 8.1 - Ponto elétrico
+        - 8.2 - Assento sanitário
+      - 9 - Banheiro feminino
+        - - Vista ampla
+        - 9.1 - Ponto elétrico
+        - 9.2 - Torneira automática
+  - JACAREI 0683 - Enviado
+    - - Envio portal
+    - - Área externa
+      - - Vista ampla
+      - 1 - Pintura acrílica
+        - - Detalhes
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+      - 2 - Atendimento
+        - - Vista ampla
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+        - 2.2 - Pintura esmalte em porta
+          - - Detalhes
+        - 2.3 - Rodapé
+          - - Detalhes
+        - 2.4 - Persiana
+          - - Detalhes
+      - 3 - CAIEX
+        - 3.1 - Rodapé
+          - - Detalhes
+      - 4 - Suporte
+        - - Vista ampla
+        - 4.1 - Pintura acrílica
+          - - Detalhes
+        - 4.2 - Substituição de persianas
+          - - Detalhes
+      - 5 - Sala dos vigilantes
+        - 5.1 - Carpete
+          - - Detalhes
+        - 5.2 - Rodapé
+      - 6 - Acesso ao segundo piso
+        - - Vista ampla
+        - 6.1 - Pintura acrílica
+          - - Detalhes
+        - 6.2 - Pintura esmalte em porta
+      - 7 - Banheiro masculino
+        - 7.1 - Pintura esmalte em porta
+          - - Detalhes
+  - JULIO DE CASTILHOS  3497 - Enviado
+    - - Envio portal
+    - - Área externa
+      - 1 - Pintura acrílica
+        - - Detalhes
+      - 2 - Pintura de piso
+        - - Detalhes
+      - 3 - Pintura esmalte metal
+        - - Detalhes
+      - 4 - Pintura automotiva
+        - - Detalhes
+      - 5 - Pintura esmalte em porta
+      - 6 - Telhado
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+      - 2 - Atendimento
+        - - Lâmpadas
+        - - Ponto lógico
+        - - Quadro elétrico
+        - - Vedação de janela
+        - - Vista ampla
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+      - 3 - Corredor de abastecimento
+        - 3.1 - Pintura acrílica
+          - - Detalhes
+      - 4 - Suporte
+        - 4.1 - Pintura acrílica
+          - - Detalhes
+        - 4.2 - Pintura esmalte em porta
+        - 4.3 - Lâmpadas
+- 9 - Recebido - Novembro
+  - ARCOS - ENVIADO
+    - - Envio portal
+      - PORTAL
+    - - Solicitações do gerente e fotos extra
+      - - Terceiro andar
+        - - Vista ampla
+        - 1 - Forro de fibra mineral
+        - 2 - Salas vazias
+        - 3 - Banheiro desativado
+    - - Área externa
+      - - Vista ampla
+      - 1 - Pintura acrílica
+        - - Detalhes
+      - 10 - Garagem
+        - 10.1 - Pintura acrílica
+          - - Detalhes
+        - 10.2 - Forro
+          - - Detalhes
+        - 10.3 - Pintura esmalte metal
+          - - Detalhes
+        - 10.4 - Substituição de luminária
+          - - Detalhes
+        - 10.5 - Fotocélula
+          - - Detalhes
+      - 11 - Subestação
+        - 11.1 - Pintura acrílica
+          - - Detalhes
+        - 11.2 - Pintura esmalte em porta
+          - - Detalhes
+        - 11.3 - Marquise
+          - - Detalhes
+      - 12 - Telhado
+        - - Vista ampla
+      - 13 - Caixa d'água
+      - 2 - Pintura de piso
+        - - Detalhes
+      - 3 - Marquise
+        - 3.1 - Pintura acrílica
+          - - Detalhes
+      - 4 - Pintura automotiva
+        - - Detalhes
+      - 5 - Pintura esmalte metal
+        - - Detalhes
+      - 6 - Película e policarbonato
+        - - Detalhes
+      - 7 - Substituição de vidro
+        - - Detalhes
+      - 8 - Dreno de arcondicionado
+        - - Detalhes
+      - 9 - Correção de vazamento
+        - - Detalhes
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+          - - Observação
+        - 1.10 - Ferragens
+          - - Detalhes
+        - 1.11 - Trinco de porta
+          - - Detalhes
+        - 1.12 - Mola de piso
+          - - Detalhes
+        - 1.13 - Porta de aço
+          - - Detalhes
+        - 1.2 - Pintura esmalte metal
+          - - Detalhes
+        - 1.3 - Forro de fibra mineral
+        - 1.4 - Carenagem
+          - - Detalhes
+        - 1.5 - Fita de led
+          - - Detalhes
+        - 1.6 - Ponto elétrico e lógico
+          - - Detalhes
+        - 1.7 - Fita de piso
+          - - Detalhes
+        - 1.8 - Kit ATM
+          - - Detalhes
+        - 1.9 - Puxador
+          - - Detalhes
+      - 10 - Escadas de Acesso
+        - 10.1 - Pintura acrílica
+          - - Detalhes
+        - 10.2 - Pintura esmalte metal
+          - - Detalhes
+        - 10.3 - Fita antiderrapante
+          - - Detalhes
+      - 11 - Sala online
+        - 11.1 - Pintura esmalte em porta
+          - - Detalhes
+      - 12 - Casa de bombas
+        - - Vista ampla
+        - 12.1 - Pintura esmalte em porta
+          - - Detalhes
+      - 13 - Sala de apoio operacional
+        - - Vista ampla
+        - 13.1 - Pintura acrílica
+          - - Detalhes
+        - 13.2 - Pintura esmalte em porta
+          - - Detalhes
+        - 13.3 - Mola áerea
+        - 13.4 - Manutenção controle de acesso
+      - 14 - Corredor de abastecimento
+        - - Vista ampla
+        - 14.1 - Pintura acrílica
+          - - Detalhes
+        - 14.2 - Forro de fibra mineral
+        - 14.3 - Ponto elétrico
+      - 15 - Tesouraria
+        - - Vista ampla
+      - 16 - Sala do cofre seguro
+        - - Vista ampla
+      - 17 - CAIEX
+        - 17.1 - Ponto elétrico
+      - 2 - Atendimento
+        - - Vista ampla
+        - 2.1 -Pintura acrílica
+          - - Detalhes
+        - 2.2 - Pintura esmalte em porta
+          - - Detalhes
+        - 2.3 - Pintuira esmalte metal
+          - - Detalhes
+        - 2.4 - Forro de fibra mineral
+          - - Detalhes
+        - 2.5 - Fita de piso
+          - - Detalhes
+        - 2.6 - Puxador
+          - - Detalhes
+      - 3 - Suporte
+        - - Vista ampla
+        - 3.1 - Pintura esmalte em porta
+          - - Detalhes
+      - 4 - Banheiro PNE
+        - 4.1 - Bacia sanitária PNE
+          - - Detalhes
+        - 4.2 - Sifão
+        - 4.3 - Dispenser de sabão
+          - - Detalhes
+        - 4.4 - Dispenser de papel toalha
+      - 5 - Banheiro feminino
+        - - Vista ampla
+        - 5.1 - Pintura esmalte em porta
+          - - Detalhes
+        - 5.2 - Forro de fibra mineral
+          - - Detalhes
+        - 5.3 - Torneira automática
+          - - Detalhes
+        - 5.4 - Engate flexível
+          - - Detalhes
+        - 5.5 - Dispenser de sabão
+        - 5.6 - Dispenser de papel toalha
+          - - Detalhes
+      - 6 - Banheiro masculino
+        - 6.1 - Bacia sanitária
+          - - Detalhes
+        - 6.2 - Dispenser de sabão
+          - - Detalhes
+      - 7 - Corredor interno
+        - 7.1 - Pintura acrílica
+          - - Detalhes
+        - 7.2 - Pintura esmalte em porta
+          - - Detalhes
+      - 8 - Corredor da casa de maquinas
+        - 8.1 - Pintura acrílica
+          - - Detalhes
+        - 8.2 - Forro de fibra mineral
+          - - Detalhes
+      - 9 - Cozinha
+        - - Vista ampla
+        - 9.1 - Pintura acrílica
+          - - Detalhes
+        - 9.2 - Pintura esmalte em porta
+          - - Detalhes
+        - 9.3 - Forro de fibra mineral
+          - - Detalhes
+  - Envio Complementar SAPEZAL - Enviado
+  - Mosenhor Paulo 3217 - ENVIADO
+    - - Envio portal
+    - - Área externa
+      - 1 - Pintura acrílica
+        - - Detalhes
+      - 2 - Pintura automotiva
+        - - Detalhes
+      - 3 - Pintura esmalte metal
+        - - Detalhes
+      - 4 - Marquise
+        - 4.1 - Pintura acrílica
+          - - Detalhes
+      - 5 - SPDA
+      - 6 - Telhado
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - 1.1 - Pintura acrílica
+        - 1.2 - Pintura automotiva
+          - - Detalhes
+        - 1.3 - Piso tátil
+        - 1.4 - Piso cerâmico
+        - 1.5 - Forro de fibra mineral
+          - - Detalhes
+      - 10 - Arquivo
+        - 8.1 - Pintura acrílica
+        - 8.2 - Fechadura
+      - 11 - Corredor de abastecimento
+        - 11.1 - Pinura acrílica
+          - - Detalhes
+      - 12 - Cozinha
+        - 12.1 - Pintura acrílica
+      - 2 - Atendimento
+        - - Vista ampla
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+      - 3 - CAIEX
+        - - Vista ampla
+        - 3.1 - Pintura acrílica
+          - - Detalhes
+        - 3.2 - Pintura esmalte em porta
+          - - Detalhes
+        - 3.3 - Fechadura
+      - 4 - Banheiro PNE
+        - - VIsta ampla
+        - 4.1 - Pintura esmalte em porta
+          - - Detalhes
+        - 4.2 - Alarme
+      - 5 - Banheiro feminino
+        - - Vista ampla
+        - 5.1 - Pintura esmalte em porta
+        - 5.2 - Torneira
+        - 5.3 - Tampa de ralo
+      - 6 - Banheiro masculino
+        - - Vista ampla
+        - 6.1 - Pintura esmalte em porta
+          - - Detalhes
+        - 6.2 - Fechadura
+        - 6.3 - Tampa de ralo
+      - 7 - Acesso restrito
+        - 5.1 - Pintura acrílica
+          - - Detalhes
+        - 5.2 - Pintura esmalte em porta
+      - 8 - Sala online
+        - 6.1 - Pintura acrílica
+          - - Detalhes
+      - 9 - Tesouraria
+        - - Vista ampla
+        - 7.1 - Pintura acrílica
+          - - Detalhes
+  - RIACHINHO 4070 - Enviado
+    - - Envio Portal
+    - - Área externa
+      - 1 - Pintura automotiva
+        - - Detalhes
+      - 2 - Pintura esmalte metal
+        - - Detalhes
+      - 3 - Película e policarbonato
+        - - Detalhes
+      - 4 - Marquise
+        - 4.1 - Pintura acrílica
+          - - Detalhes
+      - 5 - Telhado
+        - - Vista ampla
+    - - Área interna
+      - 1 - SAA (sala de autoatendimeto)
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+        - 1.2 - Pintura automotiva
+          - - Detalhes
+        - 1.3 - Piso tátil
+        - 1.4 - Forro
+        - 1.5 - Fita de led
+      - 10 - DML
+        - 10.1 - Pintura acrílica
+          - - Detalhes
+        - 10.2 - Pintura esmalte em porta
+        - 10.3 - Lâmpadas
+      - 11 - Copa
+        - - Vista ampla
+        - 11.1 - Pintura esmalte em porta
+      - 2 - Atendimento
+        - - Vista ampla
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+        - 2.2 - Fita de piso
+          - - Detalhes
+        - 2.3 - Tampa cega
+        - 2.4 - Piso tátil
+      - 3 - Corredor de abastecimento
+        - 3.1 - Pintura acrílica
+        - 3.2 - Forro
+        - 3.3 - Ponto elétrico
+      - 4 - Sala de arquivo
+        - - Vista ampla
+        - 4.1 - Pintura acrílica
+          - - Detalhes
+        - 4.2 - Forro
+        - 4.3 - Pintura esmalte em porta
+          - - Detalhes
+        - 4.4 - Lâmpadas
+      - 5 - Banheiro PNE
+        - 5.1 - Pintura esmalte em porta
+        - 5.2 - Torneira PNE
+      - 6 - Banheiro feminino
+        - - VIsta ampla
+        - 6.1 - Pintura esmalte em porta
+        - 6.2 - Alarme
+      - 7 - Tesouraria
+        - 7.1 - Pintura acrílica
+          - - Detalhes
+      - 8 - Sala online
+        - 8.1 - Pintura acrílica
+          - - Detalhes
+      - 9 - Corredor de acesso
+        - 9.1 - Pintura acrílica
+          - - Detalhes
+- Não foi enviado correção
+  - LOTE AGOSTO S.JOSE QUATRO MARCOS 2505 - Aguardando correção
+    - - Envio portal
+    - - Área externa
+      - - Vista ampla
+      - 1 - Pintura acrílica
+        - - Detalhes
+      - 2 - Pintura de piso
+        - - Detalhes
+      - 3 -Pintura esmalte metal
+        - - Detalhes
+      - 4 - Piso tátil
+        - - Detalhes
+      - 5 - Vedação de janelas
+        - - Detalhes
+      - 6 - Marquise
+        - 6.1 - Impermeabilização de laje
+          - - Detalhes
+        - 6.2 - Danos inferiores
+      - 7 - Telhado
+        - - Vista ampla
+        - 7.1 - Pintura acrílica
+          - - Detalhes
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+        - 1.2 - Fita de piso
+          - - Detalhes
+        - 1.3 - Piso tátil
+        - 1.4 - Instalação de placa áerea
+        - 1.5 - Sensor de presença
+      - 10 - Sala online
+        - 10.1 - Pintura esmalte em porta
+          - - Detalhes
+        - 10.2 - Soleira
+          - - Detalhes
+      - 11 - Sala dos vigilantes
+        - 11.1 - Pintura acrílica
+          - - Detalhes
+        - 11.2 - Pintura esmalte em porta
+          - - Detalhes
+        - 11.3 - Soleira
+          - - Detalhes
+        - 11.4 - Vedação de porta
+        - 11.5 - Tampa cega
+      - 12 - Banheiro PNE
+        - - Vista ampla
+        - 12.1 - Pintura esmalte em porta
+          - - Detalhes
+        - 12.2 - Substituição de válvula
+          - - Detalhes
+        - 12.3 - Dosador de sabão
+          - - Detalhes
+        - 12.4 - Tampa de ralo
+        - 12.5 - Troca do reparo do registro
+      - 13 - Almoxarifado
+        - 13.1 - Pintura esmalte em porta
+          - - Detalhes
+        - 13.2 - Fita de piso
+          - - Detalhes
+        - 13.3 - Soleira
+          - - Detalhes
+      - 2 - Atendimento
+        - - Vista ampla
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+        - 2.2 - Pintura esmalte em porta
+          - - Detalhes
+        - 2.3 - Fita de piso
+          - - Detalhes
+        - 2.4 - Piso tátil
+          - - Detalhes
+        - 2.5 - Lâmpadas
+        - 2.6 - Mola de piso
+          - - Detalhes
+      - 3 - CAIEX
+        - 3.1 - Pintura esmalte em porta
+          - - Detalhes
+        - 3.2 - Substituição de fechadura
+          - - Detalhes
+      - 4 - Sala de reunião
+        - - Vista ampla
+        - 4.1 - Pintura acrílica
+          - - Detalhes
+        - 4.2 - Pintura esmalte em porta
+          - - Detalhes
+        - 4.3 - Lâmpadas
+      - 5 - Corredor de acesso
+        - - Vista ampla
+        - 5.1 - Pintura acrílica
+          - - Detalhes
+        - 5.2 - Substituição de piso
+          - - Detalhes
+      - 6 - Tesouraria
+        - 6.1 - Pintura esmalte em porta
+          - - Detalhes
+        - 6.2 - Soleira
+          - - Detralhes
+      - 7 - Banheiro feminino
+        - - Vista ampla
+        - 7.1 - Forro
+          - - Detalhes
+        - 7.2 - Pintura esmalte em porta
+          - - Detalhes
+        - 7.3 - Dosador de sabão
+        - 7.4 - Tampa de ralo
+      - 8 - Banheiro masculino
+        - - Vista ampla
+        - 8.1 - Pintura esmalte em porta
+          - - Detalhes
+        - 8.2 - Pintura esmalte metal
+          - - Detalhes
+        - 8.3 - Dosador de sabão
+        - 8.4 - Fechadura
+          - - Detalhes
+      - 9 - Ar condicionado
+        - 9.1 - Pintura esmalte em porta
+          - - Detalhes
+        - 9.2 - Soleira
+          - - Detalhes
+  - LOTE NOVEMBRO - ITAUBA - aguardando correção
+    - - Envio portal
+    - - Área externa
+      - 1 - Pintura acrílica
+        - - Detalhes
+      - 2 - Pintura automotiva
+      - 3 - Pintura esmalte metal
+      - 4 - Substituição de película e policarbonato
+      - 5 - Calçada
+        - 4.1 - Pintura de piso
+          - - Detalhes
+        - 4.2 - Ladrilho hidráulico
+      - 6 - Marquise
+        - 3.1 - Cobertura da marquise
+        - 3.2 - Solicitação do gerente
+          - - Detalhes
+      - 7 - Telhado
+        - - Danos internos
+        - - Detalhes
+        - - Entre forro
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - Vista ampla
+        - 1.1 - Ajuste de divisórias
+          - - Detalhes
+        - 1.2 - Fixação
+          - - Detalhes
+        - 1.3 - Solicitação do gerente
+          - - Detalhes
+      - 2 - Atendimento
+        - - Vista ampla
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+        - 2.2 - Ponto elétrico e lógico
+      - 3 - Suporte
+        - 3.1 - Substituição de piso
+          - - Detalhes
+      - 4 - Cozinha
+        - - Vista ampla
+        - 4.1 - Substituição de mobiliário
+          - - Detalhes
+      - 5 - Corredor de acesso aos banheiros
+        - 5.1 - Substituição de piso
+          - - Detalhes
+      - 6 - Sala online
+        - 6.1 - Substituição de fechadura
+          - - Detalhes
+  - LOTE OUTUBRO PIQUETE - Aguardando correção
+    - - Envio portal
+    - - Área externa
+      - - Vista ampla
+      - 1 - Pintura acrílica
+        - - Detalhes
+      - 2 - Solicitação do gerente
+        - - Detalhes
+      - 3 - Correção de vazamento
+      - 4 - Telhado
+        - - Vista ampla
+        - 4.1 - Impermeabilização de calha
+          - - Detalhes
+        - 4.2 - Ajuste de telha
+        - 4.3 - Susbtituição de telhas
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+        - 1.2 - Fita de piso
+          - - Detalhes
+      - 2 - Atendimento
+        - - Vista ampla
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+      - 3 - Acesso ao segundo piso
+        - 3.1 - Pintura acrílica
+          - - Detalhes
+      - 4 - Acesso cozinha
+        - - Vista ampla
+        - 4.1 - Pintura acrílica
+      - 5 - Lavanderia
+        - - Vista ampla
+        - 5.1 - Pintura acrílica
+          - - Detalhes
+      - 6 - Sala de reunião
+        - - Vista ampla
+        - 6. - Pintura acrílica
+          - - Detalhes
+        - 6.2 - Carpete
+          - - Detalhes
+      - 7 - Sala de massagem
+        - - Vista ampla
+        - 7.1 - Pintura acrílica
+          - - Detalhes
+        - 7.2 - Carpete
+          - - Detalhes
+      - 8 - Sala de arquivo
+        - - Vista ampla
+        - 8.1 - Pintura acrílica
+          - - Detalhes
+        - 8.2 - Forro de isopor
+          - - Detalhes
+          - - Entre forro
+          - - Vista ampla do forro de fibra mineral
+      - 9 - Corredor de abastecimento
+        - 9.1 - Pintura acrílica
+          - - Detalhes
+  - LOTE SETEMBRO ALTO ARAGUAIA 0512 - Aguardando correção
+    - - Envio portal
+    - - Área externa
+      - - Vista ampla
+      - - Vista noturna
+      - 1 - Pintura acrílica
+        - - Detalhes
+      - 2 - Pintura de piso
+        - - Vista ampla
+      - 3 - Pintura automotiva
+        - - Detalhes
+      - 4 - Pintura esmalte em porta
+        - - Detalhes
+      - 5 - Pintura esmalte metal
+        - - Detalhes
+      - 6 - Lâmpadas
+      - 7 - Telhado
+        - - Vista ampla
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - Vista ampla
+        - 1.1 - Pintura acrílica
+          - - Detalhes
+        - 1.2 - Forro
+          - - Detalhes
+        - 1.3 - Lâmpadas
+        - 1.4 - Pintura automotiva
+          - - Detalhes
+        - 1.5 - Lâmpadas do TAA
+          - - Detalhes
+        - 1.6 - Piso tátil de inox
+          - - Detalhes
+          - - Vista ampla
+        - 1.7 - Mola de piso
+          - - Detalhes
+        - 1.8 - Adesivo
+          - - Detalhes
+        - 1.9 - Placa de sinalização
+      - 10 - Banheiro unissex
+        - - Vista ampla
+        - 10.1 - Forro
+      - 11 - Almoxarifado
+        - 11.1 - Lâmpadas
+          - - Detalhes
+      - 12 - Corredor de acesso
+        - - Vista ampla
+        - 12.1 - Pintura acrílica
+          - - Detalhes
+        - 12.2 - Forro
+      - 13 - Sala do gerente
+        - - Vista ampla
+        - 13.1 - Lâmpadas
+      - 14 - Sala online
+        - - Vista ampla
+        - 14.1 - Pintura acrílica
+          - - Detalhes
+        - 14.2 - Ponto elétrico
+        - 14.3 - Tampa cega
+        - 14.4 - Piso cerâmico
+          - - Detalhes
+          - - Instruções
+        - 14.5 - Quadros elet comando
+      - 15 - Corredor de abastecimento
+        - - Vista ampla
+        - 15.1 - Pintura acrílica
+          - - Detalhes
+        - 15.2 - Pintura esmalte em porta
+          - - Detalhes
+        - 15.3 - Forro
+          - - Detalhes
+        - 15.4 - Lâmpadas
+        - 15.5 - Tampa cega
+      - 16 - Suporte
+        - - Vista ampla
+        - 16.1 - Ajuste de mobiliário
+      - 2 - Atendimento
+        - - Vista ampla
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+        - 2.2 - Forro
+        - 2.3 - Lâmpadas
+        - 2.4 - Fixação de objeto
+          - - Detalhes
+        - 2.5 - Piso cerâmico
+          - - Detalhes
+        - 2.6 - Fita de piso
+        - 2.7 - Mangueira de extintor
+          - - Detalhes
+        - 2.8 - Ponto elétrico
+          - - Detalhes
+        - 2.9 - Solicitação do gerente
+          - - Instruções
+      - 3 - Área restrita
+        - - Vista ampla
+        - 3.1 - Pintura acrílica
+          - - Detalhes
+        - 3.2 - Pintura esmalte em porta
+          - - Detalhes
+        - 3.3 - Tampa cega
+        - 3.4 - Ponto elétrico
+          - - Detalhes
+        - 3.5 - Ajuste de luminária
+        - 3.6 - Fita de piso
+        - 3.7 - Quadro ele. comando
+      - 4 - Sala de limpeza
+        - - Vista ampla
+        - 4.1 - Ralo
+          - - Instruções
+      - 5 - Corredor interno
+        - - Vista ampla
+        - 5.1 - Pintura acrílica
+          - - Detalhes
+        - 5.2 - Piso cerâmico
+          - - Instruções
+        - 5.3 - Forro
+          - - Detalhes
+          - - Instruções
+      - 6 - Copa
+        - 6.1 - Piso cerâmico
+          - - Instruções
+      - 7 - Corredor dos banheiros
+        - 7.1 - Forro
+          - - Detalhes
+      - 8 - Banheiro feminino
+        - - Vista ampla
+        - 8.1 - Forro
+          - - Detalhes
+        - 8.2 - Torneiras automáticas
+          - - Detalhes
+        - 8.3 - Válvula de descarga
+        - 8.4 - Dobradiças
+          - - Detalhes
+      - 9 - Banheiro masculino
+        - - Vista ampla
+        - 9.1 - Forro
+          - - Detalhes
+  - MONTEIRO LOBATO 6739 - Aguardando correção
+    - - Envio portal
+    - - Área externa
+      - 1 - Pintura acrílica
+        - - Detalhes
+      - 2 - Telhado
+    - - Área interna
+      - 1 - SAA (sala de autoatendimento)
+        - - Vista ampla
+        - 1 - Pintura acrílica
+          - - Detalhes
+        - 2 - Pintura automotiva
+        - 3 - Lâmpadas
+        - 4 - Piso
+        - 5 - Carpete
+      - 2 - Corredor
+        - 2.1 - Pintura acrílica
+          - - Detalhes
+        - 2.2 - Pintura esmalte em porta
+          - - Detalhes
+        - 2.3 - Roldanas
+          - - Detalhes
+      - 3 - Suporte
+        - 3.1 - Pintura acrílica
+          - - Detalhes
+        - 3.2 - Fixar rodapé
+        - 3.3 - Pintura esmalte em porta
+          - - Detalhes
+      - 4 - Acesso restrito
+        - 4.1 - Pintura acrílica
+          - - Detalhes
+        - 4.2 - Manta vinílico
+          - - Detalhes
+      - 5 - Corredor de abastecimento
+        - 5.1 - Pintura acrílica
+          - - Detalhes
+        - 5.2 - Pintura esmalte em porta
+        - 5.3 - Ajuste de ferragem
+      - 6 - Cofre
+        - 6.1 - Pintura acrílica
+          - - Detalhes
+        - 6.2 - Pintura esmalte em porta
+          - - Detalhes

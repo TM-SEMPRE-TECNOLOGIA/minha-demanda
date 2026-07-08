@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thiago — Engenharia, Automação e IA Premium</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Lora:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --TM-background: #f0f8ff;
+            --TM-foreground: #374151;
+            --TM-card: #ffffff;
+            --TM-card-foreground: #374151;
+            --TM-primary: #22c55e;
+            --TM-primary-foreground: #ffffff;
+            --TM-secondary: #e0f2fe;
+            --TM-secondary-foreground: #4b5563;
+            --TM-muted: #f3f4f6;
+            --TM-muted-foreground: #6b7280;
+            --TM-accent: #d1fae5;
+            --TM-accent-foreground: #374151;
+            --TM-border: #e5e7eb;
+            --TM-font-sans: "DM Sans", sans-serif;
+            --TM-font-serif: "Lora", serif;
+            --TM-font-mono: "IBM Plex Mono", monospace;
+            --TM-radius-lg: 0.5rem;
+            --TM-radius-xl: calc(0.5rem + 4px);
+            --TM-shadow-md: 0px 4px 8px -1px rgba(0,0,0,0.10), 0px 2px 4px -2px rgba(0,0,0,0.10);
+            --TM-shadow-lg: 0px 4px 8px -1px rgba(0,0,0,0.10), 0px 4px 6px -2px rgba(0,0,0,0.10);
+            --TM-shadow-xl: 0px 4px 8px -1px rgba(0,0,0,0.10), 0px 8px 10px -2px rgba(0,0,0,0.10);
+        }
+
+        html.dark {
+            --TM-background: #0f172a;
+            --TM-foreground: #d1d5db;
+            --TM-card: #1e293b;
+            --TM-card-foreground: #d1d5db;
+            --TM-primary: #34d399;
+            --TM-primary-foreground: #0f172a;
+            --TM-secondary: #2d3748;
+            --TM-secondary-foreground: #a1a1aa;
+            --TM-muted: #19212e;
+            --TM-muted-foreground: #6b7280;
+            --TM-accent: #374151;
+            --TM-accent-foreground: #a1a1aa;
+            --TM-border: #4b5563;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--TM-font-sans);
+            background: var(--TM-background);
+            color: var(--TM-foreground);
+            line-height: 1.6;
+            transition: all 300ms ease-in-out;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+
+        /* Compact Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0 24px;
+        }
+
+        .logo {
+            font-family: var(--TM-font-serif);
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--TM-primary);
+        }
+
+        .theme-toggle {
+            background: transparent;
+            border: 1px solid var(--TM-border);
+            color: var(--TM-muted-foreground);
+            padding: 6px 12px;
+            border-radius: var(--TM-radius-lg);
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 300ms ease-in-out;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--TM-primary);
+            color: var(--TM-primary);
+        }
+
+        /* Hero Premium Paid Traffic */
+        .hero {
+            text-align: center;
+            padding: 32px 0 48px;
+        }
+
+        .premium-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--TM-accent);
+            color: var(--TM-accent-foreground);
+            padding: 8px 20px;
+            border-radius: var(--TM-radius-xl);
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        h1 {
+            font-family: var(--TM-font-serif);
+            font-size: 36px;
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--TM-foreground);
+            margin-bottom: 16px;
+        }
+
+        .hero-hook {
+            font-size: 20px;
+            color: var(--TM-muted-foreground);
+            margin-bottom: 24px;
+            line-height: 1.5;
+        }
+
+        .hero-promise {
+            font-size: 16px;
+            color: var(--TM-foreground);
+            font-weight: 500;
+            line-height: 1.6;
+            max-width: 650px;
+            margin: 0 auto 32px;
+        }
+
+        .hero-closing {
+            font-size: 15px;
+            color: var(--TM-muted-foreground);
+            font-weight: 500;
+        }
+
+        /* Value Proposition */
+        .value-section {
+            background: var(--TM-card);
+            border: 1px solid var(--TM-border);
+            border-radius: var(--TM-radius-xl);
+            padding: 32px;
+            margin: 40px 0;
+            box-shadow: var(--TM-shadow-md);
+        }
+
+        h2 {
+            font-family: var(--TM-font-serif);
+            font-size: 26px;
+            font-weight: 600;
+            color: var(--TM-foreground);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .value-intro {
+            font-size: 16px;
+            color: var(--TM-muted-foreground);
+            text-align: center;
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .features-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 8px;
+            margin: 24px 0;
+        }
+
+        @media (min-width: 641px) {
+            .features-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px;
+            background: var(--TM-muted);
+            border-radius: var(--TM-radius-lg);
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--TM-foreground);
+        }
+
+        .feature-check {
+            color: var(--TM-primary);
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .closing-line {
+            text-align: center;
+            font-size: 15px;
+            color: var(--TM-foreground);
+            font-weight: 500;
+            margin-top: 24px;
+            font-style: italic;
+        }
+
+        /* Tech Stack */
+        .tech-section {
+            margin: 40px 0;
+        }
+
+        .tech-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--TM-foreground);
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+
+        @media (min-width: 641px) {
+            .tech-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .tech-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            background: var(--TM-secondary);
+            border-radius: var(--TM-radius-lg);
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--TM-secondary-foreground);
+            transition: all 300ms ease-in-out;
+        }
+
+        .tech-item:hover {
+            background: var(--TM-primary);
+            color: var(--TM-primary-foreground);
+            transform: translateX(4px);
+        }
+
+        .tech-bullet {
+            color: var(--TM-primary);
+            font-size: 16px;
+        }
+
+        .tech-item:hover .tech-bullet {
+            color: var(--TM-primary-foreground);
+        }
+
+        .tech-highlight {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--TM-muted-foreground);
+            line-height: 1.6;
+        }
+
+        /* CTA Premium */
+        .cta-section {
+            background: linear-gradient(135deg, var(--TM-primary) 0%, #059669 100%);
+            border-radius: var(--TM-radius-xl);
+            padding: 48px 32px;
+            text-align: center;
+            margin: 48px 0;
+            box-shadow: var(--TM-shadow-xl);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-title {
+            font-family: var(--TM-font-serif);
+            font-size: 28px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 16px;
+            line-height: 1.3;
+        }
+
+        .cta-description {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+
+        .btn-cta {
+            background: #ffffff;
+            color: #059669;
+            border: none;
+            padding: 16px 40px;
+            border-radius: var(--TM-radius-lg);
+            font-family: var(--TM-font-sans);
+            font-weight: 700;
+            font-size: 16px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 300ms ease-in-out;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            letter-spacing: 0.5px;
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Footer Minimal */
+        footer {
+            text-align: center;
+            padding: 32px 0;
+            border-top: 1px solid var(--TM-border);
+            margin-top: 48px;
+        }
+
+        .footer-logo {
+            font-family: var(--TM-font-serif);
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--TM-primary);
+            margin-bottom: 8px;
+        }
+
+        footer p {
+            font-size: 13px;
+            color: var(--TM-muted-foreground);
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            h1 { font-size: 28px; }
+            h2 { font-size: 22px; }
+            .hero { padding: 24px 0 32px; }
+            .value-section { padding: 24px; }
+            .cta-section { padding: 40px 24px; }
+            .cta-title { font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">THIAGO</div>
+            <button class="theme-toggle" onclick="toggleTheme()">Tema</button>
+        </header>
+
+        <section class="hero">
+            <div class="premium-badge">
+                <span>⭐</span>
+                <span>Premium Engineering</span>
+            </div>
+            <h1>Sua empresa está pronta para operar<br>no nível que ela merece?</h1>
+            <p class="hero-hook">
+                Se você sente que seus processos estão lentos, confusos ou custando mais do que deveriam…
+            </p>
+            <p class="hero-promise">
+                Eu resolvo isso com <strong>engenharia, automação e IA premium</strong>, feitas sob medida para a sua operação.
+            </p>
+            <p class="hero-closing">
+                Sem complicação. Sem promessas vazias. Solução real, inteligente e escalável.
+            </p>
+        </section>
+
+        <section class="value-section">
+            <h2>💎 Eu construo sistemas que trabalham por você</h2>
+            <p class="value-intro">
+                Plataformas, automações, relatórios inteligentes, apps completos e integrações que eliminam retrabalho e aumentam produtividade de imediato.
+            </p>
+
+            <div class="features-list">
+                <div class="feature-item">
+                    <span class="feature-check">✓</span>
+                    <span>Arquitetura limpa</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-check">✓</span>
+                    <span>IA estratégica</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-check">✓</span>
+                    <span>UX funcional</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-check">✓</span>
+                    <span>Performance real</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-check">✓</span>
+                    <span>Clareza total</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-check">✓</span>
+                    <span>Escalabilidade</span>
+                </div>
+            </div>
+
+            <p class="closing-line">
+                É o tipo de tecnologia que sua operação sente na prática.
+            </p>
+        </section>
+
+        <section class="tech-section">
+            <h2 class="tech-title">🧠 Por que Premium?</h2>
+            <p style="text-align: center; color: var(--TM-muted-foreground); margin-bottom: 24px; font-size: 15px;">
+                Porque eu trabalho com:
+            </p>
+
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <span class="tech-bullet">→</span>
+                    <span>Engenharia de soluções</span>
+                </div>
+                <div class="tech-item">
+                    <span class="tech-bullet">→</span>
+                    <span>Python avançado</span>
+                </div>
+                <div class="tech-item">
+                    <span class="tech-bullet">→</span>
+                    <span>Next.js + TypeScript</span>
+                </div>
+                <div class="tech-item">
+                    <span class="tech-bullet">→</span>
+                    <span>Automação corporativa</span>
+                </div>
+                <div class="tech-item">
+                    <span class="tech-bullet">→</span>
+                    <span>IA aplicada com precisão</span>
+                </div>
+                <div class="tech-item">
+                    <span class="tech-bullet">→</span>
+                    <span>Design técnico focado em resultado</span>
+                </div>
+                <div class="tech-item" style="grid-column: 1 / -1;">
+                    <span class="tech-bullet">→</span>
+                    <span>Engenharia de prompts profissional (9.8/10)</span>
+                </div>
+            </div>
+
+            <p class="tech-highlight">
+                Você não recebe "um sisteminha".<br>
+                <strong>Você recebe uma solução de alto nível criada para durar e escalar.</strong>
+            </p>
+        </section>
+
+        <section class="cta-section">
+            <div class="cta-content">
+                <h2 class="cta-title">🚀 Se sua empresa exige excelência…<br>você está no lugar certo</h2>
+                <p class="cta-description">
+                    O que eu entrego é simples: <strong>clareza, velocidade, inteligência e resultado real.</strong><br>
+                    Vamos elevar a sua operação para o padrão Premium que ela merece.
+                </p>
+                <a href="#contact" class="btn-cta">Conversar Agora — Experiência Premium</a>
+            </div>
+        </section>
+
+        <footer>
+            <div class="footer-logo">THIAGO</div>
+            <p>Engenharia, Automação e IA Premium</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleTheme() {
+            document.documentElement.classList.toggle('light');
+        }
+    </script>
+</body>
+</html>

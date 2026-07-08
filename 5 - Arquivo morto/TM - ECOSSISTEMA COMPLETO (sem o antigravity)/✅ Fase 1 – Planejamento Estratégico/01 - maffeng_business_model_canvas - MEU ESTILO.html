@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Model Canvas - MAFFENG</title>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700&family=Inter:wght@400;500;600&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Backgrounds */
+            --TM-navy-deep: #0A1628;
+            --TM-navy-medium: #112240;
+            --TM-navy-light: #1A365D;
+            
+            /* Cores Primárias */
+            --TM-neon-green: #64FFDA;
+            --TM-cyan-vibrant: #00D4FF;
+            
+            /* Textos */
+            --TM-text-primary: #E6F1FF;
+            --TM-text-secondary: #8892B0;
+            --TM-text-emphasis: #64FFDA;
+            
+            /* Componentes */
+            --TM-border-subtle: rgba(100, 255, 218, 0.1);
+            --TM-card-bg: rgba(17, 34, 64, 0.5);
+            --TM-card-border: rgba(100, 255, 218, 0.1);
+            
+            /* Tipografia */
+            --font-heading: "Exo 2", sans-serif;
+            --font-body: "Inter", sans-serif;
+            --font-mono: "Roboto Mono", monospace;
+            
+            /* Gradientes */
+            --TM-gradient-bg: linear-gradient(180deg, #0A1628 0%, #112240 50%, #0A1628 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--TM-gradient-bg);
+            padding: 24px;
+            min-height: 100vh;
+            color: var(--TM-text-primary);
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: var(--TM-navy-deep);
+            border-radius: 8px;
+            border: 1px solid var(--TM-card-border);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: var(--TM-navy-medium);
+            padding: 32px;
+            text-align: center;
+            border-bottom: 1px solid var(--TM-card-border);
+        }
+
+        .header h1 {
+            font-family: var(--font-heading);
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--TM-neon-green);
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+        }
+
+        .header p {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--TM-text-primary);
+            margin-bottom: 4px;
+        }
+
+        .header .subtitle {
+            font-size: 14px;
+            color: var(--TM-text-secondary);
+            font-weight: 400;
+        }
+
+        .canvas {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: auto auto auto;
+            gap: 1px;
+            background: var(--TM-border-subtle);
+            padding: 1px;
+        }
+
+        .block {
+            background: var(--TM-card-bg);
+            backdrop-filter: blur(10px);
+            padding: 24px;
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--TM-card-border);
+            transition: all 300ms ease-in-out;
+        }
+
+        .block:hover {
+            background: rgba(17, 34, 64, 0.7);
+            border-color: rgba(100, 255, 218, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(100, 255, 218, 0.1);
+        }
+
+        .block h3 {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid;
+            letter-spacing: -0.01em;
+            text-transform: uppercase;
+        }
+
+        .block-content {
+            flex: 1;
+        }
+
+        .block ul {
+            list-style: none;
+        }
+
+        .block li {
+            padding: 8px 0;
+            padding-left: 20px;
+            position: relative;
+            line-height: 1.6;
+            font-size: 14px;
+            color: var(--TM-text-primary);
+        }
+
+        .block li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .block strong {
+            color: var(--TM-text-emphasis);
+            font-weight: 600;
+        }
+
+        /* Color coding */
+        .parcerias h3 { 
+            color: var(--TM-cyan-vibrant); 
+            border-color: var(--TM-cyan-vibrant);
+        }
+        .parcerias li:before { color: var(--TM-cyan-vibrant); }
+
+        .atividades h3 { 
+            color: var(--TM-neon-green); 
+            border-color: var(--TM-neon-green);
+        }
+        .atividades li:before { color: var(--TM-neon-green); }
+
+        .proposta { 
+            grid-row: span 2;
+        }
+        .proposta h3 { 
+            color: var(--TM-neon-green); 
+            border-color: var(--TM-neon-green);
+        }
+        .proposta li:before { color: var(--TM-neon-green); }
+
+        .relacionamento h3 { 
+            color: var(--TM-cyan-vibrant); 
+            border-color: var(--TM-cyan-vibrant);
+        }
+        .relacionamento li:before { color: var(--TM-cyan-vibrant); }
+
+        .segmentos { 
+            grid-row: span 2;
+        }
+        .segmentos h3 { 
+            color: var(--TM-neon-green); 
+            border-color: var(--TM-neon-green);
+        }
+        .segmentos li:before { color: var(--TM-neon-green); }
+
+        .recursos h3 { 
+            color: var(--TM-cyan-vibrant); 
+            border-color: var(--TM-cyan-vibrant);
+        }
+        .recursos li:before { color: var(--TM-cyan-vibrant); }
+
+        .canais h3 { 
+            color: var(--TM-cyan-vibrant); 
+            border-color: var(--TM-cyan-vibrant);
+        }
+        .canais li:before { color: var(--TM-cyan-vibrant); }
+
+        .custos { 
+            grid-column: span 3;
+        }
+        .custos h3 { 
+            color: #FFA500; 
+            border-color: #FFA500;
+        }
+        .custos li:before { color: #FFA500; }
+
+        .receitas { 
+            grid-column: span 2;
+        }
+        .receitas h3 { 
+            color: var(--TM-neon-green); 
+            border-color: var(--TM-neon-green);
+        }
+        .receitas li:before { color: var(--TM-neon-green); }
+
+        .footer {
+            background: var(--TM-navy-medium);
+            color: var(--TM-text-primary);
+            padding: 24px;
+            text-align: center;
+            font-size: 14px;
+            border-top: 1px solid var(--TM-card-border);
+        }
+
+        .footer p {
+            margin: 4px 0;
+        }
+
+        .footer strong {
+            color: var(--TM-neon-green);
+            font-weight: 600;
+        }
+
+        .version {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--TM-border-subtle);
+            color: var(--TM-text-secondary);
+            font-size: 12px;
+            font-family: var(--font-mono);
+        }
+
+        @media print {
+            body {
+                background: var(--TM-navy-deep);
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+            }
+            .block:hover {
+                transform: none;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .canvas {
+                grid-template-columns: 1fr;
+            }
+            .block {
+                grid-column: span 1 !important;
+                grid-row: span 1 !important;
+            }
+            body {
+                padding: 16px;
+            }
+            .header h1 {
+                font-size: 24px;
+            }
+        }
+
+        /* Scrollbar customization */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--TM-navy-deep);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--TM-navy-light);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--TM-cyan-vibrant);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Business Model Canvas</h1>
+            <p>Ecossistema MAFFENG - Automação Técnica</p>
+            <p class="subtitle">TM™ - Soluções Tecnológicas</p>
+        </div>
+
+        <div class="canvas">
+            <!-- Row 1 & 2 Left Side -->
+            <div class="block parcerias">
+                <h3>Parcerias Principais</h3>
+                <div class="block-content">
+                    <ul>
+                        <li><strong>Supabase</strong> - Infraestrutura de backend e banco de dados</li>
+                        <li><strong>Cloud Storage</strong> - Hospedagem de fotos e documentos técnicos</li>
+                        <li><strong>Empresas de engenharia</strong> - Validação de processos e cases</li>
+                        <li><strong>Lojas de aplicativos</strong> - Distribuição mobile (Google Play, App Store)</li>
+                        <li><strong>Integradores ERP</strong> - Conectividade com sistemas legados</li>
+                        <li><strong>Consultorias técnicas</strong> - Expertise em gestão de contratos</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="block atividades">
+                <h3>Atividades-Chave</h3>
+                <div class="block-content">
+                    <ul>
+                        <li>Desenvolvimento e manutenção dos 5 módulos integrados</li>
+                        <li>Automação de geração de relatórios técnicos .docx</li>
+                        <li>Gestão e validação de dados em tempo real via Supabase</li>
+                        <li>Suporte técnico especializado e treinamento de usuários</li>
+                        <li>Atualização contínua de templates e normas técnicas</li>
+                        <li>Monitoramento de métricas, KPIs e SLAs</li>
+                        <li>Customização de fluxos por contrato/cliente</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="block proposta">
+                <h3>Proposta de Valor</h3>
+                <div class="block-content">
+                    <ul>
+                        <li><strong>Ecossistema integrado</strong> - Do levantamento de campo à geração de relatórios finais</li>
+                        <li><strong>Modularidade total</strong> - Venda individual ou pacote completo conforme necessidade</li>
+                        <li><strong>Fluxo unificado</strong> - Todos os módulos conectados via Supabase e autenticação JWT</li>
+                        <li><strong>Operação offline</strong> - Coleta de dados em campo sem conexão com internet</li>
+                        <li><strong>Ganho de produtividade</strong> - Redução de até 70% no tempo de elaboração de relatórios</li>
+                        <li><strong>Rastreabilidade completa</strong> - Controle total do ciclo de vida das O.S.</li>
+                        <li><strong>Business Intelligence</strong> - Painéis executivos com métricas consolidadas em tempo real</li>
+                        <li><strong>Padronização técnica</strong> - Templates customizáveis por contrato e norma</li>
+                        <li><strong>Escalabilidade</strong> - Suporta múltiplos contratos, equipes e ambientes simultaneamente</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="block relacionamento">
+                <h3>Relacionamento com Clientes</h3>
+                <div class="block-content">
+                    <ul>
+                        <li>Onboarding personalizado com treinamento inicial completo</li>
+                        <li>Suporte técnico dedicado via múltiplos canais de atendimento</li>
+                        <li>Portal self-service com documentação e tutoriais</li>
+                        <li>Consultoria especializada para customização de processos</li>
+                        <li>Atualizações automáticas e comunicação proativa de novidades</li>
+                        <li>Account manager exclusivo para clientes enterprise</li>
+                        <li>Comunidade de usuários e base de conhecimento colaborativa</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="block segmentos">
+                <h3>Segmentos de Clientes</h3>
+                <div class="block-content">
+                    <ul>
+                        <li><strong>Empresas de engenharia</strong> - Civil, elétrica, mecânica e consultoria técnica</li>
+                        <li><strong>Construtoras e incorporadoras</strong> - Gestão de obras, fiscalização e vistoria</li>
+                        <li><strong>Empresas de facilities</strong> - Manutenção predial e gestão patrimonial</li>
+                        <li><strong>Órgãos públicos</strong> - Fiscalização e gestão de contratos de serviços técnicos</li>
+                        <li><strong>Empresas de vistoria</strong> - Laudos técnicos, perícias e inspeções</li>
+                        <li><strong>Gestoras de contratos</strong> - Administração terceirizada de serviços técnicos</li>
+                        <li><strong>PMEs</strong> - Aquisição de módulos individuais conforme necessidade específica</li>
+                        <li><strong>Grandes corporações</strong> - Implantação do ecossistema completo integrado</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Row 2 Middle -->
+            <div class="block recursos">
+                <h3>Recursos Principais</h3>
+                <div class="block-content">
+                    <ul>
+                        <li><strong>Plataforma Supabase</strong> - Banco de dados e backend principal</li>
+                        <li><strong>Stack tecnológica</strong> - TypeScript, React e Python</li>
+                        <li><strong>Motor de relatórios</strong> - Inteligência de geração .docx já desenvolvida</li>
+                        <li><strong>Protótipos validados</strong> - Designs completos em Figma</li>
+                        <li><strong>Equipe especializada</strong> - Desenvolvedores full-stack e designers UX/UI</li>
+                        <li><strong>Infraestrutura cloud</strong> - Ambiente escalável e resiliente</li>
+                        <li><strong>Biblioteca de templates</strong> - Padrões técnicos por norma e contrato</li>
+                        <li><strong>Sistema de autenticação</strong> - JWT centralizado com controle de perfis</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="block canais">
+                <h3>Canais</h3>
+                <div class="block-content">
+                    <ul>
+                        <li><strong>Website institucional</strong> - maffeng.com.br</li>
+                        <li><strong>Lojas de aplicativos</strong> - Google Play e App Store</li>
+                        <li><strong>Plataformas web</strong> - Acesso direto via navegador (Progressive Web App)</li>
+                        <li><strong>Vendas diretas B2B</strong> - Equipe comercial especializada</li>
+                        <li><strong>Parcerias estratégicas</strong> - Revendedores e integradores de sistemas</li>
+                        <li><strong>Marketing digital</strong> - Inbound, SEO e conteúdo técnico</li>
+                        <li><strong>Eventos do setor</strong> - Feiras de engenharia e tecnologia</li>
+                        <li><strong>Indicações</strong> - Programa de referral e cases de sucesso</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Row 3 Bottom -->
+            <div class="block custos">
+                <h3>Estrutura de Custos</h3>
+                <div class="block-content">
+                    <ul>
+                        <li><strong>Desenvolvimento</strong> - Equipe de engenheiros de software, designers UX/UI e arquitetos de sistemas</li>
+                        <li><strong>Infraestrutura tecnológica</strong> - Supabase, cloud storage, CDN, domínios e hospedagem</li>
+                        <li><strong>Operação e suporte</strong> - Equipe de suporte técnico, atendimento ao cliente e manutenção corretiva</li>
+                        <li><strong>Marketing e vendas</strong> - Publicidade digital, materiais promocionais, equipe comercial e eventos</li>
+                        <li><strong>Administrativo</strong> - Gestão, jurídico, contabilidade e recursos humanos</li>
+                        <li><strong>P&D e inovação</strong> - Desenvolvimento de novos módulos, pesquisa de tecnologias emergentes e melhorias contínuas</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="block receitas">
+                <h3>Fontes de Receita</h3>
+                <div class="block-content">
+                    <ul>
+                        <li><strong>Licenciamento SaaS</strong> - Assinaturas mensais/anuais por módulo ou ecossistema completo</li>
+                        <li><strong>Modelo freemium</strong> - Versão básica gratuita + recursos premium pagos</li>
+                        <li><strong>Precificação por usuário</strong> - Planos escalonados conforme número de usuários ativos</li>
+                        <li><strong>Desenvolvimento customizado</strong> - Funcionalidades específicas sob demanda</li>
+                        <li><strong>Treinamento e consultoria</strong> - Serviços de implantação, capacitação e otimização de processos</li>
+                        <li><strong>Integrações premium</strong> - Conectores com sistemas legados, ERPs e plataformas terceiras</li>
+                        <li><strong>Suporte avançado</strong> - SLA diferenciado, atendimento prioritário e gerente de conta dedicado</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>MAFFENG - AUTOMAÇÃO TÉCNICA</strong> | TM™ - Soluções Tecnológicas</p>
+            <p>Ecossistema modular integrado para automação de relatórios, levantamentos e gestão de contratos</p>
+            <div class="version">
+                v1.0 | Design System TM | Novembro 2025
+            </div>
+        </div>
+    </div>
+</body>
+</html>

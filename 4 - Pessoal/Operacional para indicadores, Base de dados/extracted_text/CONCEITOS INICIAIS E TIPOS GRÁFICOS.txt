@@ -1,0 +1,183 @@
+CONCEITOS INICIAIS E TIPOS DE GRÁFICOS 
+ 
+O objetivo deste curso básico  é apresentar a quem inicia no mercado 
+financeiro, os principais conceito s da ANÁLISE TÉCNICA.  O estudo da análise 
+técnica é muito extenso, aqui são apresentados alguns dos principais e m ais 
+relevantes pontos, no entanto,  acreditamos que seja suficiente para um bom 
+aprendizado e ótimos resultados.  
+A análise técnica ou análise gráfica, é um método de análise em que as 
+informações do mercado, incluindo gráficos de preço e volume são quanti -
+tativamente estudados para ajudar a predizer o movimento do mercado.  
+Estudaremos inicialmente os Candlesticks, voltando-nos aos aspectos práticos, 
+e deixando , neste momento,  de lado os detalhes históricos , os quais serão 
+estudados mais adiante. 
+Apesar de básico, podemos afirmar que este curso irá preencher uma lacuna 
+de conhecimento, e por si só será suficiente para que o aprendiz inicie sua 
+inserção nos mercados de FOREX, BOLSA DE VALORES, OPÇÕES 
+BINÁRIAS, e outros mercados que se utilizam da ANÁLISE TÉCN ICA como 
+ferramenta. 
+ 
+Análise técnica, de uma manei ra simples, é uma abordagem que permite ao 
+seu praticante avaliar qual o melhor momento (timing) para se iniciar e encerrar 
+uma operação de compra ou de venda de  
+um ativo financeiro ou quando deve ficar fo ra do mercado. Para tanto, utiliza 
+gráficos e teorias formuladas sobre sua dinâmica e, mais recentemente, 
+estudos matemáticos -estatísticos complementares que conhecerão ao longo 
+deste e de outros cursos que aqui serão ministrados.  
+As primeiras teorias e m étodos operacionais surgiram no início do século XXI . 
+Pesquisando, encontramos que, em 1901, durante a fusão da U.S.Steel, um 
+dos seus diretores James R. Keene utilizava a técnica dos gráficos Ponto -
+Figura intensamente. Posteriormente, alguns “scalpers” (operadores de pregão) 
+passaram a utilizá-la nas suas operações day-trade (intra diário) e a prática do 
+mercado acabou convertendo -a numa teoria de uso comum, não se sabendo 
+ao certo quem foi o seu criador. 
+Na mesma época, Charles H. Dow, proprietário de um serviço de informações 
+voltado para o mercado financeiro – Dow-Jones Financial News – e a quem é 
+creditada a invenção dos índices no  
+mercado de ações, em artigos escritos para o Wall Street Journal definiu os 
+conceitos básicos do viria a se tornar uma teoria. Após sua morte em 1902, seu 
+sucessor na editoria do jornal, William P.  
+Hamilton, continuou escrevendo nos 27 anos seguintes novos edit oriais e 
+dando forma àquilo que hoje é mundialmente conhecido como “A Teoria de 
+Dow”, em nossa opinião, a essência da análise 
+técnica e por onde começaremos. Mas, antes, será preciso que co nheçamos 
+algumas noções básicas para melhor entendimento de suas regras e conceitos. 
+A ANÁLISE TÉCNICA se utiliza d e figuras variadas para representação dos 
+preços. É com estas figuras, que se formam os gráficos. 
+Iremos, neste estudo, esclarecer alguns conceitos em torno dos gráficos e suas 
+aplicabilidades. 
+Um gráfico de cotações é uma sequência de pontos definidos numa dada 
+janela de amostragem usando para isso uma dada base de tempo (t imeframe). 
+Cada gráfico tem dois eixos. No eixo X vem a escala do tempo e no eixo Y 
+temos os valores das cotações. 
+ 
+A base de tempo (timefra me) utilizada pode variar de gráfico para gráfico 
+dependendo da estratégia do analista. Pode ser utilizada uma base de tempo 
+intraday, diária, semanal, mensal, trimestral ou anual. Quanto menor for a base 
+de tempo, menor compressão terá a visualização do gráfico. 
+Uma base de tempo diária utiliza para desenhar o gráfico um ponto por cada 
+dia de sessão em Bolsa enquanto que uma base de tempo semanal utiliza um 
+ponto para cada 7 dias. Por exemplo, se num gráfico diário visualizarmos 100 
+pontos de informação, n um gráfico semanal com o mesmo número de pontos 
+iremos visualizar 5 meses (um ano corresponderá, grosso modo, a 252 pontos) 
+de cotações. Geralmente os analistas utilizam gráficos intraday (visualização 
+da variação das cotações ao longo da sessão de bolsa) ou gráficos diários com 
+o intuito de analisar a evolução de curto -prazo das cotações. Se quiserem 
+analisar as tendências de médio/longo prazo de uma empresa deverão utilizar 
+gráficos mensais ou anuais. 
+BASICAMENTE HÁ TRÊS TIPOS DIFERENTES DE GRÁFICOS UTILIZADOS 
+NA ANÁLISE TÉCNICA:  
+01-GRÁFICO DE LINHAS 
+02- GRÁFICO DE BARRAS  
+03- GRÁFICO DE CANDLESTICKS 
+ 
+1. GRÁFICO DE LINHAS 
+O gráfico de linha é o gráfico mais simplista. Desenha -se unindo por uma linha, 
+cada ponto consecutivo desenhado no gráfico y -x. A coor denada no eixo Y 
+será a cotação de fechamento e a coordenada no eixo X será a data do pregão 
+em que ocorreu a cotação. A grande vantagem destes gráficos é que a sua 
+análise é bastante intuitiva. 
+ 
+ 
+2. GRÁFICO DE BARRAS  
+O gráfico de barras já é um gráfico mais complexo. Para desenhá -lo são 
+precisos 4 dados por data: a cotação de fechamento, o valor máximo e mínimo 
+do dia, bem como a cotação na abe rtura. O máximo da sessão e o mínimo da 
+sessão definem os extremos da linha definida por cada dia. A pequena linha 
+horizontal para a direita define a cotação de fechamento, enquanto a que 
+aponta para a esquerda define o valor da abertura. 
+ 
+A grande vantagem deste tipo de gráfico face ao gráfico de linha é que oferece 
+mais informação, ainda que seja de leitura mais densa. 
+ 
+3. GRÁFICO CANDLESTICK  
+Este gráfico é proveniente do Japão e tornou -se muito popular na última 
+década. Num gráfico candlestick são necessários os valores de fechamento e 
+abertura, bem como o máximo e mínimo da sessão. A grande vantagem destes 
+gráficos é que permitem uma leitura  rápida da relação entre o preço final e de 
+abertura. Se o candle for branco, significa que o valor de fechamento foi 
+superior ao valor de abertura. Se o candle for preto é porque a cotação de 
+fechamento terminou abaixo do valor de abertura. 
+ 
+ 
+ 
+ 
+ 
+SURGIMENTO 
+Agora sim, vamos abordar mais claramente os fatos históricos. Os candlesticks 
+surgiram no Japão no sé culo 17 com o mercado de arroz. De lá p ara cá esse 
+sistema de representação fo i sofrendo alterações até chegar nos dias atuais, 
+onde é bastante usado para a análise gráfica.  
+Como qualquer análise técnica, deve ser usad o junto com outras  
+ferramentas. Para se criar o candlestick usa -se o  preço de  abertura, 
+fechamento, máximo e mínimo de cada período. O corpo do  candlestick é 
+representado por uma barra cuja altura é dada pela diferenç a entre o preço de 
+fechamento e abertura, enquanto a linha acima e abaixo  correspondem ao 
+preço máximo e mínimo resp ectivamente. 
+Quando o preço de fechamento é maior que o preço de abertura do período, o 
+candlestick é representado aqui pela cor azul para facilitar a visualização.  
+E quando o preço de fechamento é menor que o preço de abertura do período,  
+utiliza-se a cor  vermelha. 
+ 
+Corpo longo x curto : Candlestick de corpo longo mostra  uma disputa mais 
+intensa entre compradores e vendedores, enquanto os curtos demonstram 
+consolidação do preço. Depois de uma alta, um candle longo vermelho pode 
+representar o estabelecimento de um ponto de resistência. Por outro lado, após 
+uma queda de pre ços, um longo candle azul pode representar o 
+estabelecimento de um ponto de suporte. 
+ 
+VEREMOS AGORA, ALGUNS PADRÕES DE CANDLESTICKS, PORÉM 
+ESTE ASSUNTO SERÁ ABORDADO MELHOR POSTERIORMENTE. 
+PADRÕES COMUNS DE CANDLESTICKS : Marubozu: Quando o preço de 
+abertura coincide com o mínimo, e o preço de fechamento com o máximo 
+temos um Marubozu azul, mostrando que os compradores dominaram o pregão 
+na maior parte do tempo. Quando o preço de abertura coincide com o máximo, 
+e o fechamento com o mínimo temos um Marubozu vermelho, mostrando que 
+os vendedores dominaram o pregão.  
+ 
+Martelo – Linha de mínimo grande e máximo curta : Nesse caso os 
+vendedores dominaram durante um período, criando uma longa linha de 
+mínima, porém mais tarde os compradores predominar am. Pode ser azul ou 
+vermelho, porém quando vermelho os compradores não foram tão 
+predominantes. 
+ 
+  
+Martelo Invertido – Linha de máximo grande e mínima curta : Os 
+compradores dominaram durante um período o pregão, forçando uma alta, 
+porém mais tarde houve o predomínio dos vendedores que provocaram um 
+fechamento menor que a abertura. Pode ser azul ou vermelho, porém quando 
+azul os vendedores não foram tão fortes. 
+ 
+  
+“Spinning Tops” – Linha de máximo e mínimo iguais e corpo pequeno : 
+Nesse caso houve uma indecisão entre compradores e vendedores, já que a 
+abertura e fechamento estão muito próximos e as linhas de máximo e mínimo 
+são equivalentes. 
+ 
+  
+Doji: No limite do padrão anterior, quando o preço de abertura e fechamento 
+são praticamente iguais forma -se o Doji que repr esenta total indecisão entre 
+compradores e vendedores. Depois de uma alta ou baixa, o aparecimento de 
+um Doji deve ser encarado como um alerta para alguma provável mudança de 
+tendência. 
+ 
+  
+Mais padrões de candlesticks  : No Harami , o corpo do último candlestick 
+está dentro do corpo do dia anterior. No “engolfing” (engolfo) o corpo do dia 
+anterior é que está dentro do último candlestick. No “Estrela” não há preço na 
+mesma faixa que o dia anterior, ocorrendo um “gap”. 
+ 
+Os candlesticks são utilizados principalmente par a prever uma reversão de 
+tendência de alta ou baixa. Dessa maneira formam -se figuras padronizadas, 
+muitas com nomes exóticos, que são divididas em padrões altistas ou baixistas. 
+Padrões altistas indicam que a tendência de baixa está próximo ao fim e 
+padrões baixistas o fim da tendência de alta. Há muitos desses padrões, os 
+mais conhecidos são mostrados abaixo. Na maioria dos casos recomenda -se 
+esperar o próximo pregão, após o padrão, para confirmar a reversão. Os 
+padrões “Martelo” ou “Shooting Star” indepen dem da cor do candlestick. 
+ 
+ 
+Devido à facilidade visual de se detectar o sentimento do mercado, os 
+candlesticks são os preferidos pelos profissionais, sendo usado em conjunto 
+com outras ferramentas da análise técnica. 
+ 

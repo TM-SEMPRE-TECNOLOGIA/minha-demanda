@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Definição de Campos - Sistema de OS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .campo {
+            background: #f8f9fa;
+            border-left: 5px solid #667eea;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 30px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .campo:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+        }
+
+        .campo-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .campo-numero {
+            background: #667eea;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .campo-titulo {
+            font-size: 1.5em;
+            color: #2d3748;
+            font-weight: bold;
+        }
+
+        .campo-item {
+            margin-bottom: 15px;
+        }
+
+        .campo-label {
+            font-weight: bold;
+            color: #667eea;
+            display: inline-block;
+            min-width: 180px;
+            margin-bottom: 5px;
+        }
+
+        .campo-valor {
+            color: #4a5568;
+        }
+
+        .campo-destaque {
+            background: #e6f3ff;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 10px;
+            border-left: 3px solid #3182ce;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            margin-right: 8px;
+            margin-top: 5px;
+        }
+
+        .tag.origem { background: #48bb78; }
+        .tag.responsavel { background: #ed8936; }
+        .tag.tipo { background: #9f7aea; }
+
+        .lista-responsaveis {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .campo {
+                padding: 20px;
+            }
+
+            .campo-label {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📋 Definição de Campos do Sistema</h1>
+            <p>Especificação completa dos campos da planilha e suas interações no sistema de Ordens de Serviço</p>
+        </header>
+
+        <div class="content">
+            <!-- Campo 1 -->
+            <div class="campo">
+                <div class="campo-header">
+                    <div class="campo-numero">1</div>
+                    <div class="campo-titulo">ELABORAÇÃO RELATÓRIO</div>
+                </div>
+                <div class="campo-item">
+                    <span class="campo-label">📌 Função:</span>
+                    <span class="campo-valor">Identificar quem será o responsável pela elaboração do relatório da O.S.</span>
+                </div>
+                <div class="campo-item">
+                    <span class="campo-label">📥 Origem:</span>
+                    <span class="campo-valor">Vem na planilha em branco. É definido dentro do sistema após importação.</span>
+                </div>
+                <div class="campo-item">
+                    <span class="campo-label">👤 Responsável:</span>
+                    <span class="campo-valor">Paulo</span>
+                </div>
+                <div class="campo-destaque">
+                    <strong>⚙️ Comportamento no sistema:</strong><br>
+                    Paulo seleciona o elaborador (Danilo ou outro). A OS passa a aparecer em "Minhas OS" para o elaborador. Pode gerar notificação.
+                </div>
+                <div class="campo-item">
+                    <span class="tag tipo">Seleção por lista de usuários</span>
+                </div>
+            </div>
+
+            <!-- Campo 2 -->
+            <div class="campo">
+                <div class="campo-header">
+                    <div class="campo-numero">2</div>
+                    <div class="campo-titulo">DATA LEVANTAMENTO RELATÓRIO</div>
+                </div>
+                <div class="campo-item">
+                    <span class="campo-label">📌 Função:</span>
+                    <span class="campo-valor">Registrar a data e hora real em que o levantamento foi realizado.</span>
+                </div>
+                <div class="campo-item">
+                    <span class="campo-label">📥 Origem:</span>
+                    <span class="campo-valor">Vem vazio na planilha. Paulo preenche manualmente no sistema.</span>
+                </div>
+                <div class="campo-item">
+                    <span class="campo-label">👤 Responsável:</span>
+                    <span class="campo-valor">Paulo (após receber confirmação do técnico)</span>
+                </div>
+                <div class="campo-destaque">
+                    <strong>⚙️ Comportamento:</strong><br>
+                    Ao registrar a data/hora, inicia-se o prazo de 15 dias para o elaborador concluir o relatório. Impacta métricas e prazos internos.
+                </div>
+                <div class="campo-item">
+                    <span class="tag tipo">Data e hora (YYYY-MM-DD HH:MM)</span>
+                </div>
+            </div>
+
+            <!-- Campo 3 -->
+            <div class="campo">
+                <div class="campo-header">
+                    <div class="campo-numero">3</div>
+                    <div class="campo-titulo">CONTRATO</div>
+                </div>
+                <div class="campo-item">
+                    <span class="campo-label">📌 Função:</span>
+                    <span class="campo-valor">Identificar o contrato ao qual a OS/agência pertence.</span>
+                </div>
+                <div class="campo-item">
+                    <span class="campo-label">📥 Origem:</span>
+                    <span class="campo-valor">Vem preenchido na planilha.</span>
+                </div>
+                <div class="campo-destaque">
+                    <strong>⚙️ Comportamento:</strong><br>
+                    Texto importado exatamente como está. O sistema verifica se o contrato já tem administrador vinculado. Se não tiver, o sistema exige o vínculo. As OS são automaticamente atribuídas ao administrador do contrato (Alexandre, João Vitor etc.). Este campo influencia filtros, permissões e agrupamentos.
+                </div>
+                <div class="campo-item">
+                    <span class="tag tipo">Texto simples (imutável)</span>
+                </div>
+            </div>
+
+            <!-- Campo 4 -->
+            <div class="campo">
+                <div class="campo-header">
+                    <div class="campo-numero">4</div>
+                    <div class="campo-titulo">OS</div>
+                </div>
+                <div class="campo-item">
+                    <span class="campo-label">📌 Função:</span>
+                    <span class="campo-valor">Número único da Ordem de Serviço.</span>
+                </div>
+                <div class="campo-item">
+                    <span class="campo-label">📥 Origem:</span>
+                    <span class="campo-valor">Sempre preenchido na planilha.</span>
+                </div>
+                <div class="campo-destaque">
+                    <strong>⚙️ Comportamento:</strong><br>
+                    É imutável após importação. Usado como identificador principal em todo o sistema.
+                </div>
+                <div class="campo-item">
+                    <span class="tag tipo">String numérica</span>
+                </div>
+            </div>
+
+            <!-- Campo 5 -->
+            <div class="campo">
+                <div class="campo-header">
+                    <div class="campo-numero">5</div>
+                    <div class="campo-titulo">PREFIXO</div>
+                </div>
+                <div class="campo-item">
+                    <span class="campo-label">📌 Função:</span>
+                    <span class="campo-valor">Código da agência. Exemplo: 9794</span>
+                </div>
+                <div class="campo-item">
+                    <span class="campo-label">📥 Origem:</span>
+                    <span class="campo-valor">Sempre vem na planilha.</span>
+                </div>
+                <div class="campo-destaque">
+                    <strong>⚙️ Comportamento:</strong><br>
+                    Não editável. Usado para identificar agência + filtros + métricas. Relacionado permanentemente a uma agência.
+                </div>
+                <div class="campo-item">
+                    <span class="tag tipo">Texto numérico</span>
+                </div>
+            </div>
+
+            <!-- Campo 6 -->
+            <div class="campo">
+                <div class="campo-header">
+                    <div class="campo-numero">6</div>
+                    <div class="campo-titulo">AGÊNCIA</div>
+                </div>
+                <div class="campo-item">
+                    <span class="campo-label">📌 Função:</span>
+                    <span class="campo-valor">Nome da agência.</span>
+                </div>
+                <div class="campo-item">
+                    <span class="campo-label">📥 Origem:</span>
+                    <span class="campo-valor">Sempre vem preenchido na planilha.</span>
+                </div>
+                <div class="campo-destaque">
+                    <strong>⚙️ Comportamento:</strong><br>
+                    Imutável. Exibido em todas as telas importantes. Vinculado ao PREFIXO.
+                </div>
+                <div class="campo-item">
+                    <span class="tag tipo">Texto simples</span>
+                </div>
+            </div>
+
+            <!-- Campo 7 -->
+            <div class="campo">
+                <div class="campo-header">
+                    <div class="campo-numero">7</div>
+                    <div class="campo-titulo">VALOR LEVANTAMENTO</div>
+                </div>
+                <div class="campo-item">
+                    <span class="campo-label">📌 Função:</span>
+                    <span class="campo-valor">Registrar o valor gasto pelo técnico para realizar o levantamento.</span>
+                </div>
+                <div class="campo-item">
+                    <span class="campo-label">📥 Origem:</span>
+                    <span class="campo-valor">Vem vazio na planilha. Elaborador preenche após anexar a RAT.</span>
+                </div>
+                <div class="campo-item">
+                    <span class="campo-label">👥 Responsáveis:</span>
+                    <div class="lista-responsaveis">
+                        <span class="tag responsavel">Elaborador (Danilo) - preenche</span>
+                        <span class="tag responsavel">Paulo - visualiza</span>
+                        <span class="tag responsavel">Alexandre - visualiza e edita</span>
+                    </div>
+                </div>
+                <div class="campo-destaque">
+                    <strong>⚙️ Comportamento:</strong><br>
+                    Editável até o relatório ser finalizado. Após finalização → travado para elaborador, mas Alexandre ainda pode ajustar. Usado para métricas financeiras.
+                </div>
+                <div class="campo-item">
+                    <span class="tag tipo">Valor monetário (R$)</span>
+                </div>
+            </div>
+
+            <!-- Campo 8 -->
+            <div class="campo">
+                <div class="campo-header">
+                    <div class="campo-numero">8</div>
+                    <div class="campo-titulo">VALOR APROVADO</div>
+                </div>
+                <div class="campo-item">
+                    <span class="campo-label">📌 Função:</span>
+                    <span class="campo-valor">Registrar o valor aprovado pelo fornecedor após análise do orçamento.</span>
+                </div>
+                <div class="campo-item">
+                    <span class="campo-label">📥 Origem:</span>
+                    <span class="campo-valor">Vem vazio na planilha.</span>
+                </div>
+                <div class="campo-item">
+                    <span class="campo-label">👤 Responsável:</span>
+                    <span class="campo-valor">Alexandre insere após aprovação. Danilo e Paulo apenas visualizam.</span>
+                </div>
+                <div class="campo-destaque">
+                    <strong>⚙️ Comportamento:</strong><br>
+                    Quando Alexandre insere, a OS é encerrada no sistema. Valor editável somente até conclusão.
+                </div>
+                <div class="campo-item">
+                    <span class="tag tipo">Monetário (R$)</span>
+                </div>
+            </div>
+
+            <!-- Campo 9 -->
+            <div class="campo">
+                <div class="campo-header">
+                    <div class="campo-numero">9</div>
+                    <div class="campo-titulo">VENCIMENTO</div>
+                </div>
+                <div class="campo-item">
+                    <span class="campo-label">📌 Função:</span>
+                    <span class="campo-valor">Data limite imposta pelo fornecedor para entrega da OS.</span>
+                </div>
+                <div class="campo-item">
+                    <span class="campo-label">📥 Origem:</span>
+                    <span class="campo-valor">Vem preenchido na planilha.</span>
+                </div>
+                <div class="campo-destaque">
+                    <strong>⚙️ Comportamento:</strong><br>
+                    Imutável. Sistema gera alertas de proximidade e atraso. Relacionado ao prazo interno dos 15 dias do elaborador.
+                </div>
+                <div class="campo-item">
+                    <span class="tag tipo">Data (YYYY-MM-DD)</span>
+                </div>
+            </div>
+
+            <!-- Campo 10 -->
+            <div class="campo">
+                <div class="campo-header">
+                    <div class="campo-numero">10</div>
+                    <div class="campo-titulo">SITUAÇÃO</div>
+                </div>
+                <div class="campo-item">
+                    <span class="campo-label">📌 Função:</span>
+                    <span class="campo-valor">Status interno da OS atualizado pela equipe, refletindo o andamento real.</span>
+                </div>
+                <div class="campo-item">
+                    <span class="campo-label">📋 Situações Padronizadas:</span>
+                    <div class="lista-responsaveis">
+                        <span class="tag">Fornecedor Acionado</span>
+                        <span class="tag">Levantamento OK</span>
+                        <span class="tag">Enviada para Orçamento</span>
+                        <span class="tag">Devolvida pelo Fornecedor</span>
+                        <span class="tag">Concluída pelo Fornecedor</span>
+                        <span class="tag">Serviço Concluído</span>
+                    </div>
+                </div>
+                <div class="campo-destaque">
+                    <strong>⚙️ Comportamento:</strong><br>
+                    Atualizada automaticamente por eventos do sistema ou manualmente por Paulo/Alexandre. Usada para filtros, interface e métricas.
+                </div>
+            </div>
+
+            <!-- Campo 11 -->
+            <div class="campo">
+                <div class="campo-header">
+                    <div class="campo-numero">11</div>
+                    <div class="campo-titulo">TÉCNICO</div>
+                </div>
+                <div class="campo-item">
+                    <span class="campo-label">📌 Função:</span>
+                    <span class="campo-valor">Registrar qual técnico de campo executará o levantamento.</span>
+                </div>
+                <div class="campo-item">
+                    <span class="campo-label">📥 Origem:</span>
+                    <span class="campo-valor">Vem vazio na planilha.</span>
+                </div>
+                <div class="campo-item">
+                    <span class="campo-label">👥 Responsáveis:</span>
+                    <div class="lista-responsaveis">
+                        <span class="tag responsavel">Paulo - define</span>
+                        <span class="tag responsavel">Alexandre - também pode vincular</span>
+                    </div>
+                </div>
+                <div class="campo-destaque">
+                    <strong>⚙️ Comportamento:</strong><br>
+                    Escolhido de uma lista pré-cadastrada. Usado para métricas e distribuição de trabalho. Travado após a Data de Levantamento ser registrada.
+                </div>
+                <div class="campo-item">
+                    <span class="tag tipo">Seleção por lista</span>
+                </div>
+            </div>
+
+            <!-- Campo 12 -->
+            <div class="campo">
+                <div class="campo-header">
+                    <div class="campo-numero">12</div>
+                    <div class="campo-titulo">AGENDAMENTO</div>
+                </div>
+                <div class="campo-item">
+                    <span class="campo-label">📌 Função:</span>
+                    <span class="campo-valor">Registrar a data e hora previstas do levantamento.</span>
+                </div>
+                <div class="campo-item">
+                    <span class="campo-label">👥 Responsável:</span>
+                    <div class="lista-responsaveis">
+                        <span class="tag responsavel">Alexandre (principal)</span>
+                        <span class="tag responsavel">Paulo (também pode)</span>
+                    </div>
+                </div>
+                <div class="campo-destaque">
+                    <strong>⚙️ Comportamento:</strong><br>
+                    É previsão, não execução real. Travado após registro da Data de Levantamento. Alimenta a Agenda de Previsão.
+                </div>
+                <div class="campo-item">
+                    <span class="tag tipo">Data + Hora</span>
+                </div>
+            </div>
+
+            <!-- Campo 13 -->
+            <div class="campo">
+                <div class="campo-header">
+                    <div class="campo-numero">13</div>
+                    <div class="campo-titulo">DIFICULDADE</div>
+                </div>
+                <div class="campo-item">
+                    <span class="campo-label">📌 Função:</span>
+                    <span class="campo-valor">Registrar qualquer dificuldade encontrada no processo.</span>
+                </div>
+                <div class="campo-item">
+                    <span class="campo-label">👥 Responsáveis:</span>
+                    <div class="lista-responsaveis">
+                        <span class="tag responsavel">Danilo</span>
+                        <span class="tag responsavel">Paulo</span>
+                        <span class="tag responsavel">Alexandre</span>
+                        <span class="tag">(Todos podem registrar)</span>
+                    </div>
+                </div>
+                <div class="campo-destaque">
+                    <strong>⚙️ Comportamento:</strong><br>
+                    Campo de texto livre. Pode registrar múltiplas dificuldades. Exibido dentro da OS e também numa lista gerencial exclusiva para Paulo.
+                </div>
+                <div class="campo-item">
+                    <span class="tag tipo">Texto livre</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

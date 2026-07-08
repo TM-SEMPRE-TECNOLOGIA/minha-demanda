@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#1f2c34" />
+    <title>Service Chat PWA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;500;600&family=Helvetica+Neue:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            /* WhatsApp Dark Theme Palette */
+            --wa-bg-app: #0b141a;
+            --wa-bg-sidebar: #111b21;
+            --wa-header: #202c33;
+            --wa-panel-header-icon: #aebac1;
+            --wa-primary: #00a884;
+            --wa-secondary: #8696a0;
+            --wa-message-out: #005c4b;
+            --wa-message-in: #202c33;
+            --wa-input-bg: #2a3942;
+            --wa-text-primary: #e9edef;
+            --wa-text-secondary: #8696a0;
+            --wa-border: #2f3b43;
+            --wa-danger: #f15c6d;
+            --wa-system-message: #182229;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: var(--wa-bg-app);
+            color: var(--wa-text-primary);
+            overflow: hidden;
+            /* App-like feel */
+        }
+
+        /* Custom Scrollbar for Webkit */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+        }
+
+        /* Chat Background Pattern Simulation */
+        .wa-chat-bg {
+            background-color: #0b141a;
+            background-image: linear-gradient(rgba(11, 20, 26, 0.93), rgba(11, 20, 26, 0.93)), url("https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png");
+            background-repeat: repeat;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="importmap">
+    {
+      "imports": {
+        "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+        "react": "https://esm.sh/react@^19.2.3",
+        "react/": "https://esm.sh/react@^19.2.3/",
+        "react-dom": "https://esm.sh/react-dom@^19.2.3",
+        "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+        "@google/genai": "https://esm.sh/@google/genai@^1.37.0"
+      }
+    }
+    </script>
+    <script type="module" src="index.tsx"></script>
+</body>
+</html>

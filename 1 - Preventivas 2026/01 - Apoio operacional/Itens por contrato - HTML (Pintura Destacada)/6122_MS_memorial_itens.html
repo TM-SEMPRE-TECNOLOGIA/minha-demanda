@@ -1,0 +1,3734 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6122 — MATO GROSSO DO SUL | Memorial de Itens</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ── TM Design System v3 — tokens canônicos ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --TM-primary:             #C8541C;
+    --TM-primary-hover:       #A6451A;
+    --TM-primary-light:       #FBEDE3;
+    --TM-primary-light-alpha: rgba(200,84,28,0.12);
+    --TM-accent-graphite:     #2B2B2B;
+    --tm-bg:                  #F5F4F1;
+    --tm-bg-card:             #FFFFFF;
+    --tm-bg-hover:            #ECEAE5;
+    --tm-bg-input:            #FFFFFF;
+    --tm-bg-sidebar:          #FAF9F6;
+    --tm-bg-secondary:        #E8E5DE;
+    --tm-bg-accent:           #FBEDE3;
+    --tm-bg-muted:            #EFEDE8;
+    --tm-text:                #1A1A1A;
+    --tm-text-muted:          #5C5A55;
+    --tm-text-subtle:         #8C8A85;
+    --tm-border:              #DAD7D0;
+    --tm-border-hover:        #B8B5AD;
+    --tm-border-strong:       #1A1A1A;
+    --tm-success:             #4F7A3A;
+    --tm-info:                #345878;
+    --tm-warning:             #C8541C;
+    --tm-destructive:         #A33B2A;
+    --TM-font-serif: "Roboto Slab", Georgia, serif;
+    --TM-font-sans:  "Inter", system-ui, sans-serif;
+    --TM-font-mono:  "JetBrains Mono", ui-monospace, monospace;
+    --TM-radius-sm: 4px;
+    --TM-radius-md: 6px;
+    --TM-radius-lg: 8px;
+    --TM-radius-xl: 12px;
+    --TM-shadow-sm: 0 1px 0 rgba(26,26,26,.04), 0 1px 2px rgba(26,26,26,.04);
+    --TM-shadow-md: 0 2px 4px -1px rgba(26,26,26,.08), 0 1px 2px rgba(26,26,26,.04);
+    --TM-shadow-lg: 0 8px 16px -4px rgba(26,26,26,.10), 0 2px 4px -1px rgba(26,26,26,.06);
+  }
+  html.dark {
+    --TM-primary:             #E47A4A;
+    --TM-primary-hover:       #C8541C;
+    --TM-primary-light:       #2B2520;
+    --TM-primary-light-alpha: rgba(228,122,74,0.18);
+    --tm-bg:                  #161513;
+    --tm-bg-card:             #1F1E1B;
+    --tm-bg-hover:            #2A2926;
+    --tm-bg-input:            #1F1E1B;
+    --tm-bg-sidebar:          #1A1916;
+    --tm-bg-secondary:        #2A2926;
+    --tm-bg-accent:           #2B2520;
+    --tm-bg-muted:            #232220;
+    --tm-text:                #EFEDE8;
+    --tm-text-muted:          #A8A6A0;
+    --tm-text-subtle:         #6E6C66;
+    --tm-border:              #34322E;
+    --tm-border-hover:        #4A4842;
+    --tm-border-strong:       #EFEDE8;
+    --TM-shadow-sm: 0 1px 0 rgba(0,0,0,.40);
+    --TM-shadow-md: 0 2px 4px -1px rgba(0,0,0,.50);
+    --TM-shadow-lg: 0 8px 16px -4px rgba(0,0,0,.55);
+  }
+
+  body {
+    font-family: var(--TM-font-sans);
+    background: var(--tm-bg);
+    color: var(--tm-text);
+    font-size: 14px;
+    line-height: 1.6;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--tm-bg-card);
+    border-bottom: 1px solid var(--tm-border);
+    padding: 0 24px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--TM-shadow-sm);
+  }
+  .hdr-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+  .hdr-logo-mark {
+    width: 28px; height: 28px;
+    background: var(--TM-primary);
+    border-radius: var(--TM-radius-md);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .hdr-logo-mark svg { width: 16px; height: 16px; stroke: #fff; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+  .hdr-wordmark {
+    font-family: var(--TM-font-serif);
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--tm-text);
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+  }
+  .hdr-div { width: 1px; height: 20px; background: var(--tm-border); flex-shrink: 0; }
+  .hdr-contract-badge {
+    font-family: var(--TM-font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--TM-primary);
+    background: var(--TM-primary-light);
+    padding: 3px 9px;
+    border-radius: var(--TM-radius-sm);
+    border: 1px solid var(--TM-primary-light-alpha);
+    white-space: nowrap;
+  }
+  .hdr-meta-text {
+    font-family: var(--TM-font-sans);
+    font-size: 12px;
+    color: var(--tm-text-subtle);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .hdr-right {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+  .kbd-pill {
+    font-family: var(--TM-font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: var(--tm-text-subtle);
+    border: 1px solid var(--tm-border);
+    background: var(--tm-bg);
+    padding: 2px 8px;
+    border-radius: var(--TM-radius-sm);
+    white-space: nowrap;
+  }
+  .dark-toggle {
+    width: 32px; height: 32px;
+    border: 1px solid var(--tm-border);
+    border-radius: var(--TM-radius-md);
+    background: var(--tm-bg);
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.15s, border-color 0.15s;
+    flex-shrink: 0;
+  }
+  .dark-toggle:hover { background: var(--tm-bg-hover); border-color: var(--tm-border-hover); }
+  .dark-toggle svg { width: 15px; height: 15px; stroke: var(--tm-text-muted); fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* ── botão de toggle da sidebar — fica no header, sempre visível ── */
+  .sidebar-toggle {
+    width: 32px; height: 32px;
+    border: 1px solid var(--tm-border);
+    border-radius: var(--TM-radius-md);
+    background: var(--tm-bg);
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.15s, border-color 0.15s;
+    flex-shrink: 0;
+  }
+  .sidebar-toggle:hover { background: var(--tm-bg-hover); border-color: var(--tm-border-hover); }
+  .sidebar-toggle svg { width: 15px; height: 15px; stroke: var(--tm-text-muted); fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.22s ease; }
+  .sidebar-toggle.collapsed svg { transform: rotate(180deg); }
+
+  /* ── LAYOUT ── */
+  .layout { display: flex; height: calc(100vh - 56px); overflow: hidden; }
+
+  /* ── SIDEBAR ── */
+  aside {
+    width: 196px;
+    background: var(--tm-bg-sidebar);
+    border-right: 1px solid var(--tm-border);
+    padding: 16px 0;
+    flex-shrink: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: width 0.22s ease, padding 0.22s ease;
+  }
+  aside.collapsed { width: 0; padding: 0; border-right-color: transparent; }
+  aside.collapsed > * { opacity: 0; pointer-events: none; transition: opacity 0.1s; }
+  aside > * { transition: opacity 0.2s 0.05s; }
+  .aside-label {
+    font-family: var(--TM-font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--tm-text-subtle);
+    padding: 0 14px 8px;
+  }
+  .un-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 14px;
+    cursor: pointer;
+    font-family: var(--TM-font-sans);
+    font-size: 13px;
+    font-weight: 400;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    color: var(--tm-text-muted);
+    position: relative;
+    transition: background 0.12s, color 0.12s;
+  }
+  .un-btn:hover { background: var(--tm-bg-hover); color: var(--tm-text); }
+  .un-btn.active {
+    background: var(--TM-primary-light);
+    color: var(--TM-primary);
+    font-weight: 600;
+  }
+  .un-btn.active::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 2px;
+    background: var(--TM-primary);
+  }
+  .un-badge {
+    margin-left: auto;
+    font-family: var(--TM-font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    padding: 1px 6px;
+    border-radius: var(--TM-radius-sm);
+    background: var(--tm-bg-secondary);
+    color: var(--tm-text-subtle);
+  }
+  .un-btn.active .un-badge {
+    background: var(--TM-primary-light-alpha);
+    color: var(--TM-primary);
+  }
+  .aside-sep { height: 1px; background: var(--tm-border); margin: 10px 14px; }
+  .aside-section-label {
+    font-family: var(--TM-font-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--tm-text-subtle);
+    padding: 12px 14px 6px;
+    font-weight: 500;
+  }
+
+  /* ── MAIN ── */
+  main { flex: 1; overflow-y: auto; display: flex; flex-direction: column; }
+
+  /* ── SEARCH ── */
+  .search-wrap {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--tm-bg);
+    border-bottom: 1px solid var(--tm-border);
+    padding: 12px 20px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .search-row { display: flex; gap: 8px; align-items: center; }
+  .search-box { flex: 1; position: relative; }
+  .search-icon {
+    position: absolute; left: 11px; top: 50%; transform: translateY(-50%);
+    pointer-events: none;
+  }
+  .search-icon svg { width: 15px; height: 15px; stroke: var(--tm-text-subtle); fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+  .search-box input {
+    width: 100%;
+    padding: 8px 34px 8px 34px;
+    border: 1px solid var(--tm-border);
+    border-radius: var(--TM-radius-md);
+    font-family: var(--TM-font-sans);
+    font-size: 13px;
+    color: var(--tm-text);
+    background: var(--tm-bg-input);
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .search-box input::placeholder { color: var(--tm-text-subtle); }
+  .search-box input:focus {
+    border-color: var(--TM-primary);
+    box-shadow: 0 0 0 3px var(--TM-primary-light-alpha);
+  }
+  .search-clear {
+    position: absolute; right: 9px; top: 50%; transform: translateY(-50%);
+    background: none; border: none; cursor: pointer;
+    display: none; padding: 2px;
+    border-radius: var(--TM-radius-sm);
+    color: var(--tm-text-subtle);
+  }
+  .search-clear svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; }
+  .search-clear:hover { color: var(--tm-text); background: var(--tm-bg-hover); }
+  .search-clear.visible { display: flex; align-items: center; }
+  .cnt-badge {
+    font-family: var(--TM-font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--TM-primary);
+    background: var(--TM-primary-light);
+    border: 1px solid var(--TM-primary-light-alpha);
+    padding: 4px 12px;
+    border-radius: var(--TM-radius-sm);
+    white-space: nowrap;
+  }
+
+  /* AUTOCOMPLETE */
+  .suggestions {
+    position: absolute;
+    top: calc(100% + 4px); left: 0; right: 0;
+    background: var(--tm-bg-card);
+    border: 1px solid var(--tm-border);
+    border-radius: var(--TM-radius-lg);
+    box-shadow: var(--TM-shadow-lg);
+    z-index: 200;
+    max-height: 280px;
+    overflow-y: auto;
+    display: none;
+  }
+  .suggestions.open { display: block; }
+  .sug-section-hdr {
+    padding: 6px 14px 4px;
+    font-family: var(--TM-font-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--tm-text-subtle);
+    background: var(--tm-bg-muted);
+    border-bottom: 1px solid var(--tm-border);
+    font-weight: 500;
+  }
+  .sug-item {
+    padding: 9px 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid var(--tm-border);
+    transition: background 0.1s;
+  }
+  .sug-item:last-child { border-bottom: none; }
+  .sug-item:hover, .sug-item.focused { background: var(--tm-bg-hover); }
+  .sug-code {
+    font-family: var(--TM-font-mono);
+    font-weight: 600;
+    font-size: 12px;
+    color: var(--TM-primary);
+    min-width: 36px;
+    white-space: nowrap;
+  }
+  .sug-desc { font-size: 13px; color: var(--tm-text); flex: 1; line-height: 1.4; }
+  .sug-un {
+    font-family: var(--TM-font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--tm-info);
+    background: rgba(52,88,120,0.10);
+    padding: 1px 6px;
+    border-radius: var(--TM-radius-sm);
+    white-space: nowrap;
+  }
+  .sug-pref {
+    font-family: var(--TM-font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--tm-success);
+    background: rgba(79,122,58,0.10);
+    padding: 1px 6px;
+    border-radius: var(--TM-radius-sm);
+  }
+  mark {
+    background: #FDE68A;
+    color: #92400E;
+    border-radius: 2px;
+    padding: 0 1px;
+    font-style: normal;
+  }
+
+  /* ── CONTENT ── */
+  .content { padding: 16px 20px; flex: 1; }
+
+  .secao {
+    margin-bottom: 16px;
+    border-radius: var(--TM-radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--tm-border);
+    box-shadow: var(--TM-shadow-sm);
+    background: var(--tm-bg-card);
+  }
+  .secao-header {
+    background: var(--tm-bg-secondary);
+    border-bottom: 1px solid var(--tm-border);
+    padding: 9px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .secao-num {
+    font-family: var(--TM-font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--TM-primary);
+    background: var(--TM-primary-light);
+    border: 1px solid var(--TM-primary-light-alpha);
+    padding: 2px 8px;
+    border-radius: var(--TM-radius-sm);
+  }
+  .secao-nome {
+    font-family: var(--TM-font-sans);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--tm-text);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+  .secao-cnt {
+    margin-left: auto;
+    font-family: var(--TM-font-mono);
+    font-size: 10px;
+    color: var(--tm-text-subtle);
+    font-weight: 500;
+  }
+
+  table { width: 100%; border-collapse: collapse; }
+  th {
+    font-family: var(--TM-font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: var(--tm-text-subtle);
+    padding: 8px 14px;
+    text-align: left;
+    background: var(--tm-bg-muted);
+    border-bottom: 1px solid var(--tm-border);
+  }
+  td {
+    padding: 9px 14px;
+    font-size: 13px;
+    border-bottom: 1px solid var(--tm-border);
+    color: var(--tm-text);
+    vertical-align: middle;
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: var(--tm-bg-hover); }
+
+  .item-code {
+    font-family: var(--TM-font-mono);
+    font-weight: 600;
+    font-size: 12px;
+    color: var(--TM-primary);
+    white-space: nowrap;
+  }
+  .item-desc { font-family: var(--TM-font-sans); font-size: 13px; color: var(--tm-text); }
+
+  /* chips de unidade — paleta TM chart ramp */
+  .un-chip {
+    display: inline-block;
+    font-family: var(--TM-font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    padding: 2px 8px;
+    border-radius: var(--TM-radius-sm);
+    white-space: nowrap;
+  }
+  .un-m2  { background: rgba(52,88,120,0.12); color: var(--tm-info); border: 1px solid rgba(52,88,120,0.18); }
+  .un-m3  { background: rgba(163,59,42,0.10); color: var(--tm-destructive); border: 1px solid rgba(163,59,42,0.18); }
+  .un-m   { background: rgba(79,122,58,0.10); color: var(--tm-success); border: 1px solid rgba(79,122,58,0.18); }
+  .un-un  { background: var(--TM-primary-light); color: var(--TM-primary); border: 1px solid var(--TM-primary-light-alpha); }
+  .un-km  { background: rgba(140,90,46,0.10); color: #8C5A2E; border: 1px solid rgba(140,90,46,0.18); }
+  .un-cj  { background: rgba(43,43,43,0.07); color: var(--TM-accent-graphite); border: 1px solid rgba(43,43,43,0.15); }
+  .un-mes { background: var(--tm-bg-secondary); color: var(--tm-text-muted); border: 1px solid var(--tm-border); }
+  .un-h   { background: rgba(79,122,58,0.07); color: #4F7A3A; border: 1px solid rgba(79,122,58,0.14); }
+  .un-def { background: var(--tm-bg-muted); color: var(--tm-text-subtle); border: 1px solid var(--tm-border); }
+
+  /* ── NO RESULTS ── */
+  .no-results {
+    display: flex; flex-direction: column; align-items: center; gap: 10px;
+    padding: 64px 20px; text-align: center;
+  }
+  .no-results-icon {
+    width: 40px; height: 40px;
+    stroke: var(--tm-text-subtle); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round;
+  }
+  .no-results-title { font-family: var(--TM-font-serif); font-size: 15px; font-weight: 500; color: var(--tm-text-muted); }
+  .no-results-hint { font-size: 12px; color: var(--tm-text-subtle); }
+
+  /* ── PREFIXOS ── */
+  .pref-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 8px;
+  }
+  .pref-card {
+    background: var(--tm-bg-card);
+    border: 1px solid var(--tm-border);
+    border-radius: var(--TM-radius-lg);
+    padding: 10px 12px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .pref-card:hover { border-color: var(--tm-border-hover); box-shadow: var(--TM-shadow-md); }
+  .pref-num {
+    font-family: var(--TM-font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--TM-primary);
+    background: var(--TM-primary-light);
+    border: 1px solid var(--TM-primary-light-alpha);
+    padding: 4px 10px;
+    border-radius: var(--TM-radius-sm);
+    white-space: nowrap;
+    min-width: 52px;
+    text-align: center;
+  }
+  .pref-dep { font-weight: 600; font-size: 13px; color: var(--tm-text); }
+  .pref-cidade { font-size: 11px; color: var(--tm-text-subtle); margin-top: 1px; }
+  .pref-km {
+    font-family: var(--TM-font-mono);
+    font-size: 11px;
+    font-weight: 400;
+    padding: 3px 8px;
+    border-radius: var(--TM-radius-sm);
+    white-space: nowrap;
+    flex-shrink: 0;
+    align-self: center;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    border: 1px solid rgba(79,122,58,0.25);
+    background: rgba(79,122,58,0.08);
+  }
+  .pref-km-label {
+    color: var(--tm-text-subtle);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    font-size: 10px;
+    text-transform: uppercase;
+  }
+  .pref-km-val {
+    color: var(--tm-success);
+    font-weight: 500;
+  }
+
+  /* ── BUSCA ATIVA — oculta lista de seções e mostra só resultados ── */
+  .searching .secao { display: none; }
+  .searching .secao.tem-resultado { display: block; }
+
+  /* ── SCROLL BAR ── */
+  ::-webkit-scrollbar { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--tm-border); border-radius: 10px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--tm-border-hover); }
+
+  :focus-visible { outline: 2px solid var(--TM-primary); outline-offset: 2px; }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition-duration: 0.01ms !important; } }
+  .hidden { display: none !important; }
+
+  /* ── RESPONSIVO MOBILE ── */
+  @media (max-width: 640px) {
+    header { padding: 0 12px; gap: 8px; }
+    .hdr-wordmark { display: none; }
+    .hdr-meta-text { display: none; }
+    .kbd-pill { display: none; }
+
+    aside {
+      position: fixed;
+      top: 56px; left: 0; bottom: 0;
+      z-index: 90;
+      width: 220px;
+      box-shadow: var(--TM-shadow-lg);
+    }
+    aside.collapsed { width: 0; box-shadow: none; }
+    aside.collapsed .sidebar-toggle { right: -40px; }
+
+    /* overlay escuro ao abrir sidebar no mobile */
+    .sidebar-overlay {
+      display: block;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.35);
+      z-index: 89;
+      opacity: 1;
+      transition: opacity 0.22s;
+    }
+    .sidebar-overlay.hidden { opacity: 0; pointer-events: none; }
+
+    .layout { height: calc(100vh - 56px); }
+    main { width: 100%; }
+    .search-wrap { padding: 10px 12px 8px; }
+    .content { padding: 12px; }
+    .pref-grid { grid-template-columns: 1fr; }
+    table { font-size: 12px; }
+    td, th { padding: 7px 10px; }
+  }
+  @media (min-width: 641px) {
+    .sidebar-overlay { display: none !important; }
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 12px 20px;
+    font-family: var(--TM-font-mono);
+    font-size: 10px;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: var(--tm-text-subtle);
+    border-top: 1px solid var(--tm-border);
+    background: var(--tm-bg-sidebar);
+    flex-shrink: 0;
+  }
+  footer span { color: var(--TM-primary); font-weight: 600; }
+
+  /* ═══════════════════════════════════════════════════════════════════
+     PINTURA DO CONTRATO — Destaque visual (injetado automaticamente)
+  ═══════════════════════════════════════════════════════════════════ */
+
+  /* Fundo de linha por item */
+  .paint-row-17-4  { background: rgba(34,197,94,0.09) !important; }
+  .paint-row-17-6  { background: rgba(59,130,246,0.09) !important; }
+  .paint-row-17-10 { background: rgba(168,85,247,0.09) !important; }
+  .paint-row-17-11 { background: rgba(245,158,11,0.11) !important; }
+
+  /* Borda esquerda colorida na 1ª célula */
+  .paint-row-17-4  td:first-child { border-left: 3px solid #16a34a !important; }
+  .paint-row-17-6  td:first-child { border-left: 3px solid #2563eb !important; }
+  .paint-row-17-10 td:first-child { border-left: 3px solid #9333ea !important; }
+  .paint-row-17-11 td:first-child { border-left: 3px solid #d97706 !important; }
+
+  /* Hover */
+  .paint-row-17-4:hover  td { background: rgba(34,197,94,0.17)  !important; }
+  .paint-row-17-6:hover  td { background: rgba(59,130,246,0.17) !important; }
+  .paint-row-17-10:hover td { background: rgba(168,85,247,0.17) !important; }
+  .paint-row-17-11:hover td { background: rgba(245,158,11,0.19) !important; }
+
+  /* Cor do código do item */
+  .paint-row-17-4  .item-code { color: #15803d !important; font-weight: 700 !important; }
+  .paint-row-17-6  .item-code { color: #1d4ed8 !important; font-weight: 700 !important; }
+  .paint-row-17-10 .item-code { color: #7c3aed !important; font-weight: 700 !important; }
+  .paint-row-17-11 .item-code { color: #d97706 !important; font-weight: 700 !important; }
+
+  /* Badge "🎨 Pintura" na célula do código */
+  .paint-badge {
+    display: inline-block;
+    font-family: var(--TM-font-mono);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 1px 5px;
+    border-radius: 3px;
+    margin-left: 6px;
+    vertical-align: middle;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .paint-badge-17-4  { background:rgba(34,197,94,0.16);  color:#15803d; border:1px solid rgba(34,197,94,0.38); }
+  .paint-badge-17-6  { background:rgba(59,130,246,0.16); color:#1d4ed8; border:1px solid rgba(59,130,246,0.38); }
+  .paint-badge-17-10 { background:rgba(168,85,247,0.16); color:#7c3aed; border:1px solid rgba(168,85,247,0.38); }
+  .paint-badge-17-11 { background:rgba(245,158,11,0.16); color:#d97706; border:1px solid rgba(245,158,11,0.38); }
+
+  /* ── Painel de legenda (dentro do search-wrap sticky) ── */
+  .paint-panel {
+    margin: 4px -20px -10px -20px;
+    padding: 7px 20px;
+    background: var(--tm-bg-card);
+    border-top: 1px solid var(--tm-border);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .paint-panel-label {
+    font-family: var(--TM-font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--tm-text-subtle);
+    white-space: nowrap;
+    margin-right: 2px;
+    flex-shrink: 0;
+  }
+  .paint-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    padding: 3px 9px 3px 6px;
+    border-radius: 20px;
+    white-space: nowrap;
+    font-weight: 500;
+    transition: opacity 0.15s;
+    cursor: default;
+  }
+  .paint-pill:hover { opacity: 0.82; }
+  .paint-pill-code { font-family: var(--TM-font-mono); font-weight: 700; font-size: 11px; }
+  .paint-pill-17-4  { background:rgba(34,197,94,0.11);  color:#15803d; border:1px solid rgba(34,197,94,0.28); }
+  .paint-pill-17-6  { background:rgba(59,130,246,0.11); color:#1d4ed8; border:1px solid rgba(59,130,246,0.28); }
+  .paint-pill-17-10 { background:rgba(168,85,247,0.11); color:#7c3aed; border:1px solid rgba(168,85,247,0.28); }
+  .paint-pill-17-11 { background:rgba(245,158,11,0.11); color:#d97706; border:1px solid rgba(245,158,11,0.28); }
+
+  .paint-sig {
+    margin-left: auto;
+    font-family: var(--TM-font-sans);
+    font-size: 11px;
+    color: var(--tm-text-muted);
+    white-space: nowrap;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .paint-sig strong { color: var(--tm-text); font-weight: 600; }
+
+  /* Botão de alerta */
+  .paint-alert-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 10px;
+    border: 1px solid #ef4444;
+    border-radius: 20px;
+    background: rgba(239,68,68,0.08);
+    color: #ef4444;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: var(--TM-font-sans);
+    transition: background 0.15s;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .paint-alert-btn:hover { background: rgba(239,68,68,0.16); }
+  .paint-alert-btn-yellow { border-color: #d97706; background: rgba(217,119,6,0.08); color: #d97706; }
+  .paint-alert-btn-yellow:hover { background: rgba(217,119,6,0.16); }
+
+  /* Caixa de alerta colapsável */
+  .paint-alert-box {
+    border-left: 4px solid #ef4444;
+    background: var(--tm-bg-card);
+    border-top: 1px solid rgba(239,68,68,0.22);
+    border-right: 1px solid rgba(239,68,68,0.12);
+    border-bottom: 1px solid rgba(239,68,68,0.12);
+    padding: 12px 20px;
+    font-size: 12px;
+    line-height: 1.75;
+    display: none;
+    animation: paintAlertIn 0.18s ease;
+  }
+  .paint-alert-box-yellow {
+    border-left-color: #d97706;
+    border-top-color: rgba(217,119,6,0.22);
+    border-right-color: rgba(217,119,6,0.12);
+    border-bottom-color: rgba(217,119,6,0.12);
+  }
+  .paint-alert-box.open { display: block; }
+  .paint-alert-title {
+    color: #ef4444;
+    font-weight: 700;
+    font-size: 13px;
+    margin-bottom: 9px;
+  }
+  .paint-alert-title-yellow { color: #d97706 !important; }
+  .paint-alert-warning { color: #b91c1c; font-style: italic; margin-bottom: 8px; }
+  .paint-alert-list { padding-left: 16px; color: var(--tm-text); margin-bottom: 6px; }
+  .paint-alert-list li { margin-bottom: 4px; }
+  .paint-alert-footer {
+    margin-top: 9px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(239,68,68,0.20);
+    color: #ef4444;
+    font-weight: 700;
+    text-align: center;
+  }
+  @keyframes paintAlertIn {
+    from { opacity:0; transform:translateY(-5px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+  html.dark .paint-alert-title   { color: #f87171; }
+  html.dark .paint-alert-warning { color: #fca5a5; }
+  html.dark .paint-alert-footer  { color: #f87171; }
+  html.dark .paint-alert-title-yellow { color: #fbbf24 !important; }
+
+  /* ── FONT SIZE OVERRIDE (+2px) ─────────────────────────── */
+  td          { font-size: 15px !important; }
+  th          { font-size: 12px !important; }
+  .item-code  { font-size: 14px !important; }
+  .item-desc  { font-size: 15px !important; }
+  .secao-nome { font-size: 14px !important; }
+  .secao-num  { font-size: 12px !important; }
+  .secao-cnt  { font-size: 12px !important; }
+  .un-chip    { font-size: 12px !important; }
+  .cnt-badge  { font-size: 13px !important; }
+  .sug-desc   { font-size: 15px !important; }
+  .sug-code   { font-size: 14px !important; }
+  /* ───────────────────────────────────────────────────────── */
+
+  /* ── HEADER LAYOUT OVERRIDES ───────────────────────────── */
+  .hdr-logo-mark { display: none !important; }
+  .hdr-div       { display: none !important; }
+  .hdr-brand {
+    position: absolute !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    margin: 0 !important;
+  }
+  .hdr-wordmark {
+    display: block !important;
+    font-size: 16px !important;
+    letter-spacing: 0.05em !important;
+  }
+  .hdr-contract-badge {
+    margin-right: auto !important;
+  }
+  /* ───────────────────────────────────────────────────────── */
+</style>
+</head>
+<body>
+<header>
+  <div class="hdr-brand">
+    <div class="hdr-logo-mark">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    </div>
+    <span class="hdr-wordmark">MAFFENG</span>
+  </div>
+  <div class="hdr-div"></div>
+  <span class="hdr-contract-badge" id="hdr-codigo">—</span>
+  <span class="hdr-meta-text" id="hdr-meta"></span>
+  <div class="hdr-right">
+    <span class="kbd-pill">Ctrl+K</span>
+    <button class="sidebar-toggle" id="sidebar-toggle" onclick="toggleSidebar()" title="Menu lateral" aria-label="Abrir/fechar menu lateral">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <button class="dark-toggle" id="dark-toggle" title="Alternar tema" onclick="toggleDark()">
+      <svg id="icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+      <svg id="icon-sun" viewBox="0 0 24 24" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    </button>
+  </div>
+</header>
+
+<div class="sidebar-overlay hidden" id="sidebar-overlay" onclick="toggleSidebar()"></div>
+<div class="layout">
+  <aside id="aside">
+    <div class="aside-label">Unidade</div>
+    <button class="un-btn active" data-un="todos" onclick="filtrar('todos', true)">
+      <span>Todos</span><span class="un-badge" id="cnt-todos">0</span>
+    </button>
+    <div class="aside-sep"></div>
+    <div id="un-buttons"></div>
+    <div class="aside-sep"></div>
+    <div class="aside-section-label">Contrato</div>
+    <button class="un-btn" data-un="prefixos" onclick="filtrar('prefixos', true)">
+      <span>Agências</span><span class="un-badge" id="cnt-pref">0</span>
+    </button>
+  </aside>
+
+  <main>
+    <div class="search-wrap">
+      <div class="search-row">
+        <div class="search-box">
+          <span class="search-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </span>
+          <input type="text" id="busca"
+            placeholder="Buscar por código (2.12), palavra-chave (piso), sigla (ART)..."
+            autocomplete="off" spellcheck="false">
+          <button class="search-clear" id="btn-clear" onclick="limparBusca()" title="Limpar (Esc)">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+          <div class="suggestions" id="suggestions"></div>
+        </div>
+        <div class="cnt-badge" id="cnt-exibidos">0 itens</div>
+      </div>
+      <div class="paint-panel" id="paint-panel">
+        <span class="paint-panel-label">🎨 Pintura do contrato</span>
+      <div class="paint-pill paint-pill-17-4"><span class="paint-pill-code">17.4</span> Todo o restante das paredes internas e externas. Pintura em FORRO (TETO) também.</div>
+      <div class="paint-pill paint-pill-17-10"><span class="paint-pill-code">17.10</span> Pintura de muros</div>
+      <div class="paint-pill paint-pill-17-11"><span class="paint-pill-code">17.11</span> Pintura de paredes internas e/ou externas COLORIDAS (azul ou amarelo)</div>
+      <button class="paint-alert-btn paint-alert-btn-yellow" id="paint-alert-btn" onclick="togglePaintAlert()">⚠️ Atenção</button>
+        <div class="paint-sig">📝 <strong>Civil:</strong> Ygor ou Felipe Rocha &nbsp;|&nbsp; <strong>Eletr.:</strong> André Luis</div>
+      </div>
+    </div>
+    <div class="paint-alert-box paint-alert-box-yellow" id="paint-alert-box">
+      <div class="paint-alert-title paint-alert-title-yellow">⚠️ Registro de Remanejamento Mobiliário</div>
+      <p style="color:var(--tm-text)">Indicar a quantidade exata de cada item movimentado (ex.: X cadeiras, Y extintores, Z mesas).</p>
+    </div>
+
+    <div class="content">
+      <div id="itens-view"></div>
+      <div id="prefixos-view" class="hidden"></div>
+    </div>
+    <footer>Feito por <span>TM Sempre Tecnologia</span></footer>
+  </main>
+</div>
+
+<script>
+const DADOS = {
+  "codigo": "6122",
+  "nome": "MATO GROSSO DO SUL",
+  "contrato": "",
+  "lote": "07",
+  "desconto": 0,
+  "bdi": 0,
+  "proponente": "MAFFENG ENGENHARIA E MANUTENCAO EIRELI",
+  "secoes": [
+    {
+      "codigo": "1",
+      "nome": "PRELIMINARES",
+      "itens": [
+        {
+          "item": "1.1",
+          "descricao": "Chamado",
+          "unidade": "un"
+        },
+        {
+          "item": "1.2",
+          "descricao": "Deslocamento",
+          "unidade": "km"
+        },
+        {
+          "item": "1.3",
+          "descricao": "Revisão de instalações",
+          "unidade": "un"
+        },
+        {
+          "item": "1.4",
+          "descricao": "Acompanhamento técnico em Segurança do Trabalho",
+          "unidade": "un"
+        },
+        {
+          "item": "1.5",
+          "descricao": "Chamado Preventivo",
+          "unidade": "un"
+        },
+        {
+          "item": "1.6",
+          "descricao": "Deslocamento Fluvial",
+          "unidade": "Km"
+        },
+        {
+          "item": "1.7",
+          "descricao": "Laudo técnico fotográfico - Elementos de Sinalização - Padrão BB",
+          "unidade": "UN"
+        }
+      ]
+    },
+    {
+      "codigo": "2",
+      "nome": "IMPLANTAÇÃO / ADMINISTRAÇÃO",
+      "itens": [
+        {
+          "item": "2.1",
+          "descricao": "Demolição manual de concreto simples",
+          "unidade": "m³"
+        },
+        {
+          "item": "2.2",
+          "descricao": "Demolição manual de alvenaria de elevação ou elemento vazado, incluindo revestimento",
+          "unidade": "m³"
+        },
+        {
+          "item": "2.3",
+          "descricao": "Demolição manual de revestimento em massa de parede ou teto ou Dry-Wall",
+          "unidade": "m³"
+        },
+        {
+          "item": "2.4",
+          "descricao": "Demolição de pisos em geral (ladrilho hidráulico, camada de enchimento, cerâmica, porcelanato, mármore, granito, pedra e madeira) - Manual",
+          "unidade": "m²"
+        },
+        {
+          "item": "2.5",
+          "descricao": "Demolição de pisos em geral (ladrilho hidráulico, camada de enchimento, cerâmica, porcelanato, mármore, granito, pedra e madeira) - Mecanizado",
+          "unidade": "m²"
+        },
+        {
+          "item": "2.6",
+          "descricao": "Demolição de pavimentação com pré-moldado de concreto ou intertravado",
+          "unidade": "m²"
+        },
+        {
+          "item": "2.7",
+          "descricao": "Demolição de piso cimentado sobre lastro de concreto",
+          "unidade": "m²"
+        },
+        {
+          "item": "2.8",
+          "descricao": "Demolição manual de forro, inclusive sistema de fixação/tarugamento",
+          "unidade": "m²"
+        },
+        {
+          "item": "2.9",
+          "descricao": "Demolição de contrapiso/argamassa regularizante, isolante ou protetora",
+          "unidade": "m²"
+        },
+        {
+          "item": "2.10",
+          "descricao": "Demolição de estrutura em madeira para telhado",
+          "unidade": "m²"
+        },
+        {
+          "item": "2.11",
+          "descricao": "Retirada  de cumeeira, espigão, rufo, calha ou chapim, perfil qualquer",
+          "unidade": "m"
+        },
+        {
+          "item": "2.12",
+          "descricao": "Retirada de piso tátil com limpeza",
+          "unidade": "m²"
+        },
+        {
+          "item": "2.13",
+          "descricao": "Remoção de revestimento de piso de carpete ou manta vinílica",
+          "unidade": "m²"
+        },
+        {
+          "item": "2.14",
+          "descricao": "Ajuste de Piso Elevado (remoção e recolocação de revestimentos e placas do piso inclusive)",
+          "unidade": "m²"
+        },
+        {
+          "item": "2.15",
+          "descricao": "Retirada de piso elevado, inclusive estrutura de sustentação",
+          "unidade": "m²"
+        },
+        {
+          "item": "2.16",
+          "descricao": "Reinstalação de piso elevado proveniente de reaproveitamento, incluso material",
+          "unidade": "m²"
+        },
+        {
+          "item": "2.17",
+          "descricao": "Retirada ou recolocação de vidro",
+          "unidade": "m²"
+        },
+        {
+          "item": "2.18",
+          "descricao": "Remoção de entulho com caçamba metálica, inclusive limpeza, transporte, carga, descarga e descarte conforme legislação ambiental - Material de descarte (alvenaria, estruturas metálicas, madeiramento, revestimentos cerâmicos, gesso, dry-wall, entre outros)",
+          "unidade": "m³"
+        },
+        {
+          "item": "2.19",
+          "descricao": "Remoção / Remanejamento de placa aérea",
+          "unidade": "un"
+        },
+        {
+          "item": "2.20",
+          "descricao": "Andaime tubular fachadeiro",
+          "unidade": "m²/mês"
+        },
+        {
+          "item": "2.21",
+          "descricao": "Andaime torre metálico (1,5 x 1,5 m) com piso metálico",
+          "unidade": "m/mês"
+        },
+        {
+          "item": "2.22",
+          "descricao": "Tapume de chapa de madeira compensada, inclusive montagem",
+          "unidade": "m²"
+        },
+        {
+          "item": "2.23",
+          "descricao": "Remoção de revestimento (piso ou parede) vinílico ou laminado",
+          "unidade": "m²"
+        },
+        {
+          "item": "2.24",
+          "descricao": "Andaime balancim",
+          "unidade": "mês"
+        },
+        {
+          "item": "2.25",
+          "descricao": "Remoção de estrutura metálica",
+          "unidade": "m²"
+        },
+        {
+          "item": "2.26",
+          "descricao": "Remoção de equipamento de ar condicionado",
+          "unidade": "un"
+        },
+        {
+          "item": "2.27",
+          "descricao": "Ponto para dreno de Ar Condicionado",
+          "unidade": "m"
+        },
+        {
+          "item": "2.28",
+          "descricao": "Fixação de objetos diversos",
+          "unidade": "un"
+        },
+        {
+          "item": "2.29",
+          "descricao": "Remoção e reinstalação de telhas de cobertura",
+          "unidade": "m²"
+        },
+        {
+          "item": "2.30",
+          "descricao": "Remoção de Tapume/Chapas metálicas e de madeira, de forma manual",
+          "unidade": "m²"
+        },
+        {
+          "item": "2.31",
+          "descricao": "Anotação de Responsabilidade Técnica (ART)",
+          "unidade": "un"
+        },
+        {
+          "item": "2.32",
+          "descricao": "Remoção manual de forro, sem estrutura",
+          "unidade": "m²"
+        },
+        {
+          "item": "2.33",
+          "descricao": "Demolição de revestimentos de parede em geral (ladrilho hidráulico, camada de enchimento, cerâmica, porcelanato, mármore, granito, pedra e madeira) - Manual",
+          "unidade": "m²"
+        },
+        {
+          "item": "2.34",
+          "descricao": "Demolição de revestimentos de parede em geral (ladrilho hidráulico, camada de enchimento, cerâmica, porcelanato, mármore, granito, pedra e madeira) - Mecanizado",
+          "unidade": "m²"
+        },
+        {
+          "item": "2.35",
+          "descricao": "Remoção de poste ou mastro para bandeira",
+          "unidade": "un"
+        },
+        {
+          "item": "2.36",
+          "descricao": "Tela para Andaime",
+          "unidade": "m²"
+        }
+      ]
+    },
+    {
+      "codigo": "5",
+      "nome": "ESTRUTURA",
+      "itens": [
+        {
+          "item": "5.1",
+          "descricao": "Base de concreto para fixação de TAA/TTE",
+          "unidade": "m³"
+        },
+        {
+          "item": "5.2",
+          "descricao": "Montagem e Desmontagem de escoramento em madeira.",
+          "unidade": "m²"
+        },
+        {
+          "item": "5.3",
+          "descricao": "Montagem e Desmontagem de escoramento metálico.",
+          "unidade": "m²"
+        },
+        {
+          "item": "5.4",
+          "descricao": "Concreto fck = 15 MPa, controle tipo \"B\", e = 10 cm, e armado com tela de aço CA-60",
+          "unidade": "m²"
+        }
+      ]
+    },
+    {
+      "codigo": "6",
+      "nome": "ALVENARIAS E OUTRAS VEDAÇÕES",
+      "itens": [
+        {
+          "item": "6.1",
+          "descricao": "Alvenaria com tijolo cerâmico furado",
+          "unidade": "m²"
+        },
+        {
+          "item": "6.2",
+          "descricao": "Parede de gesso em placas duplas acartonado dry wall - inclusive para ambientes úmidos - RU",
+          "unidade": "m²"
+        },
+        {
+          "item": "6.3",
+          "descricao": "Rasgo e fechamento em alvenaria e piso",
+          "unidade": "m"
+        }
+      ]
+    },
+    {
+      "codigo": "7",
+      "nome": "COBERTURA",
+      "itens": [
+        {
+          "item": "7.1",
+          "descricao": "Cobertura com telha de alumínio envernizada ou pintada, e=0,5 mm",
+          "unidade": "m²"
+        },
+        {
+          "item": "7.2",
+          "descricao": "Cobertura em telha com isolamento termoacustico em espuma rígida de poliuretano (PU) injetado",
+          "unidade": "m²"
+        },
+        {
+          "item": "7.3",
+          "descricao": "Cumeeira em chapa metálica",
+          "unidade": "m"
+        },
+        {
+          "item": "7.4",
+          "descricao": "Cobertura com telha cerâmica, incluso transporte vertical",
+          "unidade": "m²"
+        },
+        {
+          "item": "7.5",
+          "descricao": "Cumeeira para telha cerâmica emboçada com argamassa",
+          "unidade": "m"
+        },
+        {
+          "item": "7.6",
+          "descricao": "Cumeeira universal para telhado de fibrocimento, e=6mm",
+          "unidade": "m"
+        },
+        {
+          "item": "7.7",
+          "descricao": "Cobertura com telha de fibrocimento,  e = 6 mm,",
+          "unidade": "m²"
+        },
+        {
+          "item": "7.8",
+          "descricao": "Calha de chapa galvanizada nº 24 desenvolvimento 33 cm",
+          "unidade": "m"
+        },
+        {
+          "item": "7.9",
+          "descricao": "Rufo de chapa de aço galvanizado com desenvolvimento até 50 cm",
+          "unidade": "m"
+        },
+        {
+          "item": "7.10",
+          "descricao": "Chapim de chapa de aço galvanizado nº 24 desenvolvimento 33 cm",
+          "unidade": "m"
+        },
+        {
+          "item": "7.11",
+          "descricao": "Cobertura com telha de fibrocimento estrutural, com recobrimento longitudinal",
+          "unidade": "m²"
+        },
+        {
+          "item": "7.12",
+          "descricao": "Estrutura de madeira para telha cerâmica, fibrocimento ou de concreto",
+          "unidade": "m²"
+        },
+        {
+          "item": "7.13",
+          "descricao": "Fixação de telha",
+          "unidade": "m²"
+        },
+        {
+          "item": "7.14",
+          "descricao": "Calha de chapa galvanizada",
+          "unidade": "m²"
+        },
+        {
+          "item": "7.15",
+          "descricao": "Reparo emergencial de telhado e calhas",
+          "unidade": "un"
+        }
+      ]
+    },
+    {
+      "codigo": "8",
+      "nome": "IMPERMEABILIZAÇÃO",
+      "itens": [
+        {
+          "item": "8.1",
+          "descricao": "Proteção mecânica de superfície com argamassa de cimento e areia",
+          "unidade": "m²"
+        },
+        {
+          "item": "8.2",
+          "descricao": "Impermeabilização com manta asfáltica modificada com polímeros aluminizada",
+          "unidade": "m²"
+        },
+        {
+          "item": "8.3",
+          "descricao": "Impermeabilização utilizando manta asfáltica polimérica (cobertura, lajes, banheiros, jardins, Reservatórios e similares)",
+          "unidade": "m²"
+        },
+        {
+          "item": "8.4",
+          "descricao": "Impermeabilização de calha ou lajes descobertas com emulsão asfáltica com elastômeros, 3 demãos, com tela de poliéster",
+          "unidade": "m²"
+        },
+        {
+          "item": "8.5",
+          "descricao": "Impermeabilização de superfície com impermeabilizante flexível à base acrílica",
+          "unidade": "m²"
+        },
+        {
+          "item": "8.6",
+          "descricao": "Impermeabilização com argamassa polimérica impermeabilizante",
+          "unidade": "m²"
+        },
+        {
+          "item": "8.7",
+          "descricao": "Impermeabilização com membrana de poliuretano (PU)",
+          "unidade": "m²"
+        }
+      ]
+    },
+    {
+      "codigo": "10",
+      "nome": "PAVIMENTAÇÃO",
+      "itens": [
+        {
+          "item": "10.1",
+          "descricao": "Regularização de base ou contrapiso",
+          "unidade": "m²"
+        },
+        {
+          "item": "10.2",
+          "descricao": "Regularização de piso para piso vinílico ou tátil em borracha",
+          "unidade": "m²"
+        },
+        {
+          "item": "10.3",
+          "descricao": "Granito para revestimento (piso ou parede) Cinza Andorinha, assente com argamassa",
+          "unidade": "m²"
+        },
+        {
+          "item": "10.4",
+          "descricao": "Rodapé em granito Cinza Andorinha, assentado e rejuntado",
+          "unidade": "m"
+        },
+        {
+          "item": "10.5",
+          "descricao": "Peitoril ou soleira de granito, assentado e rejuntado",
+          "unidade": "m"
+        },
+        {
+          "item": "10.6",
+          "descricao": "Granito branco para revestimento (piso ou parede), assente com argamassa",
+          "unidade": "m²"
+        },
+        {
+          "item": "10.7",
+          "descricao": "Rodapé em granito branco, assentado e rejuntado",
+          "unidade": "m"
+        },
+        {
+          "item": "10.8",
+          "descricao": "Bloco de concreto intertravado",
+          "unidade": "m²"
+        },
+        {
+          "item": "10.9",
+          "descricao": "Piso em pedra portuguesa, basalto, calcário ou granito sem polimento.",
+          "unidade": "m²"
+        },
+        {
+          "item": "10.10",
+          "descricao": "Piso mármore branco, assentado e rejuntado",
+          "unidade": "m²"
+        },
+        {
+          "item": "10.11",
+          "descricao": "Piso em ladrilho hidráulico, assentado com argamassa",
+          "unidade": "m²"
+        },
+        {
+          "item": "10.12",
+          "descricao": "Piso cimentado com argamassa e com junta plástica para dilatação.",
+          "unidade": "m²"
+        },
+        {
+          "item": "10.13",
+          "descricao": "Piso cerâmico assentado com argamassa pré-fabricada e rejuntamento",
+          "unidade": "m²"
+        },
+        {
+          "item": "10.14",
+          "descricao": "Piso em Porcelanato",
+          "unidade": "m²"
+        },
+        {
+          "item": "10.15",
+          "descricao": "Rejuntamento de revestimento (piso ou parede) com argamassa pré-fabricada",
+          "unidade": "m²"
+        },
+        {
+          "item": "10.16",
+          "descricao": "Piso vinílico em manta",
+          "unidade": "m²"
+        },
+        {
+          "item": "10.17",
+          "descricao": "Piso vinílico em placas",
+          "unidade": "m²"
+        },
+        {
+          "item": "10.18",
+          "descricao": "CARPETE em manta ou placa",
+          "unidade": "m²"
+        },
+        {
+          "item": "10.19",
+          "descricao": "Rodapé de madeira.",
+          "unidade": "m"
+        },
+        {
+          "item": "10.20",
+          "descricao": "Capacho - fornecimento e instalação",
+          "unidade": "m²"
+        },
+        {
+          "item": "10.21",
+          "descricao": "Arremate metálico delimitador de piso",
+          "unidade": "m"
+        },
+        {
+          "item": "10.22",
+          "descricao": "Regularização de piso em bloco de concreto intertravado",
+          "unidade": "m²"
+        },
+        {
+          "item": "10.23",
+          "descricao": "Regularização de piso carpete",
+          "unidade": "m²"
+        }
+      ]
+    },
+    {
+      "codigo": "11",
+      "nome": "REVESTIMENTOS",
+      "itens": [
+        {
+          "item": "11.1",
+          "descricao": "Painéis de alumínio - ACM",
+          "unidade": "m²"
+        },
+        {
+          "item": "11.2",
+          "descricao": "Chapisco para parede interna ou externa com argamassa de cimento e areia.",
+          "unidade": "m²"
+        },
+        {
+          "item": "11.3",
+          "descricao": "Emboço ou reboco para parede interna ou externa ou teto.",
+          "unidade": "m²"
+        },
+        {
+          "item": "11.4",
+          "descricao": "Revestimento cerâmico assentado com argamassa pré-fabricada e rejuntado",
+          "unidade": "m²"
+        },
+        {
+          "item": "11.5",
+          "descricao": "Revestimento (parede) em Pastilha de vidro, assentada com argamassa colante e rejunte.",
+          "unidade": "m²"
+        },
+        {
+          "item": "11.6",
+          "descricao": "Laminado melamínico para revestimento (piso ou parede) interno",
+          "unidade": "m²"
+        },
+        {
+          "item": "11.7",
+          "descricao": "Revestimento de parede com pedra São Tomé filetada (tipo \"canjiquinha\")",
+          "unidade": "m²"
+        },
+        {
+          "item": "11.8",
+          "descricao": "Revestimento em mármore branco (parede), assentado e rejuntado",
+          "unidade": "m²"
+        },
+        {
+          "item": "11.9",
+          "descricao": "Revestimento em Pastilha Cerâmica, assentada com argamassa colante e rejunte.",
+          "unidade": "m²"
+        }
+      ]
+    },
+    {
+      "codigo": "12",
+      "nome": "DIVISÓRIAS, FORROS E PISOS FALSOS",
+      "itens": [
+        {
+          "item": "12.1",
+          "descricao": "Divisória texturizada cega",
+          "unidade": "m²"
+        },
+        {
+          "item": "12.2",
+          "descricao": "Divisória texturizada cega/vidro",
+          "unidade": "m²"
+        },
+        {
+          "item": "12.3",
+          "descricao": "Porta de divisória, Inclui  batente e guarnições.",
+          "unidade": "un"
+        },
+        {
+          "item": "12.4",
+          "descricao": "Forro de fibra mineral, incluindo fixação, com estrutura",
+          "unidade": "m²"
+        },
+        {
+          "item": "12.5",
+          "descricao": "Forro de gesso acartonado, estruturado ou aramado",
+          "unidade": "m²"
+        },
+        {
+          "item": "12.6",
+          "descricao": "Forro de placa de gesso pre-moldada,  incluindo fixação",
+          "unidade": "m²"
+        },
+        {
+          "item": "12.7",
+          "descricao": "Junta de dilatação para forro de gesso",
+          "unidade": "m"
+        },
+        {
+          "item": "12.8",
+          "descricao": "Piso elevado com estrutura",
+          "unidade": "m²"
+        },
+        {
+          "item": "12.9",
+          "descricao": "Forro de gesso, incluindo fixação, sem estrutura",
+          "unidade": "m²"
+        },
+        {
+          "item": "12.10",
+          "descricao": "Forro de fibra mineral, incluindo fixação, sem estrutura",
+          "unidade": "m²"
+        },
+        {
+          "item": "12.11",
+          "descricao": "Piso elevado sem estrutura",
+          "unidade": "m²"
+        },
+        {
+          "item": "12.12",
+          "descricao": "Ajuste do forro de fibra mineral",
+          "unidade": "m²"
+        },
+        {
+          "item": "12.13",
+          "descricao": "Forro de PVC, incluindo fixação, sem estrutura",
+          "unidade": "m²"
+        },
+        {
+          "item": "12.14",
+          "descricao": "Forro de gesso (RU), incluindo fixação, sem estrutura",
+          "unidade": "m²"
+        }
+      ]
+    },
+    {
+      "codigo": "13",
+      "nome": "CARPINTARIA / MARCENARIA",
+      "itens": [
+        {
+          "item": "13.1",
+          "descricao": "Batente e guarnição para Porta de madeira, até 0,90 m",
+          "unidade": "un"
+        },
+        {
+          "item": "13.2",
+          "descricao": "Porta de madeira até 0,80 x 2,10 m, interna/externa, sem ferragens, inclusive retirada da Porta antiga",
+          "unidade": "un"
+        },
+        {
+          "item": "13.3",
+          "descricao": "Porta de madeira 0,90 x 2,10 m, interna/externa, sem ferragens,  inclusive retirada da Porta antiga",
+          "unidade": "un"
+        },
+        {
+          "item": "13.4",
+          "descricao": "Desmontagem de divisórias (cega, vidro ou tecido)",
+          "unidade": "m²"
+        },
+        {
+          "item": "13.5",
+          "descricao": "Desmontagem de estação de trabalho ou mesa de reunião",
+          "unidade": "un"
+        },
+        {
+          "item": "13.6",
+          "descricao": "Desmontagem de guichê de caixa",
+          "unidade": "un"
+        },
+        {
+          "item": "13.7",
+          "descricao": "Ajuste de divisórias",
+          "unidade": "m²"
+        },
+        {
+          "item": "13.8",
+          "descricao": "Manutenção de guichê",
+          "unidade": "un"
+        },
+        {
+          "item": "13.9",
+          "descricao": "Montagem de estação de trabalho ou mesa de reunião",
+          "unidade": "un"
+        },
+        {
+          "item": "13.10",
+          "descricao": "Montagem de divisórias (cega, vidro ou tecido)",
+          "unidade": "m²"
+        },
+        {
+          "item": "13.11",
+          "descricao": "Montagem de estação de guichê de caixa ou mesa guichê",
+          "unidade": "un"
+        },
+        {
+          "item": "13.12",
+          "descricao": "Deslocamento ou remanejamento de mobiliário dentro da agência",
+          "unidade": "un"
+        },
+        {
+          "item": "13.13",
+          "descricao": "Divisória Padrão Guichê  ou Biombo",
+          "unidade": "m²"
+        },
+        {
+          "item": "13.14",
+          "descricao": "Montagem e fixação de carenagens (ex: remus, estilo, high-tech,  nova ambiência, padrão 98 ou similares)",
+          "unidade": "un"
+        },
+        {
+          "item": "13.15",
+          "descricao": "Fixação de prateleira de vidro em carenagens",
+          "unidade": "un"
+        },
+        {
+          "item": "13.16",
+          "descricao": "Persiana de enrolar para carenagens",
+          "unidade": "m²"
+        },
+        {
+          "item": "13.17",
+          "descricao": "Lente de luminária para carenagens",
+          "unidade": "un"
+        },
+        {
+          "item": "13.18",
+          "descricao": "Divisória de fechamento ou tampão, conforme padrão existente",
+          "unidade": "m²"
+        },
+        {
+          "item": "13.19",
+          "descricao": "Porta de madeira em compensado c/laminado, sem ferragens",
+          "unidade": "m²"
+        },
+        {
+          "item": "13.20",
+          "descricao": "Ajuste e manutenção de portas",
+          "unidade": "un"
+        },
+        {
+          "item": "13.21",
+          "descricao": "Manutenção de dobradiça ou fechadura de armários/móveis",
+          "unidade": "un"
+        },
+        {
+          "item": "13.22",
+          "descricao": "Desmontagem de carenagens (ex: remus, estilo, high-tech,  nova ambiência, padrão 98 ou similares)",
+          "unidade": "un"
+        }
+      ]
+    },
+    {
+      "codigo": "14",
+      "nome": "SERRALHERIA",
+      "itens": [
+        {
+          "item": "14.1",
+          "descricao": "Janela de aço basculante, fixação com argamassa, sem vidros",
+          "unidade": "m²"
+        },
+        {
+          "item": "14.2",
+          "descricao": "Janela de aço de correr, fixação com argamassa, sem vidro",
+          "unidade": "m²"
+        },
+        {
+          "item": "14.3",
+          "descricao": "Refixação de corrimão e guarda corpo fixado na parede ou no piso",
+          "unidade": "m"
+        },
+        {
+          "item": "14.4",
+          "descricao": "Corrimão tubular em aço galvanizado 1 1/2\", instalado, incluindo APLICAÇÃO de fundo anticorrosivo óxido de ferro e PINTURA esmalte",
+          "unidade": "m"
+        },
+        {
+          "item": "14.5",
+          "descricao": "Guarda corpo em tubo galvanizado com fundo anticorrosivo e pintura em esmalte sintetico",
+          "unidade": "m"
+        },
+        {
+          "item": "14.6",
+          "descricao": "Recuperação de grades, corrimãos e outros elementos metálicos",
+          "unidade": "m²"
+        },
+        {
+          "item": "14.7",
+          "descricao": "Recuperação de estruturas metálicas de pórticos de acesso, totens, letreiros, medalhões, bandeiras e brises",
+          "unidade": "m²"
+        },
+        {
+          "item": "14.8",
+          "descricao": "Grade de proteção de ferro, colocação e acabamento",
+          "unidade": "m²"
+        },
+        {
+          "item": "14.9",
+          "descricao": "Chapa metálica inox, para portas de madeira",
+          "unidade": "un"
+        },
+        {
+          "item": "14.10",
+          "descricao": "Prolongador de suporte de TCC para teto",
+          "unidade": "un"
+        },
+        {
+          "item": "14.11",
+          "descricao": "Fixação de suporte de TCC em parede ou teto",
+          "unidade": "un"
+        },
+        {
+          "item": "14.12",
+          "descricao": "Instalação de alçapão metálico com caixilho",
+          "unidade": "m²"
+        },
+        {
+          "item": "14.13",
+          "descricao": "Manutenção preventiva em porta de enrolar de aço automática",
+          "unidade": "un"
+        },
+        {
+          "item": "14.14",
+          "descricao": "Substituição do Automatizador de portas de enrolar automáticas até 1000 kg",
+          "unidade": "un"
+        },
+        {
+          "item": "14.15",
+          "descricao": "Substituição do Automatizador de portas de enrolar automáticas até 500 kg",
+          "unidade": "un"
+        },
+        {
+          "item": "14.16",
+          "descricao": "Substituição de chapa testeira de porta de enrolar de aço automática",
+          "unidade": "un"
+        },
+        {
+          "item": "14.17",
+          "descricao": "Substituição de Lâminas de aço vazadas (Transvision) até 5 m²",
+          "unidade": "m²"
+        },
+        {
+          "item": "14.18",
+          "descricao": "Substituição de Lâminas de aço vazadas (Transvision) acima de 5 m² até 15 m²",
+          "unidade": "m²"
+        },
+        {
+          "item": "14.19",
+          "descricao": "Substituição de Lâminas de aço vazadas (Transvision) superior a 15 m²",
+          "unidade": "m²"
+        },
+        {
+          "item": "14.20",
+          "descricao": "Substituição de guia telescópica para porta de enrolar de aço automática",
+          "unidade": "m"
+        },
+        {
+          "item": "14.21",
+          "descricao": "Substituição da soleira de porta de enrolar de aço automática",
+          "unidade": "m"
+        },
+        {
+          "item": "14.22",
+          "descricao": "Substituição do eixo de sustentação de porta de enrolar de aço automática",
+          "unidade": "m"
+        },
+        {
+          "item": "14.23",
+          "descricao": "Substituição de central de controle remoto de porta de enrolar de aço automática",
+          "unidade": "un"
+        },
+        {
+          "item": "14.24",
+          "descricao": "Substituição da botoeira de acionamento de porta de enrolar de aço automática",
+          "unidade": "un"
+        },
+        {
+          "item": "14.25",
+          "descricao": "Substituição do sistema de infravermelho de porta de enrolar de aço automática",
+          "unidade": "un"
+        },
+        {
+          "item": "14.26",
+          "descricao": "Substituição de dobradiça de portinhola de porta de enrolar de aço automática",
+          "unidade": "un"
+        },
+        {
+          "item": "14.27",
+          "descricao": "Substituição de fechadura de portinhola de porta de enrolar de aço automática",
+          "unidade": "un"
+        },
+        {
+          "item": "14.28",
+          "descricao": "Substituição de laminas e estrutura de portinhola de porta de enrolar de aço automática",
+          "unidade": "m²"
+        },
+        {
+          "item": "14.29",
+          "descricao": "Substituição de Nobreak de automatizador de portas de enrolar automática",
+          "unidade": "un"
+        }
+      ]
+    },
+    {
+      "codigo": "15",
+      "nome": "FERRAGENS",
+      "itens": [
+        {
+          "item": "15.1",
+          "descricao": "Ferragem em aço inox, para Porta de vidro temperado (dobradiças, trinco, contra-fechadura  e fechadura  chaveada completa)",
+          "unidade": "cj"
+        },
+        {
+          "item": "15.2",
+          "descricao": "Ferragem para Porta de madeira (com 3 dobradiças) - Substituição/instalação",
+          "unidade": "cj"
+        },
+        {
+          "item": "15.3",
+          "descricao": "Ferragem para Porta de madeira (fechadura completa) - Substituição/instalação",
+          "unidade": "cj"
+        },
+        {
+          "item": "15.4",
+          "descricao": "Trinco de piso c/espelho",
+          "unidade": "un"
+        },
+        {
+          "item": "15.5",
+          "descricao": "Mola aérea hidráulica - Substituição/instalação",
+          "unidade": "un"
+        },
+        {
+          "item": "15.6",
+          "descricao": "Mola de Piso hidráulica - (kit completo-pino, espelho, parafusos, mola, etc. com regulagem) - Substituição/instalação",
+          "unidade": "un"
+        },
+        {
+          "item": "15.7",
+          "descricao": "Mola hidráulica de Piso ou Aérea - Manutenção (ajuste e regulagem)",
+          "unidade": "un"
+        },
+        {
+          "item": "15.8",
+          "descricao": "Puxador tipo alça em aço escovado para Porta de vidro, duplo (interna e externa)",
+          "unidade": "un"
+        },
+        {
+          "item": "15.9",
+          "descricao": "Fechadura tubular para porta em divisória cega",
+          "unidade": "un"
+        },
+        {
+          "item": "15.10",
+          "descricao": "Trilho e roldana para Porta retrátil e de correr - substituição",
+          "unidade": "m"
+        },
+        {
+          "item": "15.11",
+          "descricao": "Puxador tipo bola",
+          "unidade": "un"
+        },
+        {
+          "item": "15.12",
+          "descricao": "Dobradiça com mola (ref. Pagé)",
+          "unidade": "un"
+        },
+        {
+          "item": "15.13",
+          "descricao": "Fechadura e contra fechadura para Porta de vidro lamindo/temperado pivotante",
+          "unidade": "un"
+        },
+        {
+          "item": "15.14",
+          "descricao": "Fechadura Tipo Bico de Papagaio para Porta de vidro laminado/temperado de correr interna/externa",
+          "unidade": "un"
+        },
+        {
+          "item": "15.15",
+          "descricao": "Fechadura de segurança tetra para porta de madeira ou metálica",
+          "unidade": "un"
+        },
+        {
+          "item": "15.16",
+          "descricao": "Reparo e ajuste de fechaduras diversas",
+          "unidade": "un"
+        },
+        {
+          "item": "15.17",
+          "descricao": "Fechadura tipo Livre/Ocupado",
+          "unidade": "un"
+        }
+      ]
+    },
+    {
+      "codigo": "16",
+      "nome": "VIDRAÇARIA",
+      "itens": [
+        {
+          "item": "16.1",
+          "descricao": "Vidro cristal liso 4 mm colocado em caixilho com massa",
+          "unidade": "m²"
+        },
+        {
+          "item": "16.2",
+          "descricao": "Vidro cristal liso 6 mm colocado em caixilho com massa",
+          "unidade": "m²"
+        },
+        {
+          "item": "16.3",
+          "descricao": "Vidro fantasia 4 mm colocado em caixilho com massa",
+          "unidade": "m²"
+        },
+        {
+          "item": "16.4",
+          "descricao": "Vidro aramado, colocado em caixilho, fixado com massa, espessura 6 mm",
+          "unidade": "m²"
+        },
+        {
+          "item": "16.5",
+          "descricao": "Vidro temperado incolor 10 mm colocado em caixilho com gaxeta de neoprene",
+          "unidade": "m²"
+        },
+        {
+          "item": "16.6",
+          "descricao": "Vidro cristal laminado, colocado em caixilho com ou sem baguetes, com gaxeta de neoprene espessuras de 8mm",
+          "unidade": "m²"
+        },
+        {
+          "item": "16.7",
+          "descricao": "Vidro cristal laminado, colocado em caixilho com ou sem baguetes, com gaxeta de neoprene espessuras de 10mm",
+          "unidade": "m²"
+        },
+        {
+          "item": "16.8",
+          "descricao": "Vidro jateado 6mm",
+          "unidade": "m²"
+        },
+        {
+          "item": "16.9",
+          "descricao": "Porta de vidro temperado incolor 10mm, sem ferragens, substituição",
+          "unidade": "m²"
+        },
+        {
+          "item": "16.10",
+          "descricao": "Conjunto para fixação de vidro temperado (montante/perfil)",
+          "unidade": "m"
+        },
+        {
+          "item": "16.11",
+          "descricao": "Conjunto para fixação de vidros comuns (montante/perfil)",
+          "unidade": "m"
+        },
+        {
+          "item": "16.12",
+          "descricao": "Aplicação de adesivo jateado em vidro temperado",
+          "unidade": "m²"
+        },
+        {
+          "item": "16.13",
+          "descricao": "Película em impressão digital de vinil auto-adesivo liso ou perfurado",
+          "unidade": "m²"
+        },
+        {
+          "item": "16.14",
+          "descricao": "Espelho lapidado ou bizotado, inclusive instalação",
+          "unidade": "m²"
+        },
+        {
+          "item": "16.15",
+          "descricao": "Prateleira de vidro temperado 12mm, serigrafada cor azul para Carenagens",
+          "unidade": "UN"
+        },
+        {
+          "item": "16.16",
+          "descricao": "Persiana vertical em tecido",
+          "unidade": "m²"
+        },
+        {
+          "item": "16.17",
+          "descricao": "Persiana rolô em tecido com blackout",
+          "unidade": "m²"
+        },
+        {
+          "item": "16.18",
+          "descricao": "Manutenção de persianas",
+          "unidade": "UN"
+        }
+      ]
+    },
+    {
+      "codigo": "17",
+      "nome": "PINTURA",
+      "itens": [
+        {
+          "item": "17.1",
+          "descricao": "Pintura em esmalte sintético standard em estrutura metálica com duas demãos",
+          "unidade": "m²"
+        },
+        {
+          "item": "17.2",
+          "descricao": "Emassamento de parede interna ou teto com massa corrida a base de PVA com duas demãos",
+          "unidade": "m²"
+        },
+        {
+          "item": "17.3",
+          "descricao": "Pintura texturizada em parede ou teto interna ou externa",
+          "unidade": "m²"
+        },
+        {
+          "item": "17.4",
+          "descricao": "Pintura em látex acrílica standard fosca sem emassamento, 3 demãos, com aplicação de selador para exterior",
+          "unidade": "m²"
+        },
+        {
+          "item": "17.5",
+          "descricao": "Emassamento de parede ou teto externo com massa acrílica com duas demãos",
+          "unidade": "m²"
+        },
+        {
+          "item": "17.6",
+          "descricao": "Pintura em látex acrílica premium fosca em paredes internas ou externas, exceto muros, com três demãos, sem emassamento, com aplicação de selador para alvenaria exterior.",
+          "unidade": "m²"
+        },
+        {
+          "item": "17.7",
+          "descricao": "Pintura em esmalte sintético para madeira com duas demãos, sem emassamento",
+          "unidade": "m²"
+        },
+        {
+          "item": "17.8",
+          "descricao": "Pintura para piso a base de resina acrílica - piso, faixas de demarcação de vagas, PNE, carro forte e similares",
+          "unidade": "m²"
+        },
+        {
+          "item": "17.9",
+          "descricao": "Pintura Automotiva",
+          "unidade": "m²"
+        },
+        {
+          "item": "17.10",
+          "descricao": "Pintura em látex acrílica econômica fosca, em muros, com duas demãos, sem emassamento, com aplicação de selador para alvenaria exterior",
+          "unidade": "m²"
+        },
+        {
+          "item": "17.11",
+          "descricao": "Pintura em látex acrílica premium acetinada em paredes internas ou externas, exceto muros, com três demãos, sem emassamento, com aplicação de selador para alvenaria exterior.",
+          "unidade": "m²"
+        }
+      ]
+    },
+    {
+      "codigo": "19",
+      "nome": "INST. ELÉTRICAS, TELEC. E  INFORMÁTICA",
+      "itens": [
+        {
+          "item": "19.1",
+          "descricao": "Ponto elétrico duplo - Custos Fixos",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.2",
+          "descricao": "Infraestrutura para instalações elétricas, lógicas ou de telefonia, até 1\".",
+          "unidade": "m"
+        },
+        {
+          "item": "19.3",
+          "descricao": "Ponto elétrico simples - Custos fixos",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.4",
+          "descricao": "Infraestrutura para instalações elétricas, lógicas ou de telefonia, 1,25\" até 2\"",
+          "unidade": "m"
+        },
+        {
+          "item": "19.5",
+          "descricao": "Infraestrutura para instalações elétricas, lógicas ou de telefonia com eletrocalhas de alumínio",
+          "unidade": "m"
+        },
+        {
+          "item": "19.6",
+          "descricao": "Espelhos / Placas / Tampas",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.7",
+          "descricao": "Adaptador 2P+T / 10 A - 20 A (padrão novo / padrão antigo)",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.8",
+          "descricao": "Ponto lógico duplo - Custos Fixos",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.9",
+          "descricao": "Desinstalação/Instalação de luminária",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.10",
+          "descricao": "Ponto lógico/alarme  - Custos Fixos",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.11",
+          "descricao": "Suporte para fixação da fechadura eletromagnética para autoatendimento",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.12",
+          "descricao": "Contator Bipolar de Potencia até 50A",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.13",
+          "descricao": "Certificação, identificação e/ou habilitação de ponto lógico existente",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.14",
+          "descricao": "Desinstalação/Instalação de suporte de câmera de CFTV",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.15",
+          "descricao": "Ponto para câmera de CFTV novo - Custos Fixos",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.16",
+          "descricao": "Desinstalação/Instalação de equipamentos de WIFI e Access Point",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.17",
+          "descricao": "Luminária LED Direcional - Embutir",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.18",
+          "descricao": "Lâmpada LED 14W T5",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.19",
+          "descricao": "Reator eletrônico, partida rápida, alto fator de potência, 2 x 14W a 2x32W",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.20",
+          "descricao": "Refletor /projetor de uso externo de 150 até 400W sem lâmpada e sem reator",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.21",
+          "descricao": "Fonte de alimentação para Sinalização LED",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.22",
+          "descricao": "Placa de LED para Sinalização (letreiro, totem, bandeira, medalhão, pórtico, painel, etc.)",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.23",
+          "descricao": "Reator Vapor Metálico Interno / Externo até 150W 220V",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.24",
+          "descricao": "Reator Vapor Metálico Interno / Externo 400W 220V",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.25",
+          "descricao": "Lâmpada fluorescente tubular 14 W T5",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.26",
+          "descricao": "Lâmpada fluorescente compacta integrada 25W",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.27",
+          "descricao": "Lâmpada fluorescente tubular 16 W T8",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.28",
+          "descricao": "Lâmpada fluorescente tubular 32W",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.29",
+          "descricao": "Lâmpada fluorescente tubular T5 28W",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.30",
+          "descricao": "Lâmpada para refletor/projetor de uso externo potência de 250 W",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.31",
+          "descricao": "Lâmpada de vapor de sodio de 250w /220v",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.32",
+          "descricao": "Lâmpada halógena par20 de 50w / 127v / 220v",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.33",
+          "descricao": "Lâmpada Vapor Metálico PAR20 35W / E27 / 220V / 3000K",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.34",
+          "descricao": "Lâmpada LED Bulbo ou PAR20",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.35",
+          "descricao": "Fita de LED",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.36",
+          "descricao": "Lâmpada LED tubular bivolt 9/10W",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.37",
+          "descricao": "Lâmpada LED tubular bivolt 18/20W",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.38",
+          "descricao": "Lâmpada fluorescente tubular HO 110W, 220V",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.39",
+          "descricao": "Lâmpada Vapor metálico 150W, base E27/E40",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.40",
+          "descricao": "Lâmpada Vapor metálico 400W, base E40",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.41",
+          "descricao": "Lâmpada vapor metálico 250W base E40",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.42",
+          "descricao": "Luminária LED Quadrada - Embutir/Sobrepor",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.43",
+          "descricao": "Luminária Led autonoma de iluminação de emergência com 30 Leds",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.44",
+          "descricao": "Luminária Fluorescente Retangular Completa, de Embutir ou de Sobrepor,  2x25W  a 2x32W",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.45",
+          "descricao": "Luminária Fluorescente Quadrada Completa, de Embutir ou de Sobrepor,  4x14W a  4x16W",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.46",
+          "descricao": "Luminária fluorescente retangular completa, de embutir ou de sobrepor,  2x14W a  2x16W",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.47",
+          "descricao": "Luminária circular completa de sobrepor ou embutir, para duas lâmpadas fluorescentes compactas integradas ou fluorescentes 4 pinos de 26W",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.48",
+          "descricao": "Refletor em alumínio, 60 Leds, bivolt, uso externo",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.49",
+          "descricao": "Sensor de Presença - Regulagem e Ajustes",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.50",
+          "descricao": "Sensor de presença teto/parede para controle de iluminação, uso geral, com ou sem fotocélula",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.51",
+          "descricao": "Manutenção / Programação de Quadro de Comando e Automação",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.52",
+          "descricao": "Disjuntor bipolar até 32A",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.53",
+          "descricao": "Quadros elétricos - Manutenção",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.54",
+          "descricao": "Disjuntor termomagnético tripolar 300 a 400 A / 600 V, tipo JXD / ICC - 40 KA",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.55",
+          "descricao": "Disjuntor termomagnético tripolar até 200A/35KA",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.56",
+          "descricao": "Disjuntor tripolar até 100A",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.57",
+          "descricao": "Disjuntor tripolar até 50A",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.58",
+          "descricao": "Disjuntor bipolar até 50A",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.59",
+          "descricao": "Disjuntor monopolar até 50A",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.60",
+          "descricao": "Dispositivo de proteção contra surto DPS 20KA/275V",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.61",
+          "descricao": "Dispositivo de proteção contra surto DPS 45KA/275V",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.62",
+          "descricao": "Dispositivo de proteção contra surto DPS 90KA/275V",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.63",
+          "descricao": "Dispositivo diferencial residual DR bipolar 220V/127V - 30ma - 63A",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.64",
+          "descricao": "Dispositivo diferencial residual DR Tetrapolar (4P) 30ma – 25A",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.65",
+          "descricao": "Dispositivo diferencial residual DR Tetrapolar (4P) 30ma – 63A",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.66",
+          "descricao": "Contator de Potencia até 12A",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.67",
+          "descricao": "Contator de Potencia até 45A",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.68",
+          "descricao": "Contator de Potencia até 94A",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.69",
+          "descricao": "Bloco de Contato  Auxiliar 1na + 1nf",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.70",
+          "descricao": "Bloco de Contato  Auxiliar 2na + 2nf",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.71",
+          "descricao": "Placa em Policarbonato 3mm para proteção de quadros elétricos",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.72",
+          "descricao": "Cabo de cobre flexivel anti-chama 450/750V / de 10 a 16mm2",
+          "unidade": "m"
+        },
+        {
+          "item": "19.73",
+          "descricao": "Cabo de cobre flexivel anti-chama 450/750V / de 25 a 35mm2",
+          "unidade": "m"
+        },
+        {
+          "item": "19.74",
+          "descricao": "Cabo de cobre flexivel anti-chama 450/750V / de 50 a 70mm2",
+          "unidade": "m"
+        },
+        {
+          "item": "19.75",
+          "descricao": "Cabo de cobre flexível anti-chama 450/750V / de 95 a 150mm2",
+          "unidade": "m"
+        },
+        {
+          "item": "19.76",
+          "descricao": "Cabo de cobre flexível anti-chama 450/750V / de 185 a 240mm2",
+          "unidade": "m"
+        },
+        {
+          "item": "19.77",
+          "descricao": "Timer digital - Programação ou alteração da programação do timer digital",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.78",
+          "descricao": "Timer digital - Interruptor horário, 127/220V/16A",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.79",
+          "descricao": "Timer digital - Interruptor horário, 127/220V/16A - 2 Canais",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.80",
+          "descricao": "Luminária LED circular ou quadrada",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.81",
+          "descricao": "Luminária tipo tartaruga para uso interno ou externo",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.82",
+          "descricao": "Refletor LED em alumínio, 150W/200W, bivolt, uso externo",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.83",
+          "descricao": "Bloco autônomo emergência com dois faróis 1200 lúmens",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.84",
+          "descricao": "Bloco autônomo emergência com dois faróis 2200 lúmens",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.85",
+          "descricao": "Unidade Autônoma para iluminação de emergência fluxo luminoso mínimo de 500 lúmens",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.86",
+          "descricao": "Circuito Elétrico MonoFásico ou Bifásico até 25A",
+          "unidade": "m"
+        },
+        {
+          "item": "19.87",
+          "descricao": "Circuito Elétrico MonoFásico ou Bifásico até 50A",
+          "unidade": "m"
+        },
+        {
+          "item": "19.88",
+          "descricao": "Fonte de Alimentação estabilizada para câmera CFTV 127/220VAC /12VCC/25A",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.89",
+          "descricao": "Driver de corrente para lâmpadas ou fitas de led (12 ou 24 vdc - 6a - 127v/220v)",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.90",
+          "descricao": "Luminária circular LED orientável orbital",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.91",
+          "descricao": "Patch Panel 24 portas Cat5e c/ guia de cabos 1U",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.92",
+          "descricao": "Patch Cord flexivel Cat5e / 10m",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.93",
+          "descricao": "Patch Cord flexivel Cat5e / 5m",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.94",
+          "descricao": "Patch Cord flexivel Cat5e / 2,5m",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.95",
+          "descricao": "Patch cord flexivel Cat5e / 1,5m",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.96",
+          "descricao": "Manutenção do Sistema de Controle de Acesso",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.97",
+          "descricao": "Circuito Elétrico Trifásico até 50A",
+          "unidade": "m"
+        },
+        {
+          "item": "19.98",
+          "descricao": "Teclado de senhas digital, para controle de acesso",
+          "unidade": "UN"
+        },
+        {
+          "item": "19.99",
+          "descricao": "Patch Cord flexivel Cat6e / 2,5m",
+          "unidade": "UN"
+        }
+      ]
+    },
+    {
+      "codigo": "20",
+      "nome": "INSTALAÇÕES DE ÁGUA",
+      "itens": [
+        {
+          "item": "20.1",
+          "descricao": "Registro de gaveta bruto com ADAPTADOR SOLDÁVEL para PVC, Ø 15 mm - 1/2\"",
+          "unidade": "un"
+        },
+        {
+          "item": "20.2",
+          "descricao": "Registro de gaveta bruto com ADAPTADOR SOLDÁVEL para PVC, Ø 20 mm - 3/4\"",
+          "unidade": "un"
+        },
+        {
+          "item": "20.3",
+          "descricao": "Registro de gaveta bruto com canopla cromada e adaptador para PVC , Ø 25 mm - 1\"",
+          "unidade": "un"
+        },
+        {
+          "item": "20.4",
+          "descricao": "Registro de gaveta bruto com canopla cromada e adaptador para PVC , Ø 40 mm - 1 1/2\"",
+          "unidade": "un"
+        },
+        {
+          "item": "20.5",
+          "descricao": "Registro de gaveta bruto com ADAPTADOR para PVC, Ø 25 mm - 1\"",
+          "unidade": "un"
+        },
+        {
+          "item": "20.6",
+          "descricao": "Registro de gaveta bruto com ADAPTADOR para PVC, Ø 32 mm - 1 1/4\"",
+          "unidade": "un"
+        },
+        {
+          "item": "20.7",
+          "descricao": "Registro de gaveta bruto com ADAPTADOR para PVC, Ø 40 mm - 1 1/2\"",
+          "unidade": "un"
+        },
+        {
+          "item": "20.8",
+          "descricao": "Registro de gaveta bruto com ADAPTADOR para PVC, Ø 50 mm - 2\"",
+          "unidade": "un"
+        },
+        {
+          "item": "20.9",
+          "descricao": "Registro de gaveta bruto com ADAPTADOR para PVC, Ø 65 mm - 2 1/2\"",
+          "unidade": "un"
+        },
+        {
+          "item": "20.10",
+          "descricao": "Registro de pressão com canopla até Ø 25 mm - 1\"",
+          "unidade": "un"
+        },
+        {
+          "item": "20.11",
+          "descricao": "Torneira de bóia até 1 1/4\"",
+          "unidade": "un"
+        },
+        {
+          "item": "20.12",
+          "descricao": "Reservatório  de fibra de vidro - capacidade de 1000 litros",
+          "unidade": "un"
+        },
+        {
+          "item": "20.13",
+          "descricao": "Reservatório  de fibra de vidro - capacidade de 2000 litros",
+          "unidade": "un"
+        },
+        {
+          "item": "20.14",
+          "descricao": "Correção de vazamentos hidráulicos, inclusive detecção de vazamento",
+          "unidade": "un"
+        },
+        {
+          "item": "20.15",
+          "descricao": "Desentupimento de rede de água pluvial, hidráulica, ralos, pias, lavatórios, sifão, tanques, bebedouro e válvulas",
+          "unidade": "un"
+        },
+        {
+          "item": "20.16",
+          "descricao": "Desentupimento de Instalações de Esgoto, bacia sanitária e mictórios",
+          "unidade": "un"
+        },
+        {
+          "item": "20.17",
+          "descricao": "Desentupimento de Instalações de Esgoto em geral com Equipamentos Especiais",
+          "unidade": "H"
+        },
+        {
+          "item": "20.18",
+          "descricao": "Válvula de descarga metálica",
+          "unidade": "un"
+        },
+        {
+          "item": "20.19",
+          "descricao": "Desentupimento de Dreno de Ar condicionado",
+          "unidade": "un"
+        },
+        {
+          "item": "20.20",
+          "descricao": "Ponto de água fria (até 6m)",
+          "unidade": "un"
+        },
+        {
+          "item": "20.21",
+          "descricao": "Válvula de retenção  de pé com crivo até Ø 25mm (1\")",
+          "unidade": "un"
+        },
+        {
+          "item": "20.22",
+          "descricao": "Registro regulador de Vazão",
+          "unidade": "un"
+        },
+        {
+          "item": "20.23",
+          "descricao": "Correção de vazamentos hidráulicos em tubulação metálica, inclusive detecção de vazamento.",
+          "unidade": "un"
+        }
+      ]
+    },
+    {
+      "codigo": "21",
+      "nome": "INSTALAÇÕES CONTRA INCÊNDIO",
+      "itens": [
+        {
+          "item": "21.1",
+          "descricao": "Mangueira tipo 2 com união de engate rápido, DN = 1 1/2\" (38 mm)",
+          "unidade": "m"
+        },
+        {
+          "item": "21.2",
+          "descricao": "Esguicho latão com engate rápido, DN = 2 1/2\", requinte fixo",
+          "unidade": "un"
+        },
+        {
+          "item": "21.3",
+          "descricao": "Adaptador de engate rápido em latão de 2 1/2\" x 1 1/2\"",
+          "unidade": "un"
+        },
+        {
+          "item": "21.4",
+          "descricao": "Registro globo angular 45°, Ø 65 mm (2 1/2\")",
+          "unidade": "un"
+        },
+        {
+          "item": "21.5",
+          "descricao": "Chave para conexão de engate rápido tipo STORZ (dupla)",
+          "unidade": "un"
+        },
+        {
+          "item": "21.6",
+          "descricao": "Tampa em ferro fundido para HIDRANTE de recalque (40X60cm)",
+          "unidade": "un"
+        },
+        {
+          "item": "21.7",
+          "descricao": "Suporte de parede para extintor",
+          "unidade": "un"
+        },
+        {
+          "item": "21.8",
+          "descricao": "Suporte de piso para extintor",
+          "unidade": "un"
+        },
+        {
+          "item": "21.9",
+          "descricao": "Placa de sinalização PPCI fotoluminescente em PVC, adesivada",
+          "unidade": "UN"
+        },
+        {
+          "item": "21.10",
+          "descricao": "Detector óptico de fumaça endereçavel",
+          "unidade": "un"
+        },
+        {
+          "item": "21.11",
+          "descricao": "Detector termovelocimétrico endereçavel",
+          "unidade": "un"
+        },
+        {
+          "item": "21.12",
+          "descricao": "Acionador alarme de incêndio",
+          "unidade": "un"
+        },
+        {
+          "item": "21.13",
+          "descricao": "Sinalizador audiovisual endereçavel",
+          "unidade": "un"
+        }
+      ]
+    },
+    {
+      "codigo": "22",
+      "nome": "INSTALAÇÕES SANITÁRIAS, DE ESGOTO E ÁGUAS PLUVIAIS",
+      "itens": [
+        {
+          "item": "22.1",
+          "descricao": "Manutenção em caixas de descarga Montana e  caixa acoplada convencional - Reparo",
+          "unidade": "un"
+        },
+        {
+          "item": "22.2",
+          "descricao": "Manutenção em caixas de descarga Montana - Troca de Espelho",
+          "unidade": "un"
+        },
+        {
+          "item": "22.3",
+          "descricao": "Manutenção de válvula de descarga - Reparo",
+          "unidade": "un"
+        },
+        {
+          "item": "22.4",
+          "descricao": "Manutenção de Torneira - Reparo",
+          "unidade": "un"
+        },
+        {
+          "item": "22.5",
+          "descricao": "Manutenção de bacia sanitária",
+          "unidade": "un"
+        },
+        {
+          "item": "22.6",
+          "descricao": "Caixa sifonada de PVC, 3 a 5 saídas, com tampa metálica",
+          "unidade": "un"
+        },
+        {
+          "item": "22.7",
+          "descricao": "Ponto de esgoto (até 6m)",
+          "unidade": "un"
+        },
+        {
+          "item": "22.8",
+          "descricao": "Ralo Semiesférico (tipo abacaxi)",
+          "unidade": "un"
+        },
+        {
+          "item": "22.9",
+          "descricao": "Chave de Bóia automática",
+          "unidade": "UN"
+        },
+        {
+          "item": "22.10",
+          "descricao": "Ralo sifonado de PVC rígido",
+          "unidade": "un"
+        },
+        {
+          "item": "22.11",
+          "descricao": "VÁLVULA de retenção horizontal ou vertical -2 1/2\"",
+          "unidade": "un"
+        },
+        {
+          "item": "22.12",
+          "descricao": "Comando de descarga duplo, completo",
+          "unidade": "un"
+        }
+      ]
+    },
+    {
+      "codigo": "28",
+      "nome": "EQUIPAMENTOS SANITÁRIOS E DE COZINHA",
+      "itens": [
+        {
+          "item": "28.1",
+          "descricao": "Bacia sanitária de louça com caixa acoplada, com tampa e acessórios",
+          "unidade": "UN"
+        },
+        {
+          "item": "28.2",
+          "descricao": "Bacia de louça sifonada, com tampa e acessórios",
+          "unidade": "UN"
+        },
+        {
+          "item": "28.3",
+          "descricao": "BARRA de apoio em aço inox até - 90 cm - 1.1/2\" - NBR 9050",
+          "unidade": "UN"
+        },
+        {
+          "item": "28.4",
+          "descricao": "BARRA de apoio de canto, em aço inox - até 80 x 80 cm - 1.1/2\" - NBR 9050",
+          "unidade": "UN"
+        },
+        {
+          "item": "28.5",
+          "descricao": "Refixação de barra de apoio PPNE, conforme NBR 9050",
+          "unidade": "UN"
+        },
+        {
+          "item": "28.6",
+          "descricao": "Caixa de descarga suspensa embutida (padrão Montana 9000) inclusive instalação e acessórios padronizados",
+          "unidade": "UN"
+        },
+        {
+          "item": "28.7",
+          "descricao": "Cuba  - Colagem",
+          "unidade": "UN"
+        },
+        {
+          "item": "28.8",
+          "descricao": "Cuba em louça para embutir",
+          "unidade": "UN"
+        },
+        {
+          "item": "28.9",
+          "descricao": "Dosador de sabão tipo dispenser - capacidade 1000ml",
+          "unidade": "UN"
+        },
+        {
+          "item": "28.10",
+          "descricao": "Dispenser para copo descartável",
+          "unidade": "UN"
+        },
+        {
+          "item": "28.11",
+          "descricao": "Ducha higiênica manual cromada",
+          "unidade": "UN"
+        },
+        {
+          "item": "28.12",
+          "descricao": "Manutenção ducha higiênica",
+          "unidade": "UN"
+        },
+        {
+          "item": "28.13",
+          "descricao": "Engate flexível para água",
+          "unidade": "UN"
+        },
+        {
+          "item": "28.14",
+          "descricao": "Lavatório com coluna suspensa",
+          "unidade": "UN"
+        },
+        {
+          "item": "28.15",
+          "descricao": "Válvula de escoamento para lavatório ou cuba",
+          "unidade": "UN"
+        },
+        {
+          "item": "28.16",
+          "descricao": "Lavatório de canto sem coluna, inclusive válvula",
+          "unidade": "UN"
+        },
+        {
+          "item": "28.17",
+          "descricao": "Mictório de louça individual",
+          "unidade": "UN"
+        },
+        {
+          "item": "28.18",
+          "descricao": "Dispenser papel higiênico",
+          "unidade": "UN"
+        },
+        {
+          "item": "28.19",
+          "descricao": "Dispenser para toalha de papel",
+          "unidade": "UN"
+        },
+        {
+          "item": "28.20",
+          "descricao": "Sifão flexível",
+          "unidade": "UN"
+        },
+        {
+          "item": "28.21",
+          "descricao": "Sifão metálico para lavatório",
+          "unidade": "UN"
+        },
+        {
+          "item": "28.22",
+          "descricao": "Válvula de descarga p/ mictório c/ fechamento automático",
+          "unidade": "UN"
+        },
+        {
+          "item": "28.23",
+          "descricao": "Bacia PPNE, com assento e acessórios",
+          "unidade": "UN"
+        },
+        {
+          "item": "28.24",
+          "descricao": "Assento poliéster para PPNE",
+          "unidade": "UN"
+        },
+        {
+          "item": "28.25",
+          "descricao": "Assento Plástico",
+          "unidade": "UN"
+        },
+        {
+          "item": "28.26",
+          "descricao": "Torneira metálica para tanque",
+          "unidade": "UN"
+        },
+        {
+          "item": "28.27",
+          "descricao": "Torneira para lavatório de parede, fechamento automático",
+          "unidade": "UN"
+        },
+        {
+          "item": "28.28",
+          "descricao": "Torneira para lavatório de mesa, fechamento automático",
+          "unidade": "UN"
+        },
+        {
+          "item": "28.29",
+          "descricao": "Tampo/Bancada em granito",
+          "unidade": "m²"
+        },
+        {
+          "item": "28.30",
+          "descricao": "Bebedouro - Instalação",
+          "unidade": "un"
+        },
+        {
+          "item": "28.31",
+          "descricao": "Fixação de equipamentos sanitários",
+          "unidade": "un"
+        },
+        {
+          "item": "28.32",
+          "descricao": "Torneira para banheiro PNE com alavanca para acionamento",
+          "unidade": "un"
+        },
+        {
+          "item": "28.33",
+          "descricao": "Torneira metálica para copa ou cozinha",
+          "unidade": "UN"
+        },
+        {
+          "item": "28.34",
+          "descricao": "Dosador de sabão tipo dispenser  de parede",
+          "unidade": "UN"
+        }
+      ]
+    },
+    {
+      "codigo": "29",
+      "nome": "DIVERSOS",
+      "itens": [
+        {
+          "item": "29.1",
+          "descricao": "Sinalização símbolo acessibilidade (adesivos)",
+          "unidade": "UN"
+        },
+        {
+          "item": "29.2",
+          "descricao": "Adesivos padrão BB (ex: remus, estilo, high-tech,  nova ambiência, padrão 98 ou similares) com/sem mensagens (segurança, horário da agência, SAA, ou similares.)",
+          "unidade": "M"
+        },
+        {
+          "item": "29.3",
+          "descricao": "Sinalização visual e tátil no acesso - PLACA 30x18 cm",
+          "unidade": "UN"
+        },
+        {
+          "item": "29.4",
+          "descricao": "Borda de piso fotoluminescente - autoadesivo (referência: Fita Antiderrapante Fosforescente Neon Safety-Walk 3M) - largura: 50mm",
+          "unidade": "M"
+        },
+        {
+          "item": "29.5",
+          "descricao": "Alarme de emergência sem fio para sanitário de PPNE (botoeira/alarme sonoro e visual)",
+          "unidade": "CJ"
+        },
+        {
+          "item": "29.6",
+          "descricao": "Piso tátil de borracha - direcional ou alerta (por placa)",
+          "unidade": "UN"
+        },
+        {
+          "item": "29.7",
+          "descricao": "Faixa adesiva de segurança de fachada",
+          "unidade": "M"
+        },
+        {
+          "item": "29.8",
+          "descricao": "Grafema em vinil adesivo jateado",
+          "unidade": "UN"
+        },
+        {
+          "item": "29.9",
+          "descricao": "Placa interna - pictogramas diversos - em acrílico (e=8mm) fixados com pinos metálicos cromados - dim.13x30 cm",
+          "unidade": "UN"
+        },
+        {
+          "item": "29.10",
+          "descricao": "Placa interna - pictogramas diversos - em acrílico (e=8mm) fixados com pinos metálicos cromados - dim.20x20cm",
+          "unidade": "UN"
+        },
+        {
+          "item": "29.11",
+          "descricao": "Fita adesiva de piso (amarela / preta / vermelha)",
+          "unidade": "M"
+        },
+        {
+          "item": "29.12",
+          "descricao": "Fita antiderrapante para degraus de escada ou rampas",
+          "unidade": "M"
+        },
+        {
+          "item": "29.13",
+          "descricao": "Sinalização externa - substituição de película (para medalhão, bandeira, letreiros, pórticos de acesso, tótens e similares).",
+          "unidade": "M²"
+        },
+        {
+          "item": "29.14",
+          "descricao": "Sinalização externa - substituição de policarbonato e película, inclusive montagem da marca e instalação (para medalhão, bandeira, letreiros, pórticos de acesso e similares)",
+          "unidade": "M²"
+        },
+        {
+          "item": "29.15",
+          "descricao": "Sinalização externa - substituição de policarbonato e película, inclusive montagem da marca e instalação (para TOTENS)",
+          "unidade": "M²"
+        },
+        {
+          "item": "29.16",
+          "descricao": "Caixa de passagem de Massas Metálicas-CPMM, em policarbonato.",
+          "unidade": "UN"
+        },
+        {
+          "item": "29.17",
+          "descricao": "Desfixação de terminais de TAA/TTE",
+          "unidade": "UN"
+        },
+        {
+          "item": "29.18",
+          "descricao": "Fixação de terminais de TAA/TTE",
+          "unidade": "UN"
+        },
+        {
+          "item": "29.19",
+          "descricao": "Sinalização externa - retirada de letreiros, totem, bandeira, medalhão, pórtico de acesso.",
+          "unidade": "UN"
+        },
+        {
+          "item": "29.20",
+          "descricao": "Sinalização interna  - retirada de toda a caracterização interna própria",
+          "unidade": "UN"
+        },
+        {
+          "item": "29.21",
+          "descricao": "Fornecimento e instalação de divisória de privacidade de TAA em policarbonato para carenagem",
+          "unidade": "un"
+        },
+        {
+          "item": "29.22",
+          "descricao": "Ajuste de biombo, divisórias, carenagens e mobiliário em geral",
+          "unidade": "un"
+        },
+        {
+          "item": "29.23",
+          "descricao": "Fornecimento e instalação de biombo de privacidade em policarbonato",
+          "unidade": "m²"
+        },
+        {
+          "item": "29.24",
+          "descricao": "Remoção de adesivos e limpeza",
+          "unidade": "m²"
+        },
+        {
+          "item": "29.25",
+          "descricao": "Reparo de carenagens - Padrões BB",
+          "unidade": "un"
+        },
+        {
+          "item": "29.26",
+          "descricao": "Recolagem de piso tátil de borracha - direcional ou alerta (por placa)",
+          "unidade": "UN"
+        },
+        {
+          "item": "29.27",
+          "descricao": "Sinalização tátil para corrimão - Plaqueta em braile",
+          "unidade": "un"
+        },
+        {
+          "item": "29.28",
+          "descricao": "Sinalização tátil para corrimão - Anel de borracha",
+          "unidade": "un"
+        },
+        {
+          "item": "29.29",
+          "descricao": "Instalação de kit de ar condicionado",
+          "unidade": "m"
+        },
+        {
+          "item": "29.30",
+          "descricao": "Piso tátil de concreto - direcional ou alerta (por placa)",
+          "unidade": "un"
+        },
+        {
+          "item": "29.31",
+          "descricao": "Caminhão Munck",
+          "unidade": "H"
+        },
+        {
+          "item": "29.32",
+          "descricao": "Sinalização Externa - Bandeira",
+          "unidade": "un"
+        },
+        {
+          "item": "29.33",
+          "descricao": "Sinalização Externa - Medalhão com logotipo BB",
+          "unidade": "un"
+        },
+        {
+          "item": "29.34",
+          "descricao": "Sinalização Externa - Letreiro (módulo padrão básico de 4,10 m)",
+          "unidade": "un"
+        },
+        {
+          "item": "29.35",
+          "descricao": "Sinalização Externa - Letreiro (módulo padrão básico de 4,10 m com redução de até 2/3)",
+          "unidade": "un"
+        },
+        {
+          "item": "29.36",
+          "descricao": "Sinalização Externa - Letreiro (módulo padrão estendido de 5,80 m)",
+          "unidade": "un"
+        },
+        {
+          "item": "29.37",
+          "descricao": "Sinalização Externa - Letreiro (módulo padrão estendido de 7,50 m)",
+          "unidade": "un"
+        },
+        {
+          "item": "29.38",
+          "descricao": "Sinalização Externa - Letreiro (módulo padrão básico com bandeira de 7,75 m)",
+          "unidade": "un"
+        },
+        {
+          "item": "29.39",
+          "descricao": "Sinalização Externa - Letreiro (módulo padrão estendido com bandeira de 10,30 m)",
+          "unidade": "un"
+        },
+        {
+          "item": "29.40",
+          "descricao": "Sinalização Externa - Totem externo 4,10 m",
+          "unidade": "un"
+        },
+        {
+          "item": "29.41",
+          "descricao": "Sinalização Externa - Totem externo 7,50 m",
+          "unidade": "un"
+        },
+        {
+          "item": "29.42",
+          "descricao": "Sinalização Externa - Totem externo 12,00 m",
+          "unidade": "un"
+        },
+        {
+          "item": "29.43",
+          "descricao": "Vedações em geral (janelas, portas, pias e similares)",
+          "unidade": "un"
+        },
+        {
+          "item": "29.44",
+          "descricao": "Piso tátil de Inox - direcional (pinos) ou alerta (faixas)",
+          "unidade": "m"
+        },
+        {
+          "item": "29.45",
+          "descricao": "Piso tátil de PVC - direcional (pinos) ou alerta (faixas)",
+          "unidade": "m"
+        },
+        {
+          "item": "29.46",
+          "descricao": "Sinalização visual e tátil no acesso - PLACA 12x18 cm",
+          "unidade": "UN"
+        },
+        {
+          "item": "29.47",
+          "descricao": "Sinalização visual e tátil no acesso - PLACA 40x18 cm",
+          "unidade": "UN"
+        },
+        {
+          "item": "29.48",
+          "descricao": "Sinalização visual e tátil no acesso - PLACA 44x18 cm",
+          "unidade": "UN"
+        },
+        {
+          "item": "29.49",
+          "descricao": "Proteção/Ocultação Sinalização Externa - Letreiros, totem, bandeira, medalhão, pórtico de acesso.",
+          "unidade": "UN"
+        },
+        {
+          "item": "29.50",
+          "descricao": "Caminhão com Cesto Aereo Isolado",
+          "unidade": "h"
+        },
+        {
+          "item": "29.51",
+          "descricao": "Manutenção Preventiva de Elementos de Sinalização LED - Padrão BB",
+          "unidade": "UN"
+        }
+      ]
+    }
+  ]
+};
+
+// ── sidebar toggle ────────────────────────────────────────────────────
+function toggleSidebar() {
+  const aside   = document.getElementById('aside');
+  const btn     = document.getElementById('sidebar-toggle');
+  const overlay = document.getElementById('sidebar-overlay');
+  const collapsed = aside.classList.toggle('collapsed');
+  btn.classList.toggle('collapsed', collapsed);
+  // overlay só no mobile
+  if (window.innerWidth <= 640) {
+    overlay.classList.toggle('hidden', collapsed);
+  }
+}
+
+// ── dark mode ─────────────────────────────────────────────────────────
+function toggleDark() {
+  const dark = document.documentElement.classList.toggle('dark');
+  localStorage.setItem('tm-theme', dark ? 'dark' : 'light');
+  document.getElementById('icon-moon').style.display = dark ? 'none' : '';
+  document.getElementById('icon-sun').style.display  = dark ? ''     : 'none';
+}
+(function applyTheme() {
+  const saved = localStorage.getItem('tm-theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  if (saved === 'dark' || (!saved && prefersDark)) {
+    document.documentElement.classList.add('dark');
+    document.getElementById('icon-moon').style.display = 'none';
+    document.getElementById('icon-sun').style.display  = '';
+  }
+})();
+
+// ── estado ──────────────────────────────────────────────────────────
+let filtroAtual = 'todos';
+let buscaAtual  = '';
+let sugIdx      = -1;
+
+// ── índice flat para autocomplete ───────────────────────────────────
+const IDX = [];
+DADOS.secoes.forEach(sec => {
+  sec.itens.forEach(it => {
+    IDX.push({ tipo: 'item', item: it.item, descricao: it.descricao, unidade: it.unidade, secao: sec.nome });
+  });
+});
+DADOS.prefixos.forEach(p => {
+  IDX.push({ tipo: 'prefixo', prefixo: p.prefixo, dependencia: p.dependencia, endereco: p.endereco || '', cidade: p.cidade || '' });
+});
+
+// -- PINTURA DO CONTRATO ---------------------------------
+const PINTURA_CONTRATO = {
+  '17.4': { desc: 'Todo o restante das paredes internas e externas. Pintura em FORRO (TETO) também.', cls: 'paint-row-17-4' },
+  '17.10': { desc: 'Pintura de muros', cls: 'paint-row-17-10' },
+  '17.11': { desc: 'Pintura de paredes internas e/ou externas COLORIDAS (azul ou amarelo)', cls: 'paint-row-17-11' }
+};
+
+// ── normalização (remove acentos, lowercase) ────────────────────────
+function norm(s) {
+  return String(s).toLowerCase()
+    .normalize('NFD').replace(/[̀-ͯ]/g, '')
+    .replace(/[^a-z0-9\.\s]/g, ' ').replace(/\s+/g, ' ').trim();
+}
+
+// ── score de relevância (fuzzy simples por tokens) ───────────────────
+function score(haystack, tokens) {
+  const h = norm(haystack);
+  let s = 0;
+  for (const t of tokens) {
+    if (h === t) { s += 100; continue; }
+    if (h.startsWith(t)) { s += 60; continue; }
+    if (h.includes(t)) { s += 30; continue; }
+    // fuzzy: todos os chars do token aparecem em ordem?
+    let pos = 0;
+    let found = true;
+    for (const c of t) { pos = h.indexOf(c, pos); if (pos < 0) { found = false; break; } pos++; }
+    if (found && t.length >= 3) s += 10;
+    else if (!found) s -= 20;
+  }
+  return s;
+}
+
+function scorarItem(it, tokens) {
+  return Math.max(
+    score(it.item, tokens) * 2,   // código tem peso dobrado
+    score(it.descricao, tokens)
+  );
+}
+
+// ── highlight de texto ────────────────────────────────────────────────
+function hl(text, tokens) {
+  if (!tokens || tokens.length === 0) return escHtml(text);
+  let result = escHtml(text);
+  tokens.forEach(t => {
+    if (t.length < 2) return;
+    const re = new RegExp('(' + t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+    result = result.replace(re, '<mark>$1</mark>');
+  });
+  return result;
+}
+
+function escHtml(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+// ── classe CSS da unidade ─────────────────────────────────────────────
+function unClass(u) {
+  const map = { 'm²':'un-m2','m³':'un-m3','m':'un-m','un':'un-un','km':'un-km',
+                'cj':'un-cj','m²/mês':'un-mes','m/mês':'un-mes','mês':'un-mes','H':'un-h' };
+  return map[u] || 'un-def';
+}
+
+// ── INIT ──────────────────────────────────────────────────────────────
+function init() {
+  document.getElementById('hdr-codigo').textContent = DADOS.codigo + ' — ' + DADOS.nome;
+  const desc = DADOS.desconto ? (DADOS.desconto * 100).toFixed(2) + '%' : '—';
+  const bdi  = DADOS.bdi     ? (DADOS.bdi     * 100).toFixed(2) + '%' : '—';
+  const metaParts = ['Contrato: ' + (DADOS.contrato || '—'), 'Lote: ' + (DADOS.lote || '—')];
+  if (desc !== '—') metaParts.push('Desc: ' + desc);
+  if (bdi  !== '—') metaParts.push('BDI: ' + bdi);
+  document.getElementById('hdr-meta').style.display = 'none';
+
+  // Sidebar de unidades
+  const unBtn = document.getElementById('un-buttons');
+  const unOrdem = ['m²','m³','m','un','km','cj','m²/mês','m/mês','mês','H'];
+  const unExist = Object.keys(DADOS.itens_por_unidade);
+  const unOrd = [...unOrdem.filter(u => unExist.includes(u)), ...unExist.filter(u => !unOrdem.includes(u))];
+  let tot = 0;
+  unOrd.forEach(un => {
+    const cnt = DADOS.itens_por_unidade[un].length;
+    tot += cnt;
+    const btn = document.createElement('button');
+    btn.className = 'un-btn';
+    btn.dataset.un = un;
+    btn.onclick = () => filtrar(un, true);
+    btn.innerHTML = `<span>${un}</span><span class="un-badge">${cnt}</span>`;
+    unBtn.appendChild(btn);
+  });
+  document.getElementById('cnt-todos').textContent = tot;
+  document.getElementById('cnt-pref').textContent = DADOS.prefixos.length;
+
+  renderPrefixos();
+  renderItens([]);
+
+  // Input events
+  const inp = document.getElementById('busca');
+  inp.addEventListener('input', onInput);
+  inp.addEventListener('keydown', onKeyDown);
+  inp.addEventListener('blur', () => setTimeout(() => fecharSug(), 180));
+  inp.addEventListener('focus', () => { if (inp.value) onInput(); });
+
+  // Atalho global Ctrl+K
+  document.addEventListener('keydown', e => {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') { e.preventDefault(); inp.focus(); inp.select(); }
+    if (e.key === 'Escape') { limparBusca(); inp.blur(); }
+  });
+}
+
+// ── FILTRO SIDEBAR ────────────────────────────────────────────────────
+function filtrar(un, limparQ) {
+  filtroAtual = un;
+  if (limparQ) { limparBusca(); }
+  document.querySelectorAll('.un-btn').forEach(b => b.classList.remove('active'));
+  document.querySelector(`[data-un="${CSS.escape(un)}"]`)?.classList.add('active');
+
+  const itV = document.getElementById('itens-view');
+  const prV = document.getElementById('prefixos-view');
+  if (un === 'prefixos') {
+    itV.classList.add('hidden'); prV.classList.remove('hidden');
+    document.getElementById('cnt-exibidos').textContent = DADOS.prefixos.length + ' agências';
+    return;
+  }
+  itV.classList.remove('hidden'); prV.classList.add('hidden');
+  renderItens(tokenizar(buscaAtual));
+}
+
+// ── INPUT HANDLER ─────────────────────────────────────────────────────
+let _sugTimer = null;
+function onInput() {
+  const v = document.getElementById('busca').value;
+  buscaAtual = v;
+  document.getElementById('btn-clear').classList.toggle('visible', v.length > 0);
+
+  const tokens = tokenizar(v);
+
+  if (v.trim().length >= 2) {
+    // Esconde a tabela e agenda o dropdown
+    document.getElementById('itens-view').style.visibility = 'hidden';
+    document.getElementById('suggestions').classList.remove('open');
+    clearTimeout(_sugTimer);
+    _sugTimer = setTimeout(() => {
+      if (document.activeElement === document.getElementById('busca')) {
+        renderSugestoes(tokens, v);
+      }
+    }, 300);
+  } else {
+    // Campo vazio ou 1 char: mostra tudo normal
+    fecharSug();
+    renderItens(tokens);
+  }
+}
+
+function tokenizar(v) {
+  return norm(v).split(' ').filter(t => t.length >= 1);
+}
+
+// ── SUGESTÕES ────────────────────────────────────────────────────────
+function renderSugestoes(tokens, raw) {
+  const sug = document.getElementById('suggestions');
+  sugIdx = -1;
+  document.getElementById('itens-view').style.visibility = 'hidden';
+
+  // Pontua e ordena
+  const resultados = IDX
+    .map(entry => {
+      let s = 0;
+      if (entry.tipo === 'item') {
+        s = scorarItem(entry, tokens);
+      } else {
+        s = Math.max(score(entry.prefixo, tokens) * 2, score(entry.dependencia, tokens), score(entry.cidade, tokens), score(entry.endereco, tokens));
+      }
+      return { entry, s };
+    })
+    .filter(x => x.s > 0)
+    .sort((a, b) => b.s - a.s)
+    .slice(0, 12);
+
+  if (resultados.length === 0) { fecharSug(); return; }
+
+  let html = '';
+  let lastTipo = null;
+  resultados.forEach(({ entry }) => {
+    if (entry.tipo !== lastTipo) {
+      html += `<div class="sug-section-hdr">${entry.tipo === 'item' ? 'Itens' : 'Agências'}</div>`;
+      lastTipo = entry.tipo;
+    }
+    if (entry.tipo === 'item') {
+      html += `<div class="sug-item" onclick="selecionarItem('${escHtml(entry.item)}')">
+        <span class="sug-code">${hl(entry.item, tokens)}</span>
+        <span class="sug-desc">${hl(entry.descricao, tokens)}</span>
+        <span class="sug-un">${entry.unidade}</span>
+      </div>`;
+    } else {
+      html += `<div class="sug-item" onclick="selecionarPrefixo('${escHtml(entry.prefixo)}')">
+        <span class="sug-code">${hl(entry.prefixo, tokens)}</span>
+        <span class="sug-desc">${hl(entry.dependencia, tokens)}</span>
+        <span class="sug-pref">${hl(entry.cidade, tokens)}</span>
+      </div>`;
+    }
+  });
+
+  sug.innerHTML = html;
+  sug.classList.add('open');
+}
+
+function fecharSug() {
+  document.getElementById('suggestions').classList.remove('open');
+  document.getElementById('itens-view').style.visibility = '';
+  sugIdx = -1;
+}
+
+function selecionarItem(codigo) {
+  document.getElementById('busca').value = codigo;
+  buscaAtual = codigo;
+  document.getElementById('btn-clear').classList.add('visible');
+  fecharSug();
+  document.getElementById('itens-view').style.visibility = '';
+  renderItens(tokenizar(codigo));
+}
+
+function selecionarPrefixo(pref) {
+  filtrar('prefixos', false);
+  document.getElementById('busca').value = pref;
+  buscaAtual = pref;
+  fecharSug();
+  renderPrefixos(pref);
+}
+
+// ── TECLADO nas sugestões ──────────────────────────────────────────────
+function onKeyDown(e) {
+  const sug = document.getElementById('suggestions');
+  const items = sug.querySelectorAll('.sug-item');
+  if (!sug.classList.contains('open')) return;
+
+  if (e.key === 'ArrowDown') {
+    e.preventDefault();
+    sugIdx = Math.min(sugIdx + 1, items.length - 1);
+    items.forEach((el, i) => el.classList.toggle('focused', i === sugIdx));
+    items[sugIdx]?.scrollIntoView({ block: 'nearest' });
+  } else if (e.key === 'ArrowUp') {
+    e.preventDefault();
+    sugIdx = Math.max(sugIdx - 1, 0);
+    items.forEach((el, i) => el.classList.toggle('focused', i === sugIdx));
+    items[sugIdx]?.scrollIntoView({ block: 'nearest' });
+  } else if (e.key === 'Enter' && sugIdx >= 0) {
+    e.preventDefault();
+    items[sugIdx]?.click();
+  } else if (e.key === 'Escape') {
+    fecharSug();
+  }
+}
+
+// ── LIMPAR ────────────────────────────────────────────────────────────
+function limparBusca() {
+  document.getElementById('busca').value = '';
+  buscaAtual = '';
+  document.getElementById('btn-clear').classList.remove('visible');
+  fecharSug();
+  renderItens([]);
+  if (filtroAtual === 'prefixos') renderPrefixos('');
+}
+
+// ── RENDER ITENS ──────────────────────────────────────────────────────
+function itemPassaFiltro(it, tokens) {
+  if (filtroAtual !== 'todos' && filtroAtual !== 'prefixos' && it.unidade !== filtroAtual) return false;
+  if (tokens && tokens.length > 0) {
+    return scorarItem(it, tokens) > 0;
+  }
+  return true;
+}
+
+function renderItens(tokens) {
+  if (filtroAtual === 'prefixos') return;
+  const view = document.getElementById('itens-view');
+  const buscando = tokens && tokens.length > 0;
+  let total = 0;
+  let html = '';
+
+  // Ordena seções por score quando há busca
+  const secoesComScore = DADOS.secoes.map(sec => {
+    const itensFilt = sec.itens.filter(it => itemPassaFiltro(it, tokens));
+    const maxScore = buscando
+      ? Math.max(0, ...itensFilt.map(it => scorarItem(it, tokens)))
+      : 0;
+    return { sec, itensFilt, maxScore };
+  });
+
+  // Quando buscando: ordena por score e mostra só quem tem resultado
+  const secoesVisiveis = buscando
+    ? [...secoesComScore].filter(x => x.itensFilt.length > 0).sort((a, b) => b.maxScore - a.maxScore)
+    : secoesComScore.filter(x => x.itensFilt.length > 0);
+
+  secoesVisiveis.forEach(({ sec, itensFilt }) => {
+    total += itensFilt.length;
+
+    const itensOrdenados = buscando
+      ? [...itensFilt].sort((a, b) => scorarItem(b, tokens) - scorarItem(a, tokens))
+      : itensFilt;
+
+    html += `<div class="secao">
+      <div class="secao-header">
+        <span class="secao-num">${escHtml(sec.codigo)}</span>
+        <span class="secao-nome">${escHtml(sec.nome)}</span>
+        <span class="secao-cnt">${itensFilt.length} iten${itensFilt.length > 1 ? 's' : ''}</span>
+      </div>
+      <table>
+        <thead><tr>
+          <th style="width:78px">Item</th>
+          <th>Descrição</th>
+          <th style="width:88px;text-align:center">UN</th>
+        </tr></thead><tbody>`;
+
+    itensOrdenados.forEach(it => {
+      const hlItem = hl(it.item, tokens);
+      const hlDesc = hl(it.descricao, tokens);
+      const _pc = PINTURA_CONTRATO[it.item];
+      const _pcCls = _pc ? _pc.cls : '';
+      const _pcKey = it.item.replace('.', '-');
+      const _pcBadge = _pc ? `<span class="paint-badge paint-badge-${_pcKey}">🎨 Pintura</span>` : '';
+      html += `<tr class="${_pcCls}">
+        <td class="item-code">${hlItem}${_pcBadge}</td>
+        <td>${hlDesc}</td>
+        <td style="text-align:center">
+          <span class="un-chip ${unClass(it.unidade)}">${it.unidade}</span>
+        </td>
+      </tr>`;
+    });
+
+    html += `</tbody></table></div>`;
+  });
+
+  if (total === 0) {
+    const q = buscaAtual;
+    html = `<div class="no-results">
+      <svg class="no-results-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+      <div class="no-results-title">Nenhum item para <strong>"${escHtml(q)}"</strong></div>
+      <div class="no-results-hint">Busque pelo código (ex: 2.12) ou parte da descrição (ex: piso tátil)</div>
+    </div>`;
+  }
+
+  view.innerHTML = html;
+  document.getElementById('cnt-exibidos').textContent = total + ' iten' + (total !== 1 ? 's' : '');
+}
+
+// ── RENDER PREFIXOS ───────────────────────────────────────────────────
+function renderPrefixos(filtro) {
+  const view = document.getElementById('prefixos-view');
+  if (DADOS.prefixos.length === 0) {
+    view.innerHTML = '<div class="no-results"><svg class="no-results-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg><div class="no-results-title">Sem agências cadastradas.</div></div>';
+    return;
+  }
+  const q = norm(filtro || '');
+  const tokens = q.split(' ').filter(t => t.length >= 1);
+  const lista = q
+    ? DADOS.prefixos.filter(p =>
+        score(p.prefixo, tokens) > 0 || score(p.dependencia, tokens) > 0 || score(p.cidade || '', tokens) > 0 || score(p.endereco || '', tokens) > 0
+      )
+    : DADOS.prefixos;
+
+  let html = `<div class="pref-grid">`;
+  lista.forEach(p => {
+    const partes = [];
+    if (p.endereco) partes.push(p.endereco);
+    if (p.cidade && p.cidade !== p.dependencia) partes.push(p.cidade);
+    const linha2 = partes.join(' — ');
+    html += `<div class="pref-card">
+      <div class="pref-num">${hl(p.prefixo, tokens)}</div>
+      <div style="flex:1;min-width:0">
+        <div class="pref-dep">${hl(p.dependencia, tokens)}</div>
+        ${linha2 ? `<div class="pref-cidade">${hl(linha2, tokens)}</div>` : ''}
+      </div>
+      ${p.km ? `<div class="pref-km"><span class="pref-km-label">km</span><span class="pref-km-val">${hl(p.km.replace(' km',''), tokens)}</span></div>` : ''}
+    </div>`;
+  });
+  html += `</div>`;
+  view.innerHTML = html;
+  document.getElementById('cnt-exibidos').textContent = lista.length + ' agência' + (lista.length !== 1 ? 's' : '');
+}
+
+
+// ── TOGGLE ALERTA PINTURA ─────────────────────────────────────────────
+function togglePaintAlert() {
+  const box = document.getElementById('paint-alert-box');
+  const btn = document.getElementById('paint-alert-btn');
+  if (!box) return;
+  const open = box.classList.toggle('open');
+  if (btn) btn.textContent = open ? '✕ Fechar' : '⚠️ Atenção';
+}
+
+init();
+</script>
+</body>
+</html>

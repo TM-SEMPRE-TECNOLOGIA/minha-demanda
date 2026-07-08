@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design System TM - Ocean Breeze v2.0</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Lora:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Cores - Modo Claro */
+            --TM-background: #f0f8ff;
+            --TM-foreground: #374151;
+            --TM-card: #ffffff;
+            --TM-card-foreground: #374151;
+            --TM-popover: #ffffff;
+            --TM-popover-foreground: #374151;
+            --TM-primary: #22c55e;
+            --TM-primary-foreground: #ffffff;
+            --TM-secondary: #e0f2fe;
+            --TM-secondary-foreground: #4b5563;
+            --TM-muted: #f3f4f6;
+            --TM-muted-foreground: #6b7280;
+            --TM-accent: #d1fae5;
+            --TM-accent-foreground: #374151;
+            --TM-destructive: #ef4444;
+            --TM-destructive-foreground: #ffffff;
+            --TM-border: #e5e7eb;
+            --TM-input: #e5e7eb;
+            --TM-ring: #22c55e;
+
+            /* Gráficos */
+            --TM-chart-1: #22c55e;
+            --TM-chart-2: #10b981;
+            --TM-chart-3: #059669;
+            --TM-chart-4: #047857;
+            --TM-chart-5: #065f46;
+
+            /* Sidebar */
+            --TM-sidebar: #e0f2fe;
+            --TM-sidebar-foreground: #374151;
+            --TM-sidebar-primary: #22c55e;
+            --TM-sidebar-primary-foreground: #ffffff;
+            --TM-sidebar-accent: #d1fae5;
+            --TM-sidebar-accent-foreground: #374151;
+            --TM-sidebar-border: #e5e7eb;
+            --TM-sidebar-ring: #22c55e;
+
+            /* Tipografia */
+            --TM-font-sans: "DM Sans", sans-serif;
+            --TM-font-serif: "Lora", serif;
+            --TM-font-mono: "IBM Plex Mono", monospace;
+
+            /* Radius */
+            --TM-radius-sm: calc(0.5rem - 4px);
+            --TM-radius-md: calc(0.5rem - 2px);
+            --TM-radius-lg: 0.5rem;
+            --TM-radius-xl: calc(0.5rem + 4px);
+
+            /* Sombras */
+            --TM-shadow-2xs: 0px 4px 8px -1px rgba(0,0,0,0.05);
+            --TM-shadow-xs: 0px 4px 8px -1px rgba(0,0,0,0.05);
+            --TM-shadow-sm: 0px 4px 8px -1px rgba(0,0,0,0.10), 0px 1px 2px -2px rgba(0,0,0,0.10);
+            --TM-shadow: 0px 4px 8px -1px rgba(0,0,0,0.10), 0px 1px 2px -2px rgba(0,0,0,0.10);
+            --TM-shadow-md: 0px 4px 8px -1px rgba(0,0,0,0.10), 0px 2px 4px -2px rgba(0,0,0,0.10);
+            --TM-shadow-lg: 0px 4px 8px -1px rgba(0,0,0,0.10), 0px 4px 6px -2px rgba(0,0,0,0.10);
+            --TM-shadow-xl: 0px 4px 8px -1px rgba(0,0,0,0.10), 0px 8px 10px -2px rgba(0,0,0,0.10);
+            --TM-shadow-2xl: 0px 4px 8px -1px rgba(0,0,0,0.25);
+        }
+
+        .dark {
+            --TM-background: #0f172a;
+            --TM-foreground: #d1d5db;
+            --TM-card: #1e293b;
+            --TM-card-foreground: #d1d5db;
+            --TM-popover: #1e293b;
+            --TM-popover-foreground: #d1d5db;
+            --TM-primary: #34d399;
+            --TM-primary-foreground: #0f172a;
+            --TM-secondary: #2d3748;
+            --TM-secondary-foreground: #a1a1aa;
+            --TM-muted: #19212e;
+            --TM-muted-foreground: #6b7280;
+            --TM-accent: #374151;
+            --TM-accent-foreground: #a1a1aa;
+            --TM-destructive: #ef4444;
+            --TM-destructive-foreground: #0f172a;
+            --TM-border: #4b5563;
+            --TM-input: #4b5563;
+            --TM-ring: #34d399;
+
+            --TM-sidebar: #1e293b;
+            --TM-sidebar-foreground: #d1d5db;
+            --TM-sidebar-primary: #34d399;
+            --TM-sidebar-primary-foreground: #0f172a;
+            --TM-sidebar-accent: #374151;
+            --TM-sidebar-accent-foreground: #a1a1aa;
+            --TM-sidebar-border: #4b5563;
+            --TM-sidebar-ring: #34d399;
+        }
+
+        body {
+            font-family: var(--TM-font-sans);
+            background: var(--TM-background);
+            color: var(--TM-foreground);
+            line-height: 1.6;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+
+        .header {
+            background: var(--TM-card);
+            border-bottom: 1px solid var(--TM-border);
+            padding: 16px 24px;
+            box-shadow: var(--TM-shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--TM-foreground);
+        }
+
+        .version-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--TM-accent);
+            color: var(--TM-accent-foreground);
+            border-radius: 999px;
+            padding: 4px 10px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 12px;
+        }
+
+        .theme-toggle {
+            background: var(--TM-primary);
+            color: var(--TM-primary-foreground);
+            border: none;
+            padding: 8px 16px;
+            border-radius: var(--TM-radius-md);
+            cursor: pointer;
+            font-family: var(--TM-font-sans);
+            font-weight: 500;
+            transition: opacity 0.2s;
+        }
+
+        .theme-toggle:hover {
+            opacity: 0.9;
+        }
+
+        .section {
+            margin-bottom: 48px;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--TM-foreground);
+            border-bottom: 2px solid var(--TM-primary);
+            padding-bottom: 8px;
+        }
+
+        .section-intro {
+            color: var(--TM-muted-foreground);
+            margin-bottom: 20px;
+            max-width: 780px;
+        }
+
+        .subsection-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin: 24px 0 16px 0;
+            color: var(--TM-foreground);
+        }
+
+        /* Paleta de Cores */
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .color-card {
+            background: var(--TM-card);
+            border: 1px solid var(--TM-border);
+            border-radius: var(--TM-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--TM-shadow-sm);
+        }
+
+        .color-sample {
+            height: 100px;
+            width: 100%;
+        }
+
+        .color-info {
+            padding: 12px;
+        }
+
+        .color-name {
+            font-weight: 600;
+            margin-bottom: 4px;
+            font-size: 14px;
+        }
+
+        .color-value {
+            font-family: var(--TM-font-mono);
+            font-size: 12px;
+            color: var(--TM-muted-foreground);
+        }
+
+        /* Botões */
+        .button-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: var(--TM-radius-md);
+            font-family: var(--TM-font-sans);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 14px;
+        }
+
+        .btn-primary {
+            background: var(--TM-primary);
+            color: var(--TM-primary-foreground);
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+            box-shadow: var(--TM-shadow-md);
+        }
+
+        .btn-secondary {
+            background: var(--TM-secondary);
+            color: var(--TM-secondary-foreground);
+        }
+
+        .btn-secondary:hover {
+            opacity: 0.9;
+        }
+
+        .btn-destructive {
+            background: var(--TM-destructive);
+            color: var(--TM-destructive-foreground);
+        }
+
+        .btn-destructive:hover {
+            opacity: 0.9;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--TM-primary);
+            border: 1px solid var(--TM-border);
+        }
+
+        .btn-outline:hover {
+            background: var(--TM-accent);
+        }
+
+        /* Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .card {
+            background: var(--TM-card);
+            color: var(--TM-card-foreground);
+            border: 1px solid var(--TM-border);
+            border-radius: var(--TM-radius-lg);
+            padding: 24px;
+            box-shadow: var(--TM-shadow);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--TM-shadow-lg);
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .card-description {
+            color: var(--TM-muted-foreground);
+            font-size: 14px;
+        }
+
+        /* Inputs */
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .input {
+            width: 100%;
+            padding: 10px 12px;
+            background: var(--TM-background);
+            border: 1px solid var(--TM-input);
+            border-radius: var(--TM-radius-md);
+            color: var(--TM-foreground);
+            font-family: var(--TM-font-sans);
+            font-size: 14px;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .input:focus {
+            outline: none;
+            border-color: var(--TM-ring);
+            box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
+        }
+
+        .textarea {
+            width: 100%;
+            padding: 10px 12px;
+            background: var(--TM-background);
+            border: 1px solid var(--TM-input);
+            border-radius: var(--TM-radius-md);
+            color: var(--TM-foreground);
+            font-family: var(--TM-font-sans);
+            font-size: 14px;
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .textarea:focus {
+            outline: none;
+            border-color: var(--TM-ring);
+            box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
+        }
+
+        /* Alerts */
+        .alert {
+            padding: 16px;
+            border-radius: var(--TM-radius-md);
+            margin-bottom: 16px;
+            border-left: 4px solid;
+        }
+
+        .alert-success {
+            background: var(--TM-accent);
+            color: var(--TM-accent-foreground);
+            border-left-color: var(--TM-primary);
+        }
+
+        .alert-destructive {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--TM-destructive);
+            border-left-color: var(--TM-destructive);
+        }
+
+        .alert-info {
+            background: var(--TM-secondary);
+            color: var(--TM-secondary-foreground);
+            border-left-color: var(--TM-primary);
+        }
+
+        /* Tipografia */
+        .typography-sample {
+            margin-bottom: 24px;
+        }
+
+        .font-sans { font-family: var(--TM-font-sans); }
+        .font-serif { font-family: var(--TM-font-serif); }
+        .font-mono { font-family: var(--TM-font-mono); }
+
+        /* Sombras */
+        .shadow-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 24px;
+        }
+
+        .shadow-card {
+            background: var(--TM-card);
+            padding: 32px;
+            border-radius: var(--TM-radius-lg);
+            text-align: center;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .shadow-2xs { box-shadow: var(--TM-shadow-2xs); }
+        .shadow-xs { box-shadow: var(--TM-shadow-xs); }
+        .shadow-sm { box-shadow: var(--TM-shadow-sm); }
+        .shadow-md { box-shadow: var(--TM-shadow-md); }
+        .shadow-lg { box-shadow: var(--TM-shadow-lg); }
+        .shadow-xl { box-shadow: var(--TM-shadow-xl); }
+        .shadow-2xl { box-shadow: var(--TM-shadow-2xl); }
+
+        /* Chart Colors */
+        .chart-grid {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .chart-bar {
+            flex: 1;
+            height: 120px;
+            border-radius: var(--TM-radius-sm);
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            padding-bottom: 8px;
+        }
+
+        /* Sidebar Demo */
+        .sidebar-demo {
+            display: flex;
+            gap: 0;
+            height: 300px;
+            border-radius: var(--TM-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--TM-shadow-lg);
+        }
+
+        .sidebar {
+            width: 240px;
+            background: var(--TM-sidebar);
+            color: var(--TM-sidebar-foreground);
+            padding: 16px;
+            border-right: 1px solid var(--TM-sidebar-border);
+        }
+
+        .sidebar-item {
+            padding: 10px 12px;
+            margin-bottom: 4px;
+            border-radius: var(--TM-radius-sm);
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .sidebar-item:hover {
+            background: var(--TM-sidebar-accent);
+        }
+
+        .sidebar-item.active {
+            background: var(--TM-sidebar-primary);
+            color: var(--TM-sidebar-primary-foreground);
+        }
+
+        .sidebar-content {
+            flex: 1;
+            background: var(--TM-background);
+            padding: 24px;
+        }
+
+        /* Espaçamento */
+        .spacing-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .spacing-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .spacing-box {
+            background: var(--TM-primary);
+            height: 40px;
+        }
+
+        .spacing-label {
+            font-family: var(--TM-font-mono);
+            font-size: 14px;
+            min-width: 60px;
+        }
+
+        /* Pages: Dashboards, Team, Chat, Blog */
+        .page-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .page-card {
+            background: var(--TM-card);
+            border: 1px solid var(--TM-border);
+            border-radius: var(--TM-radius-xl);
+            padding: 20px;
+            box-shadow: var(--TM-shadow-lg);
+        }
+
+        .page-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+
+        .page-title {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .pill {
+            background: var(--TM-secondary);
+            color: var(--TM-secondary-foreground);
+            border-radius: 999px;
+            padding: 4px 10px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.12), rgba(14, 165, 233, 0.08));
+            border: 1px solid var(--TM-border);
+            border-radius: var(--TM-radius-md);
+            padding: 12px;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: var(--TM-muted-foreground);
+        }
+
+        .stat-value {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .chart-row {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 12px;
+        }
+
+        .chart-card {
+            background: var(--TM-background);
+            border: 1px solid var(--TM-border);
+            border-radius: var(--TM-radius-md);
+            padding: 12px;
+            min-height: 140px;
+        }
+
+        .chart-canvas {
+            height: 110px;
+            border-radius: var(--TM-radius-sm);
+            background: linear-gradient(180deg, rgba(34, 197, 94, 0.4), rgba(34, 197, 94, 0.05)),
+                        repeating-linear-gradient(90deg, rgba(148, 163, 184, 0.2) 0, rgba(148, 163, 184, 0.2) 1px, transparent 1px, transparent 16px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chart-line {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, transparent 0%, transparent 10%, rgba(16, 185, 129, 0.7) 12%, rgba(16, 185, 129, 0.7) 18%, transparent 20%);
+            animation: sweep 6s linear infinite;
+        }
+
+        .chart-bars {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 8px;
+            align-items: end;
+            height: 100%;
+        }
+
+        .chart-bar-mini {
+            background: linear-gradient(180deg, var(--TM-chart-1), var(--TM-chart-4));
+            border-radius: 6px 6px 2px 2px;
+        }
+
+        .donut {
+            width: 110px;
+            height: 110px;
+            margin: 0 auto;
+            border-radius: 50%;
+            background: conic-gradient(var(--TM-chart-1) 0 120deg, var(--TM-chart-2) 120deg 220deg, var(--TM-chart-3) 220deg 310deg, var(--TM-muted) 310deg 360deg);
+            position: relative;
+        }
+
+        .donut::after {
+            content: "";
+            position: absolute;
+            inset: 18px;
+            background: var(--TM-background);
+            border-radius: 50%;
+        }
+
+        .team-metrics {
+            display: grid;
+            gap: 10px;
+        }
+
+        .metric-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            font-size: 12px;
+        }
+
+        .metric-bar {
+            flex: 1;
+            height: 8px;
+            background: var(--TM-muted);
+            border-radius: 999px;
+            overflow: hidden;
+            margin-left: 8px;
+        }
+
+        .metric-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--TM-chart-1), var(--TM-chart-3));
+        }
+
+        .chat-shell {
+            display: grid;
+            grid-template-columns: 160px 1fr;
+            gap: 12px;
+            min-height: 260px;
+        }
+
+        .chat-sidebar {
+            background: var(--TM-secondary);
+            border-radius: var(--TM-radius-md);
+            padding: 12px;
+            display: grid;
+            gap: 8px;
+        }
+
+        .chat-thread {
+            background: var(--TM-background);
+            border: 1px solid var(--TM-border);
+            border-radius: var(--TM-radius-md);
+            padding: 12px;
+            display: grid;
+            gap: 10px;
+            align-content: start;
+        }
+
+        .chat-bubble {
+            max-width: 70%;
+            padding: 10px 12px;
+            border-radius: 16px;
+            font-size: 13px;
+        }
+
+        .chat-bubble.in {
+            background: var(--TM-muted);
+        }
+
+        .chat-bubble.out {
+            background: var(--TM-primary);
+            color: var(--TM-primary-foreground);
+            margin-left: auto;
+        }
+
+        .blog-hero {
+            background: radial-gradient(circle at top left, rgba(14, 165, 233, 0.2), transparent 55%),
+                        radial-gradient(circle at bottom right, rgba(34, 197, 94, 0.18), transparent 50%),
+                        var(--TM-background);
+            border: 1px solid var(--TM-border);
+            border-radius: var(--TM-radius-lg);
+            padding: 18px;
+            margin-bottom: 12px;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+        }
+
+        .blog-card {
+            background: var(--TM-card);
+            border: 1px solid var(--TM-border);
+            border-radius: var(--TM-radius-md);
+            padding: 12px;
+            box-shadow: var(--TM-shadow-sm);
+        }
+
+        .blog-tag {
+            display: inline-block;
+            background: var(--TM-accent);
+            color: var(--TM-accent-foreground);
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 999px;
+            margin-bottom: 8px;
+        }
+
+        .reveal {
+            animation: fadeUp 0.6s ease both;
+        }
+
+        .reveal.delay-1 { animation-delay: 0.1s; }
+        .reveal.delay-2 { animation-delay: 0.2s; }
+        .reveal.delay-3 { animation-delay: 0.3s; }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes sweep {
+            from { transform: translateX(-100%); }
+            to { transform: translateX(100%); }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 16px;
+            }
+
+            .color-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+
+            .sidebar-demo {
+                flex-direction: column;
+                height: auto;
+            }
+
+            .sidebar {
+                width: 100%;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .chart-row {
+                grid-template-columns: 1fr;
+            }
+
+            .chat-shell {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Design System TM - Ocean Breeze <span class="version-badge">v2.0</span></h1>
+        <button class="theme-toggle" onclick="toggleTheme()">🌓 Alternar Tema</button>
+    </div>
+
+    <div class="container">
+        <!-- Paleta de Cores -->
+        <section class="section">
+            <h2 class="section-title">Paleta de Cores</h2>
+            
+            <h3 class="subsection-title">Cores Principais</h3>
+            <div class="color-grid">
+                <div class="color-card">
+                    <div class="color-sample" style="background: var(--TM-primary);"></div>
+                    <div class="color-info">
+                        <div class="color-name">Primary</div>
+                        <div class="color-value">--TM-primary</div>
+                    </div>
+                </div>
+                <div class="color-card">
+                    <div class="color-sample" style="background: var(--TM-secondary);"></div>
+                    <div class="color-info">
+                        <div class="color-name">Secondary</div>
+                        <div class="color-value">--TM-secondary</div>
+                    </div>
+                </div>
+                <div class="color-card">
+                    <div class="color-sample" style="background: var(--TM-accent);"></div>
+                    <div class="color-info">
+                        <div class="color-name">Accent</div>
+                        <div class="color-value">--TM-accent</div>
+                    </div>
+                </div>
+                <div class="color-card">
+                    <div class="color-sample" style="background: var(--TM-destructive);"></div>
+                    <div class="color-info">
+                        <div class="color-name">Destructive</div>
+                        <div class="color-value">--TM-destructive</div>
+                    </div>
+                </div>
+                <div class="color-card">
+                    <div class="color-sample" style="background: var(--TM-muted);"></div>
+                    <div class="color-info">
+                        <div class="color-name">Muted</div>
+                        <div class="color-value">--TM-muted</div>
+                    </div>
+                </div>
+                <div class="color-card">
+                    <div class="color-sample" style="background: var(--TM-card);"></div>
+                    <div class="color-info">
+                        <div class="color-name">Card</div>
+                        <div class="color-value">--TM-card</div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Cores de Gráficos</h3>
+            <div class="chart-grid">
+                <div class="chart-bar" style="background: var(--TM-chart-1); height: 100%;">100%</div>
+                <div class="chart-bar" style="background: var(--TM-chart-2); height: 85%;">85%</div>
+                <div class="chart-bar" style="background: var(--TM-chart-3); height: 70%;">70%</div>
+                <div class="chart-bar" style="background: var(--TM-chart-4); height: 55%;">55%</div>
+                <div class="chart-bar" style="background: var(--TM-chart-5); height: 40%;">40%</div>
+            </div>
+        </section>
+
+        <!-- Tipografia -->
+        <section class="section">
+            <h2 class="section-title">Tipografia</h2>
+            
+            <div class="typography-sample">
+                <h3 class="subsection-title font-sans">DM Sans (Sans-serif)</h3>
+                <p class="font-sans">A fonte principal do sistema, utilizada para textos gerais, botões e interfaces. Possui excelente legibilidade e múltiplos pesos disponíveis.</p>
+            </div>
+
+            <div class="typography-sample">
+                <h3 class="subsection-title font-serif">Lora (Serif)</h3>
+                <p class="font-serif">Uma fonte serifada elegante, ideal para títulos, destaques e conteúdo editorial que requer uma aparência mais sofisticada.</p>
+            </div>
+
+            <div class="typography-sample">
+                <h3 class="subsection-title font-mono">IBM Plex Mono (Monospace)</h3>
+                <p class="font-mono">Fonte monoespaçada para código, tokens CSS e valores técnicos. Garante alinhamento perfeito de caracteres.</p>
+            </div>
+        </section>
+
+        <!-- Botões -->
+        <section class="section">
+            <h2 class="section-title">Componentes - Botões</h2>
+            <div class="button-grid">
+                <button class="btn btn-primary">Primary Button</button>
+                <button class="btn btn-secondary">Secondary Button</button>
+                <button class="btn btn-destructive">Destructive Button</button>
+                <button class="btn btn-outline">Outline Button</button>
+            </div>
+        </section>
+
+        <!-- Cards -->
+        <section class="section">
+            <h2 class="section-title">Cards</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-title">Card Padrão</div>
+                    <div class="card-description">Este é um card padrão usando as cores e sombras do Design System. Hover para ver a animação.</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">Card com Conteúdo</div>
+                    <div class="card-description">Cards são usados para agrupar informações relacionadas e criar hierarquia visual na interface.</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">Card Interativo</div>
+                    <div class="card-description">Os cards respondem ao hover com elevação suave, criando feedback visual para o usuário.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Formulários -->
+        <section class="section">
+            <h2 class="section-title">Formulários</h2>
+            <div style="max-width: 500px;">
+                <div class="form-group">
+                    <label class="label">Nome Completo</label>
+                    <input type="text" class="input" placeholder="Digite seu nome">
+                </div>
+                <div class="form-group">
+                    <label class="label">Email</label>
+                    <input type="email" class="input" placeholder="seu@email.com">
+                </div>
+                <div class="form-group">
+                    <label class="label">Mensagem</label>
+                    <textarea class="textarea" placeholder="Digite sua mensagem aqui..."></textarea>
+                </div>
+                <button class="btn btn-primary">Enviar Formulário</button>
+            </div>
+        </section>
+
+        <!-- Alerts -->
+        <section class="section">
+            <h2 class="section-title">Alertas e Feedback</h2>
+            <div class="alert alert-success">
+                ✅ Sucesso! Operação concluída com êxito.
+            </div>
+            <div class="alert alert-destructive">
+                ⚠️ Erro! Ocorreu um problema ao processar sua solicitação.
+            </div>
+            <div class="alert alert-info">
+                ℹ️ Informação: Esta é uma mensagem informativa para o usuário.
+            </div>
+        </section>
+
+        <!-- Sombras -->
+        <section class="section">
+            <h2 class="section-title">Sombras</h2>
+            <div class="shadow-grid">
+                <div class="shadow-card shadow-2xs">2xs</div>
+                <div class="shadow-card shadow-xs">xs</div>
+                <div class="shadow-card shadow-sm">sm</div>
+                <div class="shadow-card shadow-md">md</div>
+                <div class="shadow-card shadow-lg">lg</div>
+                <div class="shadow-card shadow-xl">xl</div>
+                <div class="shadow-card shadow-2xl">2xl</div>
+            </div>
+        </section>
+
+        <!-- Sidebar Demo -->
+        <section class="section">
+            <h2 class="section-title">Sidebar</h2>
+            <div class="sidebar-demo">
+                <div class="sidebar">
+                    <div class="sidebar-item active">Dashboard</div>
+                    <div class="sidebar-item">Projetos</div>
+                    <div class="sidebar-item">Tarefas</div>
+                    <div class="sidebar-item">Equipe</div>
+                    <div class="sidebar-item">Configurações</div>
+                </div>
+                <div class="sidebar-content">
+                    <h3 style="margin-bottom: 12px;">Conteúdo Principal</h3>
+                    <p style="color: var(--TM-muted-foreground);">Esta é a área de conteúdo principal que usa o background padrão do sistema.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Espaçamento -->
+        <section class="section">
+            <h2 class="section-title">Escala de Espaçamento</h2>
+            <div class="spacing-grid">
+                <div class="spacing-item">
+                    <span class="spacing-label">4px</span>
+                    <div class="spacing-box" style="width: 4px;"></div>
+                </div>
+                <div class="spacing-item">
+                    <span class="spacing-label">8px</span>
+                    <div class="spacing-box" style="width: 8px;"></div>
+                </div>
+                <div class="spacing-item">
+                    <span class="spacing-label">16px</span>
+                    <div class="spacing-box" style="width: 16px;"></div>
+                </div>
+                <div class="spacing-item">
+                    <span class="spacing-label">24px</span>
+                    <div class="spacing-box" style="width: 24px;"></div>
+                </div>
+                <div class="spacing-item">
+                    <span class="spacing-label">32px</span>
+                    <div class="spacing-box" style="width: 32px;"></div>
+                </div>
+                <div class="spacing-item">
+                    <span class="spacing-label">48px</span>
+                    <div class="spacing-box" style="width: 48px;"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Paginas: Dashboards e Graficos -->
+        <section class="section">
+            <h2 class="section-title">Paginas - Dashboards e Graficos</h2>
+            <p class="section-intro">Conjunto de paginas prontas para dashboards e analises. Os componentes seguem o mesmo sistema de cores, tipografia e sombras, criando um ecossistema consistente para dados.</p>
+            <div class="page-showcase">
+                <div class="page-card reveal">
+                    <div class="page-header">
+                        <div class="page-title">Dashboard Principal</div>
+                        <span class="pill">Insights</span>
+                    </div>
+                    <div class="dashboard-grid">
+                        <div class="stat-card">
+                            <div class="stat-label">Receita</div>
+                            <div class="stat-value">R$ 238k</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Conversao</div>
+                            <div class="stat-value">4.8%</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Tickets</div>
+                            <div class="stat-value">1.2k</div>
+                        </div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-card">
+                            <div class="stat-label">Tendencia de crescimento</div>
+                            <div class="chart-canvas">
+                                <div class="chart-line"></div>
+                            </div>
+                        </div>
+                        <div class="chart-card">
+                            <div class="stat-label">Mix de canais</div>
+                            <div class="donut"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="page-card reveal delay-1">
+                    <div class="page-header">
+                        <div class="page-title">Dashboard de Performance</div>
+                        <span class="pill">Operacao</span>
+                    </div>
+                    <div class="chart-card" style="margin-bottom: 12px;">
+                        <div class="stat-label">Volume por semana</div>
+                        <div class="chart-canvas">
+                            <div class="chart-bars">
+                                <div class="chart-bar-mini" style="height: 40%;"></div>
+                                <div class="chart-bar-mini" style="height: 70%;"></div>
+                                <div class="chart-bar-mini" style="height: 55%;"></div>
+                                <div class="chart-bar-mini" style="height: 85%;"></div>
+                                <div class="chart-bar-mini" style="height: 60%;"></div>
+                                <div class="chart-bar-mini" style="height: 75%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dashboard-grid">
+                        <div class="stat-card">
+                            <div class="stat-label">SLA</div>
+                            <div class="stat-value">96%</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Backlog</div>
+                            <div class="stat-value">148</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Tempo medio</div>
+                            <div class="stat-value">02:18</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Paginas: Graficos de Equipe -->
+        <section class="section">
+            <h2 class="section-title">Paginas - Graficos de Equipe</h2>
+            <p class="section-intro">Visao detalhada de produtividade, capacidade e equilibrio entre squads. Ideal para liderancas e acompanhamento semanal.</p>
+            <div class="page-showcase">
+                <div class="page-card reveal">
+                    <div class="page-header">
+                        <div class="page-title">Visao da Equipe</div>
+                        <span class="pill">Squads</span>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-card">
+                            <div class="stat-label">Capacidade ativa</div>
+                            <div class="donut"></div>
+                        </div>
+                        <div class="chart-card">
+                            <div class="stat-label">Velocidade por sprint</div>
+                            <div class="chart-canvas">
+                                <div class="chart-line"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="page-card reveal delay-1">
+                    <div class="page-header">
+                        <div class="page-title">Metricas por Funcao</div>
+                        <span class="pill">People</span>
+                    </div>
+                    <div class="team-metrics">
+                        <div class="metric-row">
+                            <span>Design</span>
+                            <div class="metric-bar"><div class="metric-fill" style="width: 68%;"></div></div>
+                            <span>68%</span>
+                        </div>
+                        <div class="metric-row">
+                            <span>Engenharia</span>
+                            <div class="metric-bar"><div class="metric-fill" style="width: 82%;"></div></div>
+                            <span>82%</span>
+                        </div>
+                        <div class="metric-row">
+                            <span>Produto</span>
+                            <div class="metric-bar"><div class="metric-fill" style="width: 54%;"></div></div>
+                            <span>54%</span>
+                        </div>
+                        <div class="metric-row">
+                            <span>Operacoes</span>
+                            <div class="metric-bar"><div class="metric-fill" style="width: 73%;"></div></div>
+                            <span>73%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pagina: Chat -->
+        <section class="section">
+            <h2 class="section-title">Pagina de Chat</h2>
+            <p class="section-intro">Layout completo para comunicacao em tempo real, com grupos, conversas e mensagens destacadas para operacao.</p>
+            <div class="page-showcase">
+                <div class="page-card reveal">
+                    <div class="page-header">
+                        <div class="page-title">Sala de Suporte</div>
+                        <span class="pill">Live</span>
+                    </div>
+                    <div class="chat-shell">
+                        <div class="chat-sidebar">
+                            <div class="stat-label">Canais</div>
+                            <div class="sidebar-item active"># geral</div>
+                            <div class="sidebar-item"># produto</div>
+                            <div class="sidebar-item"># infra</div>
+                            <div class="sidebar-item"># marketing</div>
+                        </div>
+                        <div class="chat-thread">
+                            <div class="chat-bubble in">Equipe, precisamos revisar o painel de KPI.</div>
+                            <div class="chat-bubble out">Ok, vou ajustar a visualizacao de tendencia.</div>
+                            <div class="chat-bubble in">Tragam o grafico de SLA para a home.</div>
+                            <div class="chat-bubble out">Feito, ja subi a versao com cards novos.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="page-card reveal delay-1">
+                    <div class="page-header">
+                        <div class="page-title">Chat do Projeto</div>
+                        <span class="pill">Async</span>
+                    </div>
+                    <div class="chat-thread">
+                        <div class="chat-bubble in">Resumo diario: 12 tarefas entregues.</div>
+                        <div class="chat-bubble out">Vamos preparar o post no blog com o case.</div>
+                        <div class="chat-bubble in">OK, adiciono imagens e links.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pagina: Blog -->
+        <section class="section">
+            <h2 class="section-title">Pagina de Blog</h2>
+            <p class="section-intro">Estrutura editorial com destaque principal, cards e tags para conteudo continuo. Mantem o mesmo tom clean do Ocean Breeze.</p>
+            <div class="page-showcase">
+                <div class="page-card reveal">
+                    <div class="page-header">
+                        <div class="page-title">Blog - Destaques</div>
+                        <span class="pill">Editorial</span>
+                    </div>
+                    <div class="blog-hero">
+                        <div class="blog-tag">Nova Edicao</div>
+                        <div class="page-title">Como evoluir um design system sem perder consistencia</div>
+                        <p class="section-intro">Um guia rapido sobre tokens, governanca e novos componentes para times em escala.</p>
+                    </div>
+                    <div class="blog-grid">
+                        <div class="blog-card">
+                            <div class="blog-tag">Pesquisa</div>
+                            <div class="page-title">Tendencias de UI para dashboards</div>
+                            <p class="section-intro">Graficos claros, dados priorizados e layouts responsivos.</p>
+                        </div>
+                        <div class="blog-card">
+                            <div class="blog-tag">Produto</div>
+                            <div class="page-title">Componentes que aceleram squads</div>
+                            <p class="section-intro">Cards, tabelas e chat integrados ao sistema.</p>
+                        </div>
+                        <div class="blog-card">
+                            <div class="blog-tag">Cultura</div>
+                            <div class="page-title">Documentacao viva com exemplos</div>
+                            <p class="section-intro">Templates e guidelines para consistencia.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+        }
+    </script>
+</body>
+</html>

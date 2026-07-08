@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THIAGO // ARCHITECT OF INTELLIGENCE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=JetBrains+Mono:wght@300;500&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cyan: #00f2ff;
+            --emerald: #00ff88;
+            --bg: #030712;
+            --glass: rgba(15, 23, 42, 0.7);
+            --border: rgba(0, 242, 255, 0.2);
+            --glow: 0 0 20px rgba(0, 242, 255, 0.3);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: crosshair; }
+
+        body {
+            background-color: var(--bg);
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 50% 50%, rgba(0, 242, 255, 0.05) 0%, transparent 50%),
+                linear-gradient(rgba(0, 242, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 242, 255, 0.02) 1px, transparent 1px);
+            background-size: 100% 100%, 30px 30px, 30px 30px;
+        }
+
+        /* --- Custom Scrollbar --- */
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--cyan); border-radius: 10px; }
+
+        /* --- Background Animation --- */
+        .scanline {
+            position: fixed; top: 0; left: 0; width: 100%; height: 2px;
+            background: rgba(0, 242, 255, 0.1);
+            z-index: 9999; pointer-events: none;
+            animation: scan 8s linear infinite;
+        }
+        @keyframes scan { from { top: -10%; } to { top: 110%; } }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; position: relative; z-index: 2; }
+
+        /* --- Header --- */
+        header {
+            padding: 40px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .brand {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 24px;
+            letter-spacing: 4px;
+            color: var(--cyan);
+            text-shadow: var(--glow);
+        }
+
+        .system-status {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: var(--emerald);
+            display: flex;
+            gap: 20px;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .glitch-wrapper { position: relative; }
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(40px, 8vw, 90px);
+            line-height: 1;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 span {
+            display: block;
+            color: transparent;
+            -webkit-text-stroke: 1px var(--cyan);
+            filter: drop-shadow(var(--glow));
+        }
+
+        .hero p {
+            font-family: 'JetBrains Mono', monospace;
+            max-width: 500px;
+            font-size: 18px;
+            color: #94a3b8;
+            margin-bottom: 40px;
+        }
+
+        .btn-cyber {
+            padding: 20px 40px;
+            background: transparent;
+            border: 1px solid var(--cyan);
+            color: var(--cyan);
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .btn-cyber:hover {
+            background: var(--cyan);
+            color: var(--bg);
+            box-shadow: 0 0 40px var(--cyan);
+        }
+
+        /* --- Portfolio Section --- */
+        .section-header {
+            margin: 100px 0 50px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .section-header h2 { font-family: 'Orbitron', sans-serif; font-size: 32px; }
+        .line { flex-grow: 1; height: 1px; background: var(--border); }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .video-card {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 10px;
+            backdrop-filter: blur(10px);
+            transition: 0.4s;
+            position: relative;
+        }
+
+        .video-card:hover {
+            border-color: var(--cyan);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--glow);
+        }
+
+        .video-thumb {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-thumb::after {
+            content: 'DATA_STREAM_001';
+            position: absolute; bottom: 10px; right: 10px;
+            font-family: 'JetBrains Mono'; font-size: 10px; color: var(--cyan);
+        }
+
+        .play-btn {
+            width: 60px; height: 60px;
+            border: 1px solid var(--cyan);
+            border-radius: 50%;
+            display: flex;
+            align-items: center; justify-content: center;
+            color: var(--cyan);
+            background: rgba(0, 242, 255, 0.1);
+        }
+
+        .video-info { padding: 20px 10px; }
+        .video-info h3 { font-family: 'Orbitron'; font-size: 18px; margin-bottom: 10px; color: var(--cyan); }
+        .video-info p { font-family: 'JetBrains Mono'; font-size: 13px; color: #64748b; }
+
+        /* --- Game Section --- */
+        .game-terminal {
+            margin: 100px 0;
+            background: #000;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .terminal-header {
+            background: var(--border);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+        }
+
+        .game-canvas {
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        #hacker-msg { font-size: 24px; color: var(--emerald); margin-bottom: 30px; text-align: center;}
+
+        .bit-container {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .bit {
+            width: 50px; height: 70px;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center; justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .bit.active {
+            border-color: var(--cyan);
+            color: var(--cyan);
+            background: rgba(0, 242, 255, 0.1);
+            text-shadow: var(--glow);
+        }
+
+        /* --- Footer --- */
+        footer {
+            padding: 100px 0 50px;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-logo { font-family: 'Orbitron'; font-size: 30px; margin-bottom: 20px; opacity: 0.5; }
+        .socials { display: flex; justify-content: center; gap: 30px; margin-top: 30px; }
+        .socials a { color: var(--cyan); text-decoration: none; font-family: 'Orbitron'; font-size: 12px; }
+
+    </style>
+</head>
+<body>
+
+    <div class="scanline"></div>
+
+    <div class="container">
+        <header>
+            <div class="brand">THIAGO // OS v4.0</div>
+            <div class="system-status">
+                <span>CPU: 12%</span>
+                <span>STATUS: STABLE</span>
+                <span id="clock">00:00:00</span>
+            </div>
+        </header>
+
+        <section class="hero">
+            <div class="glitch-wrapper">
+                <h1>Engenheiro de <span>Sistemas</span></h1>
+            </div>
+            <p>> Automação Profissional<br>> Inteligência Artificial Premium<br>> Arquitetura de Software Escalável</p>
+            <a href="#portfolio" class="btn-cyber">REQUISITAR ACESSO</a>
+        </section>
+
+        <section id="portfolio">
+            <div class="section-header">
+                <h2>PORTFÓLIO</h2>
+                <div class="line"></div>
+            </div>
+
+            <div class="video-grid">
+                <div class="video-card">
+                    <div class="video-thumb">
+                        <div class="play-btn">▶</div>
+                    </div>
+                    <div class="video-info">
+                        <h3>AI NEURAL MAPPING</h3>
+                        <p>Desenvolvimento de rede neural personalizada para triagem de dados industriais.</p>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <div class="video-thumb">
+                        <div class="play-btn">▶</div>
+                    </div>
+                    <div class="video-info">
+                        <h3>HYPER-AUTOMATION</h3>
+                        <p>Integração completa de fluxos de trabalho ERP via Python & Cloud.</p>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <div class="video-thumb">
+                        <div class="play-btn">▶</div>
+                    </div>
+                    <div class="video-info">
+                        <h3>PREDICTOR 2.0</h3>
+                        <p>Algoritmo de análise preditiva para o mercado financeiro com 89% de acurácia.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="game-terminal">
+            <div class="terminal-header">
+                <span>SECURITY_FIREWALL_BYPASS.exe</span>
+                <span>LEVEL: HARD</span>
+            </div>
+            <div class="game-canvas">
+                <div id="hacker-msg">FIREWALL DETECTADO!<br>SINCRONIZE OS BITS PARA INVADIR</div>
+                
+                <div class="bit-container">
+                    <div class="bit" onclick="toggleBit(this)">0</div>
+                    <div class="bit" onclick="toggleBit(this)">0</div>
+                    <div class="bit" onclick="toggleBit(this)">0</div>
+                    <div class="bit" onclick="toggleBit(this)">0</div>
+                    <div class="bit" onclick="toggleBit(this)">0</div>
+                </div>
+
+                <button class="btn-cyber" onclick="checkBypass()">EXECUTAR BYPASS</button>
+            </div>
+        </section>
+
+        <footer>
+            <div class="footer-logo">THIAGO</div>
+            <p>Construindo o futuro através do código.</p>
+            <div class="socials">
+                <a href="#">[ LINKEDIN ]</a>
+                <a href="#">[ GITHUB ]</a>
+                <a href="#">[ WHATSAPP ]</a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Relógio do Sistema
+        function updateClock() {
+            const now = new Date();
+            const time = now.getHours().toString().padStart(2, '0') + ":" + 
+                         now.getMinutes().toString().padStart(2, '0') + ":" + 
+                         now.getSeconds().toString().padStart(2, '0');
+            document.getElementById('clock').textContent = time;
+        }
+        setInterval(updateClock, 1000);
+
+        // Lógica do Jogo (Bypass)
+        let targetPattern = [1, 0, 1, 1, 0];
+        
+        function toggleBit(el) {
+            el.textContent = el.textContent === '0' ? '1' : '0';
+            el.classList.toggle('active');
+        }
+
+        function checkBypass() {
+            const bits = document.querySelectorAll('.bit');
+            let userPattern = Array.from(bits).map(b => parseInt(b.textContent));
+            
+            const msg = document.getElementById('hacker-msg');
+            
+            if (JSON.stringify(userPattern) === JSON.stringify(targetPattern)) {
+                msg.innerHTML = "ACESSO CONCEDIDO!<br>SISTEMA OTIMIZADO.";
+                msg.style.color = "var(--emerald)";
+                document.querySelector('.game-terminal').style.borderColor = "var(--emerald)";
+                alert("Parabéns! Você hackeou o sistema de demonstração.");
+            } else {
+                msg.innerHTML = "ERRO DE SINCRONIA!<br>TENTE NOVAMENTE.";
+                msg.style.color = "red";
+                setTimeout(() => {
+                    msg.innerHTML = "FIREWALL DETECTADO!<br>SINCRONIZE OS BITS PARA INVADIR";
+                    msg.style.color = "var(--emerald)";
+                }, 2000);
+            }
+        }
+    </script>
+</body>
+</html>

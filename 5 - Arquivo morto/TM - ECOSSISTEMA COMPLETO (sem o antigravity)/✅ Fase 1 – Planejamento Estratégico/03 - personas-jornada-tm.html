@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personas e Jornada do Usuário - Ecossistema MAFFENG</title>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700&family=Inter:wght@400;500;600&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Backgrounds */
+            --TM-navy-deep: #0A1628;
+            --TM-navy-medium: #112240;
+            --TM-navy-light: #1A365D;
+            
+            /* Cores Primárias */
+            --TM-neon-green: #64FFDA;
+            --TM-cyan-vibrant: #00D4FF;
+            
+            /* Textos */
+            --TM-text-primary: #E6F1FF;
+            --TM-text-secondary: #8892B0;
+            --TM-text-emphasis: #64FFDA;
+            
+            /* Componentes */
+            --TM-border-subtle: rgba(100, 255, 218, 0.1);
+            --TM-card-bg: rgba(17, 34, 64, 0.5);
+            --TM-card-border: rgba(100, 255, 218, 0.1);
+            
+            /* Tipografia */
+            --font-heading: "Exo 2", sans-serif;
+            --font-body: "Inter", sans-serif;
+            --font-mono: "Roboto Mono", monospace;
+            
+            /* Gradiente */
+            --TM-gradient-bg: linear-gradient(180deg, #0A1628 0%, #112240 50%, #0A1628 100%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            background: var(--TM-gradient-bg);
+            color: var(--TM-text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 32px 24px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--TM-border-subtle);
+        }
+        
+        h1 {
+            font-family: var(--font-heading);
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--TM-neon-green);
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+        }
+        
+        .subtitle {
+            font-size: 16px;
+            color: var(--TM-text-secondary);
+            font-weight: 400;
+        }
+        
+        h2 {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--TM-cyan-vibrant);
+            letter-spacing: -0.01em;
+            margin: 32px 0 16px 0;
+        }
+        
+        h3 {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--TM-text-emphasis);
+            margin: 16px 0 8px 0;
+        }
+        
+        .persona-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin: 24px 0;
+        }
+        
+        .persona-card {
+            background: var(--TM-card-bg);
+            border: 1px solid var(--TM-card-border);
+            border-radius: 8px;
+            padding: 24px;
+            backdrop-filter: blur(10px);
+            transition: all 300ms ease-in-out;
+        }
+        
+        .persona-card:hover {
+            border-color: var(--TM-neon-green);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(100, 255, 218, 0.1);
+        }
+        
+        .persona-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--TM-border-subtle);
+        }
+        
+        .persona-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--TM-navy-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            flex-shrink: 0;
+        }
+        
+        .persona-info h3 {
+            margin: 0;
+            color: var(--TM-neon-green);
+        }
+        
+        .persona-role {
+            font-size: 14px;
+            color: var(--TM-cyan-vibrant);
+            font-weight: 500;
+        }
+        
+        .persona-section {
+            margin: 16px 0;
+        }
+        
+        .persona-label {
+            font-size: 12px;
+            color: var(--TM-text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+        
+        .persona-content {
+            font-size: 14px;
+            color: var(--TM-text-primary);
+        }
+        
+        .journey-section {
+            margin: 48px 0;
+        }
+        
+        .journey-card {
+            background: var(--TM-card-bg);
+            border: 1px solid var(--TM-card-border);
+            border-radius: 8px;
+            padding: 24px;
+            margin: 24px 0;
+            backdrop-filter: blur(10px);
+        }
+        
+        .journey-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            margin-top: 24px;
+        }
+        
+        .step {
+            display: flex;
+            gap: 16px;
+            position: relative;
+        }
+        
+        .step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 19px;
+            top: 48px;
+            bottom: -24px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--TM-neon-green), transparent);
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: var(--TM-navy-light);
+            border: 2px solid var(--TM-neon-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--TM-neon-green);
+            flex-shrink: 0;
+            font-family: var(--font-heading);
+        }
+        
+        .step-content {
+            flex: 1;
+        }
+        
+        .step-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--TM-text-emphasis);
+            margin-bottom: 4px;
+        }
+        
+        .step-description {
+            font-size: 14px;
+            color: var(--TM-text-primary);
+            margin-bottom: 8px;
+        }
+        
+        .step-details {
+            font-size: 12px;
+            color: var(--TM-text-secondary);
+            padding: 8px 12px;
+            background: var(--TM-navy-deep);
+            border-radius: 4px;
+            border-left: 2px solid var(--TM-cyan-vibrant);
+        }
+        
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 8px;
+        }
+        
+        .tag {
+            display: inline-block;
+            padding: 4px 12px;
+            background: var(--TM-navy-light);
+            border: 1px solid var(--TM-border-subtle);
+            border-radius: 16px;
+            font-size: 12px;
+            color: var(--TM-cyan-vibrant);
+            font-weight: 500;
+        }
+        
+        .pain-point {
+            color: #FF6B6B;
+        }
+        
+        .goal {
+            color: var(--TM-neon-green);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 24px 16px;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+            
+            .persona-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Personas e Jornada do Usuário</h1>
+            <p class="subtitle">Ecossistema MAFFENG - Automação Técnica</p>
+        </header>
+
+        <section>
+            <h2>Personas do Ecossistema</h2>
+            
+            <div class="persona-grid">
+                <!-- Persona 1: Técnico de Campo -->
+                <div class="persona-card">
+                    <div class="persona-header">
+                        <div class="persona-icon">📸</div>
+                        <div class="persona-info">
+                            <h3>Carlos Silva</h3>
+                            <div class="persona-role">Técnico de Campo</div>
+                        </div>
+                    </div>
+                    
+                    <div class="persona-section">
+                        <div class="persona-label">Idade e Perfil</div>
+                        <div class="persona-content">35 anos, técnico em edificações com 10 anos de experiência em levantamentos fotográficos</div>
+                    </div>
+                    
+                    <div class="persona-section">
+                        <div class="persona-label">Módulo Principal</div>
+                        <div class="persona-content">TM Levantamentos Fotográficos (Mobile)</div>
+                    </div>
+                    
+                    <div class="persona-section">
+                        <div class="persona-label">Objetivos</div>
+                        <div class="tag-list">
+                            <span class="tag goal">Capturar dados com rapidez</span>
+                            <span class="tag goal">Trabalhar offline</span>
+                            <span class="tag goal">Reduzir retrabalho</span>
+                        </div>
+                    </div>
+                    
+                    <div class="persona-section">
+                        <div class="persona-label">Dores</div>
+                        <div class="tag-list">
+                            <span class="tag pain-point">Conexão instável em campo</span>
+                            <span class="tag pain-point">Processo manual demorado</span>
+                            <span class="tag pain-point">Perda de dados</span>
+                        </div>
+                    </div>
+                    
+                    <div class="persona-section">
+                        <div class="persona-label">Comportamento Tecnológico</div>
+                        <div class="persona-content">Usa smartphone Android diariamente, familiarizado com apps de produtividade. Prefere interfaces simples e diretas.</div>
+                    </div>
+                </div>
+
+                <!-- Persona 2: Gerente de Contrato -->
+                <div class="persona-card">
+                    <div class="persona-header">
+                        <div class="persona-icon">📋</div>
+                        <div class="persona-info">
+                            <h3>Ana Rodrigues</h3>
+                            <div class="persona-role">Gerente de Contrato</div>
+                        </div>
+                    </div>
+                    
+                    <div class="persona-section">
+                        <div class="persona-label">Idade e Perfil</div>
+                        <div class="persona-content">42 anos, engenheira civil com MBA em gestão de projetos. Gerencia equipes de 5-15 técnicos.</div>
+                    </div>
+                    
+                    <div class="persona-section">
+                        <div class="persona-label">Módulo Principal</div>
+                        <div class="persona-content">TM Gerenciador de O.S. (Web)</div>
+                    </div>
+                    
+                    <div class="persona-section">
+                        <div class="persona-label">Objetivos</div>
+                        <div class="tag-list">
+                            <span class="tag goal">Acompanhar status em tempo real</span>
+                            <span class="tag goal">Cumprir SLAs</span>
+                            <span class="tag goal">Otimizar equipe</span>
+                        </div>
+                    </div>
+                    
+                    <div class="persona-section">
+                        <div class="persona-label">Dores</div>
+                        <div class="tag-list">
+                            <span class="tag pain-point">Falta de visibilidade</span>
+                            <span class="tag pain-point">Retrabalho na validação</span>
+                            <span class="tag pain-point">Comunicação fragmentada</span>
+                        </div>
+                    </div>
+                    
+                    <div class="persona-section">
+                        <div class="persona-label">Comportamento Tecnológico</div>
+                        <div class="persona-content">Alta proficiência digital. Usa múltiplas ferramentas de gestão. Prioriza eficiência e dashboards visuais.</div>
+                    </div>
+                </div>
+
+                <!-- Persona 3: Elaborador de Relatórios -->
+                <div class="persona-card">
+                    <div class="persona-header">
+                        <div class="persona-icon">📝</div>
+                        <div class="persona-info">
+                            <h3>Ricardo Mendes</h3>
+                            <div class="persona-role">Elaborador de Relatórios</div>
+                        </div>
+                    </div>
+                    
+                    <div class="persona-section">
+                        <div class="persona-label">Idade e Perfil</div>
+                        <div class="persona-content">38 anos, técnico especializado em documentação técnica. Processa 20-30 relatórios por semana.</div>
+                    </div>
+                    
+                    <div class="persona-section">
+                        <div class="persona-label">Módulo Principal</div>
+                        <div class="persona-content">TM Auto Relatórios (Web)</div>
+                    </div>
+                    
+                    <div class="persona-section">
+                        <div class="persona-label">Objetivos</div>
+                        <div class="tag-list">
+                            <span class="tag goal">Automatizar geração</span>
+                            <span class="tag goal">Manter qualidade</span>
+                            <span class="tag goal">Cumprir prazos</span>
+                        </div>
+                    </div>
+                    
+                    <div class="persona-section">
+                        <div class="persona-label">Dores</div>
+                        <div class="tag-list">
+                            <span class="tag pain-point">Trabalho repetitivo</span>
+                            <span class="tag pain-point">Formatação manual</span>
+                            <span class="tag pain-point">Erros humanos</span>
+                        </div>
+                    </div>
+                    
+                    <div class="persona-section">
+                        <div class="persona-label">Comportamento Tecnológico</div>
+                        <div class="persona-content">Proficiente em editores de texto e planilhas. Valoriza automação e templates. Busca soluções que economizem tempo.</div>
+                    </div>
+                </div>
+
+                <!-- Persona 4: Diretor -->
+                <div class="persona-card">
+                    <div class="persona-header">
+                        <div class="persona-icon">📊</div>
+                        <div class="persona-info">
+                            <h3>Paulo Martins</h3>
+                            <div class="persona-role">Diretor Executivo</div>
+                        </div>
+                    </div>
+                    
+                    <div class="persona-section">
+                        <div class="persona-label">Idade e Perfil</div>
+                        <div class="persona-content">52 anos, engenheiro com 25 anos de experiência. Dirige empresa com 50+ colaboradores.</div>
+                    </div>
+                    
+                    <div class="persona-section">
+                        <div class="persona-label">Módulo Principal</div>
+                        <div class="persona-content">TM Painel do Diretor (Web)</div>
+                    </div>
+                    
+                    <div class="persona-section">
+                        <div class="persona-label">Objetivos</div>
+                        <div class="tag-list">
+                            <span class="tag goal">Visão estratégica</span>
+                            <span class="tag goal">Decisões data-driven</span>
+                            <span class="tag goal">Monitorar KPIs</span>
+                        </div>
+                    </div>
+                    
+                    <div class="persona-section">
+                        <div class="persona-label">Dores</div>
+                        <div class="tag-list">
+                            <span class="tag pain-point">Dados fragmentados</span>
+                            <span class="tag pain-point">Relatórios atrasados</span>
+                            <span class="tag pain-point">Falta de métricas em tempo real</span>
+                        </div>
+                    </div>
+                    
+                    <div class="persona-section">
+                        <div class="persona-label">Comportamento Tecnológico</div>
+                        <div class="persona-content">Moderado conhecimento técnico. Prefere visualizações simples e objetivas. Acessa sistema esporadicamente para decisões estratégicas.</div>
+                    </div>
+                </div>
+
+                <!-- Persona 5: Administrativo/Financeiro -->
+                <div class="persona-card">
+                    <div class="persona-header">
+                        <div class="persona-icon">💼</div>
+                        <div class="persona-info">
+                            <h3>Mariana Costa</h3>
+                            <div class="persona-role">Coordenadora Administrativa</div>
+                        </div>
+                    </div>
+                    
+                    <div class="persona-section">
+                        <div class="persona-label">Idade e Perfil</div>
+                        <div class="persona-content">40 anos, formada em administração com especialização em controladoria. Gerencia departamento administrativo.</div>
+                    </div>
+                    
+                    <div class="persona-section">
+                        <div class="persona-label">Módulo Principal</div>
+                        <div class="persona-content">TM Ajustes Administrativos (Web)</div>
+                    </div>
+                    
+                    <div class="persona-section">
+                        <div class="persona-label">Objetivos</div>
+                        <div class="tag-list">
+                            <span class="tag goal">Controle financeiro preciso</span>
+                            <span class="tag goal">Gestão de patrimônio</span>
+                            <span class="tag goal">Relatórios contábeis</span>
+                        </div>
+                    </div>
+                    
+                    <div class="persona-section">
+                        <div class="persona-label">Dores</div>
+                        <div class="tag-list">
+                            <span class="tag pain-point">Processos manuais</span>
+                            <span class="tag pain-point">Conciliação complexa</span>
+                            <span class="tag pain-point">Múltiplos sistemas</span>
+                        </div>
+                    </div>
+                    
+                    <div class="persona-section">
+                        <div class="persona-label">Comportamento Tecnológico</div>
+                        <div class="persona-content">Alta proficiência em sistemas ERP e planilhas. Valoriza precisão e conformidade. Busca integração entre sistemas.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Jornada Técnico de Campo -->
+        <section class="journey-section">
+            <h2>Jornada do Técnico de Campo - Carlos</h2>
+            
+            <div class="journey-card">
+                <h3>Cenário: Levantamento Fotográfico de Ordem de Serviço</h3>
+                
+                <div class="journey-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <div class="step-title">Acesso ao App Mobile</div>
+                            <div class="step-description">Carlos abre o TM Levantamentos Fotográficos em seu smartphone ao chegar no local da O.S.</div>
+                            <div class="step-details">
+                                <strong>Emoção:</strong> Confiante - o app funciona offline e é familiar<br>
+                                <strong>Touchpoint:</strong> App mobile, tela de login
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <div class="step-title">Visualização da O.S.</div>
+                            <div class="step-description">Consulta detalhes da ordem de serviço: endereço, ambientes a serem vistoriados e observações especiais.</div>
+                            <div class="step-details">
+                                <strong>Emoção:</strong> Focado - informações claras e organizadas<br>
+                                <strong>Touchpoint:</strong> Dashboard de O.S., cards de ambientes
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <div class="step-title">Seleção de Ambientes</div>
+                            <div class="step-description">Marca os ambientes que serão vistoriados neste levantamento (ex: sala, cozinha, banheiro).</div>
+                            <div class="step-details">
+                                <strong>Emoção:</strong> Eficiente - seleção rápida e intuitiva<br>
+                                <strong>Touchpoint:</strong> Lista de ambientes com checkboxes
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <div class="step-title">Captura de Fotos</div>
+                            <div class="step-description">Para cada ambiente, captura múltiplas fotos com a câmera do dispositivo. O app automaticamente associa metadados (GPS, timestamp).</div>
+                            <div class="step-details">
+                                <strong>Emoção:</strong> Produtivo - captura sem interrupções<br>
+                                <strong>Touchpoint:</strong> Interface de câmera, preview de fotos
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <div class="step-title">Adição de Observações</div>
+                            <div class="step-description">Adiciona observações textuais sobre condições encontradas, medições ou detalhes importantes.</div>
+                            <div class="step-details">
+                                <strong>Emoção:</strong> Satisfeito - registro completo da vistoria<br>
+                                <strong>Touchpoint:</strong> Campos de texto, formulários
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <div class="step-title">Revisão Final</div>
+                            <div class="step-description">Revisa todas as fotos e informações coletadas antes do envio. Pode editar ou adicionar dados.</div>
+                            <div class="step-details">
+                                <strong>Emoção:</strong> Cuidadoso - garantindo qualidade<br>
+                                <strong>Touchpoint:</strong> Tela de revisão, galeria de fotos
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">7</div>
+                        <div class="step-content">
+                            <div class="step-title">Geração e Envio do Pacote</div>
+                            <div class="step-description">O app gera automaticamente um pacote ZIP contendo fotos, JSON com dados estruturados e metadados. Quando há conexão, envia via HTTPS para o servidor.</div>
+                            <div class="step-details">
+                                <strong>Emoção:</strong> Aliviado - trabalho concluído e seguro<br>
+                                <strong>Touchpoint:</strong> Botão de envio, barra de progresso
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">8</div>
+                        <div class="step-content">
+                            <div class="step-title">Confirmação de Envio</div>
+                            <div class="step-description">Recebe notificação de envio bem-sucedido. O status da O.S. é atualizado automaticamente no sistema.</div>
+                            <div class="step-details">
+                                <strong>Emoção:</strong> Realizado - missão cumprida<br>
+                                <strong>Touchpoint:</strong> Notificação de sucesso, dashboard atualizado
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Jornada Gerente de Contrato -->
+        <section class="journey-section">
+            <h2>Jornada da Gerente de Contrato - Ana</h2>
+            
+            <div class="journey-card">
+                <h3>Cenário: Gestão do Ciclo de Ordens de Serviço</h3>
+                
+                <div class="journey-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <div class="step-title">Importação de O.S.</div>
+                            <div class="step-description">Ana acessa o TM Gerenciador de O.S. e importa uma planilha Excel com 50 novas ordens de serviço do cliente.</div>
+                            <div class="step-details">
+                                <strong>Emoção:</strong> Eficiente - importação em lote economiza tempo<br>
+                                <strong>Touchpoint:</strong> Interface de upload, validação de dados
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <div class="step-title">Distribuição de Tarefas</div>
+                            <div class="step-description">Atribui as O.S. aos técnicos disponíveis, considerando localização, carga de trabalho e especialização.</div>
+                            <div class="step-details">
+                                <strong>Emoção:</strong> Estratégica - otimizando recursos da equipe<br>
+                                <strong>Touchpoint:</strong> Dashboard de distribuição, drag-and-drop
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <div class="step-title">Monitoramento em Tempo Real</div>
+                            <div class="step-description">Acompanha o progresso das O.S. através do dashboard. Vê quais estão pendentes, em execução ou concluídas.</div>
+                            <div class="step-details">
+                                <strong>Emoção:</strong> No controle - visibilidade total do pipeline<br>
+                                <strong>Touchpoint:</strong> Dashboard principal, KPIs visuais
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <div class="step-title">Recebimento de Pacote</div>
+                            <div class="step-description">Sistema notifica que Carlos enviou o pacote de levantamento. Ana acessa para validação.</div>
+                            <div class="step-details">
+                                <strong>Emoção:</strong> Atenta - início do processo de validação<br>
+                                <strong>Touchpoint:</strong> Notificação push, fila de validação
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <div class="step-title">Validação de Dados</div>
+                            <div class="step-description">Revisa fotos, observações e dados coletados. Pode aprovar, solicitar correções ou rejeitar o levantamento.</div>
+                            <div class="step-details">
+                                <strong>Emoção:</strong> Crítica - garantindo qualidade da entrega<br>
+                                <strong>Touchpoint:</strong> Interface de validação, galeria de fotos
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <div class="step-title">Encaminhamento para Relatório</div>
+                            <div class="step-description">Após aprovação, encaminha o pacote validado para o TM Auto Relatórios para geração automática do documento final.</div>
+                            <div class="step-details">
+                                <strong>Emoção:</strong> Satisfeita - fluxo funcionando perfeitamente<br>
+                                <strong>Touchpoint:</strong> Botão de aprovação, integração automática
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">7</div>
+                        <div class="step-content">
+                            <div class="step-title">Acompanhamento de SLA</div>
+                            <div class="step-description">Monitora prazos de entrega através de métricas visuais. Identifica O.S. em risco de atraso.</div>
+                            <div class="step-details">
+                                <strong>Emoção:</strong> Proativa - antecipando problemas<br>
+                                <strong>Touchpoint:</strong> Dashboard de SLA, alertas automáticos
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">8</div>
+                        <div class="step-content">
+                            <div class="step-title">Comunicação com Cliente</div>
+                            <div class="step-description">Gera relatórios de status para envio ao cliente, mostrando progresso e previsão de conclusão.</div>
+                            <div class="step-details">
+                                <strong>Emoção:</strong> Confiante - dados sólidos para reportar<br>
+                                <strong>Touchpoint:</strong> Exportação de relatórios, templates
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Jornada Elaborador -->
+        <section class="journey-section">
+            <h2>Jornada do Elaborador - Ricardo</h2>
+            
+            <div class="journey-card">
+                <h3>Cenário: Geração Automática de Relatório Técnico</h3>
+                
+                <div class="journey-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <div class="step-title">Recebimento de Pacote Validado</div>
+                            <div class="step-description">Ricardo acessa o TM Auto Relatórios e visualiza os pacotes aprovados por Ana, prontos para geração de relatório.</div>
+                            <div class="step-details">
+                                <strong>Emoção:</strong> Focado - início do processo de elaboração<br>
+                                <strong>Touchpoint:</strong> Fila de trabalho, lista de pacotes
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <div class="step-title">Seleção de Template</div>
+                            <div class="step-description">Escolhe o template de relatório adequado ao tipo de contrato e serviço (cada contrato possui templates padronizados).</div>
+                            <div class="step-details">
+                                <strong>Emoção:</strong> Confiante - templates garantem consistência<br>
+                                <strong>Touchpoint:</strong> Biblioteca de templates, preview
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <div class="step-title">Configuração de Parâmetros</div>
+                            <div class="step-description">Define parâmetros específicos como layout de fotos, seções a incluir e personalizações do cliente.</div>
+                            <div class="step-details">
+                                <strong>Emoção:</strong> Meticuloso - ajustando detalhes<br>
+                                <strong>Touchpoint:</strong> Painel de configuração, formulários
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <div class="step-title">Geração Automática</div>
+                            <div class="step-description">Inicia o processo de geração. O sistema Python processa fotos, dados e gera o .docx automaticamente.</div>
+                            <div class="step-details">
+                                <strong>Emoção:</strong> Aliviado - automação elimina trabalho manual<br>
+                                <strong>Touchpoint:</strong> Botão de geração, barra de progresso
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <div class="step-title">Revisão do Relatório</div>
+                            <div class="step-description">Abre o .docx gerado e faz revisão final: verifica formatação, qualidade das fotos inseridas e textos gerados.</div>
+                            <div class="step-details">
+                                <strong>Emoção:</strong> Crítico - garantindo qualidade técnica<br>
+                                <strong>Touchpoint:</strong> Preview do documento, editor integrado
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <div class="step-title">Ajustes Manuais (se necessário)</div>
+                            <div class="step-description">Faz pequenos ajustes manuais quando necessário: reformulação de textos específicos ou reorganização de fotos.</div>
+                            <div class="step-details">
+                                <strong>Emoção:</strong> Preciso - refinamento final<br>
+                                <strong>Touchpoint:</strong> Editor de texto, ferramentas de edição
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">7</div>
+                        <div class="step-content">
+                            <div class="step-title">Aprovação e Envio</div>
+                            <div class="step-description">Aprova o relatório final. Sistema envia callback ao Gerenciador de O.S. atualizando o status para "Relatório Concluído".</div>
+                            <div class="step-details">
+                                <strong>Emoção:</strong> Satisfeito - entrega completa<br>
+                                <strong>Touchpoint:</strong> Botão de aprovação, notificação de conclusão
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">8</div>
+                        <div class="step-content">
+                            <div class="step-title">Disponibilização para Cliente</div>
+                            <div class="step-description">O relatório é disponibilizado no sistema para download pela gerente ou envio direto ao cliente.</div>
+                            <div class="step-details">
+                                <strong>Emoção:</strong> Realizado - ciclo completo<br>
+                                <strong>Touchpoint:</strong> Repositório de documentos, links de download
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Jornada Diretor -->
+        <section class="journey-section">
+            <h2>Jornada do Diretor - Paulo</h2>
+            
+            <div class="journey-card">
+                <h3>Cenário: Análise Estratégica de Performance</h3>
+                
+                <div class="journey-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <div class="step-title">Acesso ao Painel Executivo</div>
+                            <div class="step-description">Paulo acessa o TM Painel do Diretor para sua reunião semanal de análise de performance.</div>
+                            <div class="step-details">
+                                <strong>Emoção:</strong> Expectante - buscando insights estratégicos<br>
+                                <strong>Touchpoint:</strong> Dashboard executivo, tela inicial
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <div class="step-title">Visualização de KPIs Principais</div>
+                            <div class="step-description">Visualiza indicadores consolidados: O.S. concluídas no mês, taxa de cumprimento de SLA, produtividade por técnico.</div>
+                            <div class="step-details">
+                                <strong>Emoção:</strong> Analítico - absorvendo informações críticas<br>
+                                <strong>Touchpoint:</strong> Cards de métricas, gráficos visuais
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <div class="step-title">Análise de Tendências</div>
+                            <div class="step-description">Examina gráficos de tendência dos últimos 6 meses: volume de O.S., tempo médio de execução, taxa de retrabalho.</div>
+                            <div class="step-details">
+                                <strong>Emoção:</strong> Estratégico - identificando padrões<br>
+                                <strong>Touchpoint:</strong> Gráficos de linha, comparativos temporais
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <div class="step-title">Identificação de Gargalos</div>
+                            <div class="step-description">Identifica que o tempo médio de validação aumentou 20% no último mês, indicando possível sobrecarga.</div>
+                            <div class="step-details">
+                                <strong>Emoção:</strong> Preocupado - detectando problema<br>
+                                <strong>Touchpoint:</strong> Alertas, drill-down de métricas
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <div class="step-title">Análise por Contrato</div>
+                            <div class="step-description">Filtra métricas por contrato específico para avaliar rentabilidade e performance individual de cada projeto.</div>
+                            <div class="step-details">
+                                <strong>Emoção:</strong> Investigativo - aprofundando análise<br>
+                                <strong>Touchpoint:</strong> Filtros, segmentação de dados
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <div class="step-title">Comparação com Metas</div>
+                            <div class="step-description">Compara resultados reais com metas estabelecidas. Identifica áreas acima e abaixo do esperado.</div>
+                            <div class="step-details">
+                                <strong>Emoção:</strong> Avaliativo - medindo performance<br>
+                                <strong>Touchpoint:</strong> Gráficos de meta vs. realizado
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">7</div>
+                        <div class="step-content">
+                            <div class="step-title">Exportação de Relatório Executivo</div>
+                            <div class="step-description">Exporta relatório consolidado em PDF para compartilhar com a diretoria na reunião mensal.</div>
+                            <div class="step-details">
+                                <strong>Emoção:</strong> Preparado - dados para tomada de decisão<br>
+                                <strong>Touchpoint:</strong> Botão de exportação, geração de PDF
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">8</div>
+                        <div class="step-content">
+                            <div class="step-title">Definição de Ações</div>
+                            <div class="step-description">Com base nos insights, define ações: contratar mais um validador e implementar treinamento para técnicos.</div>
+                            <div class="step-details">
+                                <strong>Emoção:</strong> Decidido - transformando dados em ação<br>
+                                <strong>Touchpoint:</strong> Notas, integração com gestão
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Jornada Administrativo -->
+        <section class="journey-section">
+            <h2>Jornada da Coordenadora Administrativa - Mariana</h2>
+            
+            <div class="journey-card">
+                <h3>Cenário: Gestão Financeira e Patrimonial Mensal</h3>
+                
+                <div class="journey-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <div class="step-title">Fechamento Mensal</div>
+                            <div class="step-description">Mariana acessa o TM Ajustes Administrativos para iniciar o fechamento financeiro mensal.</div>
+                            <div class="step-details">
+                                <strong>Emoção:</strong> Organizada - rotina estruturada<br>
+                                <strong>Touchpoint:</strong> Dashboard financeiro, calendário
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <div class="step-title">Conciliação Bancária</div>
+                            <div class="step-description">Importa extratos bancários e realiza conciliação automática com lançamentos no sistema.</div>
+                            <div class="step-details">
+                                <strong>Emoção:</strong> Focada - atenção aos detalhes<br>
+                                <strong>Touchpoint:</strong> Upload de arquivos, matching automático
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <div class="step-title">Gestão de Contas a Pagar</div>
+                            <div class="step-description">Revisa contas a pagar do mês: fornecedores, folha de pagamento, manutenção de frota.</div>
+                            <div class="step-details">
+                                <strong>Emoção:</strong> Responsável - controlando cash flow<br>
+                                <strong>Touchpoint:</strong> Lista de pagamentos, calendário financeiro
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <div class="step-title">Controle de Frota</div>
+                            <div class="step-description">Registra manutenções realizadas, abastecimentos e quilometragem dos veículos usados pelos técnicos.</div>
+                            <div class="step-details">
+                                <strong>Emoção:</strong> Meticulosa - patrimônio da empresa<br>
+                                <strong>Touchpoint:</strong> Módulo de frota, formulários
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <div class="step-title">Gestão de Patrimônio</div>
+                            <div class="step-description">Atualiza inventário de equipamentos: câmeras, notebooks, trenas e outros equipamentos técnicos.</div>
+                            <div class="step-details">
+                                <strong>Emoção:</strong> Sistemática - rastreamento de ativos<br>
+                                <strong>Touchpoint:</strong> Cadastro de patrimônio, relatórios
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <div class="step-title">Análise de Custos por Projeto</div>
+                            <div class="step-description">Analisa custos operacionais por contrato para avaliar rentabilidade e identificar desvios.</div>
+                            <div class="step-details">
+                                <strong>Emoção:</strong> Analítica - buscando eficiência<br>
+                                <strong>Touchpoint:</strong> Relatórios de custo, dashboards
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">7</div>
+                        <div class="step-content">
+                            <div class="step-title">Geração de Relatórios Contábeis</div>
+                            <div class="step-description">Gera relatórios para envio à contabilidade: DRE, fluxo de caixa, balancete.</div>
+                            <div class="step-details">
+                                <strong>Emoção:</strong> Profissional - conformidade garantida<br>
+                                <strong>Touchpoint:</strong> Exportação de relatórios, templates
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">8</div>
+                        <div class="step-content">
+                            <div class="step-title">Envio de Métricas ao Painel</div>
+                            <div class="step-description">Sistema envia automaticamente métricas financeiras consolidadas para o TM Painel do Diretor.</div>
+                            <div class="step-details">
+                                <strong>Emoção:</strong> Satisfeita - integração perfeita<br>
+                                <strong>Touchpoint:</strong> Sincronização automática, logs
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mapa de Empatia -->
+        <section class="journey-section">
+            <h2>Mapa de Empatia - Visão Consolidada</h2>
+            
+            <div class="journey-card">
+                <h3>O que as Personas Pensam e Sentem</h3>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 24px;">
+                    <div style="padding: 16px; background: var(--TM-navy-deep); border-left: 3px solid var(--TM-neon-green); border-radius: 4px;">
+                        <div style="font-size: 14px; font-weight: 600; color: var(--TM-neon-green); margin-bottom: 8px;">O QUE VEEM</div>
+                        <ul style="font-size: 13px; color: var(--TM-text-primary); padding-left: 20px; line-height: 1.8;">
+                            <li>Processos manuais e repetitivos</li>
+                            <li>Falta de integração entre sistemas</li>
+                            <li>Dados fragmentados em múltiplas fontes</li>
+                            <li>Atrasos e gargalos operacionais</li>
+                            <li>Dificuldade em rastrear progresso</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="padding: 16px; background: var(--TM-navy-deep); border-left: 3px solid var(--TM-cyan-vibrant); border-radius: 4px;">
+                        <div style="font-size: 14px; font-weight: 600; color: var(--TM-cyan-vibrant); margin-bottom: 8px;">O QUE OUVEM</div>
+                        <ul style="font-size: 13px; color: var(--TM-text-primary); padding-left: 20px; line-height: 1.8;">
+                            <li>Clientes cobrando prazos</li>
+                            <li>Equipe reclamando de retrabalho</li>
+                            <li>Necessidade de mais automação</li>
+                            <li>Pressão por redução de custos</li>
+                            <li>Demanda por transparência</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="padding: 16px; background: var(--TM-navy-deep); border-left: 3px solid #FFA500; border-radius: 4px;">
+                        <div style="font-size: 14px; font-weight: 600; color: #FFA500; margin-bottom: 8px;">DORES E FRUSTRAÇÕES</div>
+                        <ul style="font-size: 13px; color: var(--TM-text-primary); padding-left: 20px; line-height: 1.8;">
+                            <li>Perda de tempo com tarefas manuais</li>
+                            <li>Erros humanos frequentes</li>
+                            <li>Falta de visibilidade em tempo real</li>
+                            <li>Comunicação ineficiente</li>
+                            <li>Dificuldade em cumprir SLAs</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="padding: 16px; background: var(--TM-navy-deep); border-left: 3px solid var(--TM-neon-green); border-radius: 4px;">
+                        <div style="font-size: 14px; font-weight: 600; color: var(--TM-neon-green); margin-bottom: 8px;">GANHOS E NECESSIDADES</div>
+                        <ul style="font-size: 13px; color: var(--TM-text-primary); padding-left: 20px; line-height: 1.8;">
+                            <li>Automação de processos repetitivos</li>
+                            <li>Dados consolidados e confiáveis</li>
+                            <li>Trabalho offline para campo</li>
+                            <li>Rastreabilidade completa</li>
+                            <li>Tomada de decisão baseada em dados</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Insights e Oportunidades -->
+        <section class="journey-section">
+            <h2>Insights e Oportunidades</h2>
+            
+            <div class="journey-card">
+                <h3>Pontos de Atenção no Design e Desenvolvimento</h3>
+                
+                <div style="margin-top: 24px;">
+                    <div style="margin-bottom: 24px; padding: 16px; background: var(--TM-navy-deep); border-radius: 8px; border: 1px solid var(--TM-border-subtle);">
+                        <div style="font-size: 16px; font-weight: 600; color: var(--TM-neon-green); margin-bottom: 12px;">🎯 Funcionalidade Offline é Crítica</div>
+                        <p style="font-size: 14px; color: var(--TM-text-primary); margin-bottom: 8px;">
+                            Técnicos de campo frequentemente trabalham em áreas sem conexão confiável. O app mobile deve funcionar 100% offline com sincronização inteligente.
+                        </p>
+                        <p style="font-size: 13px; color: var(--TM-text-secondary);">
+                            <strong>Ação:</strong> Implementar sistema robusto de cache local e fila de sincronização com retry automático.
+                        </p>
+                    </div>
+                    
+                    <div style="margin-bottom: 24px; padding: 16px; background: var(--TM-navy-deep); border-radius: 8px; border: 1px solid var(--TM-border-subtle);">
+                        <div style="font-size: 16px; font-weight: 600; color: var(--TM-neon-green); margin-bottom: 12px;">📊 Visibilidade em Tempo Real é Essencial</div>
+                        <p style="font-size: 14px; color: var(--TM-text-primary); margin-bottom: 8px;">
+                            Gerentes precisam de visibilidade imediata do status das O.S. para tomar decisões rápidas e responder a clientes.
+                        </p>
+                        <p style="font-size: 13px; color: var(--TM-text-secondary);">
+                            <strong>Ação:</strong> Dashboards com atualização em tempo real via WebSockets ou polling curto. Notificações push para mudanças críticas.
+                        </p>
+                    </div>
+                    
+                    <div style="margin-bottom: 24px; padding: 16px; background: var(--TM-navy-deep); border-radius: 8px; border: 1px solid var(--TM-border-subtle);">
+                        <div style="font-size: 16px; font-weight: 600; color: var(--TM-neon-green); margin-bottom: 12px;">⚡ Automação Reduz Carga Cognitiva</div>
+                        <p style="font-size: 14px; color: var(--TM-text-primary); margin-bottom: 8px;">
+                            Elaboradores valorizam automação que elimine trabalho repetitivo, permitindo foco em revisão e qualidade.
+                        </p>
+                        <p style="font-size: 13px; color: var(--TM-text-secondary);">
+                            <strong>Ação:</strong> Maximizar geração automática de relatórios, mantendo pontos de controle para validação humana.
+                        </p>
+                    </div>
+                    
+                    <div style="margin-bottom: 24px; padding: 16px; background: var(--TM-navy-deep); border-radius: 8px; border: 1px solid var(--TM-border-subtle);">
+                        <div style="font-size: 16px; font-weight: 600; color: var(--TM-neon-green); margin-bottom: 12px;">📈 Dados Agregados Facilitam Decisões Estratégicas</div>
+                        <p style="font-size: 14px; color: var(--TM-text-primary); margin-bottom: 8px;">
+                            Diretores precisam de visualizações simplificadas e comparações temporais para identificar tendências rapidamente.
+                        </p>
+                        <p style="font-size: 13px; color: var(--TM-text-secondary);">
+                            <strong>Ação:</strong> Criar KPIs visuais com drill-down progressivo. Exportação fácil para apresentações.
+                        </p>
+                    </div>
+                    
+                    <div style="margin-bottom: 24px; padding: 16px; background: var(--TM-navy-deep); border-radius: 8px; border: 1px solid var(--TM-border-subtle);">
+                        <div style="font-size: 16px; font-weight: 600; color: var(--TM-neon-green); margin-bottom: 12px;">💼 Integração Reduz Silos de Informação</div>
+                        <p style="font-size: 14px; color: var(--TM-text-primary); margin-bottom: 8px;">
+                            Administrativos sofrem com dados espalhados. Integração via Supabase centraliza informações e elimina duplicação de esforço.
+                        </p>
+                        <p style="font-size: 13px; color: var(--TM-text-secondary);">
+                            <strong>Ação:</strong> Garantir que todos os módulos alimentem o banco central com dados estruturados e acessíveis.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer style="margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--TM-border-subtle); text-align: center;">
+            <p style="font-size: 14px; color: var(--TM-text-secondary);">
+                <strong style="color: var(--TM-neon-green);">Ecossistema MAFFENG</strong> - Automação Técnica<br>
+                Documento preparado por: <span style="color: var(--TM-cyan-vibrant);">Thiago Nascimento Barbosa / TM Soluções Tecnológicas</span><br>
+                Última atualização: Novembro 2025
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

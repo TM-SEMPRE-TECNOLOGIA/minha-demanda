@@ -1,0 +1,197 @@
+/* 
+   MAFFENG Design System 
+   Core Styles & Tokens
+   Versão 1.0
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700&family=Inter:wght@400;500;600&family=Roboto+Mono:wght@400;500&display=swap');
+
+:root {
+    /* Palette - Navy & Neon */
+    --TM-navy-deep: #0A1628;
+    --TM-navy-medium: #112240;
+    --TM-navy-light: #1A365D;
+    
+    --TM-neon-green: #64FFDA;
+    --TM-neon-green-glow: rgba(100, 255, 218, 0.2);
+    --TM-cyan-vibrant: #00D4FF;
+    
+    /* Text Colors */
+    --TM-text-primary: #E6F1FF;
+    --TM-text-secondary: #8892B0;
+    --TM-text-emphasis: #64FFDA;
+    
+    /* Status Colors */
+    --TM-warning: #FFA500;
+    --TM-error: #FF6B6B;
+    --TM-success: #10B981;
+    
+    /* Components */
+    --TM-card-bg: rgba(17, 34, 64, 0.6);
+    --TM-card-border: rgba(100, 255, 218, 0.1);
+    --TM-glass-bg: rgba(10, 22, 40, 0.7);
+    
+    /* Typography */
+    --font-heading: "Exo 2", sans-serif;
+    --font-body: "Inter", sans-serif;
+    --font-mono: "Roboto Mono", monospace;
+    
+    /* Transitions */
+    --transition-fast: 150ms ease-in-out;
+    --transition-normal: 300ms ease-in-out;
+}
+
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    background: linear-gradient(180deg, #0A1628 0%, #0F1C30 100%);
+    color: var(--TM-text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition-fast);
+}
+
+ul {
+    list-style: none;
+}
+
+/* Typography Utilities */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--TM-text-primary);
+}
+
+.text-neon { color: var(--TM-neon-green); }
+.text-cyan { color: var(--TM-cyan-vibrant); }
+.text-secondary { color: var(--TM-text-secondary); }
+
+/* Component: Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    border: 1px solid transparent;
+    gap: 8px;
+}
+
+.btn-primary {
+    background: var(--TM-neon-green);
+    color: var(--TM-navy-deep);
+    box-shadow: 0 0 15px var(--TM-neon-green-glow);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 25px var(--TM-neon-green-glow);
+}
+
+.btn-secondary {
+    background: transparent;
+    border-color: var(--TM-neon-green);
+    color: var(--TM-neon-green);
+}
+
+.btn-secondary:hover {
+    background: var(--TM-neon-green-glow);
+}
+
+.btn-ghost {
+    background: transparent;
+    color: var(--TM-text-secondary);
+}
+
+.btn-ghost:hover {
+    color: var(--TM-text-primary);
+}
+
+.btn-block {
+    width: 100%;
+}
+
+/* Component: Inputs */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--TM-text-secondary);
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px 16px;
+    background: rgba(17, 34, 64, 0.4);
+    border: 1px solid var(--TM-card-border);
+    border-radius: 4px;
+    color: var(--TM-text-primary);
+    font-family: var(--font-body);
+    transition: var(--transition-fast);
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--TM-neon-green);
+    box-shadow: 0 0 0 2px var(--TM-neon-green-glow);
+}
+
+.form-input::placeholder {
+    color: rgba(136, 146, 176, 0.5);
+}
+
+/* Component: Cards */
+.card {
+    background: var(--TM-card-bg);
+    border: 1px solid var(--TM-card-border);
+    border-radius: 8px;
+    padding: 24px;
+    backdrop-filter: blur(10px);
+}
+
+.card-hover:hover {
+    border-color: rgba(100, 255, 218, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Utilities */
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.w-full { width: 100%; }
+.mb-4 { margin-bottom: 16px; }
+.mt-4 { margin-top: 16px; }
+.text-center { text-align: center; }
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+}

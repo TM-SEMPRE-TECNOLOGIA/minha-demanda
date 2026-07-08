@@ -1,0 +1,17 @@
+Sub Inserir_Legendas()
+    Dim objPic As InlineShape
+    Dim i As Integer
+    Dim totalPics As Integer
+
+    totalPics = ActiveDocument.InlineShapes.Count
+    
+    For i = 1 To totalPics
+        If i <> 1 And i <> totalPics Then
+            Set objPic = ActiveDocument.InlineShapes(i)
+            objPic.Select
+            CaptionLabels.Add "Foto"
+            Selection.InsertCaption Label:="Foto", TitleAutoText:="", Title:="", _
+            Position:=wdCaptionPositionBelow + 1, ExcludeLabel:=0
+        End If
+    Next i
+End Sub

@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análise de Mercado - Ecossistema MAFFENG</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700&family=Inter:wght@400;500;600&family=Roboto+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --TM-navy-deep: #0A1628;
+            --TM-navy-medium: #112240;
+            --TM-navy-light: #1A365D;
+            --TM-neon-green: #64FFDA;
+            --TM-cyan-vibrant: #00D4FF;
+            --TM-text-primary: #E6F1FF;
+            --TM-text-secondary: #8892B0;
+            --TM-text-emphasis: #64FFDA;
+            --TM-warning: #FFA500;
+            --TM-error: #FF6B6B;
+            --TM-card-bg: rgba(17, 34, 64, 0.5);
+            --TM-card-border: rgba(100, 255, 218, 0.1);
+            --font-heading: "Exo 2", sans-serif;
+            --font-body: "Inter", sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: linear-gradient(180deg, #0A1628 0%, #112240 50%, #0A1628 100%);
+            color: var(--TM-text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 24px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding: 24px;
+            background: var(--TM-card-bg);
+            border: 1px solid var(--TM-card-border);
+            border-radius: 8px;
+        }
+
+        .header h1 {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--TM-neon-green);
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+
+        .header .subtitle {
+            color: var(--TM-text-secondary);
+            font-size: 1.125rem;
+            margin-bottom: 16px;
+        }
+
+        .header-stats {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            font-size: 0.875rem;
+            margin-top: 24px;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--TM-navy-deep);
+            padding: 12px 16px;
+            border-radius: 8px;
+            border: 1px solid var(--TM-navy-light);
+        }
+
+        .section {
+            margin-bottom: 32px;
+        }
+
+        .section-header {
+            background: var(--TM-navy-medium);
+            border: 1px solid var(--TM-card-border);
+            border-radius: 8px;
+            padding: 16px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 300ms ease-in-out;
+        }
+
+        .section-header:hover {
+            border-color: rgba(100, 255, 218, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .section-header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--TM-neon-green);
+        }
+
+        .section-content {
+            background: var(--TM-card-bg);
+            border: 1px solid var(--TM-card-border);
+            border-radius: 8px;
+            padding: 24px;
+            margin-top: 16px;
+            display: none;
+        }
+
+        .section-content.active {
+            display: block;
+            animation: fadeIn 300ms ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 16px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        .card {
+            background: var(--TM-navy-deep);
+            border: 1px solid var(--TM-navy-light);
+            border-radius: 8px;
+            padding: 16px;
+            transition: all 300ms ease-in-out;
+        }
+
+        .card:hover {
+            border-color: rgba(100, 255, 218, 0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 12px;
+        }
+
+        .card-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--TM-text-primary);
+            margin-bottom: 4px;
+        }
+
+        .card-subtitle {
+            font-size: 0.875rem;
+            color: var(--TM-text-secondary);
+        }
+
+        .badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border: 1px solid;
+            white-space: nowrap;
+        }
+
+        .badge-alto {
+            background: rgba(0, 168, 107, 0.2);
+            color: #00A86B;
+            border-color: rgba(0, 168, 107, 0.3);
+        }
+
+        .badge-muito-alto {
+            background: rgba(0, 212, 255, 0.2);
+            color: var(--TM-cyan-vibrant);
+            border-color: rgba(0, 212, 255, 0.3);
+        }
+
+        .badge-medio {
+            background: rgba(255, 165, 0, 0.2);
+            color: var(--TM-warning);
+            border-color: rgba(255, 165, 0, 0.3);
+        }
+
+        .badge-baixa {
+            background: rgba(100, 255, 218, 0.2);
+            color: var(--TM-neon-green);
+            border-color: rgba(100, 255, 218, 0.3);
+        }
+
+        .badge-media {
+            background: rgba(255, 165, 0, 0.2);
+            color: var(--TM-warning);
+            border-color: rgba(255, 165, 0, 0.3);
+        }
+
+        .badge-alta {
+            background: rgba(255, 107, 107, 0.2);
+            color: var(--TM-error);
+            border-color: rgba(255, 107, 107, 0.3);
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.875rem;
+            margin: 8px 0;
+        }
+
+        .info-label {
+            color: var(--TM-text-secondary);
+        }
+
+        .info-value {
+            font-weight: 600;
+        }
+
+        .highlight-green {
+            color: var(--TM-neon-green);
+        }
+
+        .highlight-cyan {
+            color: var(--TM-cyan-vibrant);
+        }
+
+        .divider {
+            border-top: 1px solid var(--TM-navy-light);
+            margin: 12px 0;
+        }
+
+        .insight-box {
+            background: var(--TM-navy-deep);
+            border: 1px solid rgba(100, 255, 218, 0.2);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 16px;
+        }
+
+        .insight-title {
+            color: var(--TM-neon-green);
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .insight-list {
+            list-style: none;
+        }
+
+        .insight-list li {
+            display: flex;
+            gap: 8px;
+            margin: 8px 0;
+            font-size: 0.875rem;
+            color: var(--TM-text-primary);
+        }
+
+        .check-icon {
+            color: var(--TM-neon-green);
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .competitor-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 12px;
+        }
+
+        .strength-list,
+        .weakness-list {
+            font-size: 0.875rem;
+        }
+
+        .strength-list h4,
+        .weakness-list h4 {
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .strength-list h4 {
+            color: var(--TM-neon-green);
+        }
+
+        .weakness-list h4 {
+            color: var(--TM-error);
+        }
+
+        .strength-list ul,
+        .weakness-list ul {
+            list-style: none;
+        }
+
+        .strength-list li,
+        .weakness-list li {
+            margin: 6px 0;
+            display: flex;
+            gap: 8px;
+        }
+
+        .strength-list li::before {
+            content: "✓";
+            color: var(--TM-neon-green);
+            font-weight: bold;
+        }
+
+        .weakness-list li::before {
+            content: "✕";
+            color: var(--TM-error);
+            font-weight: bold;
+        }
+
+        .differential-box {
+            background: var(--TM-navy-deep);
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 16px;
+        }
+
+        .differential-title {
+            color: var(--TM-cyan-vibrant);
+            font-weight: 600;
+            margin-bottom: 16px;
+            font-size: 1.125rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .conclusion-box {
+            background: var(--TM-navy-medium);
+            border: 2px solid var(--TM-neon-green);
+            border-radius: 8px;
+            padding: 24px;
+            margin-top: 32px;
+        }
+
+        .conclusion-title {
+            font-family: var(--font-heading);
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--TM-neon-green);
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .recommendation-box {
+            background: var(--TM-navy-deep);
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 16px;
+            border-left: 4px solid var(--TM-neon-green);
+        }
+
+        .rec-title {
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--TM-neon-green);
+        }
+
+        .rec-number {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--TM-neon-green);
+            color: var(--TM-navy-deep);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.875rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .rec-description {
+            color: var(--TM-text-primary);
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+
+        .footer {
+            text-align: center;
+            color: var(--TM-text-secondary);
+            font-size: 0.875rem;
+            border-top: 1px solid var(--TM-navy-light);
+            padding-top: 24px;
+            margin-top: 48px;
+        }
+
+        .footer-highlight {
+            color: var(--TM-neon-green);
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.75rem;
+            }
+
+            .grid-2,
+            .grid-3,
+            .competitor-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header-stats {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>ANÁLISE DE MERCADO E CONCORRÊNCIA</h1>
+            <p class="subtitle">Ecossistema MAFFENG - Automação Técnica</p>
+            <div class="header-stats">
+                <span class="stat-item">
+                    <svg width="20" height="20" fill="none" stroke="#00D4FF" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M12 6v6l4 2" />
+                    </svg>
+                    Mercado Alvo: R$ 2.8B/ano
+                </span>
+                <span class="stat-item">
+                    <svg width="20" height="20" fill="none" stroke="#64FFDA" viewBox="0 0 24 24">
+                        <path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                    </svg>
+                    Crescimento: +10% a.a.
+                </span>
+                <span class="stat-item">
+                    <svg width="20" height="20" fill="none" stroke="#FFA500" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M12 8v4M12 16h.01" />
+                    </svg>
+                    Concorrência: Moderada
+                </span>
+            </div>
+        </div>
+
+        <!-- Visão Geral do Mercado -->
+        <div class="section">
+            <div class="section-header" onclick="toggleSection('market')">
+                <div class="section-header-left">
+                    <svg width="24" height="24" fill="none" stroke="#64FFDA" viewBox="0 0 24 24">
+                        <path d="M3 3v18h18" />
+                        <path d="M18 17V9" />
+                        <path d="M13 17V5" />
+                        <path d="M8 17v-3" />
+                    </svg>
+                    <h2 class="section-title">Visão Geral do Mercado</h2>
+                </div>
+                <svg width="20" height="20" fill="none" stroke="#64FFDA" viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6" />
+                </svg>
+            </div>
+            <div class="section-content active" id="market">
+                <div class="grid-2">
+                    <div class="card">
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">Empresas de Engenharia Consultiva</div>
+                            </div>
+                            <span class="badge badge-alto">ALTO</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Tamanho:</span>
+                            <span class="info-value highlight-green">R$ 850M/ano</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Crescimento:</span>
+                            <span class="info-value highlight-cyan">+12% a.a.</span>
+                        </div>
+                        <div class="divider"></div>
+                        <p style="color: var(--TM-text-secondary); font-size: 0.875rem;">
+                            <strong style="color: var(--TM-text-primary);">Dor principal:</strong> Relatórios técnicos
+                            repetitivos e demorados
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">Construtoras Médio Porte</div>
+                            </div>
+                            <span class="badge badge-medio">MÉDIO</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Tamanho:</span>
+                            <span class="info-value highlight-green">R$ 1.2B/ano</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Crescimento:</span>
+                            <span class="info-value highlight-cyan">+8% a.a.</span>
+                        </div>
+                        <div class="divider"></div>
+                        <p style="color: var(--TM-text-secondary); font-size: 0.875rem;">
+                            <strong style="color: var(--TM-text-primary);">Dor principal:</strong> Gestão de múltiplas
+                            obras simultâneas
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">Órgãos Públicos (Fiscalização)</div>
+                            </div>
+                            <span class="badge badge-alto">ALTO</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Tamanho:</span>
+                            <span class="info-value highlight-green">R$ 450M/ano</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Crescimento:</span>
+                            <span class="info-value highlight-cyan">+5% a.a.</span>
+                        </div>
+                        <div class="divider"></div>
+                        <p style="color: var(--TM-text-secondary); font-size: 0.875rem;">
+                            <strong style="color: var(--TM-text-primary);">Dor principal:</strong> Documentação
+                            padronizada e rastreável
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">Empresas de Manutenção Predial</div>
+                            </div>
+                            <span class="badge badge-muito-alto">MUITO ALTO</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Tamanho:</span>
+                            <span class="info-value highlight-green">R$ 320M/ano</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Crescimento:</span>
+                            <span class="info-value highlight-cyan">+15% a.a.</span>
+                        </div>
+                        <div class="divider"></div>
+                        <p style="color: var(--TM-text-secondary); font-size: 0.875rem;">
+                            <strong style="color: var(--TM-text-primary);">Dor principal:</strong> Controle de ordens de
+                            serviço e histórico
+                        </p>
+                    </div>
+                </div>
+
+                <div class="insight-box">
+                    <h4 class="insight-title">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M12 16v-4M12 8h.01" />
+                        </svg>
+                        Insights do Mercado
+                    </h4>
+                    <ul class="insight-list">
+                        <li>
+                            <span class="check-icon">✓</span>
+                            <span>35% do mercado ainda usa soluções artesanais (planilhas e scripts), representando
+                                oportunidade imediata de conversão</span>
+                        </li>
+                        <li>
+                            <span class="check-icon">✓</span>
+                            <span>Empresas de manutenção predial apresentam o maior fit com crescimento acelerado de 15%
+                                a.a.</span>
+                        </li>
+                        <li>
+                            <span class="check-icon">✓</span>
+                            <span>Demanda crescente por transformação digital pós-pandemia acelera adoção de soluções
+                                integradas</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Análise de Concorrentes -->
+        <div class="section">
+            <div class="section-header" onclick="toggleSection('competitors')">
+                <div class="section-header-left">
+                    <svg width="24" height="24" fill="none" stroke="#64FFDA" viewBox="0 0 24 24">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                        <circle cx="9" cy="7" r="4" />
+                        <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                    </svg>
+                    <h2 class="section-title">Análise de Concorrentes</h2>
+                </div>
+                <svg width="20" height="20" fill="none" stroke="#64FFDA" viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6" />
+                </svg>
+            </div>
+            <div class="section-content" id="competitors">
+                <div class="card" style="margin-bottom: 16px;">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title">Construtor.io</div>
+                            <div class="card-subtitle">Gestão de Obras</div>
+                        </div>
+                        <div style="text-align: right;">
+                            <span class="badge badge-media">Ameaça Média</span>
+                            <p
+                                style="color: var(--TM-cyan-vibrant); font-size: 0.75rem; font-weight: 600; margin-top: 4px;">
+                                Market Share: 15%</p>
+                        </div>
+                    </div>
+                    <div class="competitor-grid">
+                        <div class="strength-list">
+                            <h4>🛡️ Forças</h4>
+                            <ul>
+                                <li>Interface robusta e consolidada</li>
+                                <li>Relatórios financeiros avançados</li>
+                                <li>Grande base de clientes instalada</li>
+                            </ul>
+                        </div>
+                        <div class="weakness-list">
+                            <h4>⚠️ Fraquezas</h4>
+                            <ul>
+                                <li>Não possui captura móvel nativa</li>
+                                <li>Foco exclusivo em construção civil</li>
+                                <li>Custo elevado para PMEs</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" style="margin-bottom: 16px;">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title">Sienge</div>
+                            <div class="card-subtitle">ERP para Construção</div>
+                        </div>
+                        <div style="text-align: right;">
+                            <span class="badge badge-baixa">Ameaça Baixa</span>
+                            <p
+                                style="color: var(--TM-cyan-vibrant); font-size: 0.75rem; font-weight: 600; margin-top: 4px;">
+                                Market Share: 22%</p>
+                        </div>
+                    </div>
+                    <div class="competitor-grid">
+                        <div class="strength-list">
+                            <h4>🛡️ Forças</h4>
+                            <ul>
+                                <li>Suite completa de gestão</li>
+                                <li>Integração contábil e financeira</li>
+                                <li>Suporte enterprise robusto</li>
+                            </ul>
+                        </div>
+                        <div class="weakness-list">
+                            <h4>⚠️ Fraquezas</h4>
+                            <ul>
+                                <li>Complexidade alta, curva de adoção longa</li>
+                                <li>Custo proibitivo para PMEs</li>
+                                <li>Sem automação de relatórios técnicos</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" style="margin-bottom: 16px;">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title">Obra Prima</div>
+                            <div class="card-subtitle">Gestão e Documentação</div>
+                        </div>
+                        <div style="text-align: right;">
+                            <span class="badge badge-alta">Ameaça Alta</span>
+                            <p
+                                style="color: var(--TM-cyan-vibrant); font-size: 0.75rem; font-weight: 600; margin-top: 4px;">
+                                Market Share: 8%</p>
+                        </div>
+                    </div>
+                    <div class="competitor-grid">
+                        <div class="strength-list">
+                            <h4>🛡️ Forças</h4>
+                            <ul>
+                                <li>App mobile básico disponível</li>
+                                <li>Preço acessível para PMEs</li>
+                                <li>Fácil adoção e onboarding</li>
+                            </ul>
+                        </div>
+                        <div class="weakness-list">
+                            <h4>⚠️ Fraquezas</h4>
+                            <ul>
+                                <li>Relatórios ainda manuais</li>
+                                <li>Sem automação real do fluxo</li>
+                                <li>Limitações técnicas e de escala</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" style="margin-bottom: 16px;">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title">Soluções Personalizadas</div>
+                            <div class="card-subtitle">Planilhas e Scripts Internos</div>
+                        </div>
+                        <div style="text-align: right;">
+                            <span class="badge badge-media">Ameaça Média</span>
+                            <p
+                                style="color: var(--TM-cyan-vibrant); font-size: 0.75rem; font-weight: 600; margin-top: 4px;">
+                                Market Share: 35%</p>
+                        </div>
+                    </div>
+                    <div class="competitor-grid">
+                        <div class="strength-list">
+                            <h4>🛡️ Forças</h4>
+                            <ul>
+                                <li>Totalmente customizado ao negócio</li>
+                                <li>Baixo custo inicial de implementação</li>
+                                <li>Flexibilidade total</li>
+                            </ul>
+                        </div>
+                        <div class="weakness-list">
+                            <h4>⚠️ Fraquezas</h4>
+                            <ul>
+                                <li>Não escalável conforme empresa cresce</li>
+                                <li>Manutenção crítica e cara</li>
+                                <li>Sem suporte profissional</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="differential-box">
+                    <h4 class="differential-title">
+                        ⚡ Diferencial Competitivo do MAFFENG
+                    </h4>
+                    <p style="color: var(--TM-text-primary); font-size: 0.875rem; margin-bottom: 16px;">
+                        O ecossistema MAFFENG se posiciona como a única solução que integra captura móvel offline,
+                        automação completa de relatórios e gestão modular, preenchendo a lacuna crítica deixada pelos
+                        concorrentes.
+                    </p>
+                    <div class="grid-3">
+                        <div
+                            style="background: var(--TM-navy-medium); border: 1px solid rgba(100, 255, 218, 0.2); border-radius: 8px; padding: 12px;">
+                            <p
+                                style="color: var(--TM-neon-green); font-weight: 600; margin-bottom: 4px; font-size: 0.875rem;">
+                                Automação Real</p>
+                            <p style="color: var(--TM-text-secondary); font-size: 0.875rem;">Relatórios .docx gerados
+                                automaticamente vs. templates manuais</p>
+                        </div>
+                        <div
+                            style="background: var(--TM-navy-medium); border: 1px solid rgba(100, 255, 218, 0.2); border-radius: 8px; padding: 12px;">
+                            <p
+                                style="color: var(--TM-neon-green); font-weight: 600; margin-bottom: 4px; font-size: 0.875rem;">
+                                Offline-First</p>
+                            <p style="color: var(--TM-text-secondary); font-size: 0.875rem;">Operação 100% offline em
+                                campo vs. dependência de conexão</p>
+                        </div>
+                        <div
+                            style="background: var(--TM-navy-medium); border: 1px solid rgba(100, 255, 218, 0.2); border-radius: 8px; padding: 12px;">
+                            <p
+                                style="color: var(--TM-neon-green); font-weight: 600; margin-bottom: 4px; font-size: 0.875rem;">
+                                Modularidade</p>
+                            <p style="color: var(--TM-text-secondary); font-size: 0.875rem;">Venda separada de módulos
+                                vs. suites monolíticas caras</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Posicionamento Estratégico -->
+        <div class="section">
+            <div class="section-header" onclick="toggleSection('positioning')">
+                <div class="section-header-left">
+                    <svg width="24" height="24" fill="none" stroke="#64FFDA" viewBox="0 0 24 24">
+                        <path
+                            d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                    </svg>
+                    <h2 class="section-title">Posicionamento Estratégico</h2>
+                </div>
+                <svg width="20" height="20" fill="none" stroke="#64FFDA" viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6" />
+                </svg>
+            </div>
+            <div class="section-content" id="positioning">
+                <div class="grid-2">
+                    <div class="card">
+                        <h3 style="color: var(--TM-neon-green); font-weight: 600; margin-bottom: 12px;">🎯 Proposta de
+                            Valor</h3>
+                        <p style="color: var(--TM-text-primary); font-size: 0.875rem; line-height: 1.6;">
+                            "Automação Técnica de Ponta a Ponta" - Do campo ao relatório final, sem intervenção manual.
+                            Redução de 80% no tempo de produção de relatórios técnicos mantendo qualidade profissional.
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <h3 style="color: var(--TM-cyan-vibrant); font-weight: 600; margin-bottom: 12px;">👥
+                            Público-Alvo Inicial</h3>
+                        <p style="color: var(--TM-text-primary); font-size: 0.875rem; line-height: 1.6;">
+                            Empresas técnicas com 10-100 colaboradores que produzem 50+ relatórios/mês em áreas de
+                            manutenção predial, engenharia consultiva e fiscalização.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="differential-box" style="margin-top: 16px;">
+                    <h4 class="differential-title">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                        </svg>
+                        Matriz de Competitividade
+                    </h4>
+                    <div style="overflow-x: auto;">
+                        <table style="width: 100%; border-collapse: collapse; font-size: 0.875rem;">
+                            <thead>
+                                <tr style="border-bottom: 2px solid var(--TM-navy-light);">
+                                    <th style="padding: 12px; text-align: left; color: var(--TM-text-primary);">
+                                        Funcionalidade</th>
+                                    <th style="padding: 12px; text-align: center; color: var(--TM-neon-green);">MAFFENG
+                                    </th>
+                                    <th style="padding: 12px; text-align: center; color: var(--TM-text-secondary);">
+                                        Construtor.io</th>
+                                    <th style="padding: 12px; text-align: center; color: var(--TM-text-secondary);">
+                                        Sienge</th>
+                                    <th style="padding: 12px; text-align: center; color: var(--TM-text-secondary);">Obra
+                                        Prima</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid var(--TM-navy-light);">
+                                    <td style="padding: 12px; color: var(--TM-text-primary);">Captura Offline Móvel</td>
+                                    <td style="padding: 12px; text-align: center;">✓</td>
+                                    <td style="padding: 12px; text-align: center;">✕</td>
+                                    <td style="padding: 12px; text-align: center;">✕</td>
+                                    <td style="padding: 12px; text-align: center;">~</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid var(--TM-navy-light);">
+                                    <td style="padding: 12px; color: var(--TM-text-primary);">Automação de Relatórios
+                                    </td>
+                                    <td style="padding: 12px; text-align: center;">✓</td>
+                                    <td style="padding: 12px; text-align: center;">~</td>
+                                    <td style="padding: 12px; text-align: center;">✕</td>
+                                    <td style="padding: 12px; text-align: center;">✕</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid var(--TM-navy-light);">
+                                    <td style="padding: 12px; color: var(--TM-text-primary);">Venda Modular</td>
+                                    <td style="padding: 12px; text-align: center;">✓</td>
+                                    <td style="padding: 12px; text-align: center;">✕</td>
+                                    <td style="padding: 12px; text-align: center;">✕</td>
+                                    <td style="padding: 12px; text-align: center;">✕</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid var(--TM-navy-light);">
+                                    <td style="padding: 12px; color: var(--TM-text-primary);">Preço Acessível PME</td>
+                                    <td style="padding: 12px; text-align: center;">✓</td>
+                                    <td style="padding: 12px; text-align: center;">~</td>
+                                    <td style="padding: 12px; text-align: center;">✕</td>
+                                    <td style="padding: 12px; text-align: center;">✓</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 12px; color: var(--TM-text-primary);">Integração Completa</td>
+                                    <td style="padding: 12px; text-align: center;">✓</td>
+                                    <td style="padding: 12px; text-align: center;">✓</td>
+                                    <td style="padding: 12px; text-align: center;">✓</td>
+                                    <td style="padding: 12px; text-align: center;">~</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p style="color: var(--TM-text-secondary); font-size: 0.75rem; margin-top: 12px;">
+                            Legenda: ✓ Possui | ~ Parcial | ✕ Não Possui
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Oportunidades de Mercado -->
+        <div class="section">
+            <div class="section-header" onclick="toggleSection('opportunities')">
+                <div class="section-header-left">
+                    <svg width="24" height="24" fill="none" stroke="#64FFDA" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M12 6v6l4 2" />
+                    </svg>
+                    <h2 class="section-title">Oportunidades de Mercado</h2>
+                </div>
+                <svg width="20" height="20" fill="none" stroke="#64FFDA" viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6" />
+                </svg>
+            </div>
+            <div class="section-content" id="opportunities">
+                <div class="grid-3">
+                    <div class="card">
+                        <div
+                            style="font-size: 2rem; font-weight: 700; color: var(--TM-neon-green); margin-bottom: 8px;">
+                            1º</div>
+                        <h4 style="color: var(--TM-text-primary); font-weight: 600; margin-bottom: 8px;">Conversão de
+                            Soluções Artesanais</h4>
+                        <p style="color: var(--TM-text-secondary); font-size: 0.875rem; margin-bottom: 12px;">
+                            35% do mercado usa planilhas e scripts internos. Estratégia de migração assistida pode
+                            capturar rapidamente este segmento.
+                        </p>
+                        <div style="color: var(--TM-cyan-vibrant); font-size: 0.875rem; font-weight: 600;">Potencial: R$
+                            980M</div>
+                    </div>
+
+                    <div class="card">
+                        <div
+                            style="font-size: 2rem; font-weight: 700; color: var(--TM-neon-green); margin-bottom: 8px;">
+                            2º</div>
+                        <h4 style="color: var(--TM-text-primary); font-weight: 600; margin-bottom: 8px;">Licenciamento
+                            White-Label</h4>
+                        <p style="color: var(--TM-text-secondary); font-size: 0.875rem; margin-bottom: 12px;">
+                            Grandes construtoras e consultorias podem licenciar o ecossistema com sua marca, criando
+                            receita recorrente enterprise.
+                        </p>
+                        <div style="color: var(--TM-cyan-vibrant); font-size: 0.875rem; font-weight: 600;">Potencial: R$
+                            450M</div>
+                    </div>
+
+                    <div class="card">
+                        <div
+                            style="font-size: 2rem; font-weight: 700; color: var(--TM-neon-green); margin-bottom: 8px;">
+                            3º</div>
+                        <h4 style="color: var(--TM-text-primary); font-weight: 600; margin-bottom: 8px;">Expansão
+                            Setorial</h4>
+                        <p style="color: var(--TM-text-secondary); font-size: 0.875rem; margin-bottom: 12px;">
+                            Telecomunicações, facilities e energia apresentam dores similares e podem ser atendidos com
+                            customizações mínimas.
+                        </p>
+                        <div style="color: var(--TM-cyan-vibrant); font-size: 0.875rem; font-weight: 600;">Potencial: R$
+                            1.2B</div>
+                    </div>
+                </div>
+
+                <div class="insight-box" style="margin-top: 16px;">
+                    <h4 class="insight-title">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <line x1="12" y1="1" x2="12" y2="23" />
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                        </svg>
+                        Modelo de Monetização Recomendado
+                    </h4>
+                    <div class="grid-2">
+                        <div>
+                            <p
+                                style="color: var(--TM-text-primary); font-weight: 600; margin-bottom: 8px; font-size: 0.875rem;">
+                                SaaS Modular (B2C/B2B)</p>
+                            <ul
+                                style="color: var(--TM-text-secondary); font-size: 0.875rem; list-style: none; padding-left: 0;">
+                                <li style="margin: 4px 0;">• Plano Básico: R$ 299/mês (até 50 OS)</li>
+                                <li style="margin: 4px 0;">• Plano Profissional: R$ 799/mês (até 200 OS)</li>
+                                <li style="margin: 4px 0;">• Plano Enterprise: R$ 1.999/mês (ilimitado)</li>
+                                <li style="margin: 4px 0;">• Add-ons: Módulos adicionais R$ 99-399/mês</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <p
+                                style="color: var(--TM-text-primary); font-weight: 600; margin-bottom: 8px; font-size: 0.875rem;">
+                                Licenciamento White-Label</p>
+                            <ul
+                                style="color: var(--TM-text-secondary); font-size: 0.875rem; list-style: none; padding-left: 0;">
+                                <li style="margin: 4px 0;">• Setup inicial: R$ 50k-150k</li>
+                                <li style="margin: 4px 0;">• Licença anual: R$ 120k-360k</li>
+                                <li style="margin: 4px 0;">• Customizações: R$ 15k-50k por módulo</li>
+                                <li style="margin: 4px 0;">• Suporte premium: R$ 10k/mês</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Estratégia de Entrada -->
+        <div class="section">
+            <div class="section-header" onclick="toggleSection('strategy')">
+                <div class="section-header-left">
+                    <svg width="24" height="24" fill="none" stroke="#64FFDA" viewBox="0 0 24 24">
+                        <path d="M12 2v20M2 12h20" />
+                    </svg>
+                    <h2 class="section-title">Estratégia de Entrada no Mercado</h2>
+                </div>
+                <svg width="20" height="20" fill="none" stroke="#64FFDA" viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6" />
+                </svg>
+            </div>
+            <div class="section-content" id="strategy">
+                <div
+                    style="background: var(--TM-navy-deep); border-left: 4px solid var(--TM-neon-green); border-radius: 8px; padding: 16px; margin-bottom: 16px;">
+                    <h4 style="color: var(--TM-neon-green); font-weight: 600; margin-bottom: 8px;">Fase 1: Validação
+                        (0-6 meses)</h4>
+                    <p style="color: var(--TM-text-primary); font-size: 0.875rem; margin-bottom: 12px;">
+                        Lançar TMS Levantamentos em beta fechado com 5-10 clientes piloto (empresas de manutenção
+                        predial). Coletar feedback intensivo e ajustar produto.
+                    </p>
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                        <span class="badge"
+                            style="background: rgba(100, 255, 218, 0.2); color: var(--TM-neon-green); border-color: rgba(100, 255, 218, 0.3);">Investimento:
+                            R$ 50k</span>
+                        <span class="badge"
+                            style="background: rgba(0, 212, 255, 0.2); color: var(--TM-cyan-vibrant); border-color: rgba(0, 212, 255, 0.3);">ROI:
+                            Product-Market Fit</span>
+                    </div>
+                </div>
+
+                <div
+                    style="background: var(--TM-navy-deep); border-left: 4px solid var(--TM-cyan-vibrant); border-radius: 8px; padding: 16px; margin-bottom: 16px;">
+                    <h4 style="color: var(--TM-cyan-vibrant); font-weight: 600; margin-bottom: 8px;">Fase 2: Tração
+                        (6-18 meses)</h4>
+                    <p style="color: var(--TM-text-primary); font-size: 0.875rem; margin-bottom: 12px;">
+                        Completar TMS Gerenciador e Auto Relatórios. Lançar comercialmente com foco em empresas médias.
+                        Meta: 50 clientes ativos pagantes gerando ARR consistente.
+                    </p>
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                        <span class="badge"
+                            style="background: rgba(100, 255, 218, 0.2); color: var(--TM-neon-green); border-color: rgba(100, 255, 218, 0.3);">Investimento:
+                            R$ 200k</span>
+                        <span class="badge"
+                            style="background: rgba(0, 212, 255, 0.2); color: var(--TM-cyan-vibrant); border-color: rgba(0, 212, 255, 0.3);">ROI
+                            esperado: R$ 600k ARR</span>
+                    </div>
+                </div>
+
+                <div
+                    style="background: var(--TM-navy-deep); border-left: 4px solid var(--TM-warning); border-radius: 8px; padding: 16px; margin-bottom: 16px;">
+                    <h4 style="color: var(--TM-warning); font-weight: 600; margin-bottom: 8px;">Fase 3: Escala (18-36
+                        meses)</h4>
+                    <p style="color: var(--TM-text-primary); font-size: 0.875rem; margin-bottom: 12px;">
+                        Lançar módulos administrativos e Painel do Diretor. Expandir para grandes empresas e iniciar
+                        estratégia white-label. Meta: 200+ clientes e primeiros contratos enterprise.
+                    </p>
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                        <span class="badge"
+                            style="background: rgba(100, 255, 218, 0.2); color: var(--TM-neon-green); border-color: rgba(100, 255, 218, 0.3);">Investimento:
+                            R$ 500k</span>
+                        <span class="badge"
+                            style="background: rgba(0, 212, 255, 0.2); color: var(--TM-cyan-vibrant); border-color: rgba(0, 212, 255, 0.3);">ROI
+                            esperado: R$ 3M+ ARR</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Conclusões -->
+        <div class="conclusion-box">
+            <h2 class="conclusion-title">
+                <svg width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M9 12l2 2 4-4" />
+                </svg>
+                Conclusões e Recomendações
+            </h2>
+
+            <div class="recommendation-box">
+                <h3 class="rec-title">
+                    <span class="rec-number">1</span>
+                    Janela de Oportunidade Aberta
+                </h3>
+                <p class="rec-description">
+                    O mercado está em transição digital acelerada, mas nenhum concorrente oferece solução completa e
+                    integrada. A janela de 18-24 meses é crítica para estabelecer liderança de categoria antes que
+                    grandes players acordem para o nicho.
+                </p>
+            </div>
+
+            <div class="recommendation-box" style="border-left-color: var(--TM-cyan-vibrant);">
+                <h3 class="rec-title" style="color: var(--TM-cyan-vibrant);">
+                    <span class="rec-number" style="background: var(--TM-cyan-vibrant);">2</span>
+                    Priorizar Modularidade na Estratégia de Vendas
+                </h3>
+                <p class="rec-description">
+                    A arquitetura modular é um ativo estratégico. Permite entrada com ticket médio mais baixo (vendendo
+                    só TMS Levantamentos) e upsell gradual. Isso reduz barreiras de adoção e aumenta lifetime value.
+                </p>
+            </div>
+
+            <div class="recommendation-box" style="border-left-color: var(--TM-warning);">
+                <h3 class="rec-title" style="color: var(--TM-warning);">
+                    <span class="rec-number" style="background: var(--TM-warning);">3</span>
+                    Foco Imediato em Product-Market Fit
+                </h3>
+                <p class="rec-description">
+                    Antes de escalar, validar profundamente com clientes piloto. O TMS Levantamentos deve ser refinado
+                    até atingir NPS 70+ e taxa de retenção superior a 90% antes de investir em expansão agressiva.
+                </p>
+            </div>
+
+            <div class="recommendation-box" style="border-left-color: var(--TM-neon-green);">
+                <h3 class="rec-title">
+                    <span class="rec-number">4</span>
+                    Posicionamento de Marca Premium
+                </h3>
+                <p class="rec-description">
+                    Evitar guerra de preços. Posicionar MAFFENG como solução premium e tecnologicamente superior,
+                    justificando pricing diferenciado pela automação real e economia de tempo comprovada.
+                </p>
+            </div>
+
+            <div class="recommendation-box" style="border-left-color: var(--TM-cyan-vibrant);">
+                <h3 class="rec-title" style="color: var(--TM-cyan-vibrant);">
+                    <span class="rec-number" style="background: var(--TM-cyan-vibrant);">5</span>
+                    Preparar para White-Label desde o Início
+                </h3>
+                <p class="rec-description">
+                    Arquitetar o sistema pensando em multi-tenancy e customização de marca. Grandes contratos
+                    white-label podem financiar toda a operação e acelerar go-to-market em novos segmentos.
+                </p>
+            </div>
+
+            <div
+                style="background: linear-gradient(90deg, rgba(100, 255, 218, 0.1) 0%, rgba(0, 212, 255, 0.1) 100%); border: 1px solid rgba(100, 255, 218, 0.3); border-radius: 8px; padding: 16px; margin-top: 24px;">
+                <div style="display: flex; gap: 12px; margin-bottom: 12px;">
+                    <div
+                        style="background: var(--TM-neon-green); border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                        <svg width="24" height="24" fill="none" stroke="#0A1628" viewBox="0 0 24 24" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                            <polyline points="22 4 12 14.01 9 11.01" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h4
+                            style="color: var(--TM-neon-green); font-weight: 700; font-size: 1.125rem; margin-bottom: 8px;">
+                            Veredito Final</h4>
+                        <p style="color: var(--TM-text-primary); font-size: 0.875rem; line-height: 1.6;">
+                            O ecossistema MAFFENG tem <strong>forte viabilidade de mercado</strong> com diferenciais
+                            competitivos claros. O momento é favorável para entrada agressiva, mas exige execução
+                            disciplinada em três pilares: validação rigorosa do produto, go-to-market focado em nichos
+                            de alto valor e construção de marca premium desde o dia 1.
+                        </p>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap;">
+                    <span class="badge badge-muito-alto">Potencial: MUITO ALTO</span>
+                    <span class="badge badge-alto">Viabilidade: ALTA</span>
+                    <span class="badge badge-medio">Risco: MÉDIO</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>Análise de Mercado e Concorrência - Ecossistema <span class="footer-highlight">MAFFENG</span></p>
+            <p style="margin-top: 8px;">Documento Estratégico Confidencial | © 2025 TM – Sempre Tecnologia</p>
+        </div>
+    </div>
+
+    <script>
+        function toggleSection(sectionId) {
+            const content = document.getElementById(sectionId);
+            content.classList.toggle('active');
+        }
+
+        // Inicializar primeira seção aberta
+        document.addEventListener('DOMContentLoaded', () => {
+            const firstSection = document.querySelector('.section-content');
+            if (firstSection) {
+                firstSection.classList.add('active');
+            }
+        });
+    </script>
+</body>
+
+</html>

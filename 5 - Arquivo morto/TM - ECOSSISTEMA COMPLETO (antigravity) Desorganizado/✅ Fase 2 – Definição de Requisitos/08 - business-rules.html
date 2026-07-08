@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Rules - MAFFENG TM</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700&family=Inter:wght@400;500;600&family=Roboto+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../✅ Fase 3 – Design e Experiência do Usuário/design-system/index.css">
+    <style>
+        body {
+            padding: 40px 20px;
+            background: var(--TM-gradient-bg);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding-bottom: 40px;
+            border-bottom: 2px solid var(--TM-card-border);
+        }
+
+        h1 {
+            font-family: var(--font-heading);
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+            background: linear-gradient(90deg, var(--TM-neon-green), var(--TM-cyan-vibrant));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h2 {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--TM-neon-green);
+            margin-bottom: 24px;
+        }
+
+        h3 {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--TM-cyan-vibrant);
+            margin: 32px 0 16px 0;
+        }
+
+        .section {
+            background: var(--TM-card-bg);
+            border: 1px solid var(--TM-card-border);
+            border-radius: 8px;
+            padding: 32px;
+            margin-bottom: 40px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .rule-card {
+            background: var(--TM-navy-medium);
+            border: 1px solid var(--TM-border-subtle);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            border-left: 4px solid var(--TM-cyan-vibrant);
+        }
+
+        .rule-id {
+            display: inline-block;
+            background: var(--TM-neon-green);
+            color: var(--TM-navy-deep);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 700;
+            font-family: var(--font-mono);
+            margin-bottom: 12px;
+        }
+
+        .rule-title {
+            font-family: var(--font-heading);
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--TM-text-primary);
+            margin-bottom: 12px;
+        }
+
+        .rule-desc {
+            font-size: 14px;
+            color: var(--TM-text-secondary);
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .rule-formula {
+            background: rgba(10, 22, 40, 0.8);
+            padding: 12px;
+            border-radius: 4px;
+            font-family: var(--TM-font-mono);
+            font-size: 14px;
+            color: var(--TM-neon-green);
+            margin: 12px 0;
+            letter-spacing: 0.02em;
+        }
+
+        .rule-example {
+            background: rgba(0, 212, 255, 0.1);
+            padding: 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            color: var(--TM-text-primary);
+            margin-top: 12px;
+            border-left: 3px solid var(--TM-cyan-vibrant);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--TM-card-border);
+        }
+
+        th {
+            background: rgba(10, 22, 40, 0.5);
+            color: var(--TM-text-secondary);
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        td {
+            color: var(--TM-text-primary);
+            font-size: 14px;
+        }
+
+        code {
+            background: rgba(100, 255, 218, 0.1);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: var(--font-mono);
+            color: var(--TM-neon-green);
+            font-size: 14px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .badge-critical {
+            background: rgba(255, 107, 107, 0.2);
+            color: var(--TM-error);
+        }
+
+        .badge-high {
+            background: rgba(255, 165, 0, 0.2);
+            color: var(--TM-warning);
+        }
+
+        .badge-medium {
+            background: rgba(0, 212, 255, 0.2);
+            color: var(--TM-cyan-vibrant);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Business Rules</h1>
+            <p style="color: var(--TM-text-secondary); font-size: 18px;">TM Gerenciador de O.S. - Regras de Negócio
+                Consolidadas</p>
+            <p style="margin-top: 12px; color: var(--TM-text-secondary); font-size: 14px;">Versão 1.0 | Última
+                atualização: Novembro 2025</p>
+        </header>
+
+        <!-- Cálculo de SLA -->
+        <section class="section">
+            <h2>1. Cálculo de SLA (Service Level Agreement)</h2>
+            <p style="color: var(--TM-text-secondary); margin-bottom: 24px;">Regras para cálculo e monitoramento do
+                prazo de conclusão de Ordens de Serviço.</p>
+
+            <div class="rule-card">
+                <span class="rule-id">BR-001</span>
+                <div class="rule-title">Cálculo de Prazo de O.S.</div>
+                <div class="rule-desc">
+                    O prazo de uma O.S. é calculado a partir da data de criação + número de dias úteis configurado por
+                    tipo de serviço.
+                </div>
+                <div class="rule-formula">
+                    prazo = data_criacao + dias_uteis(tipo_servico)
+                </div>
+                <div class="rule-example">
+                    <strong>Exemplo:</strong> O.S. criada em 2025-11-01 (sexta)<br>
+                    Tipo: "Levantamento Fotográfico" (prazo padrão: 5 dias úteis)<br>
+                    Prazo: 2025-11-08 (sexta seguinte, desconsiderando fim de semana)
+                </div>
+            </div>
+
+            <div class="rule-card">
+                <span class="rule-id">BR-002</span>
+                <div class="rule-title">Status de Risco de SLA</div>
+                <div class="rule-desc">
+                    O sistema deve alertar quando uma O.S. está próxima do vencimento ou já vencida.
+                </div>
+                <table>
+                    <tr>
+                        <th>Condição</th>
+                        <th>Status</th>
+                        <th>Ação</th>
+                    </tr>
+                    <tr>
+                        <td>Faltam > 3 dias</td>
+                        <td><span class="badge"
+                                style="background: rgba(100, 255, 218, 0.2); color: var(--TM-neon-green);">No
+                                Prazo</span></td>
+                        <td>Nenhuma</td>
+                    </tr>
+                    <tr>
+                        <td>Faltam 1-3 dias</td>
+                        <td><span class="badge badge-medium">Atenção</span></td>
+                        <td>Badge amarelo no dashboard</td>
+                    </tr>
+                    <tr>
+                        <td>Faltam < 24h</td>
+                        <td><span class="badge badge-high">Urgente</span></td>
+                        <td>Notificação para gerente + técnico</td>
+                    </tr>
+                    <tr>
+                        <td>Vencida</td>
+                        <td><span class="badge badge-critical">Atrasada</span></td>
+                        <td>Notificação crítica + email</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="rule-card">
+                <span class="rule-id">BR-003</span>
+                <div class="rule-title">Exceções de Prazo</div>
+                <div class="rule-desc">
+                    Gerentes podem estender ou redefinir o prazo de uma O.S. com justificativa obrigatória.
+                </div>
+                <div class="rule-example">
+                    <strong>Validação:</strong> Justificativa mínima de 20 caracteres<br>
+                    <strong>Limitação:</strong> Extensão máxima de +7 dias úteis<br>
+                    <strong>Auditoria:</strong> Alteração registrada em <code>status_os</code>
+                </div>
+            </div>
+        </section>
+
+        <!-- Validação de Dados -->
+        <section class="section">
+            <h2>2. Validação de Dados</h2>
+            <p style="color: var(--TM-text-secondary); margin-bottom: 24px;">Regras de validação para garantir
+                integridade dos dados.</p>
+
+            <div class="rule-card">
+                <span class="rule-id">BR-010</span>
+                <div class="rule-title">Validação de CEP</div>
+                <div class="rule-desc">
+                    Todo CEP deve ser válido e estar no formato 00000-000.
+                </div>
+                <div class="rule-formula">
+                    regex: /^\d{5}-?\d{3}$/
+                </div>
+                <div class="rule-example">
+                    <strong>Válidos:</strong> 01310-100, 01310100<br>
+                    <strong>Inválidos:</strong> 1234, 12345-67, abc12-345
+                </div>
+            </div>
+
+            <div class="rule-card">
+                <span class="rule-id">BR-011</span>
+                <div class="rule-title">Unicidade de Número de O.S.</div>
+                <div class="rule-desc">
+                    Cada número de O.S. deve ser único por contrato. Não pode haver duplicatas.
+                </div>
+                <div class="rule-formula">
+                    UNIQUE CONSTRAINT (numero_os, contrato_id)
+                </div>
+                <div class="rule-example">
+                    <strong>Erro ao importar:</strong> "O.S. OS-1234 já existe no contrato CTR-2025-001"
+                </div>
+            </div>
+
+            <div class="rule-card">
+                <span class="rule-id">BR-012</span>
+                <div class="rule-title">Campos Obrigatórios na Importação</div>
+                <div class="rule-desc">
+                    Na importação via Excel, os seguintes campos são obrigatórios:
+                </div>
+                <table>
+                    <tr>
+                        <th>Campo</th>
+                        <th>Tipo</th>
+                        <th>Validação</th>
+                    </tr>
+                    <tr>
+                        <td>Número da O.S.</td>
+                        <td>String</td>
+                        <td>Não vazio, máx 50 caracteres</td>
+                    </tr>
+                    <tr>
+                        <td>Endereço</td>
+                        <td>String</td>
+                        <td>Mínimo 10 caracteres</td>
+                    </tr>
+                    <tr>
+                        <td>CEP</td>
+                        <td>String</td>
+                        <td>Formato 00000-000</td>
+                    </tr>
+                    <tr>
+                        <td>Tipo de Serviço</td>
+                        <td>String</td>
+                        <td>Deve estar na lista pré-definida</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- Atribuição -->
+        <section class="section">
+            <h2>3. Atribuição de Ordens de Serviço</h2>
+            <p style="color: var(--TM-text-secondary); margin-bottom: 24px;">Regras para distribuição de O.S. para
+                técnicos.</p>
+
+            <div class="rule-card">
+                <span class="rule-id">BR-020</span>
+                <div class="rule-title">Carga Máxima por Técnico</div>
+                <div class="rule-desc">
+                    Um técnico pode ter no máximo 10 O.S. em andamento simultaneamente (status != "concluída" |
+                    "cancelada").
+                </div>
+                <div class="rule-formula">
+                    COUNT(ordens_servico WHERE tecnico_id = X AND status IN ('distribuida', 'em_campo',
+                    'levantamento_enviado')) <= 10 </div>
+                        <div class="rule-example">
+                            <strong>Erro ao atribuir:</strong> "Técnico João Silva já possui 10 O.S. em andamento.
+                            Conclua ou redistribua antes de atribuir novas."
+                        </div>
+                </div>
+
+                <div class="rule-card">
+                    <span class="rule-id">BR-021</span>
+                    <div class="rule-title">Atribuição Apenas para Técnicos Ativos</div>
+                    <div class="rule-desc">
+                        Apenas técnicos com status "ativo = true" podem receber novas O.S.
+                    </div>
+                    <div class="rule-example">
+                        <strong>Validação:</strong> Verificar campo <code>usuarios.ativo</code> antes de atribuir<br>
+                        <strong>UI:</strong> Técnicos inativos aparecem desabilitados na lista de seleção
+                    </div>
+                </div>
+
+                <div class="rule-card">
+                    <span class="rule-id">BR-022</span>
+                    <div class="rule-title">Reatribuição de O.S.</div>
+                    <div class="rule-desc">
+                        Uma O.S. pode ser reatribuída para outro técnico, mas apenas se ainda não foi concluída.
+                    </div>
+                    <div class="rule-example">
+                        <strong>Permitido:</strong> O.S. com status "distribuida", "em_campo"<br>
+                        <strong>Bloqueado:</strong> O.S. com status "validada", "concluida", "cancelada"<br>
+                        <strong>Histórico:</strong> Mudança de técnico registrada em <code>status_os</code>
+                    </div>
+                </div>
+        </section>
+
+        <!-- Validação de Pacotes -->
+        <section class="section">
+            <h2>4. Validação de Pacotes de Levantamento</h2>
+            <p style="color: var(--TM-text-secondary); margin-bottom: 24px;">Regras para validação de pacotes enviados
+                por técnicos.</p>
+
+            <div class="rule-card">
+                <span class="rule-id">BR-030</span>
+                <div class="rule-title">Número Mínimo de Fotos</div>
+                <div class="rule-desc">
+                    Um pacote de levantamento deve conter ao menos 3 fotos para ser considerado válido.
+                </div>
+                <div class="rule-formula">
+                    COUNT(fotos_levantamento WHERE pacote_id = X) >= 3
+                </div>
+                <div class="rule-example">
+                    <strong>Frontend:</strong> Botão "Enviar Pacote" desabilitado se < 3 fotos<br>
+                        <strong>Backend:</strong> Validação no endpoint antes de criar pacote
+                </div>
+            </div>
+
+            <div class="rule-card">
+                <span class="rule-id">BR-031</span>
+                <div class="rule-title">Tamanho Máximo de Foto</div>
+                <div class="rule-desc">
+                    Cada foto individual não pode exceder 5MB. Fotos maiores devem ser comprimidas no mobile.
+                </div>
+                <div class="rule-example">
+                    <strong>Mobile:</strong> Compressão automática para max 2MB (qualidade 85%)<br>
+                    <strong>Backend:</strong> Rejeita upload se > 5MB
+                </div>
+            </div>
+
+            <div class="rule-card">
+                <span class="rule-id">BR-032</span>
+                <div class="rule-title">Aprovação/Reprovação de Pacote</div>
+                <div class="rule-desc">
+                    Apenas gerentes podem aprovar ou reprovar pacotes. Reprovação exige feedback obrigatório.
+                </div>
+                <table>
+                    <tr>
+                        <th>Ação</th>
+                        <th>Novo Status</th>
+                        <th>Obrigatoriedade de Feedback</th>
+                    </tr>
+                    <tr>
+                        <td>Aprovar</td>
+                        <td>validado</td>
+                        <td>Opcional</td>
+                    </tr>
+                    <tr>
+                        <td>Reprovar</td>
+                        <td>rejeitado</td>
+                        <td><span class="badge badge-critical">Obrigatório</span></td>
+                    </tr>
+                </table>
+                <div class="rule-example">
+                    <strong>Feedback Mínimo:</strong> 20 caracteres<br>
+                    <strong>Notificação:</strong> Técnico recebe notificação push com feedback
+                </div>
+            </div>
+        </section>
+
+        <!-- Permissões -->
+        <section class="section">
+            <h2>5. Regras de Permissões (RBAC)</h2>
+            <p style="color: var(--TM-text-secondary); margin-bottom: 24px;">Regras de acesso baseadas em perfil de
+                usuário.</p>
+
+            <div class="rule-card">
+                <span class="rule-id">BR-040</span>
+                <div class="rule-title">Permissões por Perfil</div>
+                <div class="rule-desc">
+                    Cada perfil de usuário tem permissões específicas de CRUD.
+                </div>
+                <table>
+                    <tr>
+                        <th>Perfil</th>
+                        <th>Criar O.S.</th>
+                        <th>Atribuir O.S.</th>
+                        <th>Validar Pacote</th>
+                        <th>Ver Todas O.S.</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Técnico</strong></td>
+                        <td>❌</td>
+                        <td>❌</td>
+                        <td>❌</td>
+                        <td>❌ (apenas suas)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Gerente</strong></td>
+                        <td>✅</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                        <td>✅ (do contrato)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Admin</strong></td>
+                        <td>✅</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                        <td>✅ (todas)</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="rule-card">
+                <span class="rule-id">BR-041</span>
+                <div class="rule-title">Isolamento por Contrato</div>
+                <div class="rule-desc">
+                    Usuários (exceto admins) só podem ver e gerenciar dados do seu próprio contrato.
+                </div>
+                <div class="rule-formula">
+                    RLS POLICY: usuarios.contrato_id = ordens_servico.contrato_id
+                </div>
+            </div>
+        </section>
+
+        <div
+            style="text-align: center; margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--TM-card-border); color: var(--TM-text-secondary);">
+            <p>Business Rules - MAFFENG TM v1.0</p>
+            <p style="margin-top: 8px; font-size: 14px;">Última atualização: Novembro 2025</p>
+        </div>
+    </div>
+</body>
+
+</html>

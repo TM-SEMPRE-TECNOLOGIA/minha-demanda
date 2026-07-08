@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Direção Visual — Repositório MAFFENG</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Barlow:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:         #0C0C0F;
+    --surface:    #141419;
+    --surface-2:  #1C1C24;
+    --border:     #28282F;
+    --accent:     #FF5E1A;
+    --accent-dim: rgba(255,94,26,0.12);
+    --text:       #EEEEF2;
+    --muted:      #7878A0;
+    --green:      #22C55E;
+    --blue:       #3B82F6;
+    --radius:     6px;
+    --radius-lg:  12px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 40px 24px;
+  }
+
+  .page-header { text-align: center; margin-bottom: 40px; }
+  .tag {
+    font-family: 'Oswald', sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+  }
+  .subtitle {
+    font-size: 14px;
+    color: var(--muted);
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.2s, transform 0.2s;
+    position: relative;
+  }
+  .card:hover { border-color: var(--muted); transform: translateY(-2px); }
+  .card.selected {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 1px var(--accent), 0 0 20px rgba(255,94,26,0.15);
+  }
+  .card.selected::before {
+    content: '✓ Selecionado';
+    position: absolute;
+    top: 8px; right: 10px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-dim);
+    padding: 2px 8px;
+    border-radius: 4px;
+    z-index: 10;
+  }
+
+  .card-image {
+    min-height: 180px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .card-body {
+    padding: 16px 18px;
+  }
+  .card-body h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: 0.3px;
+    margin-bottom: 6px;
+  }
+  .card-body p {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="tag">TM Sempre Tecnologia · Brainstorm</div>
+  <h2>Qual direção visual para o novo REPOSITÓRIO?</h2>
+  <p class="subtitle">Escolha a personalidade do design — o conteúdo é o mesmo, o estilo muda tudo</p>
+</div>
+
+<div class="cards">
+
+  <div class="card" data-choice="A" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#0D1117;padding:16px;font-family:monospace;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
+        <div style="width:8px;height:8px;border-radius:50%;background:#FF5E1A;"></div>
+        <span style="color:#FF5E1A;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:700;">TM · MAFFENG</span>
+      </div>
+      <div style="color:#EEEEF2;font-size:16px;font-weight:800;margin-bottom:4px;font-family:'Oswald',sans-serif;letter-spacing:0.5px;">Repositório de Descrições</div>
+      <div style="color:#7878A0;font-size:11px;margin-bottom:16px;font-family:'JetBrains Mono',monospace;">Base de dados · Regras · Jun/2026</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:12px;">
+        <div style="background:#141419;border:1px solid #28282F;border-radius:6px;padding:8px;text-align:center;">
+          <div style="color:#FF5E1A;font-size:18px;font-weight:800;font-family:'Oswald',sans-serif;">29</div>
+          <div style="color:#7878A0;font-size:9px;letter-spacing:1px;font-family:'Oswald',sans-serif;">PROJETOS</div>
+        </div>
+        <div style="background:#141419;border:1px solid #28282F;border-radius:6px;padding:8px;text-align:center;">
+          <div style="color:#FF5E1A;font-size:18px;font-weight:800;font-family:'Oswald',sans-serif;">6</div>
+          <div style="color:#7878A0;font-size:9px;letter-spacing:1px;font-family:'Oswald',sans-serif;">CONTRATOS</div>
+        </div>
+        <div style="background:#141419;border:1px solid #28282F;border-radius:6px;padding:8px;text-align:center;">
+          <div style="color:#FF5E1A;font-size:18px;font-weight:800;font-family:'Oswald',sans-serif;">8</div>
+          <div style="color:#7878A0;font-size:9px;letter-spacing:1px;font-family:'Oswald',sans-serif;">PLANILHAS</div>
+        </div>
+      </div>
+      <div style="background:#141419;border:1px solid #28282F;border-radius:4px;padding:8px;">
+        <span style="color:#22C55E;font-size:10px;font-family:'JetBrains Mono',monospace;">📁 00 - Enviados/ </span><span style="color:#7878A0;font-size:10px;font-family:'JetBrains Mono',monospace;">← 29 projetos</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Command Center</h3>
+      <p>Dark mode total · Industrial Command · Laranjado TM como acento neon · Muito legível em telas escuras · Ferramenta profissional de ops</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="B" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#FFFFFF;padding:16px;font-family:'Barlow',sans-serif;border-bottom:1px solid #F0F0F0;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+        <div style="width:32px;height:32px;background:#FFF3E8;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;">📋</div>
+        <div>
+          <div style="font-size:13px;font-weight:700;color:#111;font-family:'Oswald',sans-serif;letter-spacing:0.3px;">Repositório MAFFENG</div>
+          <div style="font-size:10px;color:#999;">Descrições · TM Sempre Tecnologia</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap;">
+        <span style="background:#FFF3E8;color:#E8610A;font-size:10px;padding:3px 8px;border-radius:4px;font-weight:600;font-family:'Oswald',sans-serif;">29 projetos</span>
+        <span style="background:#F0FDF4;color:#16A34A;font-size:10px;padding:3px 8px;border-radius:4px;font-weight:600;font-family:'Oswald',sans-serif;">6 contratos</span>
+        <span style="background:#F0F9FF;color:#0284C7;font-size:10px;padding:3px 8px;border-radius:4px;font-weight:600;font-family:'Oswald',sans-serif;">8 planilhas</span>
+      </div>
+      <div style="background:#FAFAFA;border:1px solid #E5E7EB;border-radius:8px;padding:10px;margin-bottom:8px;">
+        <div style="font-size:11px;font-weight:700;color:#111;margin-bottom:6px;font-family:'Oswald',sans-serif;">📁 Enviados</div>
+        <div style="display:flex;justify-content:space-between;font-size:11px;color:#666;margin-bottom:4px;"><span>01 - Janeiro</span><span style="color:#E8610A;">16 projetos</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:11px;color:#666;"><span>02 - Fevereiro</span><span style="color:#E8610A;">5 projetos</span></div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Notion Clean</h3>
+      <p>Fundo branco puro · Tipografia focada · Tags coloridas sutis · Máxima legibilidade de texto · Parece um documento vivo, não um app</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="C" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:linear-gradient(135deg,#1A1A2E 0%,#16213E 50%,#0F3460 100%);padding:16px;font-family:'Barlow',sans-serif;">
+      <div style="text-align:center;margin-bottom:14px;">
+        <div style="font-size:10px;letter-spacing:3px;color:#FF5E1A;text-transform:uppercase;font-weight:700;margin-bottom:4px;font-family:'Oswald',sans-serif;">TM Sempre Tecnologia</div>
+        <div style="font-size:15px;font-weight:800;color:#fff;font-family:'Oswald',sans-serif;letter-spacing:0.5px;">Repositório MAFFENG</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px;">
+        <div style="background:rgba(255,94,26,0.15);border:1px solid rgba(255,94,26,0.3);border-radius:8px;padding:10px;text-align:center;">
+          <div style="color:#FF5E1A;font-size:20px;font-weight:800;font-family:'Oswald',sans-serif;">29</div>
+          <div style="color:rgba(255,255,255,0.5);font-size:9px;letter-spacing:1px;font-family:'Oswald',sans-serif;">PROJETOS</div>
+        </div>
+        <div style="background:rgba(59,130,246,0.15);border:1px solid rgba(59,130,246,0.3);border-radius:8px;padding:10px;text-align:center;">
+          <div style="color:#60A5FA;font-size:20px;font-weight:800;font-family:'Oswald',sans-serif;">6</div>
+          <div style="color:rgba(255,255,255,0.5);font-size:9px;letter-spacing:1px;font-family:'Oswald',sans-serif;">CONTRATOS</div>
+        </div>
+      </div>
+      <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:8px;">
+        <div style="color:rgba(255,255,255,0.4);font-size:9px;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;font-family:'Oswald',sans-serif;">Skills Ativas</div>
+        <div style="display:flex;gap:4px;flex-wrap:wrap;">
+          <span style="background:rgba(255,94,26,0.2);color:#FF5E1A;font-size:9px;padding:2px 6px;border-radius:4px;font-family:'Oswald',sans-serif;letter-spacing:0.5px;">ui-ux-pro-max</span>
+          <span style="background:rgba(59,130,246,0.2);color:#60A5FA;font-size:9px;padding:2px 6px;border-radius:4px;font-family:'Oswald',sans-serif;letter-spacing:0.5px;">impeccable</span>
+          <span style="background:rgba(34,197,94,0.2);color:#22C55E;font-size:9px;padding:2px 6px;border-radius:4px;font-family:'Oswald',sans-serif;letter-spacing:0.5px;">find-skills</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — Glassmorphism Premium</h3>
+      <p>Dark azul-profundo com glassmorphism · Stats com glow · Skills das .agents em destaque visual · Visual de dashboard SaaS moderno</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function toggleSelect(el) {
+  const wasSelected = el.classList.contains('selected');
+  document.querySelectorAll('.card').forEach(c => c.classList.remove('selected'));
+  if (!wasSelected) el.classList.add('selected');
+}
+</script>
+</body>
+</html>

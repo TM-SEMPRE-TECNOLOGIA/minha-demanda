@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pinturas por Contrato — MAFFENG</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700&family=Barlow:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg:       #08080B;
+  --sidebar:  #0E0E12;
+  --surface:  #14141A;
+  --s2:       #1C1C25;
+  --border:   #222229;
+  --accent:   #FF5E1A;
+  --a2:       rgba(255,94,26,0.10);
+  --text:     #E8E8EE;
+  --muted:    #606080;
+  --dim:      #38383F;
+  --green:    #22C55E;
+  --g2:       rgba(34,197,94,0.10);
+  --red:      #EF4444;
+  --r2:       rgba(239,68,68,0.10);
+  --yellow:   #EAB308;
+  --y2:       rgba(234,179,8,0.10);
+  --topbar-h: 54px;
+  --sidebar-w:230px;
+}
+html, body { height: 100%; }
+body { font-family: 'Barlow', sans-serif; background: var(--bg); color: var(--text); }
+
+/* TOPBAR */
+.topbar {
+  position: fixed; top: 0; left: 0; right: 0; height: var(--topbar-h);
+  background: var(--sidebar); border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; padding: 0 16px 0 20px; z-index: 200; gap: 12px;
+}
+.topbar-brand { display: flex; align-items: center; gap: 10px; width: var(--sidebar-w); flex-shrink: 0; padding-right: 12px; border-right: 1px solid var(--border); }
+.topbar-logo { width: 30px; height: 30px; border-radius: 6px; background: var(--accent); display: flex; align-items: center; justify-content: center; font-family: 'Oswald',sans-serif; font-size: 13px; font-weight: 700; color: #000; }
+.topbar-name { font-family: 'Oswald',sans-serif; font-size: 13px; font-weight: 700; color: var(--text); letter-spacing: 0.5px; }
+.topbar-sub  { font-size: 10px; color: var(--muted); margin-top: 1px; }
+.search-wrap { flex: 1; position: relative; max-width: 480px; }
+.search-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--muted); font-size: 13px; pointer-events: none; }
+.search-input {
+  width: 100%; padding: 8px 14px 8px 36px;
+  background: var(--s2); border: 1px solid var(--border); border-radius: 6px;
+  font-family: 'Barlow',sans-serif; font-size: 13px; color: var(--text);
+  transition: border-color .15s;
+}
+.search-input:focus { outline: none; border-color: var(--accent); }
+.search-input::placeholder { color: var(--muted); }
+.topbar-btn {
+  margin-left: auto;
+  font-family: 'Oswald',sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+  padding: 6px 14px; border: 1px solid var(--border); border-radius: 4px;
+  background: transparent; color: var(--muted); cursor: pointer; transition: all .15s; white-space: nowrap;
+}
+.topbar-btn:hover { background: var(--s2); color: var(--text); }
+
+/* LAYOUT */
+.layout { display: flex; margin-top: var(--topbar-h); min-height: calc(100vh - var(--topbar-h)); }
+
+/* SIDEBAR */
+.sidebar {
+  width: var(--sidebar-w); background: var(--sidebar); border-right: 1px solid var(--border);
+  position: fixed; top: var(--topbar-h); bottom: 0; left: 0; overflow-y: auto;
+  display: flex; flex-direction: column; z-index: 90; padding: 8px 0;
+}
+.nav-group { font-family: 'Oswald',sans-serif; font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--dim); padding: 12px 16px 4px; }
+.nav-item {
+  display: flex; align-items: center; gap: 10px; padding: 9px 16px;
+  text-decoration: none; border-left: 2px solid transparent; transition: background .12s; cursor: pointer;
+}
+.nav-item:hover { background: var(--surface); border-left-color: var(--dim); }
+.nav-item.active { background: var(--surface); border-left-color: var(--accent); }
+.nav-num { font-family: 'JetBrains Mono',monospace; font-size: 10px; color: var(--accent); background: var(--a2); padding: 1px 6px; border-radius: 3px; width: 44px; text-align: center; flex-shrink: 0; }
+.nav-title { font-family: 'Oswald',sans-serif; font-size: 11px; font-weight: 600; color: var(--muted); letter-spacing: 0.3px; flex: 1; line-height: 1.2; }
+.nav-item:hover .nav-title, .nav-item.active .nav-title { color: var(--text); }
+.nav-sp2 { font-family: 'Oswald',sans-serif; font-size: 8px; font-weight: 700; letter-spacing: 1px; color: var(--yellow); background: rgba(234,179,8,0.12); padding: 1px 5px; border-radius: 3px; }
+.nav-warn { font-size: 10px; }
+.sidebar-footer { margin-top: auto; padding: 12px 16px; border-top: 1px solid var(--border); font-size: 10px; color: var(--muted); font-family: 'JetBrains Mono',monospace; line-height: 1.5; }
+
+/* CONTENT */
+.content { margin-left: var(--sidebar-w); flex: 1; padding: 32px 40px 80px; max-width: 860px; }
+
+/* NO RESULTS */
+.no-results { text-align: center; padding: 60px 20px; color: var(--muted); font-family: 'Oswald',sans-serif; font-size: 14px; letter-spacing: 1px; display: none; }
+
+/* CONTRACT CARD */
+.contract-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+  margin-bottom: 16px; overflow: hidden;
+  transition: border-color .15s;
+  scroll-margin-top: calc(var(--topbar-h) + 16px);
+}
+.contract-card:hover { border-color: var(--muted); }
+.contract-header {
+  display: flex; align-items: center; gap: 12px;
+  padding: 14px 18px;
+  background: var(--s2); border-bottom: 1px solid var(--border);
+}
+.contract-number {
+  font-family: 'JetBrains Mono',monospace; font-size: 12px; font-weight: 500;
+  color: var(--accent); background: var(--a2); border: 1px solid rgba(255,94,26,0.25);
+  padding: 4px 12px; border-radius: 4px; white-space: nowrap; flex-shrink: 0;
+}
+.contract-title {
+  font-family: 'Oswald',sans-serif; font-size: 15px; font-weight: 700;
+  color: var(--text); letter-spacing: 0.5px; flex: 1;
+}
+.contract-body { padding: 14px 18px; }
+
+/* SERVICE ITEMS */
+.service-item {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 10px 12px; margin-bottom: 6px; background: var(--bg);
+  border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 4px;
+  transition: background .12s;
+}
+.service-item:hover { background: var(--s2); }
+.service-item:last-of-type { margin-bottom: 0; }
+.service-code {
+  font-family: 'JetBrains Mono',monospace; font-size: 12px; font-weight: 500;
+  color: var(--accent); white-space: nowrap; width: 40px; flex-shrink: 0; padding-top: 1px;
+}
+.service-description { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+/* SIGNATURE BOX */
+.signature-box {
+  display: flex; align-items: center; gap: 10px;
+  margin-top: 12px; padding: 10px 12px;
+  background: var(--bg); border: 1px dashed var(--border); border-radius: 4px;
+}
+.signature-title { font-family: 'Oswald',sans-serif; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); flex-shrink: 0; }
+.signature-names { font-size: 12px; color: var(--muted); }
+
+/* FISCAL ALERT */
+.fiscal-alert {
+  margin-top: 12px; background: var(--bg);
+  border: 1px solid var(--border); border-left: 3px solid var(--red); border-radius: 4px;
+  padding: 14px 14px;
+}
+.fiscal-title {
+  font-family: 'Oswald',sans-serif; font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1.5px; color: var(--red); margin-bottom: 10px; display: flex; align-items: center; gap: 8px;
+}
+.fiscal-warning { font-size: 12px; color: var(--red); opacity: 0.7; margin-bottom: 10px; font-style: italic; }
+.fiscal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.fiscal-item { font-size: 12px; color: var(--muted); line-height: 1.6; }
+.fiscal-item strong { color: var(--red); display: block; margin-bottom: 3px; font-size: 11px; font-family: 'Oswald',sans-serif; letter-spacing: 0.3px; }
+.fiscal-footer { margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(239,68,68,0.2); color: var(--red); font-family: 'Oswald',sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; text-align: center; }
+
+/* OBSERVATIONS */
+.observations {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+  margin-top: 8px; overflow: hidden;
+  scroll-margin-top: calc(var(--topbar-h) + 16px);
+}
+.obs-header {
+  padding: 14px 18px; background: var(--s2); border-bottom: 1px solid var(--border);
+  font-family: 'Oswald',sans-serif; font-size: 14px; font-weight: 700;
+  color: var(--text); letter-spacing: 0.5px; text-transform: uppercase;
+}
+.obs-body { padding: 14px 18px; }
+.observation-item {
+  padding: 12px 14px; margin-bottom: 8px;
+  background: var(--bg); border: 1px solid var(--border); border-left: 3px solid var(--accent);
+  border-radius: 4px;
+}
+.observation-item:last-child { margin-bottom: 0; }
+.observation-title {
+  font-family: 'Oswald',sans-serif; font-size: 12px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.5px; color: var(--accent); margin-bottom: 8px;
+}
+.observation-text { font-size: 13px; color: var(--muted); line-height: 1.7; margin-bottom: 5px; }
+.observation-text:last-child { margin-bottom: 0; }
+.highlight { color: var(--accent); font-weight: 600; }
+strong.ok  { color: var(--green); }
+strong.err { color: var(--red); }
+
+/* PRINT FAB */
+.fab-pdf {
+  position: fixed; bottom: 24px; right: 24px;
+  background: var(--accent); color: #000; width: 48px; height: 48px; border-radius: 50%;
+  border: none; cursor: pointer; font-size: 18px;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 20px rgba(255,94,26,0.4); transition: transform .2s, box-shadow .2s; z-index: 300;
+}
+.fab-pdf:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(255,94,26,0.6); }
+
+@media print {
+  .topbar, .sidebar, .fab-pdf { display: none !important; }
+  .content { margin-left: 0 !important; padding: 20px !important; max-width: 100% !important; }
+  body { background: white !important; color: black !important; }
+  .contract-card, .observations { background: none !important; border: 1px solid #000 !important; }
+  .service-item, .observation-item { border: 1px solid #000 !important; border-left: 3px solid #000 !important; background: none !important; }
+}
+</style>
+</head>
+<body>
+
+<button class="fab-pdf" onclick="window.print()" title="Imprimir / PDF">🖨</button>
+
+<header class="topbar">
+  <div class="topbar-brand">
+    <div class="topbar-logo">M</div>
+    <div>
+      <div class="topbar-name">MAFFENG</div>
+      <div class="topbar-sub">Pinturas por Contrato</div>
+    </div>
+  </div>
+  <div class="search-wrap">
+    <span class="search-icon">🔍</span>
+    <input type="text" class="search-input" id="contractSearch" placeholder="Buscar contrato (ex: 2056, Minas Gerais, Divinópolis)..." />
+  </div>
+  <button class="topbar-btn" onclick="window.print()">🖨 PDF</button>
+</header>
+
+<div class="layout">
+  <nav class="sidebar">
+    <div class="nav-group">MG — Minas Gerais</div>
+    <a class="nav-item" href="#c-2056"><span class="nav-num">2056</span><span class="nav-title">Divinópolis</span></a>
+    <a class="nav-item" href="#c-2057"><span class="nav-num">2057</span><span class="nav-title">Varginha</span><span class="nav-warn">⚠</span></a>
+    <a class="nav-item" href="#c-2626"><span class="nav-num">2626</span><span class="nav-title">Salinas / S. Francisco</span></a>
+    <a class="nav-item" href="#c-2627"><span class="nav-num">2627</span><span class="nav-title">G. Valadares / Joaíma</span><span class="nav-warn">⚠</span></a>
+
+    <div class="nav-group">MS — Mato Grosso do Sul</div>
+    <a class="nav-item" href="#c-6122"><span class="nav-num">6122</span><span class="nav-title">Campo Grande / Aquidauana</span></a>
+
+    <div class="nav-group">SP — São Paulo</div>
+    <a class="nav-item" href="#c-0908"><span class="nav-num">0908</span><span class="nav-title">São José dos Campos</span></a>
+    <a class="nav-item" href="#c-1565"><span class="nav-num">1565</span><span class="nav-title">S. J. Rio Preto / Ribeirão</span><span class="nav-sp2">SP2</span></a>
+
+    <div class="nav-group">MT — Mato Grosso</div>
+    <a class="nav-item" href="#c-1507"><span class="nav-num">1507</span><span class="nav-title">Cuiabá</span></a>
+    <a class="nav-item" href="#c-3575"><span class="nav-num">3575</span><span class="nav-title">Tangará / Sinop / Barra</span></a>
+
+    <div class="nav-group">Geral</div>
+    <a class="nav-item" href="#obs"><span class="nav-num" style="background:var(--g2);color:var(--green);">Obs</span><span class="nav-title">Observações Gerais</span></a>
+
+    <div class="sidebar-footer">
+      Thiago Nascimento<br>
+      Atualizado 06/05/2026
+    </div>
+  </nav>
+
+  <main class="content">
+    <div id="noResultsMessage" class="no-results">Nenhum contrato encontrado.</div>
+
+    <!-- 2056 DIVINÓPOLIS -->
+    <div class="contract-card" id="c-2056">
+      <div class="contract-header">
+        <div class="contract-number">Nº 2056</div>
+        <div class="contract-title">MINAS GERAIS — DIVINÓPOLIS</div>
+      </div>
+      <div class="contract-body">
+        <div class="service-item"><span class="service-code">17.6</span><span class="service-description">Teto, muros e paredes EXTERNAS</span></div>
+        <div class="service-item"><span class="service-code">17.11</span><span class="service-description">TODA a pintura INTERNA</span></div>
+        <div class="signature-box">
+          <span class="signature-title">Assinaturas:</span>
+          <span class="signature-names">Civil: Luiza &nbsp;·&nbsp; Elétrica: André Capanema</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2057 VARGINHA -->
+    <div class="contract-card" id="c-2057">
+      <div class="contract-header">
+        <div class="contract-number">Nº 2057</div>
+        <div class="contract-title">MINAS GERAIS — VARGINHA</div>
+      </div>
+      <div class="contract-body">
+        <div class="service-item"><span class="service-code">17.6</span><span class="service-description">Teto e paredes EXTERNAS</span></div>
+        <div class="service-item"><span class="service-code">17.10</span><span class="service-description">Toda pintura em muros (APENAS divisão com terreno vizinho)</span></div>
+        <div class="service-item"><span class="service-code">17.11</span><span class="service-description">TODA a pintura INTERNA</span></div>
+        <div class="fiscal-alert">
+          <div class="fiscal-title">⚠ Restrições do Fiscal — Carol</div>
+          <div class="fiscal-warning">Extremamente exigente e minuciosa (principalmente preventivas).</div>
+          <div class="fiscal-grid">
+            <div class="fiscal-item"><strong>Vinílico / porcelanato / carpete:</strong>Só trocar se realmente ruim. Se não trocar, informar bom estado.</div>
+            <div class="fiscal-item"><strong>Fotos:</strong>Nada de "acho que está ruim". Se ruim, foto clara + justificativa técnica.</div>
+            <div class="fiscal-item"><strong>Sujeira pontual:</strong>Não lançar pintura e não lançar IN LOCO.</div>
+            <div class="fiscal-item"><strong>SCAP:</strong>Nunca orientar gerente a abrir SCAP.</div>
+            <div class="fiscal-item"><strong>Piso:</strong>Sempre bem justificado. Fotos obrigatórias, inclusive piso elevado.</div>
+            <div class="fiscal-item"><strong>Medidas:</strong>Somente medidas reais — nada de números redondos falsos.</div>
+          </div>
+          <div class="fiscal-footer">⚠ Qualquer erro gera questionamento direto da fiscalização.</div>
+        </div>
+        <div class="signature-box">
+          <span class="signature-title">Assinaturas:</span>
+          <span class="signature-names">Civil: Ygor &nbsp;·&nbsp; Elétrica: André Capanema</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2626 SALINAS -->
+    <div class="contract-card" id="c-2626">
+      <div class="contract-header">
+        <div class="contract-number">Nº 2626</div>
+        <div class="contract-title">MINAS GERAIS — SALINAS E SÃO FRANCISCO</div>
+      </div>
+      <div class="contract-body">
+        <div class="service-item"><span class="service-code">17.6</span><span class="service-description">Teto, muros e paredes EXTERNAS</span></div>
+        <div class="service-item"><span class="service-code">17.11</span><span class="service-description">TODA a pintura INTERNA</span></div>
+        <div class="signature-box">
+          <span class="signature-title">Assinaturas:</span>
+          <span class="signature-names">Civil: Ygor &nbsp;·&nbsp; Elétrica: Mateus Drumond</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2627 GOV. VALADARES -->
+    <div class="contract-card" id="c-2627">
+      <div class="contract-header">
+        <div class="contract-number">Nº 2627</div>
+        <div class="contract-title">MINAS GERAIS — GOV. VALADARES E JOAÍMA</div>
+      </div>
+      <div class="contract-body">
+        <div class="service-item"><span class="service-code">17.6</span><span class="service-description">Teto e paredes EXTERNAS</span></div>
+        <div class="service-item"><span class="service-code">17.10</span><span class="service-description">Toda pintura em muros (APENAS divisão com terreno vizinho)</span></div>
+        <div class="service-item"><span class="service-code">17.11</span><span class="service-description">TODA a pintura INTERNA</span></div>
+        <div class="fiscal-alert">
+          <div class="fiscal-title">⚠ Restrições do Fiscal — Carol</div>
+          <div class="fiscal-warning">Extremamente exigente e minuciosa (principalmente preventivas).</div>
+          <div class="fiscal-grid">
+            <div class="fiscal-item"><strong>Vinílico / porcelanato / carpete:</strong>Só trocar se realmente ruim. Se não trocar, informar bom estado.</div>
+            <div class="fiscal-item"><strong>Fotos:</strong>Foto clara + justificativa técnica se estiver ruim.</div>
+            <div class="fiscal-item"><strong>Sujeira pontual:</strong>Não lançar pintura e não lançar IN LOCO.</div>
+            <div class="fiscal-item"><strong>SCAP:</strong>Nunca orientar gerente a abrir SCAP.</div>
+            <div class="fiscal-item"><strong>Piso:</strong>Sempre bem justificado. Fotos obrigatórias.</div>
+            <div class="fiscal-item"><strong>Medidas:</strong>Somente medidas reais.</div>
+          </div>
+          <div class="fiscal-footer">⚠ Qualquer erro gera questionamento direto da fiscalização.</div>
+        </div>
+        <div class="signature-box">
+          <span class="signature-title">Assinaturas:</span>
+          <span class="signature-names">Civil: Rafaella &nbsp;·&nbsp; Elétrica: Oswair</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6122 CAMPO GRANDE -->
+    <div class="contract-card" id="c-6122">
+      <div class="contract-header">
+        <div class="contract-number">Nº 6122</div>
+        <div class="contract-title">MATO GROSSO DO SUL — CAMPO GRANDE E AQUIDAUANA</div>
+      </div>
+      <div class="contract-body">
+        <div class="service-item"><span class="service-code">17.4</span><span class="service-description">Todo o restante das paredes internas e externas. Pintura em FORRO (TETO) também.</span></div>
+        <div class="service-item"><span class="service-code">17.10</span><span class="service-description">Pintura de muros.</span></div>
+        <div class="service-item"><span class="service-code">17.11</span><span class="service-description">Pintura de paredes internas e/ou externas COLORIDAS (azul ou amarelo).</span></div>
+        <div class="observation-item" style="margin-top:12px; border-left-color:var(--yellow);">
+          <div class="observation-title" style="color:var(--yellow);">⚠ Remanejamento Mobiliário — Obrigatório</div>
+          <div class="observation-text">Indicar a quantidade exata de cada item movimentado (ex.: X cadeiras, Y extintores, Z mesas).</div>
+        </div>
+        <div class="signature-box">
+          <span class="signature-title">Assinaturas:</span>
+          <span class="signature-names">Civil: Ygor ou Felipe Rocha &nbsp;·&nbsp; Elétrica: André Luiz</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 0908 SÃO JOSÉ DOS CAMPOS -->
+    <div class="contract-card" id="c-0908">
+      <div class="contract-header">
+        <div class="contract-number">Nº 0908</div>
+        <div class="contract-title">SÃO PAULO — SÃO JOSÉ DOS CAMPOS</div>
+      </div>
+      <div class="contract-body">
+        <div class="service-item"><span class="service-code">17.6</span><span class="service-description">Teto</span></div>
+        <div class="service-item"><span class="service-code">17.4</span><span class="service-description">Todo o restante das paredes internas e externas e MUROS</span></div>
+        <div class="fiscal-alert">
+          <div class="fiscal-title">⚠ Atenção — Relatório São Paulo 0908</div>
+          <div class="fiscal-grid">
+            <div class="fiscal-item"><strong>Ordem dos detalhes:</strong>Colocar os detalhes das paredes logo abaixo dela. NÃO colocar todos no final do tópico.</div>
+            <div class="fiscal-item"><strong style="color:var(--red);">🚨 Formato de Orçamentos:</strong>Planilhas de orçamento devem ser enviadas no portal APENAS em PDF com ASSINATURA ELETRÔNICA. NÃO enviar mais em Excel.</div>
+          </div>
+        </div>
+        <div class="signature-box">
+          <span class="signature-title">Assinaturas:</span>
+          <span class="signature-names">Civil: Ygor &nbsp;·&nbsp; Elétrica: André Luiz</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1565 RIO PRETO (SP2) -->
+    <div class="contract-card" id="c-1565" style="border-color:rgba(234,179,8,0.3);">
+      <div class="contract-header" style="border-bottom-color:rgba(234,179,8,0.2);">
+        <div class="contract-number" style="background:rgba(234,179,8,0.10);color:var(--yellow);border-color:rgba(234,179,8,0.3);">Nº 1565</div>
+        <div class="contract-title">SÃO PAULO — SÃO JOSÉ DO RIO PRETO E RIBEIRÃO PRETO</div>
+        <span style="font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:1.5px;color:var(--yellow);background:rgba(234,179,8,0.10);padding:3px 8px;border-radius:3px;border:1px solid rgba(234,179,8,0.3);">SP2 ESPECIAL</span>
+      </div>
+      <div class="contract-body">
+        <div class="service-item" style="border-left-color:var(--yellow);"><span class="service-code" style="color:var(--yellow);">17.10</span><span class="service-description">TODOS OS MUROS</span></div>
+        <div class="service-item" style="border-left-color:var(--yellow);"><span class="service-code" style="color:var(--yellow);">17.4</span><span class="service-description">TODAS as paredes EXTERNAS</span></div>
+        <div class="service-item" style="border-left-color:var(--yellow);"><span class="service-code" style="color:var(--yellow);">17.6</span><span class="service-description">TODA a pintura acrílica INTERNA e em TETOS</span></div>
+        <div class="fiscal-alert">
+          <div class="fiscal-title">⚠ Atenção — Relatório São Paulo 1565 (SP2)</div>
+          <div class="fiscal-grid">
+            <div class="fiscal-item"><strong>Ordem dos detalhes:</strong>Colocar os detalhes das paredes logo abaixo dela.</div>
+            <div class="fiscal-item"><strong style="color:var(--red);">🚨 Formato de Orçamentos:</strong>Planilha em PDF assinada DIGITALMENTE com CARIMBO pelos responsáveis técnicos. A planilha deve ocupar a PÁGINA INTEIRA do PDF. NÃO enviar em Excel.</div>
+          </div>
+        </div>
+        <div class="signature-box">
+          <span class="signature-title">Assinaturas:</span>
+          <span class="signature-names">Civil: Ygor &nbsp;·&nbsp; Elétrica: André Luiz</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1507 CUIABÁ -->
+    <div class="contract-card" id="c-1507">
+      <div class="contract-header">
+        <div class="contract-number">Nº 1507</div>
+        <div class="contract-title">MATO GROSSO — CUIABÁ</div>
+      </div>
+      <div class="contract-body">
+        <div class="service-item"><span class="service-code">17.11</span><span class="service-description">Pintura colorida (azul ou amarelo)</span></div>
+        <div class="service-item"><span class="service-code">17.6</span><span class="service-description">Teto</span></div>
+        <div class="service-item"><span class="service-code">17.4</span><span class="service-description">Todo o restante das paredes internas e externas e MUROS</span></div>
+        <div class="signature-box">
+          <span class="signature-title">Assinaturas:</span>
+          <span class="signature-names">Civil: Ygor &nbsp;·&nbsp; Elétrica: André Luiz</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3575 TANGARÁ -->
+    <div class="contract-card" id="c-3575">
+      <div class="contract-header">
+        <div class="contract-number">Nº 3575</div>
+        <div class="contract-title">MATO GROSSO — TANGARÁ DA SERRA, SINOP E BARRA DO GARÇAS</div>
+      </div>
+      <div class="contract-body">
+        <div class="service-item"><span class="service-code">17.11</span><span class="service-description">Pintura colorida (azul ou amarelo)</span></div>
+        <div class="service-item"><span class="service-code">17.6</span><span class="service-description">Teto</span></div>
+        <div class="service-item"><span class="service-code">17.4</span><span class="service-description">Todo o restante das paredes internas e externas e MUROS</span></div>
+        <div class="signature-box">
+          <span class="signature-title">Assinaturas:</span>
+          <span class="signature-names">Civil: Ygor &nbsp;·&nbsp; Elétrica: André Luiz</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- OBSERVAÇÕES GERAIS -->
+    <div class="observations" id="obs">
+      <div class="obs-header">Observações Gerais — Todos os Contratos</div>
+      <div class="obs-body">
+
+        <div class="observation-item">
+          <div class="observation-title">Item 29.24:</div>
+          <div class="observation-text">O valor total deve ser <span class="highlight">dividido por 10</span>, e em seguida <span class="highlight">dividido por 2</span>.</div>
+        </div>
+
+        <div class="observation-item">
+          <div class="observation-title">Placas de Forro de Fibra Mineral:</div>
+          <div class="observation-text">Sempre que houver <span class="highlight">mais de 5 placas</span> a substituir, adicionar unidades extras ao total levantado.</div>
+          <div class="observation-text"><span class="highlight">Exemplo:</span> se forem necessárias 17 placas → levantar 21 unidades.</div>
+        </div>
+
+        <div class="observation-item">
+          <div class="observation-title">Substituição de Lâmpadas Fluorescentes:</div>
+          <div class="observation-text">Sempre <span class="highlight">substituir todas as lâmpadas fluorescentes por LED</span>, mesmo que apenas algumas estejam queimadas.</div>
+        </div>
+
+        <div class="observation-item" style="border-left-color:var(--red);">
+          <div class="observation-title" style="color:var(--red);">Troca de Calha — Regra Obrigatória</div>
+          <div class="observation-text">No serviço de troca de calha, é OBRIGATÓRIO lançar <span class="highlight">SEMPRE o ITEM 7.14</span>, sendo <span class="highlight">PROIBIDO lançar o ITEM 7.8</span>.</div>
+          <div class="observation-text" style="margin-top:8px;">
+            <strong class="err">❌ ITEM 7.8 (PROIBIDO para troca):</strong><br>
+            Considerado em metros lineares, desenvolvimento de 33 cm — modelo que NÃO é mais utilizado.
+          </div>
+          <div class="observation-text" style="margin-top:8px;">
+            <strong class="ok">✅ ITEM 7.14 (ÚNICO válido):</strong><br>
+            Considerado em m² — único item válido para troca de calhas. Desenvolvimento mínimo: <span class="highlight">0,60 m (60 cm)</span>.
+          </div>
+          <div class="observation-text" style="margin-top:8px;padding:10px;background:var(--r2);border-radius:4px;">
+            <strong style="color:var(--red);">⚠ Memorial de Cálculo:</strong> COMPRIMENTO da calha × LARGURA (desenvolvimento mínimo de 0,60 m) → lançar exclusivamente no ITEM 7.14.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script>
+// Busca
+document.getElementById('contractSearch').addEventListener('input', function(e) {
+  const q = e.target.value.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"");
+  const cards = document.querySelectorAll('.contract-card, .observations');
+  let any = false;
+  cards.forEach(card => {
+    const t = card.innerText.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"");
+    const show = q.length === 0 || t.includes(q);
+    card.style.display = show ? '' : 'none';
+    if (show) any = true;
+  });
+  document.getElementById('noResultsMessage').style.display = (!any && q.length > 0) ? 'block' : 'none';
+});
+
+// Sidebar active highlight
+const sections = [...document.querySelectorAll('.contract-card, .observations')];
+const navItems = document.querySelectorAll('.nav-item');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      navItems.forEach(item => {
+        item.classList.remove('active');
+        if (item.getAttribute('href') === '#' + id) item.classList.add('active');
+      });
+    }
+  });
+}, { rootMargin: `-54px 0px -60% 0px`, threshold: 0 });
+sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>

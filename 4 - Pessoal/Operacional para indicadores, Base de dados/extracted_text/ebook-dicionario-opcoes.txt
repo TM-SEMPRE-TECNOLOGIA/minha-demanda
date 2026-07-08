@@ -1,0 +1,204 @@
+Dicionário 
+das Opções
+Luiz Fernando Roxo
+
+É economista especializado em opções e tem 
+mais de 20 anos de mercado financeiro. Apre-
+senta todas as semanas os programas “A Hora 
+da Opções”, “Riqueza Pessoal” e “Os Antifrágeis” 
+no InfoMoney, onde também mantém o blog 
+Opções Descomplicadas. É o criador e profes-
+sor dos cursos Aprenda a Investir em Opções e 
+Curso Avançado de Opções. Escreveu os livros 
+“Comprando Ações e Vendendo Opções” e 
+“Benjamin e o Poder do Tempo”.
+Luiz Fernando Roxo
+ Introdução
+Há mais de 20 anos trabalho no mercado financeiro. Sempre, de um jeito ou de ou-
+tro, lidando com opções de ações. É um mercado fascinante, com possibilidades de 
+ganhos incríveis e riscos totalmente controláveis. 
+Mas poucos brasileiros usufruem desses ganhos. E eu sempre perguntei: por quê?
+A resposta mais comum que eu recebo dos alunos e seguidores é a de que “opções 
+são muito complicadas…”
+Mas será que são mesmo? Opções de ações funcionam como um seguro, algo que 
+todos entendem perfeitamente. 
+Milhões de brasileiros os fazem todos os anos para seus carros, casas e outros bens. 
+Ou você já ouviu alguém dizendo que não faz por que acha muito complicado?
+Então o que afasta os investidores das opções? A resposta, talvez,
+esteja na linguagem. 
+Reconheço que este mercado é, sim, cheio de termos muito específicos. E uma lin-
+guagem muito hermética pode complicar o que na verdade é simples.
+Por isso resolvi dar a minha contribuição para quebrar essa barreira. Neste Dicioná-
+rio das Opções reuni os termos mais usados no mercado e que mais geram dúvidas 
+dos alunos e investidores novatos.
+São palavras como put, call, lançamento, intrínseco, extrínseco… Enfim, as expres-
+sões essenciais que o investidor em opções precisa ter na ponta da língua. 
+A ideia é que você tenha este arquivo sempre à mão. Vale imprimir ou deixar na 
+área de trabalho do seu computador para ter acesso rápido sempre que precisar. 
+Pronto para o fascinante mercado das opções? Então ao trabalho!
+Um abraço,
+Luiz Fernando Roxo
+Instruções
+Os termos estão organizados em ordem alfabética. Basta clicar neles 
+para ver a definição.
+A.
+Americanas; ativo
+B.
+C.
+Call, compra, compra a seco, compra coberta, custódia
+D.
+Dentro do dinheiro, dinheiro
+E.
+Europeias, exercício, extrínseco
+F.
+Fora do dinheiro
+G.
+Gregas
+H.
+I.
+Intrínseco
+J.
+K.
+L.
+Lançador, lançamento coberto, longa
+M.
+Marcação a mercado
+N.
+No dinheiro
+O.
+P.
+Pó, preço de exercício, preço de mercado, put
+Q.
+Quadro de ofertas
+R.
+S.
+Strike
+T.
+Taxa de juros livre de risco, titular, trava
+U.
+V.
+Valor extrínseco, valor intrínseco, venda, volatilidade
+Definições
+Americanas ou europeias
+Opções podem ser de dois tipos no que diz respeito ao momento do exercício: 
+- Europeias: podem ser exercidas APENAS em um dia predeterminado; 
+- Americanas: podem ser exercidas a qualquer momento entre a compra e o venci-
+mento, desde que o valor de strike seja atingido.
+Ativo
+É o objeto do qual o preço de uma opção deriva. No caso do nosso mercado, são as 
+ações. No caso da opção PETRK44, o ativo objeto é a ação da Petrobras (PETR).
+Call
+É a opção de compra, na qual o titular adquire o direito de comprar um ativo por um 
+determinado preço em uma determinada data.
+Código
+O nome de uma opção é formado por três informações: o ativo, o mês de exercício e 
+um número que indica o strike. Exemplo: PETRK44
+As primeiras quatro letras são o ativo PETR (ações da Petrobras).
+A letra que vem em seguida designa o mês de vencimento, conforme a tabela abaixo:
+Mês Compra (call) Venda (put)
+Janeiro A M
+Fevereiro B N
+Março C O
+Abril D P
+Maio E Q
+Junho F R
+Julho G S
+Agosto H T
+Setembro I U
+Outubro J V
+Novembro K W
+Dezembro L X
+Por último, o indicador numérico da opção. Este número complementa o código da 
+opção e indica o valor do strike. Mas atenção: o número 44 não quer dizer que a op-
+ção será exercida necessariamente a R$ 44. Ele é apenas um indicador numérico que 
+muita vezes coincide com o preço de exercício da opção, mas muitas vezes não. Para 
+conferir o valor de strike de cada opção, basta ir à página de cotações do InfoMoney
+RESUMINDO EM UMA IMAGEM:
+Compra a seco
+É o ato de comprar a opção de uma ação de compra (call) ou venda (put) sem possuir a 
+ação correspondente a ela.
+Custódia: Como no caso das ações, as opções exigem que você tenha uma corretora. 
+Custódia é, portanto, a atividade exercida pela Bolsa e pela sua corretora para cuidar e 
+controlar suas posições de investimento. 
+Dentro, fora ou no dinheiro: É a relação entre o preço atual da ação e o strike da opção.
+Dentro do dinheiro: Dizemos que uma opção está dentro do dinheiro quando a cotação 
+da ação justifica que ela seja exercida. 
+Fora do dinheiro: Dizemos que uma opção está fora do dinheiro quando a cotação da 
+ação justifica que ela não seja exercida. Isto é, se o preço do papel permanecer igual até o 
+vencimento esta opção vai virar pó.
+Por exemplo, essa opção de compra (call):
+Preço da ação atual: R$ 44,30 
+PETRK42: Dentro do dinheiro 
+PETRK44 = No dinheiro 
+PETRK46 = Fora do dinheiro
+ 
+Neste caso, assumimos que os números no símbolo são os mesmos do strike.
+No dinheiro: são aquelas que têm strike e preço da ação no mesmo nível.
+Emolumento: Taxa cobrada pela bolsa para executar negócios, proporcional ao volume 
+financeiro de cada operação.
+Gregas
+São indicadores representados nas equações financeiras por letras gregas, como 
+delta, gama, theta, etc — daí o nome  gregas. Indicam o que pode acontecer com as 
+opções em termos de preço, tempo, strike, juros e volatilidade. 
+Lançamento coberto/compra coberta: 
+É uma operação composta pela compra de ações de uma empresa e a venda da 
+mesma quantidade de opções de compra (call) do papel. Ou seja: o investidor com-
+pra ações e lança opções de compra. Ao receber o prêmio, na prática o investidor 
+está diminuindo o custo de sua operação e aumentando sua possibilidade de lucro. 
+Em contrapartida, os ganhos estão limitados ao valor do strike. Veja um lançamen-
+to coberto em mais detalhes aqui.
+Lançador: Quem faz a venda de uma opção.
+Longa
+É a opção que está mais longe do vencimento, geralmente com mais de 50 dias para 
+vencer. Têm pouca liquidez.
+Marcação a mercado 
+É a atualização do valor de uma carteira pelo preço do mercado. Quanto um portfó-
+lio valeria agora se ele fosse zerado, vendido ou liquidado ao preço atual.
+Pó
+Dizemos que uma opção virou pó quando o preço do ativo no dia do vencimento da 
+opção está abaixo do preço de exercício do papel (opção de compra/call) ou acima 
+(opção de venda/put) as opções perdem todo seu valor.
+Exemplo com uma call: Imagine uma situação em que a ação da Petrobras (PETR4) 
+está a R$ 17 e o preço de exercício da call é R$ 18. Vale a pena comprar algo por R$ 
+18 que no mercado está valendo R$ 17? Não. Por isso que 0% das opções de compra 
+com strike em R$ 18 vão dar exercício.
+Preço de mercado
+É o preço do último negócio de um ativo, seja ele ação, opção ou qualquer outro tipo 
+de instrumento.
+Put
+É a opção de venda, pela qual o titular adquire o direito de vender uma ação por um 
+determinado preço, em uma determinada data.
+Quadro de ofertas
+Tela onde se pode ver todas as ofertas válidas enviadas para a Bolsa para um de-
+terminado ativo — opções inclusive. Este quadro tem suas ofertas classificadas do 
+primeiro preço (mais próximo do preço de mercado) para o pior e depois por ordem 
+de chegada. As ofertas enviadas antes têm prioridade sobre as colocadas depois.
+Strike ou preço de exercício
+O strike da opção é o preço pelo qual ela poderá ser exercida. Por exemplo, se você 
+possui uma opção de compra de uma ação a R$ 10, poderá exercê-la quando ela 
+chegar a esse valor. Ou seja, o dono da ação deverá vendê-la para você.
+A data de término da opção é o dia do exercício. Aqui, no Brasil é a terceira segunda-
+-feira de cada mês. 
+Taxa de juros livre de risco: É o retorno que o investidor pode receber sem riscos. 
+Na prática, é a taxa básica de juros do governo, considerado o menor risco de uma 
+economia. No Brasil, portanto, a taxa de juros livre de risco é a Selic, pois o investidor 
+pode comprar títulos do governo federal e ser remunerado por ela.
+Titular: Aquele que possui uma opção de compra ou de venda.
+Trava: É a composição entre a compra de determinada opção e a venda de outra. 
+Podem ser usadas para alavancar uma operação ou proteger o patrimônio do inves-
+tidor. Existem infinitas combinações de travas e muitos tipos de configurações e de 
+estruturas de ganho e risco. A mais simples é a trava simétrica, que pode ser de alta 
+ou baixa. A trava de alta é usada por quem acredita que o mercado vai subir e a de 
+baixa para quem crê em queda do mercado.  
+Valor extrínseco (VE): É o prêmio de risco pago pela opção, ou quanto o lançador 
+que possui a ação ganha se ele comprar um papel, vender uma opção e for exercido. 
+Para calcular o VE basta pegar o prêmio atual de uma opção e subtrair o VI. Se uma 
+opção está custando R$ 1,40 e o seu VI  é R$ 1, o VE será R$ 0,40.
+Valor intrínseco (VI): Valor intrínseco de uma opção é o quanto ele estaria custando 
+se sua data de exercício fosse hoje. Para descobrir este número basta pegar o valor 
+do ativos agora e subtrair deste valor o preço de exercício (strike) da opção. Se a 
+ação PETR4 está a R$ 17 e uma opção tem strike R$ 16 o VI dessa opção é R$ 1.
+Volatilidade histórica: É uma medida estatística que mostra a variação de um ativo 
+em determinado período. A volatilidade histórica de PETR4 hoje é 22,74%; a de VALE3 
+é 29,98%. A do Ibovespa em 6 de novembro era 13,98% (números atualizados em 6 
+de novembro de 2017.

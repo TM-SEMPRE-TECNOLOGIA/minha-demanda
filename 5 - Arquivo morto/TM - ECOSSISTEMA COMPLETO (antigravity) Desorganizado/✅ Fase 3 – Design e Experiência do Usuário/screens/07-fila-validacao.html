@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fila de Validação - TM Gerenciador</title>
+    <link rel="stylesheet" href="../design-system/index.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        /* Reusing Sidebar Styles */
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 260px;
+            background: rgba(10, 22, 40, 0.95);
+            border-right: 1px solid var(--TM-card-border);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+            backdrop-filter: blur(10px);
+            z-index: 100;
+        }
+
+        .sidebar-header {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--TM-card-border);
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--TM-text-primary);
+        }
+
+        .logo span {
+            color: var(--TM-neon-green);
+        }
+
+        .nav-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex: 1;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border-radius: 4px;
+            color: var(--TM-text-secondary);
+            font-weight: 500;
+            transition: var(--transition-fast);
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            background: rgba(100, 255, 218, 0.1);
+            color: var(--TM-neon-green);
+        }
+
+        .nav-item i {
+            font-size: 1.25rem;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-top: 20px;
+            border-top: 1px solid var(--TM-card-border);
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--TM-navy-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--TM-neon-green);
+            font-weight: 700;
+            border: 2px solid var(--TM-card-border);
+        }
+
+        .user-info {
+            flex: 1;
+        }
+
+        .user-name {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--TM-text-primary);
+        }
+
+        .user-role {
+            font-size: 0.75rem;
+            color: var(--TM-cyan-vibrant);
+        }
+
+        .main-content {
+            flex: 1;
+            margin-left: 260px;
+            padding: 32px;
+        }
+
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+
+        .page-title h1 {
+            font-size: 1.75rem;
+            margin-bottom: 4px;
+        }
+
+        .page-subtitle {
+            color: var(--TM-text-secondary);
+            font-size: 0.875rem;
+        }
+
+        /* Queue Specific Styles */
+        .queue-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .stat-card {
+            background: var(--TM-card-bg);
+            border: 1px solid var(--TM-card-border);
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .stat-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+            background: rgba(100, 255, 218, 0.1);
+            color: var(--TM-neon-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .stat-info .value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--TM-text-primary);
+        }
+
+        .stat-info .label {
+            font-size: 0.875rem;
+            color: var(--TM-text-secondary);
+        }
+
+        /* Queue List */
+        .queue-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .queue-item {
+            background: var(--TM-card-bg);
+            border: 1px solid var(--TM-card-border);
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            transition: var(--transition-fast);
+        }
+
+        .queue-item:hover {
+            border-color: var(--TM-neon-green);
+            transform: translateX(4px);
+        }
+
+        .item-priority {
+            width: 4px;
+            height: 40px;
+            border-radius: 2px;
+            background: var(--TM-text-secondary);
+        }
+
+        .priority-high .item-priority {
+            background: var(--TM-error);
+            box-shadow: 0 0 10px rgba(255, 107, 107, 0.4);
+        }
+
+        .priority-medium .item-priority {
+            background: var(--TM-warning);
+        }
+
+        .priority-normal .item-priority {
+            background: var(--TM-success);
+        }
+
+        .item-preview {
+            width: 80px;
+            height: 60px;
+            border-radius: 4px;
+            background: var(--TM-navy-deep);
+            border: 1px solid var(--TM-card-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--TM-text-secondary);
+            overflow: hidden;
+        }
+
+        .item-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .item-details {
+            flex: 1;
+        }
+
+        .item-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 4px;
+        }
+
+        .item-os {
+            font-family: var(--font-mono);
+            color: var(--TM-neon-green);
+            font-weight: 600;
+        }
+
+        .item-client {
+            font-weight: 600;
+            color: var(--TM-text-primary);
+        }
+
+        .item-meta {
+            display: flex;
+            gap: 16px;
+            font-size: 0.875rem;
+            color: var(--TM-text-secondary);
+        }
+
+        .item-meta span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .item-actions {
+            display: flex;
+            gap: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">MAFFENG <span>.OS</span></div>
+            </div>
+            <nav class="nav-menu">
+                <a href="02-dashboard.html" class="nav-item">
+                    <i class="ph ph-squares-four"></i>
+                    Dashboard
+                </a>
+                <a href="04-lista-os.html" class="nav-item">
+                    <i class="ph ph-list-dashes"></i>
+                    Ordens de Serviço
+                </a>
+                <a href="03-importacao-os.html" class="nav-item">
+                    <i class="ph ph-upload-simple"></i>
+                    Importação
+                </a>
+                <a href="06-distribuicao.html" class="nav-item">
+                    <i class="ph ph-users-three"></i>
+                    Distribuição
+                </a>
+                <a href="#" class="nav-item active">
+                    <i class="ph ph-check-circle"></i>
+                    Validação
+                </a>
+                <a href="09-dashboard-sla.html" class="nav-item">
+                    <i class="ph ph-chart-line-up"></i>
+                    Relatórios & SLA
+                </a>
+            </nav>
+            <div class="user-profile">
+                <div class="avatar">AR</div>
+                <div class="user-info">
+                    <div class="user-name">Ana Rodrigues</div>
+                    <div class="user-role">Gerente de Contrato</div>
+                </div>
+                <i class="ph ph-sign-out text-secondary"></i>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content animate-fade-in">
+            <div class="page-header">
+                <div class="page-title">
+                    <h1>Fila de Validação</h1>
+                    <div class="page-subtitle">Revise e aprove os pacotes de levantamento enviados pelos técnicos</div>
+                </div>
+                <div class="flex-center" style="gap: 12px;">
+                    <span class="text-secondary" style="font-size: 0.875rem;">Ordenar por:</span>
+                    <select
+                        style="padding: 8px; background: var(--TM-navy-deep); border: 1px solid var(--TM-card-border); color: var(--TM-text-primary); border-radius: 4px;">
+                        <option>Urgência (SLA)</option>
+                        <option>Data de Envio</option>
+                        <option>Técnico</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="queue-stats">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="ph ph-stack"></i></div>
+                    <div class="stat-info">
+                        <div class="value">15</div>
+                        <div class="label">Pacotes na Fila</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon" style="color: var(--TM-warning); background: rgba(255, 165, 0, 0.1);"><i
+                            class="ph ph-clock-countdown"></i></div>
+                    <div class="stat-info">
+                        <div class="value" style="color: var(--TM-warning);">3</div>
+                        <div class="label">SLA Crítico (< 24h)</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"
+                            style="color: var(--TM-cyan-vibrant); background: rgba(0, 212, 255, 0.1);"><i
+                                class="ph ph-check-square-offset"></i></div>
+                        <div class="stat-info">
+                            <div class="value text-cyan">42</div>
+                            <div class="label">Validados Hoje</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Queue List -->
+                <div class="queue-list">
+                    <!-- Item 1 (High Priority) -->
+                    <div class="queue-item priority-high">
+                        <div class="item-priority" title="Prioridade Alta"></div>
+                        <div class="item-preview">
+                            <i class="ph ph-image" style="font-size: 2rem;"></i>
+                        </div>
+                        <div class="item-details">
+                            <div class="item-header">
+                                <span class="item-os">OS-4092</span>
+                                <span class="item-client">Construtora Alpha</span>
+                                <span
+                                    style="font-size: 0.75rem; background: rgba(255, 107, 107, 0.1); color: var(--TM-error); padding: 2px 8px; border-radius: 12px; border: 1px solid rgba(255, 107, 107, 0.2);">SLA
+                                    Vence Hoje</span>
+                            </div>
+                            <div class="item-meta">
+                                <span><i class="ph ph-user"></i> Carlos Silva</span>
+                                <span><i class="ph ph-clock"></i> Enviado há 2 horas</span>
+                                <span><i class="ph ph-images"></i> 24 fotos</span>
+                            </div>
+                        </div>
+                        <div class="item-actions">
+                            <button class="btn btn-primary" onclick="window.location.href='08-validacao-pacote.html'">
+                                Validar Agora
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 (Medium Priority) -->
+                    <div class="queue-item priority-medium">
+                        <div class="item-priority" title="Prioridade Média"></div>
+                        <div class="item-preview">
+                            <i class="ph ph-image" style="font-size: 2rem;"></i>
+                        </div>
+                        <div class="item-details">
+                            <div class="item-header">
+                                <span class="item-os">OS-4099</span>
+                                <span class="item-client">Shopping Center Norte</span>
+                            </div>
+                            <div class="item-meta">
+                                <span><i class="ph ph-user"></i> João Mendes</span>
+                                <span><i class="ph ph-clock"></i> Enviado há 4 horas</span>
+                                <span><i class="ph ph-images"></i> 15 fotos</span>
+                            </div>
+                        </div>
+                        <div class="item-actions">
+                            <button class="btn btn-secondary" onclick="window.location.href='08-validacao-pacote.html'">
+                                Validar
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 (Normal Priority) -->
+                    <div class="queue-item priority-normal">
+                        <div class="item-priority" title="Prioridade Normal"></div>
+                        <div class="item-preview">
+                            <i class="ph ph-image" style="font-size: 2rem;"></i>
+                        </div>
+                        <div class="item-details">
+                            <div class="item-header">
+                                <span class="item-os">OS-4102</span>
+                                <span class="item-client">Edifício Comercial Sul</span>
+                            </div>
+                            <div class="item-meta">
+                                <span><i class="ph ph-user"></i> Ana Lima</span>
+                                <span><i class="ph ph-clock"></i> Enviado ontem</span>
+                                <span><i class="ph ph-images"></i> 32 fotos</span>
+                            </div>
+                        </div>
+                        <div class="item-actions">
+                            <button class="btn btn-secondary" onclick="window.location.href='08-validacao-pacote.html'">
+                                Validar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+        </main>
+    </div>
+</body>
+
+</html>

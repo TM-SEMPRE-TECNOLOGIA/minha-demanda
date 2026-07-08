@@ -1,0 +1,8 @@
+{
+    "description": "Service Order Chat PWA",
+    "requestFramePermissions": [
+        "camera",
+        "microphone"
+    ],
+    "name": "ServiceChat"
+}

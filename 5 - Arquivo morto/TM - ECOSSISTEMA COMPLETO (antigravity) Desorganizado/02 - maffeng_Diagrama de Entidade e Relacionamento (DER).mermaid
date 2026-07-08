@@ -1,0 +1,231 @@
+erDiagram
+    USUARIOS ||--o{ ORDENS_SERVICO : gerencia
+    USUARIOS ||--o{ PACOTES_LEVANTAMENTO : coleta
+    USUARIOS ||--o{ RELATORIOS : elabora
+    USUARIOS ||--o{ LOGS_SISTEMA : gera
+    
+    CONTRATOS ||--o{ ORDENS_SERVICO : contem
+    CONTRATOS ||--o{ TEMPLATES_RELATORIO : possui
+    CONTRATOS ||--o{ METRICAS_CONTRATO : gera
+    
+    ORDENS_SERVICO ||--o{ PACOTES_LEVANTAMENTO : recebe
+    ORDENS_SERVICO ||--o{ RELATORIOS : origina
+    ORDENS_SERVICO ||--o{ STATUS_OS : possui
+    
+    PACOTES_LEVANTAMENTO ||--o{ FOTOS_LEVANTAMENTO : contem
+    PACOTES_LEVANTAMENTO ||--o{ METADADOS_PACOTE : possui
+    
+    RELATORIOS ||--o{ ARQUIVOS_RELATORIO : gera
+    RELATORIOS ||--o{ VALIDACOES_RELATORIO : recebe
+    
+    TEMPLATES_RELATORIO ||--o{ RELATORIOS : utiliza
+    
+    METRICAS_CONTRATO ||--o{ KPIS_PAINEL : alimenta
+    STATUS_OS ||--o{ KPIS_PAINEL : alimenta
+    RELATORIOS ||--o{ KPIS_PAINEL : alimenta
+    
+    PATRIMONIO ||--o{ METRICAS_ADMINISTRATIVO : gera
+    FROTA ||--o{ METRICAS_ADMINISTRATIVO : gera
+    FINANCEIRO ||--o{ METRICAS_ADMINISTRATIVO : gera
+    RH ||--o{ METRICAS_ADMINISTRATIVO : gera
+    
+    METRICAS_ADMINISTRATIVO ||--o{ KPIS_PAINEL : alimenta
+
+    USUARIOS {
+        uuid id PK
+        string email UK
+        string nome
+        string perfil "tecnico|gerente|admin|elaborador|diretor|financeiro"
+        timestamp criado_em
+        boolean ativo
+        uuid contrato_id FK
+    }
+    
+    CONTRATOS {
+        uuid id PK
+        string codigo UK
+        string nome
+        string cliente
+        date data_inicio
+        date data_fim
+        string status
+        jsonb configuracoes
+    }
+    
+    ORDENS_SERVICO {
+        uuid id PK
+        string numero_os UK
+        uuid contrato_id FK
+        string tipo_servico
+        string local
+        string status "criada|em_campo|levantamento_enviado|em_elaboracao|concluida|cancelada"
+        date prazo
+        timestamp criado_em
+        timestamp atualizado_em
+        uuid criado_por FK
+    }
+    
+    PACOTES_LEVANTAMENTO {
+        uuid id PK
+        uuid os_id FK
+        uuid tecnico_id FK
+        string arquivo_zip
+        jsonb dados_json
+        timestamp data_coleta
+        timestamp data_upload
+        string status "pendente|validado|rejeitado"
+        text observacoes
+    }
+    
+    FOTOS_LEVANTAMENTO {
+        uuid id PK
+        uuid pacote_id FK
+        string url_foto
+        string nome_arquivo
+        jsonb metadados_exif
+        timestamp capturado_em
+        float latitude
+        float longitude
+    }
+    
+    METADADOS_PACOTE {
+        uuid id PK
+        uuid pacote_id FK
+        string dispositivo
+        string versao_app
+        jsonb dados_tecnicos
+        timestamp gerado_em
+    }
+    
+    TEMPLATES_RELATORIO {
+        uuid id PK
+        uuid contrato_id FK
+        string nome
+        string arquivo_template
+        string versao
+        jsonb configuracoes
+        boolean ativo
+    }
+    
+    RELATORIOS {
+        uuid id PK
+        uuid os_id FK
+        uuid template_id FK
+        uuid elaborador_id FK
+        string status "em_geracao|gerado|validado|entregue|rejeitado"
+        string arquivo_docx
+        timestamp iniciado_em
+        timestamp concluido_em
+        jsonb parametros_geracao
+    }
+    
+    ARQUIVOS_RELATORIO {
+        uuid id PK
+        uuid relatorio_id FK
+        string url_arquivo
+        string tipo "docx|pdf"
+        string hash_arquivo
+        timestamp gerado_em
+    }
+    
+    VALIDACOES_RELATORIO {
+        uuid id PK
+        uuid relatorio_id FK
+        uuid validador_id FK
+        string resultado "aprovado|rejeitado|revisar"
+        text comentarios
+        timestamp validado_em
+    }
+    
+    STATUS_OS {
+        uuid id PK
+        uuid os_id FK
+        string status
+        string descricao
+        uuid usuario_id FK
+        timestamp registrado_em
+    }
+    
+    LOGS_SISTEMA {
+        uuid id PK
+        uuid usuario_id FK
+        string modulo "levantamentos|gerenciador|relatorios|painel|admin"
+        string acao
+        jsonb detalhes
+        timestamp registrado_em
+    }
+    
+    METRICAS_CONTRATO {
+        uuid id PK
+        uuid contrato_id FK
+        string tipo_metrica
+        float valor
+        string unidade
+        date periodo_ref
+        timestamp calculado_em
+    }
+    
+    KPIS_PAINEL {
+        uuid id PK
+        string categoria "operacional|financeiro|qualidade|administrativo"
+        string nome_kpi
+        float valor
+        string unidade
+        date periodo_ref
+        jsonb detalhamento
+        timestamp atualizado_em
+    }
+    
+    PATRIMONIO {
+        uuid id PK
+        string codigo UK
+        string descricao
+        string categoria
+        float valor_aquisicao
+        date data_aquisicao
+        string status
+        string localizacao
+    }
+    
+    FROTA {
+        uuid id PK
+        string placa UK
+        string modelo
+        string categoria
+        int ano
+        string status
+        float km_atual
+        date proxima_manutencao
+    }
+    
+    FINANCEIRO {
+        uuid id PK
+        string tipo "receita|despesa"
+        string categoria
+        float valor
+        date data_lancamento
+        date data_vencimento
+        string status "pendente|pago|cancelado"
+        uuid contrato_id FK
+        text descricao
+    }
+    
+    RH {
+        uuid id PK
+        string matricula UK
+        string nome
+        string cargo
+        string departamento
+        date data_admissao
+        string status
+        float salario
+    }
+    
+    METRICAS_ADMINISTRATIVO {
+        uuid id PK
+        string origem "patrimonio|frota|financeiro|rh"
+        string tipo_metrica
+        float valor
+        date periodo_ref
+        timestamp calculado_em
+    }

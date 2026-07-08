@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thiago — Portfolio Premium & Engenharia</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Lora:wght@600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --TM-bg: #0f172a;
+            --TM-fg: #f8fafc;
+            --TM-primary: #10b981;
+            --TM-primary-hover: #059669;
+            --TM-card: #1e293b;
+            --TM-border: #334155;
+            --TM-muted: #64748b;
+            --TM-accent: rgba(16, 185, 129, 0.1);
+        }
+
+        html.light {
+            --TM-bg: #f8fafc;
+            --TM-fg: #0f172a;
+            --TM-primary: #059669;
+            --TM-primary-hover: #047857;
+            --TM-card: #ffffff;
+            --TM-border: #e2e8f0;
+            --TM-muted: #64748b;
+            --TM-accent: rgba(5, 150, 105, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; transition: background 0.3s, border 0.3s; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--TM-bg);
+            color: var(--TM-fg);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+        /* --- Header --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 32px 0;
+        }
+
+        .logo { font-family: 'Lora', serif; font-size: 24px; font-weight: 700; color: var(--TM-primary); }
+
+        .btn-theme {
+            background: var(--TM-card);
+            border: 1px solid var(--TM-border);
+            color: var(--TM-fg);
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        /* --- Hero --- */
+        .hero { padding: 60px 0 100px; text-align: center; }
+        .hero h1 { font-family: 'Lora', serif; font-size: clamp(32px, 5vw, 56px); margin-bottom: 24px; }
+        .hero p { color: var(--TM-muted); font-size: clamp(16px, 2vw, 20px); max-width: 700px; margin: 0 auto 40px; }
+
+        /* --- Video Portfolio --- */
+        .section-title { font-family: 'Lora', serif; font-size: 32px; margin-bottom: 40px; text-align: center; }
+        
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+            margin-bottom: 100px;
+        }
+
+        .video-card {
+            background: var(--TM-card);
+            border: 1px solid var(--TM-border);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.3);
+        }
+
+        .video-placeholder {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .video-placeholder::before {
+            content: '▶';
+            color: white;
+            font-size: 40px;
+            background: var(--TM-primary);
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            z-index: 2;
+        }
+
+        .video-info { padding: 20px; }
+        .video-info h3 { margin-bottom: 8px; font-size: 18px; }
+        .video-info p { font-size: 14px; color: var(--TM-muted); }
+
+        /* --- Mini Game --- */
+        .game-section {
+            background: var(--TM-accent);
+            padding: 80px 0;
+            border-radius: 32px;
+            margin-bottom: 100px;
+            text-align: center;
+        }
+
+        .game-container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: var(--TM-card);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid var(--TM-border);
+        }
+
+        #game-board {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .node {
+            aspect-ratio: 1;
+            background: var(--TM-border);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .node.active { background: var(--TM-primary); box-shadow: 0 0 15px var(--TM-primary); }
+
+        .btn-main {
+            background: var(--TM-primary);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-main:hover { background: var(--TM-primary-hover); }
+
+        /* --- Footer --- */
+        footer { padding: 60px 0; border-top: 1px solid var(--TM-border); text-align: center; }
+        .footer-logo { font-family: 'Lora', serif; font-size: 20px; font-weight: 700; margin-bottom: 10px; }
+        .contact-links { margin: 20px 0; }
+        .contact-links a { color: var(--TM-fg); margin: 0 15px; text-decoration: none; font-weight: 500; }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="logo">THIAGO</div>
+            <button class="btn-theme" onclick="toggleTheme()">Trocar Tema</button>
+        </header>
+
+        <section class="hero">
+            <h1>Engenharia que move o seu negócio.</h1>
+            <p>Especialista em automação industrial, IA aplicada e arquitetura de sistemas premium.</p>
+            <a href="#portfolio" class="btn-main">Ver Portfólio</a>
+        </section>
+
+        <section id="portfolio">
+            <h2 class="section-title">Demonstrações em Vídeo</h2>
+            <div class="video-grid">
+                <!-- Card 1 -->
+                <div class="video-card">
+                    <div class="video-placeholder" onclick="alert('Aqui abriria o vídeo do projeto 1')">
+                        <!-- Substituir por <iframe src="..."> para vídeos reais -->
+                    </div>
+                    <div class="video-info">
+                        <h3>Automação de Pipeline IA</h3>
+                        <p>Processamento em tempo real com Python e integração de modelos LLM.</p>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="video-card">
+                    <div class="video-placeholder" onclick="alert('Aqui abriria o vídeo do projeto 2')"></div>
+                    <div class="video-info">
+                        <h3>Dashboard Industrial Premium</h3>
+                        <p>Visualização de dados críticos com Next.js e Websockets.</p>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="video-card">
+                    <div class="video-placeholder" onclick="alert('Aqui abriria o vídeo do projeto 3')"></div>
+                    <div class="video-info">
+                        <h3>Otimização de Sistemas Legados</h3>
+                        <p>Como reduzi o custo operacional em 40% usando automação customizada.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="game-section">
+            <h2 class="section-title">System Optimizer (Mini-Game)</h2>
+            <p style="margin-bottom: 20px;">Prove sua agilidade: Clique nos "nodes" ativos para otimizar o sistema!</p>
+            <div class="game-container">
+                <div id="game-stats">Score: 0 | Tempo: 15s</div>
+                <div id="game-board">
+                    <div class="node" onclick="checkNode(this)"></div>
+                    <div class="node" onclick="checkNode(this)"></div>
+                    <div class="node" onclick="checkNode(this)"></div>
+                    <div class="node" onclick="checkNode(this)"></div>
+                    <div class="node" onclick="checkNode(this)"></div>
+                    <div class="node" onclick="checkNode(this)"></div>
+                    <div class="node" onclick="checkNode(this)"></div>
+                    <div class="node" onclick="checkNode(this)"></div>
+                    <div class="node" onclick="checkNode(this)"></div>
+                </div>
+                <button class="btn-main" id="start-btn" onclick="startGame()">Iniciar Otimização</button>
+            </div>
+        </section>
+
+        <footer>
+            <div class="footer-logo">THIAGO</div>
+            <p>Engenharia, Automação e IA Premium</p>
+            <div class="contact-links">
+                <a href="#">WhatsApp</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">E-mail</a>
+            </div>
+            <p style="font-size: 12px; color: var(--TM-muted);">© 2025 Thiago - Todos os direitos reservados.</p>
+        </footer>
+    </div>
+
+    <script>
+        // --- Theme Toggle ---
+        function toggleTheme() {
+            document.documentElement.classList.toggle('light');
+        }
+
+        // --- Game Logic ---
+        let score = 0;
+        let timeLeft = 15;
+        let gameActive = false;
+        let gameTimer;
+        const nodes = document.querySelectorAll('.node');
+        const scoreDisplay = document.getElementById('game-stats');
+        const startBtn = document.getElementById('start-btn');
+
+        function startGame() {
+            if(gameActive) return;
+            score = 0;
+            timeLeft = 15;
+            gameActive = true;
+            startBtn.style.display = 'none';
+            updateStats();
+            
+            gameTimer = setInterval(() => {
+                timeLeft--;
+                updateStats();
+                if(timeLeft <= 0) endGame();
+            }, 1000);
+
+            activateRandomNode();
+        }
+
+        function activateRandomNode() {
+            if(!gameActive) return;
+            nodes.forEach(n => n.classList.remove('active'));
+            const randomNode = nodes[Math.floor(Math.random() * nodes.length)];
+            randomNode.classList.add('active');
+        }
+
+        function checkNode(element) {
+            if(!gameActive) return;
+            if(element.classList.contains('active')) {
+                score++;
+                updateStats();
+                activateRandomNode();
+            }
+        }
+
+        function updateStats() {
+            scoreDisplay.innerText = `Score: ${score} | Tempo: ${timeLeft}s`;
+        }
+
+        function endGame() {
+            gameActive = false;
+            clearInterval(gameTimer);
+            nodes.forEach(n => n.classList.remove('active'));
+            alert(`Otimização Finalizada! Score total: ${score}`);
+            startBtn.style.display = 'inline-block';
+            startBtn.innerText = 'Tentar Novamente';
+        }
+    </script>
+</body>
+</html>

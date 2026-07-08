@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Padronização de Serviços de Pintura - MAFFENG</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Cores - Modo Claro (Premium High Contrast) */
+            --TM-background: #f8fafc;
+            --TM-foreground: #0f172a;
+            --TM-card: #ffffff;
+            --TM-card-foreground: #0f172a;
+            --TM-primary: #16a34a;
+            --TM-primary-foreground: #ffffff;
+            --TM-secondary: #f1f5f9;
+            --TM-secondary-foreground: #334155;
+            --TM-muted: #f1f5f9;
+            --TM-muted-foreground: #475569;
+            --TM-accent: #dcfce7;
+            --TM-accent-foreground: #0f172a;
+            --TM-destructive: #ef4444;
+            --TM-destructive-foreground: #ffffff;
+            --TM-border: #cbd5e1;
+            --TM-ring: #16a34a;
+
+            /* Sombras */
+            --TM-shadow-sm: 0px 4px 8px -1px rgba(0, 0, 0, 0.08), 0px 1px 2px -2px rgba(0, 0, 0, 0.08);
+            --TM-shadow: 0px 4px 8px -1px rgba(0, 0, 0, 0.10), 0px 1px 2px -2px rgba(0, 0, 0, 0.10);
+            --TM-shadow-md: 0px 4px 12px -1px rgba(0, 0, 0, 0.12), 0px 2px 4px -2px rgba(0, 0, 0, 0.10);
+            --TM-shadow-lg: 0px 8px 20px -2px rgba(0, 0, 0, 0.12), 0px 4px 6px -2px rgba(0, 0, 0, 0.08);
+
+            /* Radius */
+            --TM-radius-sm: 6px;
+            --TM-radius-md: 8px;
+            --TM-radius-lg: 12px;
+            --TM-radius-xl: 16px;
+        }
+
+        html.dark {
+            /* Premium Dark Mode - UI UX Pro Max */
+            --TM-background: #0f172a;
+            --TM-foreground: #f8fafc;
+            --TM-card: #1e293b;
+            --TM-card-foreground: #f1f5f9;
+            --TM-primary: #10b981;
+            --TM-primary-foreground: #ffffff;
+            --TM-secondary: #0f172a;
+            --TM-secondary-foreground: #94a3b8;
+            --TM-muted: #334155;
+            --TM-muted-foreground: #94a3b8;
+            --TM-accent: #064e3b;
+            --TM-accent-foreground: #f1f5f9;
+            --TM-destructive: #ef4444;
+            --TM-destructive-foreground: #ffffff;
+            --TM-border: #334155;
+            --TM-ring: #10b981;
+
+            --TM-shadow-sm: 0px 4px 8px -1px rgba(0, 0, 0, 0.4), 0px 1px 2px -2px rgba(0, 0, 0, 0.4);
+            --TM-shadow: 0px 4px 8px -1px rgba(0, 0, 0, 0.5), 0px 1px 2px -2px rgba(0, 0, 0, 0.5);
+            --TM-shadow-md: 0px 4px 12px -1px rgba(0, 0, 0, 0.6), 0px 2px 4px -2px rgba(0, 0, 0, 0.5);
+            --TM-shadow-lg: 0px 8px 20px -2px rgba(0, 0, 0, 0.7), 0px 4px 6px -2px rgba(0, 0, 0, 0.6);
+        }
+
+        html.dark body {
+            background-image: radial-gradient(circle at top right, rgba(16, 185, 129, 0.05) 0%, transparent 40%);
+        }
+
+        html.dark .header-brand h1 { color: #ef4444 !important; }
+        html.dark .header-brand span { color: #d1d5db !important; }
+        html.dark .subtitle { color: #cbd5e1 !important; }
+        html.dark .developer { color: #10b981 !important; }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--TM-background);
+            color: var(--TM-foreground);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            padding-left: 220px;
+            padding-right: 220px;
+            background: var(--TM-card);
+            border-radius: var(--TM-radius-xl);
+            margin-bottom: 30px;
+            border: 1px solid var(--TM-border);
+            box-shadow: var(--TM-shadow-md);
+            position: relative;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .header-brand {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 10px;
+        }
+
+        .header-logo {
+            position: absolute;
+            left: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 160px;
+            height: 160px;
+            object-fit: contain;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            margin-bottom: 0;
+            color: var(--TM-primary);
+            font-weight: 700;
+        }
+
+        .subtitle {
+            color: var(--TM-muted-foreground);
+            font-size: 1.1em;
+            margin-top: 10px;
+        }
+
+        .developer {
+            color: var(--TM-primary);
+            font-size: 0.9em;
+            margin-top: 15px;
+            font-weight: 500;
+        }
+
+        .contract-card {
+            background: var(--TM-card);
+            border-radius: var(--TM-radius-xl);
+            padding: 25px;
+            margin-bottom: 25px;
+            border: 1px solid var(--TM-border);
+            box-shadow: var(--TM-shadow);
+            transition: all 0.3s ease;
+        }
+
+        .contract-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--TM-shadow-lg);
+            border-color: var(--TM-primary);
+        }
+
+        .contract-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--TM-secondary);
+        }
+
+        .contract-number {
+            background: linear-gradient(135deg, var(--TM-primary) 0%, #16a34a 100%);
+            color: var(--TM-primary-foreground);
+            padding: 8px 16px;
+            border-radius: var(--TM-radius-md);
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .contract-title {
+            font-size: 1.3em;
+            color: var(--TM-foreground);
+            font-weight: 600;
+        }
+
+        .service-item {
+            background: var(--TM-muted);
+            padding: 15px;
+            margin-bottom: 12px;
+            border-radius: var(--TM-radius-md);
+            border-left: 4px solid var(--TM-primary);
+            transition: all 0.3s ease;
+        }
+
+        .service-item:hover {
+            background: var(--TM-accent);
+            transform: translateX(5px);
+        }
+
+        .service-code {
+            color: var(--TM-primary);
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: 1.1em;
+        }
+
+        .service-description {
+            color: var(--TM-foreground);
+            line-height: 1.6;
+        }
+
+        .signature-box {
+            background: var(--TM-secondary);
+            border: 2px solid var(--TM-border);
+            border-radius: var(--TM-radius-md);
+            padding: 15px;
+            margin-top: 15px;
+        }
+
+        .signature-title {
+            color: var(--TM-primary);
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 1.05em;
+        }
+
+        .signature-names {
+            color: var(--TM-foreground);
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+
+        .observations {
+            background: linear-gradient(135deg, var(--TM-secondary) 0%, var(--TM-accent) 100%);
+            border-radius: var(--TM-radius-xl);
+            padding: 30px;
+            margin-top: 30px;
+            border: 2px solid var(--TM-border);
+            box-shadow: var(--TM-shadow);
+        }
+
+        .observations h2 {
+            color: var(--TM-foreground);
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            text-align: center;
+        }
+
+        .observation-item {
+            background: var(--TM-card);
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: var(--TM-radius-md);
+            border-left: 4px solid var(--TM-primary);
+            box-shadow: var(--TM-shadow-sm);
+        }
+
+        .observation-title {
+            color: var(--TM-primary);
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .observation-text {
+            color: var(--TM-foreground);
+            line-height: 1.8;
+            margin-bottom: 8px;
+        }
+
+        .highlight {
+            color: var(--TM-primary);
+            font-weight: bold;
+        }
+
+        .divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--TM-primary), transparent);
+            margin: 30px 0;
+        }
+
+        .fiscal-alert {
+            margin-top: 20px;
+            border: 2px solid var(--TM-destructive);
+            border-radius: var(--TM-radius-md);
+            background: rgba(239, 68, 68, 0.08);
+            padding: 20px;
+        }
+
+        .fiscal-title {
+            color: var(--TM-destructive);
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .fiscal-warning {
+            margin-bottom: 15px;
+            color: #b91c1c;
+            font-style: italic;
+        }
+
+        .fiscal-grid {
+            display: grid;
+            gap: 15px;
+            color: var(--TM-foreground);
+        }
+
+        .fiscal-item strong {
+            color: var(--TM-destructive);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .fiscal-footer {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(239, 68, 68, 0.3);
+            color: var(--TM-destructive);
+            font-weight: bold;
+            text-align: center;
+        }
+
+        /* Ajuste para Tablets e Zoom elevado (evitando sobreposição) */
+        @media (max-width: 1200px) {
+            header {
+                padding-left: 30px;
+                padding-right: 30px;
+                min-height: auto;
+            }
+            .header-logo {
+                position: relative;
+                left: auto;
+                top: auto;
+                transform: none;
+                margin: 0 auto 20px auto;
+                display: block;
+                width: 140px;
+                height: 140px;
+            }
+            .btn-theme {
+                position: relative;
+                top: auto;
+                right: auto;
+                margin: 15px auto 0 auto;
+                width: max-content;
+                justify-content: center;
+                display: flex;
+            }
+            .header-brand {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+
+        /* Ajuste Mobile */
+        @media (max-width: 768px) {
+            header {
+                padding: 30px 20px;
+                min-height: auto;
+            }
+
+            .header-logo {
+                position: relative;
+                left: auto;
+                top: auto;
+                transform: none;
+                margin: 0 auto 15px auto;
+                width: 120px;
+                height: 120px;
+            }
+
+            .btn-theme {
+                position: relative;
+                top: auto;
+                right: auto;
+                margin: 10px auto 0 auto;
+                width: max-content;
+                justify-content: center;
+            }
+
+            h1 {
+                font-size: 1.6em;
+            }
+
+            .header-brand {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .contract-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .contract-card {
+                padding: 20px;
+            }
+        }
+
+        .search-container {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 16px 20px;
+            padding-left: 50px;
+            font-size: 1.1em;
+            border: 2px solid var(--TM-border);
+            border-radius: var(--TM-radius-lg);
+            background: var(--TM-card);
+            color: var(--TM-foreground);
+            box-shadow: var(--TM-shadow-sm);
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #d32f2f;
+            /* Vermelho Maffeng */
+            box-shadow: 0 0 0 4px rgba(211, 47, 47, 0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--TM-muted-foreground);
+            font-size: 1.2em;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: var(--TM-muted-foreground);
+            font-size: 1.1em;
+            display: none;
+        }
+
+        /* Botão Flutuante de PDF */
+        .fab-pdf {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #d32f2f;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 4px 15px rgba(211, 47, 47, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            border: none;
+        }
+
+        .fab-pdf:hover {
+            transform: scale(1.1);
+            background: #b71c1c;
+        }
+
+        /* Estilos de Impressão (PDF/P&B Otimizado) */
+        @media print {
+            @page {
+                margin: 1.5cm;
+                size: A4;
+            }
+
+            body {
+                background: white !important;
+                color: black !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .container {
+                max-width: 100%;
+                width: 100%;
+                margin: 0;
+                padding: 0;
+            }
+
+            .search-container,
+            .fab-pdf,
+            .no-results {
+                display: none !important;
+            }
+
+            header {
+                box-shadow: none !important;
+                border: 2px solid #000 !important;
+                /* Borda preta sólida */
+                background: none !important;
+                /* Remove fundo */
+                padding-left: 0 !important;
+                padding-top: 20px;
+                display: block;
+                text-align: center;
+                margin-bottom: 30px;
+                page-break-after: avoid;
+                min-height: auto;
+            }
+
+            .header-logo {
+                position: static;
+                display: block;
+                margin: 0 auto 10px auto;
+                width: 100px;
+                height: 100px;
+                transform: none;
+                filter: grayscale(100%);
+                /* Logo em P&B */
+            }
+
+            h1,
+            h1 span {
+                color: black !important;
+                /* Título todo preto */
+            }
+
+            .subtitle {
+                color: black !important;
+            }
+
+            .developer {
+                color: black !important;
+                font-weight: bold;
+            }
+
+            /* Cards em Modo Contraste */
+            .contract-card,
+            .observations {
+                background: none !important;
+                box-shadow: none !important;
+                border: 2px solid #000 !important;
+                /* Borda forte */
+                color: black !important;
+                break-inside: avoid;
+                page-break-inside: avoid;
+                margin-bottom: 25px;
+            }
+
+            .contract-header {
+                border-bottom: 1px solid #000 !important;
+                padding-bottom: 10px;
+                margin-bottom: 15px;
+            }
+
+            .contract-number {
+                background: none !important;
+                border: 1px solid #000 !important;
+                color: black !important;
+            }
+
+            .contract-title {
+                color: black !important;
+            }
+
+            /* Itens de Serviço Simplificados */
+            .service-item,
+            .observation-item {
+                background: none !important;
+                border: 1px solid #000 !important;
+                border-left: 6px solid #000 !important;
+                color: black !important;
+                box-shadow: none !important;
+            }
+
+            .service-code,
+            .observation-title {
+                color: black !important;
+                font-weight: 900 !important;
+            }
+
+            .service-description,
+            .observation-text {
+                color: black !important;
+            }
+
+            /* Assinaturas */
+            .signature-box {
+                background: none !important;
+                border: 1px dashed #000 !important;
+            }
+
+            .signature-title,
+            .signature-names {
+                color: black !important;
+            }
+
+            /* Alertas Fiscais */
+            .fiscal-alert {
+                border: 4px double #000 !important;
+                background: none !important;
+            }
+
+            .fiscal-title,
+            .fiscal-item strong,
+            .fiscal-footer,
+            .fiscal-warning {
+                color: black !important;
+                font-weight: bold;
+            }
+
+            .highlight {
+                color: black !important;
+                text-decoration: underline;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Botão de Download PDF -->
+    <button class="fab-pdf" onclick="window.print()" title="Salvar como PDF">
+        🖨️
+    </button>
+
+    <div class="container">
+        <header>
+            <div class="header-brand">
+                <img src="https://raw.githubusercontent.com/TM-SEMPRE-TECNOLOGIA/interativo-padr-o-V2/refs/heads/main/logo-maffeng.png"
+                    alt="Logo MAFFENG" class="header-logo">
+                <h1 style="color: #d32f2f;">MAFFENG <span style="color: #1a1a1a;">- Engenharia e Manutenção</span></h1>
+            </div>
+
+            <div class="subtitle" style="font-size: 1.5em; font-weight: 600; color: #1a1a1a; margin-top: 15px;">
+                Padronização de Serviços de Pintura por Contrato
+            </div>
+
+            <div class="subtitle" style="font-size: 1.25em; font-weight: 500; color: #333; margin-top: 5px;">
+                Equipe de Engenharia – Orientações para Relatórios Preventivos
+            </div>
+
+            <div style="margin-top: 20px; border-top: 1px solid #e5e5e5; display: inline-block; padding-top: 15px;">
+                <div class="developer" style="color: #d32f2f; font-weight: 600; margin-top: 0;">
+                    Desenvolvido por: Thiago Nascimento
+                </div>
+                <div class="subtitle" style="font-size: 0.9em; margin-top: 5px; color: #666;">
+                    Atualização: 06/05/2026 01:39
+                </div>
+            </div>
+            <button class="btn-theme" onclick="toggleTheme()" title="Alternar Modo Escuro">
+                <span id="theme-icon">🌙</span> <span id="theme-text">Dark Mode</span>
+            </button>
+        </header>
+
+        <!-- ===== PAGE: MAIN ===== -->
+        <div id="page-main">
+
+            <!-- Barra de Pesquisa -->
+            <div class="search-container">
+                <span class="search-icon">🔍</span>
+                <input type="text" class="search-input" id="contractSearch"
+                    placeholder="Pesquisar contrato (ex: Minas Gerais, 2056, Divinópolis)...">
+            </div>
+
+            <div id="noResultsMessage" class="no-results">
+                Nenhum contrato encontrado com esse termo.
+            </div>
+
+            <!-- Contrato Divinópolis -->
+            <div class="contract-card">
+                <div class="contract-header">
+                    <div class="contract-number">🏷️ Nº 2056</div>
+                    <div class="contract-title">MINAS GERAIS – DIVINÓPOLIS</div>
+                </div>
+                <div class="service-item">
+                    <span class="service-code">17.6</span>
+                    <span class="service-description">Teto, muros e paredes EXTERNAS</span>
+                </div>
+                <div class="service-item">
+                    <span class="service-code">17.11</span>
+                    <span class="service-description">TODA a pintura INTERNA</span>
+                </div>
+                <div class="signature-box">
+                    <div class="signature-title">📝 Assinatura do Contrato:</div>
+                    <div class="signature-names">⚙️ Civil: Luiza &nbsp;|&nbsp; ⚡ Eletr.: André Capanema</div>
+                </div>
+            </div>
+
+            <!-- Contrato Varginha -->
+            <div class="contract-card">
+                <div class="contract-header">
+                    <div class="contract-number">🏷️ Nº 2057</div>
+                    <div class="contract-title">MINAS GERAIS – VARGINHA</div>
+                </div>
+                <div class="service-item">
+                    <span class="service-code">17.6</span>
+                    <span class="service-description">Teto e paredes EXTERNAS</span>
+                </div>
+                <div class="service-item">
+                    <span class="service-code">17.10</span>
+                    <span class="service-description">Toda pintura em muros (APENAS divisão com o terreno
+                        vizinho)</span>
+                </div>
+                <div class="service-item">
+                    <span class="service-code">17.11</span>
+                    <span class="service-description">TODA a pintura INTERNA</span>
+                </div>
+                <div class="fiscal-alert">
+                    <div class="fiscal-title">
+                        ⚠️ RESTRIÇÕES DO FISCAL (Carol)
+                    </div>
+                    <div class="fiscal-warning">
+                        Extremamente EXIGENTE e MINUCIOSA (Principalmente Preventivas).
+                        <br>Avisos importantes:
+                    </div>
+
+                    <div class="fiscal-grid">
+                        <div class="fiscal-item">
+                            <strong>Vinílico / porcelanato / carpete:</strong>
+                            ➜ Só trocar se estiver realmente ruim.<br>
+                            ➜ Se não trocar, informar que está em bom estado.
+                        </div>
+
+                        <div class="fiscal-item">
+                            <strong>Fotos:</strong>
+                            ➜ Nada de "acho que está ruim".<br>
+                            ➜ Se estiver ruim, foto clara + justificativa técnica.
+                        </div>
+
+                        <div class="fiscal-item">
+                            <strong>Sujeira pontual:</strong>
+                            ➜ Não lançar pintura e não lançar IN LOCO.
+                        </div>
+
+                        <div class="fiscal-item">
+                            <strong>SCAP:</strong>
+                            ➜ Nunca orientar gerente a abrir SCAP.
+                        </div>
+
+                        <div class="fiscal-item">
+                            <strong>Carpete para vinílico ou vice-versa:</strong>
+                            ➜ Nunca sugerir troca.
+                        </div>
+
+                        <div class="fiscal-item">
+                            <strong>Medidas:</strong>
+                            ➜ Somente medidas reais (nada de números redondos se não forem verdadeiros).
+                        </div>
+
+                        <div class="fiscal-item">
+                            <strong>Piso:</strong>
+                            ➜ Sempre bem justificado, trocando ou não.<br>
+                            ➜ Fotos obrigatórias, inclusive piso elevado.
+                        </div>
+
+                        <div class="fiscal-item">
+                            <strong>Verificar sempre:</strong>
+                            ➜ Sinalização, EPIs, Cuidados do ambiente, Cobertura (não esquecer).
+                        </div>
+                    </div>
+
+                    <div class="fiscal-footer">
+                        ⚠️ Qualquer erro gera questionamento direto da fiscalização.
+                    </div>
+                </div>
+                <div class="signature-box">
+                    <div class="signature-title">📝 Assinatura do Contrato:</div>
+                    <div class="signature-names">⚙️ Civil: Ygor &nbsp;|&nbsp; ⚡ Eletr.: André Capanema</div>
+                </div>
+            </div>
+
+            <!-- Contrato Campo Grande e Aquidauana -->
+            <div class="contract-card">
+                <div class="contract-header">
+                    <div class="contract-number">🏷️ Nº 6122</div>
+                    <div class="contract-title">MATO GROSSO DO SUL – CAMPO GRANDE E AQUIDAUANA</div>
+                </div>
+                <div class="service-item">
+                    <span class="service-code">17.4</span>
+                    <span class="service-description">Todo o restante das paredes internas e externas. Pintura em FORRO
+                        (TETO) também.</span>
+                </div>
+                <div class="service-item">
+                    <span class="service-code">17.10</span>
+                    <span class="service-description">Pintura de muros;</span>
+                </div>
+                <div class="service-item">
+                    <span class="service-code">17.11</span>
+                    <span class="service-description">Pintura de paredes internas e/ou externas COLORIDAS (azul ou
+                        amarelo);</span>
+                </div>
+                <div class="observation-item" style="margin-top: 15px; border-left-color: #f59e0b;">
+                    <div class="observation-title" style="color: #f59e0b;">⚠️ Registro de Remanejamento Mobiliário
+                        obrigatório:</div>
+                    <div class="observation-text">Indicar a quantidade exata de cada item movimentado (ex.: X cadeiras,
+                        Y extintores, Z mesas).</div>
+                </div>
+                <div class="signature-box">
+                    <div class="signature-title">📝 Assinatura do Contrato:</div>
+                    <div class="signature-names">⚙️ Civil: Ygor ou Felipe Rocha &nbsp;|&nbsp; ⚡ Eletr.: André Luiz</div>
+                </div>
+            </div>
+
+            <!-- Contrato São José dos Campos -->
+            <div class="contract-card">
+                <div class="contract-header">
+                    <div class="contract-number">🏷️ Nº 0908</div>
+                    <div class="contract-title">SÃO PAULO – SÃO JOSÉ DOS CAMPOS</div>
+                </div>
+                <div class="service-item">
+                    <span class="service-code">17.6</span>
+                    <span class="service-description">Teto</span>
+                </div>
+                <div class="service-item">
+                    <span class="service-code">17.4</span>
+                    <span class="service-description">Todo o restante das paredes internas e externas e MUROS</span>
+                </div>
+                <div class="fiscal-alert">
+                    <div class="fiscal-title">⚠️ ATENÇÃO – RELATÓRIO SÃO PAULO 0908</div>
+                    <div class="fiscal-grid">
+                        <div class="fiscal-item">
+                            <strong>Ordem dos detalhes:</strong>
+                            ➜ Colocar os detalhes das paredes logo abaixo dela.<br>
+                            ➜ NÃO colocar todos os detalhes no final do tópico.
+                        </div>
+                        <div class="fiscal-item">
+                            <strong style="color: #ef4444;">🚨 FORMATO DE ORÇAMENTOS:</strong>
+                            ➜ PLANILHAS DE ORÇAMENTOS DEVEM SER ENVIADAS NO PORTAL APENAS EM <b>PDF</b> E COM <b>ASSINATURA ELETRÔNICA</b>.<br>
+                            ➜ <span style="text-decoration: underline;">NÃO ENVIAR MAIS NO FORMATO EXCEL.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="signature-box">
+                    <div class="signature-title">📝 Assinatura do Contrato:</div>
+                    <div class="signature-names">⚙️ Civil: Ygor &nbsp;|&nbsp; ⚡ Eletr.: André Luiz</div>
+                </div>
+            </div>
+
+            <!-- Contrato São José do Rio Preto e Ribeirão Preto -->
+            <div class="contract-card">
+                <div class="contract-header">
+                    <div class="contract-number">🏷️ Nº 1565</div>
+                    <div class="contract-title">SÃO PAULO – SÃO JOSÉ DO RIO PRETO E RIBEIRÃO PRETO</div>
+                </div>
+                <div class="service-item">
+                    <span class="service-code">17.10</span>
+                    <span class="service-description">TODOS OS MUROS</span>
+                </div>
+                <div class="service-item">
+                    <span class="service-code">17.4</span>
+                    <span class="service-description">TODAS as paredes externas</span>
+                </div>
+                <div class="service-item">
+                    <span class="service-code">17.6</span>
+                    <span class="service-description">TODA a pintura acrílica INTERNA e em TETOS</span>
+                </div>
+                <div class="fiscal-alert">
+                    <div class="fiscal-title">⚠️ ATENÇÃO – RELATÓRIO SÃO PAULO 1565</div>
+                    <div class="fiscal-grid">
+                        <div class="fiscal-item">
+                            <strong>Ordem dos detalhes:</strong>
+                            ➜ Colocar os detalhes das paredes logo abaixo dela.<br>
+                            ➜ NÃO colocar todos os detalhes no final do tópico.
+                        </div>
+                        <div class="fiscal-item">
+                            <strong style="color: #ef4444;">🚨 FORMATO DE ORÇAMENTOS:</strong>
+                            ➜ PLANILHA ORÇAMENTÁRIA deverá ser SEMPRE enviada em <b>PDF</b> assinados <b>DIGITALMENTE</b> e com <b>CARIMBO</b> pelos responsáveis técnicos (ENGENHEIRO CIVIL E ELETRICISTA)!<br>
+                            ➜ A PLANILHA DEVERÁ OCUPAR A PÁGINA INTEIRA DO PDF.<br>
+                            ➜ <span style="text-decoration: underline;">NÃO ENVIAR MAIS NO FORMATO EXCEL.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="signature-box">
+                    <div class="signature-title">📝 Assinatura do Contrato:</div>
+                    <div class="signature-names">⚙️ Civil: Ygor &nbsp;|&nbsp; ⚡ Eletr.: André Luiz</div>
+                </div>
+            </div>
+
+            <!-- Contrato Cuiabá -->
+            <div class="contract-card">
+                <div class="contract-header">
+                    <div class="contract-number">🏷️ Nº 1507</div>
+                    <div class="contract-title">MATO GROSSO – CUIABÁ</div>
+                </div>
+                <div class="service-item">
+                    <span class="service-code">17.11</span>
+                    <span class="service-description">Pintura colorida (azul ou amarelo)</span>
+                </div>
+                <div class="service-item">
+                    <span class="service-code">17.6</span>
+                    <span class="service-description">Teto</span>
+                </div>
+                <div class="service-item">
+                    <span class="service-code">17.4</span>
+                    <span class="service-description">Todo o restante das paredes internas e externas e MUROS</span>
+                </div>
+                <div class="signature-box">
+                    <div class="signature-title">📝 Assinatura do Contrato:</div>
+                    <div class="signature-names">⚙️ Civil: Ygor &nbsp;|&nbsp; ⚡ Eletr.: André Luiz</div>
+                </div>
+            </div>
+
+            <!-- Contrato Tangará da Serra, Sinop e Barra do Garças -->
+            <div class="contract-card">
+                <div class="contract-header">
+                    <div class="contract-number">🏷️ Nº 3575</div>
+                    <div class="contract-title">MATO GROSSO – TANGARÁ DA SERRA, SINOP E BARRA DO GARÇAS</div>
+                </div>
+                <div class="service-item">
+                    <span class="service-code">17.11</span>
+                    <span class="service-description">Pintura colorida (azul ou amarelo)</span>
+                </div>
+                <div class="service-item">
+                    <span class="service-code">17.6</span>
+                    <span class="service-description">Teto</span>
+                </div>
+                <div class="service-item">
+                    <span class="service-code">17.4</span>
+                    <span class="service-description">Todo o restante das paredes internas e externas e MUROS</span>
+                </div>
+                <div class="signature-box">
+                    <div class="signature-title">📝 Assinatura do Contrato:</div>
+                    <div class="signature-names">⚙️ Civil: Ygor &nbsp;|&nbsp; ⚡ Eletr.: André Luiz</div>
+                </div>
+            </div>
+
+            <!-- Contrato Governador Valadares e Joaíma -->
+            <div class="contract-card">
+                <div class="contract-header">
+                    <div class="contract-number">🏷️ Nº 2627</div>
+                    <div class="contract-title">MINAS GERAIS – GOVERNADOR VALADARES E JOAÍMA</div>
+                </div>
+                <div class="service-item">
+                    <span class="service-code">17.6</span>
+                    <span class="service-description">Teto e paredes EXTERNAS</span>
+                </div>
+                <div class="service-item">
+                    <span class="service-code">17.10</span>
+                    <span class="service-description">Toda pintura em muros (APENAS divisão com o terreno
+                        vizinho)</span>
+                </div>
+                <div class="service-item">
+                    <span class="service-code">17.11</span>
+                    <span class="service-description">TODA a pintura INTERNA</span>
+                </div>
+                <div class="fiscal-alert">
+                    <div class="fiscal-title">
+                        ⚠️ RESTRIÇÕES DO FISCAL (Carol)
+                    </div>
+                    <div class="fiscal-warning">
+                        Extremamente EXIGENTE e MINUCIOSA (Principalmente Preventivas).
+                        <br>Avisos importantes:
+                    </div>
+
+                    <div class="fiscal-grid">
+                        <div class="fiscal-item">
+                            <strong>Vinílico / porcelanato / carpete:</strong>
+                            ➜ Só trocar se estiver realmente ruim.<br>
+                            ➜ Se não trocar, informar que está em bom estado.
+                        </div>
+
+                        <div class="fiscal-item">
+                            <strong>Fotos:</strong>
+                            ➜ Nada de "acho que está ruim".<br>
+                            ➜ Se estiver ruim, foto clara + justificativa técnica.
+                        </div>
+
+                        <div class="fiscal-item">
+                            <strong>Sujeira pontual:</strong>
+                            ➜ Não lançar pintura e não lançar IN LOCO.
+                        </div>
+
+                        <div class="fiscal-item">
+                            <strong>SCAP:</strong>
+                            ➜ Nunca orientar gerente a abrir SCAP.
+                        </div>
+
+                        <div class="fiscal-item">
+                            <strong>Carpete para vinílico ou vice-versa:</strong>
+                            ➜ Nunca sugerir troca.
+                        </div>
+
+                        <div class="fiscal-item">
+                            <strong>Medidas:</strong>
+                            ➜ Somente medidas reais (nada de números redondos se não forem verdadeiros).
+                        </div>
+
+                        <div class="fiscal-item">
+                            <strong>Piso:</strong>
+                            ➜ Sempre bem justificado, trocando ou não.<br>
+                            ➜ Fotos obrigatórias, inclusive piso elevado.
+                        </div>
+
+                        <div class="fiscal-item">
+                            <strong>Verificar sempre:</strong>
+                            ➜ Sinalização, EPIs, Cuidados do ambiente, Cobertura (não esquecer).
+                        </div>
+                    </div>
+
+                    <div class="fiscal-footer">
+                        ⚠️ Qualquer erro gera questionamento direto da fiscalização.
+                    </div>
+                </div>
+                <div class="signature-box">
+                    <div class="signature-title">📝 Assinatura do Contrato:</div>
+                    <div class="signature-names">⚙️ Civil: Rafaella &nbsp;|&nbsp; ⚡ Eletr.: Oswair</div>
+                </div>
+            </div>
+
+            <!-- Contrato Salinas e São Francisco -->
+            <div class="contract-card">
+                <div class="contract-header">
+                    <div class="contract-number">🏷️ Nº 2626</div>
+                    <div class="contract-title">MINAS GERAIS – SALINAS E SÃO FRANCISCO</div>
+                </div>
+                <div class="service-item">
+                    <span class="service-code">17.6</span>
+                    <span class="service-description">Teto, muros e paredes EXTERNAS</span>
+                </div>
+                <div class="service-item">
+                    <span class="service-code">17.11</span>
+                    <span class="service-description">TODA a pintura INTERNA</span>
+                </div>
+                <div class="signature-box">
+                    <div class="signature-title">📝 Assinatura do Contrato:</div>
+                    <div class="signature-names">⚙️ Civil: Ygor &nbsp;|&nbsp; ⚡ Eletr.: Mateus Drumond</div>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- Observações Gerais -->
+            <div class="observations">
+                <h2>📋 Observações Gerais para Todos os Contratos</h2>
+
+                <div class="observation-item">
+                    <div class="observation-title">Item 29.24:</div>
+                    <div class="observation-text">O valor total deve ser <span class="highlight">dividido por 10</span>,
+                        e
+                        em seguida <span class="highlight">dividido por 2</span>.</div>
+                </div>
+
+                <div class="observation-item">
+                    <div class="observation-title">Figura de Remanejamento Mobiliário:</div>
+                    <div class="observation-text">Necessária quando aplicável.</div>
+                </div>
+
+                <div class="observation-item">
+                    <div class="observation-title">Placas de Forro de Fibra Mineral:</div>
+                    <div class="observation-text">Sempre que houver <span class="highlight">mais de 5 placas</span> a
+                        substituir, adicionar unidades extras ao total levantado.</div>
+                    <div class="observation-text"><span class="highlight">Exemplo:</span> se forem necessárias 17
+                        placas,
+                        levantar 21 unidades.</div>
+                </div>
+
+                <div class="observation-item">
+                    <div class="observation-title">Substituição de Lâmpadas Fluorescentes:</div>
+                    <div class="observation-text">Sempre <span class="highlight">substituir todas as lâmpadas
+                            fluorescentes
+                            por LED</span>, mesmo que apenas algumas estejam queimadas.</div>
+                </div>
+
+                <div class="observation-item" style="border-left-color: #d32f2f;">
+                    <div class="observation-title" style="color: #d32f2f;">🔧 Troca de Calha – Regra Obrigatória</div>
+                    <div class="observation-text">
+                        No serviço de <span class="highlight">TROCA DE CALHA</span>, é OBRIGATÓRIO lançar <span
+                            class="highlight">SEMPRE o ITEM 7.14</span>, sendo <span class="highlight">PROIBIDO lançar o
+                            ITEM 7.8</span>.
+                    </div>
+                    <div class="observation-text" style="margin-top:10px;">
+                        <strong style="color:#d32f2f;">❌ ITEM 7.8 (PROIBIDO para troca):</strong><br>
+                        ➜ Considerado em <em>metros lineares</em>, com desenvolvimento de 33 cm.<br>
+                        ➜ Representa calha em chapa plana – modelo que <span class="highlight">NÃO é mais
+                            utilizado</span> para substituição.<br>
+                        ➜ Portanto, não deve ser aplicado em troca de calhas.
+                    </div>
+                    <div class="observation-text" style="margin-top:10px;">
+                        <strong style="color:#22c55e;">✅ ITEM 7.14 (ÚNICO válido):</strong><br>
+                        ➜ Considerado em <em>m²</em> — único item válido para troca de calhas.<br>
+                        ➜ Deve-se considerar o <span class="highlight">desenvolvimento da calha</span>: largura total da
+                        chapa metálica aberta (plana), antes da dobra, correspondente ao fundo e às laterais da calha.
+                    </div>
+                    <div class="observation-text"
+                        style="margin-top:10px; padding:12px; background:rgba(211,47,47,0.07); border-radius:8px;">
+                        <strong style="color:#d32f2f;">⚠️ ATENÇÃO:</strong> O desenvolvimento deve ser considerado como
+                        <span class="highlight">NO MÍNIMO 0,60 m (60 cm)</span>, SEM EXCEÇÃO. <em>(CONFIRMAR COM O
+                            TÉCNICO)</em>
+                    </div>
+                    <div class="observation-text" style="margin-top:10px;">
+                        <strong>Memorial de Cálculo – Formato obrigatório:</strong><br>
+                        ➜ <span class="highlight">COMPRIMENTO da calha × LARGURA</span> (desenvolvimento mínimo de 0,60
+                        m)<br>
+                        ➜ Resultado lançado exclusivamente no <span class="highlight">ITEM 7.14</span>.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div><!-- /page-main -->
+
+    
+
+    </div><!-- /container -->
+
+    <div class="toast" id="toast"></div>
+
+    <script>
+        // ===== PESQUISA CONTRATOS =====
+        document.getElementById('contractSearch').addEventListener('input', function (e) {
+            const searchTerm = e.target.value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+            const cards = document.querySelectorAll('.contract-card');
+            const noResultsMessage = document.getElementById('noResultsMessage');
+            let hasVisibleCards = false;
+
+            cards.forEach(card => {
+                const textContent = card.innerText.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                if (textContent.includes(searchTerm)) {
+                    card.style.display = 'block';
+                    hasVisibleCards = true;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            const divider = document.querySelector('.divider');
+            const observations = document.querySelector('.observations');
+
+            if (searchTerm.length > 0) {
+                if (divider) divider.style.display = 'none';
+                if (observations) {
+                    const obsText = observations.innerText.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                    if (obsText.includes(searchTerm)) {
+                        observations.style.display = 'block';
+                        hasVisibleCards = true;
+                    } else {
+                        observations.style.display = 'none';
+                    }
+                }
+            } else {
+                if (divider) divider.style.display = 'block';
+                if (observations) observations.style.display = 'block';
+            }
+
+            noResultsMessage.style.display = hasVisibleCards ? 'none' : 'block';
+        });
+
+        // Setar data padrão no checklist
+        document.getElementById('cl-data').valueAsDate = new Date();
+        // ===== TEMA ESCURO =====
+        function toggleTheme() {
+            const html = document.documentElement;
+            const icon = document.getElementById('theme-icon');
+            const text = document.getElementById('theme-text');
+            
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.setItem('maffeng_theme', 'light');
+                if(icon) icon.textContent = '🌙';
+                if(text) text.textContent = 'Dark Mode';
+            } else {
+                html.classList.add('dark');
+                localStorage.setItem('maffeng_theme', 'dark');
+                if(icon) icon.textContent = '☀️';
+                if(text) text.textContent = 'Light Mode';
+            }
+        }
+
+        // Init theme
+        if (localStorage.getItem('maffeng_theme') === 'dark') {
+            document.documentElement.classList.add('dark');
+            const icon = document.getElementById('theme-icon');
+            const text = document.getElementById('theme-text');
+            if(icon) icon.textContent = '☀️';
+            if(text) text.textContent = 'Light Mode';
+        }
+    </script>
+</body>
+
+</html>

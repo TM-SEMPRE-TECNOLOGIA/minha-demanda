@@ -1,0 +1,25 @@
+Sub RedimensionarFotos()
+    Dim doc As Document
+    Dim img As InlineShape
+    Dim i As Long
+    Set doc = ActiveDocument
+
+    ' Contar o número total de imagens no documento
+    Dim totalImagens As Long
+    totalImagens = doc.InlineShapes.Count
+
+    ' Verificar se há pelo menos 3 imagens
+    If totalImagens < 3 Then
+        MsgBox "O documento precisa ter pelo menos 3 imagens para aplicar o redimensionamento."
+        Exit Sub
+    End If
+
+    ' Loop para redimensionar todas as imagens, exceto a primeira e a última
+    For i = 2 To totalImagens - 1
+        Set img = doc.InlineShapes(i)
+        If img.Type = wdInlineShapePicture Then
+            img.LockAspectRatio = msoTrue ' Mantém a proporção
+            img.Height = CentimetersToPoints(10) ' Ajusta a altura para 10 cm
+        End If
+    Next i
+End Sub

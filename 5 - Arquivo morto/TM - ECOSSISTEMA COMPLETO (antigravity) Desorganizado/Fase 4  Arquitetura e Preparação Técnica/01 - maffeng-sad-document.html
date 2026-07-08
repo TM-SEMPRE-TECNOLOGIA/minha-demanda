@@ -1,0 +1,2415 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Architecture Document (SAD) - MAFFENG</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700&family=Inter:wght@400;500;600&family=Roboto+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --TM-navy-deep: #0A1628;
+            --TM-navy-medium: #112240;
+            --TM-navy-light: #1A365D;
+            --TM-neon-green: #64FFDA;
+            --TM-cyan-vibrant: #00D4FF;
+            --TM-text-primary: #E6F1FF;
+            --TM-text-secondary: #8892B0;
+            --TM-text-emphasis: #64FFDA;
+            --TM-card-bg: rgba(17, 34, 64, 0.5);
+            --TM-card-border: rgba(100, 255, 218, 0.1);
+            --TM-warning: #FFA500;
+            --TM-error: #FF6B6B;
+            --font-heading: "Exo 2", sans-serif;
+            --font-body: "Inter", sans-serif;
+            --font-mono: "Roboto Mono", monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: linear-gradient(180deg, var(--TM-navy-deep) 0%, var(--TM-navy-medium) 50%, var(--TM-navy-deep) 100%);
+            color: var(--TM-text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 24px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: var(--TM-card-bg);
+            border: 1px solid var(--TM-card-border);
+            border-radius: 8px;
+            padding: 32px;
+            margin-bottom: 32px;
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            font-family: var(--font-heading);
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--TM-neon-green);
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+            line-height: 1.3;
+        }
+
+        .subtitle {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--TM-cyan-vibrant);
+            margin-bottom: 24px;
+        }
+
+        .metadata {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid var(--TM-card-border);
+        }
+
+        .metadata-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .metadata-label {
+            font-size: 12px;
+            color: var(--TM-text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .metadata-value {
+            font-size: 14px;
+            color: var(--TM-text-primary);
+            font-weight: 600;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .status-active {
+            background: rgba(100, 255, 218, 0.1);
+            color: var(--TM-neon-green);
+            border: 1px solid var(--TM-neon-green);
+        }
+
+        h2 {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--TM-neon-green);
+            margin: 48px 0 24px;
+            letter-spacing: -0.01em;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--TM-card-border);
+        }
+
+        h3 {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--TM-cyan-vibrant);
+            margin: 32px 0 16px;
+        }
+
+        .section {
+            background: var(--TM-card-bg);
+            border: 1px solid var(--TM-card-border);
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 24px;
+            backdrop-filter: blur(10px);
+        }
+
+        p {
+            margin-bottom: 16px;
+            color: var(--TM-text-primary);
+            font-size: 16px;
+        }
+
+        .highlight {
+            color: var(--TM-neon-green);
+            font-weight: 600;
+        }
+
+        .code-block {
+            background: var(--TM-navy-deep);
+            border: 1px solid var(--TM-navy-light);
+            border-radius: 8px;
+            padding: 16px;
+            margin: 16px 0;
+            overflow-x: auto;
+        }
+
+        code {
+            font-family: var(--font-mono);
+            font-size: 14px;
+            color: var(--TM-cyan-vibrant);
+            letter-spacing: 0.02em;
+        }
+
+        .diagram {
+            background: var(--TM-navy-deep);
+            border: 1px solid var(--TM-card-border);
+            border-radius: 8px;
+            padding: 24px;
+            margin: 24px 0;
+            text-align: center;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .diagram-title {
+            font-family: var(--font-heading);
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--TM-neon-green);
+            margin-bottom: 16px;
+        }
+
+        .diagram-placeholder {
+            font-size: 48px;
+            color: var(--TM-card-border);
+            margin-bottom: 16px;
+        }
+
+        .diagram-description {
+            font-size: 14px;
+            color: var(--TM-text-secondary);
+            max-width: 600px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            background: var(--TM-navy-deep);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        thead {
+            background: var(--TM-navy-light);
+        }
+
+        th {
+            padding: 12px 16px;
+            text-align: left;
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--TM-neon-green);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        td {
+            padding: 12px 16px;
+            font-size: 14px;
+            border-top: 1px solid var(--TM-card-border);
+        }
+
+        tr:hover {
+            background: rgba(100, 255, 218, 0.05);
+        }
+
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+            margin: 24px 0;
+        }
+
+        .tech-card {
+            background: var(--TM-navy-deep);
+            border: 1px solid var(--TM-card-border);
+            border-radius: 8px;
+            padding: 16px;
+            transition: all 300ms ease-in-out;
+        }
+
+        .tech-card:hover {
+            border-color: var(--TM-neon-green);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(100, 255, 218, 0.1);
+        }
+
+        .tech-card-title {
+            font-family: var(--font-heading);
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--TM-cyan-vibrant);
+            margin-bottom: 8px;
+        }
+
+        .tech-card-description {
+            font-size: 14px;
+            color: var(--TM-text-secondary);
+            line-height: 1.5;
+        }
+
+        .adr-card {
+            background: var(--TM-card-bg);
+            border-left: 4px solid var(--TM-neon-green);
+            border-radius: 4px;
+            padding: 16px;
+            margin: 16px 0;
+        }
+
+        .adr-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .adr-title {
+            font-family: var(--font-heading);
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--TM-neon-green);
+        }
+
+        .adr-status {
+            font-size: 12px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            background: rgba(100, 255, 218, 0.1);
+            color: var(--TM-neon-green);
+        }
+
+        .adr-content {
+            font-size: 14px;
+            color: var(--TM-text-primary);
+            line-height: 1.6;
+        }
+
+        .flow-step {
+            background: var(--TM-navy-deep);
+            border: 1px solid var(--TM-card-border);
+            border-radius: 8px;
+            padding: 16px;
+            margin: 12px 0;
+            position: relative;
+        }
+
+        .flow-step::after {
+            content: '↓';
+            position: absolute;
+            bottom: -24px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 20px;
+            color: var(--TM-cyan-vibrant);
+        }
+
+        .flow-step:last-child::after {
+            content: '';
+        }
+
+        .flow-step-title {
+            font-weight: 600;
+            color: var(--TM-cyan-vibrant);
+            margin-bottom: 8px;
+        }
+
+        .security-item {
+            background: var(--TM-navy-deep);
+            border-left: 3px solid var(--TM-cyan-vibrant);
+            padding: 16px;
+            margin: 12px 0;
+            border-radius: 4px;
+        }
+
+        .security-item-title {
+            font-weight: 600;
+            color: var(--TM-cyan-vibrant);
+            margin-bottom: 8px;
+        }
+
+        footer {
+            margin-top: 48px;
+            padding-top: 24px;
+            border-top: 1px solid var(--TM-card-border);
+            text-align: center;
+            color: var(--TM-text-secondary);
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 16px;
+            }
+
+            header {
+                padding: 24px 16px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+
+            .metadata {
+                grid-template-columns: 1fr;
+            }
+
+            .tech-stack {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>📐 Software Architecture Document (SAD)</h1>
+            <div class="subtitle">Projeto MAFFENG - Ecossistema Integrado de Automação Técnica</div>
+
+            <div class="metadata">
+                <div class="metadata-item">
+                    <span class="metadata-label">Cliente/Marca</span>
+                    <span class="metadata-value">MAFFENG - Automação Técnica</span>
+                </div>
+                <div class="metadata-item">
+                    <span class="metadata-label">Desenvolvedor</span>
+                    <span class="metadata-value">TM – Sempre Tecnologia</span>
+                </div>
+                <div class="metadata-item">
+                    <span class="metadata-label">Versão</span>
+                    <span class="metadata-value">1.0</span>
+                </div>
+                <div class="metadata-item">
+                    <span class="metadata-label">Data</span>
+                    <span class="metadata-value">19 de Novembro de 2025</span>
+                </div>
+                <div class="metadata-item">
+                    <span class="metadata-label">Status</span>
+                    <span class="status-badge status-active">✅ ATIVO</span>
+                </div>
+                <div class="metadata-item">
+                    <span class="metadata-label">Autor</span>
+                    <span class="metadata-value">Thiago Nascimento Barbosa</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="section">
+            <h2>🎯 1. Visão Geral da Arquitetura</h2>
+
+            <h3>1.1 Objetivo do Documento</h3>
+            <p>Este Software Architecture Document (SAD) define a arquitetura de software do Projeto MAFFENG, um
+                ecossistema integrado de automação técnica. O documento serve como guia técnico definitivo para
+                desenvolvedores, arquitetos e stakeholders, descrevendo padrões arquiteturais, decisões técnicas,
+                componentes do sistema e suas interações.</p>
+
+            <h3>1.2 Escopo do Sistema</h3>
+            <p>O ecossistema MAFFENG é composto por três módulos principais integrados:</p>
+
+            <div class="tech-stack">
+                <div class="tech-card">
+                    <div class="tech-card-title">📱 App Mobile (Levantamentos)</div>
+                    <div class="tech-card-description">Aplicativo React Native para captura fotográfica em campo, coleta
+                        de medições e observações técnicas offline-first.</div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-card-title">💼 Gerenciador de O.S.</div>
+                    <div class="tech-card-description">Sistema web React para gestão de ordens de serviço, atribuição de
+                        técnicos, upload de pacotes e rastreabilidade completa.</div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-card-title">📊 Auto Relatórios</div>
+                    <div class="tech-card-description">Motor de geração automática de relatórios técnicos em PDF com
+                        templates personalizáveis e integração com dados coletados.</div>
+                </div>
+            </div>
+
+            <h3>1.3 Objetivos Arquiteturais</h3>
+            <p>A arquitetura do sistema MAFFENG foi projetada para atender os seguintes objetivos:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Objetivo</th>
+                        <th>Descrição</th>
+                        <th>Métrica de Sucesso</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="highlight">Modularidade</span></td>
+                        <td>Módulos independentes que podem evoluir separadamente</td>
+                        <td>Deploy independente de cada módulo</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">Escalabilidade</span></td>
+                        <td>Suporte para crescimento de usuários e dados</td>
+                        <td>Suportar 1000+ usuários simultâneos</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">Segurança</span></td>
+                        <td>Proteção de dados sensíveis e autenticação robusta</td>
+                        <td>Conformidade com LGPD e zero vazamentos</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">Performance</span></td>
+                        <td>Resposta rápida e experiência fluida</td>
+                        <td>API &lt; 500ms (p95), FCP &lt; 2s</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">Disponibilidade</span></td>
+                        <td>Sistema disponível 24/7 com mínimo downtime</td>
+                        <td>Uptime &gt; 99.5%</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">Manutenibilidade</span></td>
+                        <td>Código limpo, testável e bem documentado</td>
+                        <td>Code Coverage &gt; 80%, Documentação completa</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>🏗️ 2. Padrão Arquitetural</h2>
+
+            <h3>2.1 Arquitetura de Alto Nível</h3>
+            <p>O sistema MAFFENG adota uma <span class="highlight">arquitetura de microserviços desacoplados</span> com
+                integração via APIs REST e comunicação assíncrona. Cada módulo é independente, mas se comunica através
+                de contratos bem definidos.</p>
+
+            <div class="diagram">
+                <div class="diagram-title">Arquitetura Geral do Sistema</div>
+                <div class="diagram-placeholder">📐</div>
+                <div class="diagram-description">
+                    <strong>Camadas:</strong> Cliente (Mobile/Web) → API Gateway → Microserviços → Banco de Dados →
+                    Armazenamento
+                </div>
+            </div>
+
+            <h3>2.2 Padrão MVC Adaptado (React + Supabase)</h3>
+            <p>Cada módulo segue uma variação do padrão MVC adaptado para o ecossistema React + Supabase:</p>
+
+            <div class="code-block">
+                <code>
+<strong>Model (Supabase):</strong> PostgreSQL + RLS + Realtime Subscriptions<br>
+<strong>View (React):</strong> Componentes funcionais com Hooks (useState, useEffect)<br>
+<strong>Controller (API + Hooks):</strong> Custom Hooks para lógica de negócio e chamadas API<br>
+<strong>State Management:</strong> React Context API + Zustand (estado global)<br>
+                </code>
+            </div>
+
+            <h3>2.3 Camadas da Aplicação</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Camada</th>
+                        <th>Responsabilidade</th>
+                        <th>Tecnologias</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="highlight">Presentation Layer</span></td>
+                        <td>Interface do usuário, componentes visuais, navegação</td>
+                        <td>React, React Native, Tailwind CSS</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">Business Logic Layer</span></td>
+                        <td>Regras de negócio, validações, transformações</td>
+                        <td>Custom Hooks, Context API, Zustand</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">Data Access Layer</span></td>
+                        <td>Comunicação com backend, cache, offline-first</td>
+                        <td>Supabase Client, React Query, AsyncStorage</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">Backend Services</span></td>
+                        <td>APIs REST, autenticação, autorização, storage</td>
+                        <td>Supabase (PostgreSQL, Auth, Storage, Realtime)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">Infrastructure</span></td>
+                        <td>Hosting, CI/CD, monitoring, backups</td>
+                        <td>Vercel, GitHub Actions, Sentry, AWS S3</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>🔧 3. Stack Tecnológica</h2>
+
+            <h3>3.1 Frontend</h3>
+            <div class="tech-stack">
+                <div class="tech-card">
+                    <div class="tech-card-title">⚛️ React 18+</div>
+                    <div class="tech-card-description">
+                        Framework principal para Gerenciador O.S. e Auto Relatórios. Componentes funcionais com Hooks,
+                        Context API para estado global.
+                    </div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-card-title">📱 React Native + Expo</div>
+                    <div class="tech-card-description">
+                        Framework mobile para App Levantamentos. Suporte offline-first com AsyncStorage, integração com
+                        câmera nativa.
+                    </div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-card-title">🎨 Tailwind CSS</div>
+                    <div class="tech-card-description">
+                        Estilização utilitária. Design System TM implementado com classes personalizadas e tema
+                        dark/light.
+                    </div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-card-title">🧭 React Router v6</div>
+                    <div class="tech-card-description">
+                        Navegação declarativa para web. Protected routes, layouts aninhados e navegação programática.
+                    </div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-card-title">🔄 React Query (TanStack Query)</div>
+                    <div class="tech-card-description">
+                        Gerenciamento de estado servidor. Cache automático, refetch, optimistic updates, invalidação
+                        inteligente.
+                    </div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-card-title">🐻 Zustand</div>
+                    <div class="tech-card-description">
+                        Estado global minimalista. Gerencia autenticação, tema, configurações do usuário.
+                    </div>
+                </div>
+            </div>
+
+            <h3>3.2 Backend</h3>
+            <div class="tech-stack">
+                <div class="tech-card">
+                    <div class="tech-card-title">🗄️ Supabase</div>
+                    <div class="tech-card-description">
+                        Backend-as-a-Service completo. PostgreSQL + Auth + Storage + Realtime em plataforma unificada.
+                    </div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-card-title">🐘 PostgreSQL 15+</div>
+                    <div class="tech-card-description">
+                        Banco de dados relacional. Suporte a JSON, índices GIN, full-text search, triggers e stored
+                        procedures.
+                    </div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-card-title">🔐 Supabase Auth</div>
+                    <div class="tech-card-description">
+                        Autenticação JWT com refresh tokens. Suporte a email/senha, magic links, OAuth providers.
+                    </div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-card-title">🛡️ Row Level Security (RLS)</div>
+                    <div class="tech-card-description">
+                        Segurança nativa no banco. Políticas por linha baseadas em claims JWT, isolamento de dados por
+                        tenant.
+                    </div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-card-title">📦 Supabase Storage</div>
+                    <div class="tech-card-description">
+                        Object storage S3-compatível. Upload de fotos, PDFs, com políticas de acesso integradas ao RLS.
+                    </div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-card-title">⚡ Supabase Realtime</div>
+                    <div class="tech-card-description">
+                        WebSockets para dados em tempo real. Notificações de mudanças no banco, sincronização
+                        instantânea.
+                    </div>
+                </div>
+            </div>
+
+            <h3>3.3 DevOps & Infraestrutura</h3>
+            <div class="tech-stack">
+                <div class="tech-card">
+                    <div class="tech-card-title">▲ Vercel</div>
+                    <div class="tech-card-description">
+                        Hospedagem frontend. Deploy automático via Git, preview deployments, edge network global.
+                    </div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-card-title">🐙 GitHub Actions</div>
+                    <div class="tech-card-description">
+                        CI/CD pipeline. Testes automatizados, linting, build e deploy em cada push/PR.
+                    </div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-card-title">🐛 Sentry</div>
+                    <div class="tech-card-description">
+                        Monitoramento de erros. Tracking de exceptions, performance monitoring, alertas em tempo real.
+                    </div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-card-title">📊 Vercel Analytics</div>
+                    <div class="tech-card-description">
+                        Web vitals e métricas de performance. Core Web Vitals, real user monitoring (RUM).
+                    </div>
+                </div>
+            </div>
+
+            <h3>3.4 Ferramentas de Desenvolvimento</h3>
+            <div class="code-block">
+                <code>
+<strong>Build Tool:</strong> Vite (web) | Metro (React Native)<br>
+<strong>Package Manager:</strong> npm<br>
+<strong>Linting:</strong> ESLint + Prettier<br>
+<strong>Type Checking:</strong> TypeScript (opcional, recomendado para fase futura)<br>
+<strong>Testing:</strong> Jest + React Testing Library + Playwright (E2E)<br>
+<strong>Version Control:</strong> Git + GitHub<br>
+<strong>Documentation:</strong> JSDoc + Markdown<br>
+                </code>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🔐 4. Autenticação e Autorização</h2>
+
+            <h3>4.1 Fluxo de Autenticação (JWT)</h3>
+
+            <div class="flow-step">
+                <div class="flow-step-title">1. Login do Usuário</div>
+                Usuário fornece email e senha através do formulário de login. Cliente React/React Native envia
+                credenciais via Supabase Client.
+            </div>
+
+            <div class="flow-step">
+                <div class="flow-step-title">2. Validação no Supabase Auth</div>
+                Supabase Auth valida credenciais contra tabela auth.users. Se válido, gera JWT access token (1h) +
+                refresh token (30d).
+            </div>
+
+            <div class="flow-step">
+                <div class="flow-step-title">3. Retorno de Tokens</div>
+                Tokens são retornados ao cliente e armazenados de forma segura (httpOnly cookie para web, SecureStore
+                para mobile).
+            </div>
+
+            <div class="flow-step">
+                <div class="flow-step-title">4. Requisições Autenticadas</div>
+                Todas as requisições subsequentes incluem JWT no header Authorization: Bearer {token}. Supabase valida
+                token automaticamente.
+            </div>
+
+            <div class="flow-step">
+                <div class="flow-step-title">5. Refresh Token</div>
+                Quando access token expira (1h), cliente automaticamente usa refresh token para obter novo access token
+                sem re-login.
+            </div>
+
+            <h3>4.2 Row Level Security (RLS)</h3>
+            <p>Todas as tabelas do banco de dados possuem políticas RLS que garantem isolamento de dados:</p>
+
+            <div class="code-block">
+                <code>
+-- Exemplo: Política de SELECT para ordens_servico<br>
+CREATE POLICY "os_select_policy" ON ordens_servico<br>
+FOR SELECT USING (<br>
+&nbsp;&nbsp;auth.uid() IN (<br>
+&nbsp;&nbsp;&nbsp;&nbsp;SELECT user_id FROM users_permissions<br>
+&nbsp;&nbsp;&nbsp;&nbsp;WHERE permission IN ('os.read', 'admin')<br>
+&nbsp;&nbsp;)<br>
+);<br>
+<br>
+-- Técnicos só veem suas próprias O.S.<br>
+CREATE POLICY "os_tecnico_policy" ON ordens_servico<br>
+FOR SELECT USING (tecnico_id = auth.uid());<br>
+                </code>
+            </div>
+
+            <h3>4.3 Matriz de Permissões (RBAC)</h3>
+            <p>O sistema implementa controle de acesso baseado em papéis (Role-Based Access Control):</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Perfil</th>
+                        <th>Ordens de Serviço</th>
+                        <th>Usuários</th>
+                        <th>Relatórios</th>
+                        <th>Configurações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="highlight">Admin</span></td>
+                        <td>CRUD completo</td>
+                        <td>CRUD completo</td>
+                        <td>Visualizar todos</td>
+                        <td>CRUD completo</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">Gestor</span></td>
+                        <td>CRUD (suas equipes)</td>
+                        <td>Read (suas equipes)</td>
+                        <td>Visualizar (suas equipes)</td>
+                        <td>Read only</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">Técnico</span></td>
+                        <td>Read + Update status</td>
+                        <td>Read (próprio perfil)</td>
+                        <td>Visualizar (próprias)</td>
+                        <td>Nenhum</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">Cliente</span></td>
+                        <td>Read (próprias)</td>
+                        <td>Nenhum</td>
+                        <td>Visualizar (próprias)</td>
+                        <td>Nenhum</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">Visualizador</span></td>
+                        <td>Read only</td>
+                        <td>Nenhum</td>
+                        <td>Visualizar (permitidas)</td>
+                        <td>Nenhum</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>4.4 Segurança Adicional</h3>
+
+            <div class="security-item">
+                <div class="security-item-title">🔒 HTTPS Obrigatório</div>
+                Todas as comunicações entre cliente e servidor usam TLS 1.3+. Certificados SSL gratuitos via
+                Vercel/Let's Encrypt com renovação automática.
+            </div>
+
+            <div class="security-item">
+                <div class="security-item-title">🛡️ CORS Configurado</div>
+                Supabase configurado para aceitar requisições apenas de domínios autorizados (whitelist). Proteção
+                contra ataques CSRF.
+            </div>
+
+            <div class="security-item">
+                <div class="security-item-title">🔐 Senhas Hash</div>
+                Senhas armazenadas com bcrypt (cost factor 10+). Nunca expostas em logs ou respostas de API.
+            </div>
+
+            <div class="security-item">
+                <div class="security-item-title">⏱️ Rate Limiting</div>
+                Proteção contra brute force: máximo 5 tentativas de login a cada 15 minutos por IP. APIs limitadas a 100
+                req/min por usuário.
+            </div>
+
+            <div class="security-item">
+                <div class="security-item-title">📝 Audit Logs</div>
+                Todas as ações críticas (criação de O.S., mudança de status, exclusões) são registradas em tabela de
+                auditoria com timestamp e user_id.
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📊 5. Modelo de Dados e Database Schema</h2>
+
+            <h3>5.1 Diagrama de Entidade-Relacionamento (DER)</h3>
+
+            <div class="diagram">
+                <div class="diagram-title">Modelo Relacional - Schema PostgreSQL</div>
+                <div class="diagram-placeholder">🗄️</div>
+                <div class="diagram-description">
+                    <strong>Tabelas Principais:</strong> users, ordens_servico, ambientes, fotos, medicoes,
+                    observacoes<br>
+                    <strong>Relacionamentos:</strong> 1:N entre O.S. e ambientes, 1:N entre ambientes e
+                    fotos/medições/observações
+                </div>
+            </div>
+
+            <h3>5.2 Tabelas Principais</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tabela</th>
+                        <th>Propósito</th>
+                        <th>Campos Principais</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="highlight">users</span></td>
+                        <td>Usuários do sistema</td>
+                        <td>id (UUID), nome, email, role, avatar_url, created_at</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">ordens_servico</span></td>
+                        <td>Ordens de serviço</td>
+                        <td>id, numero_os, cliente, endereco, tecnico_id, status, created_at</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">ambientes</span></td>
+                        <td>Ambientes de uma O.S.</td>
+                        <td>id, os_id, nome, tipo, status, ordem, created_at</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">fotos</span></td>
+                        <td>Fotos capturadas</td>
+                        <td>id, ambiente_id, storage_path, tipo, observacao, metadata, created_at</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">medicoes</span></td>
+                        <td>Medições coletadas</td>
+                        <td>id, ambiente_id, tipo, valor, unidade, observacao, created_at</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">observacoes</span></td>
+                        <td>Observações técnicas</td>
+                        <td>id, ambiente_id, texto, tipo, created_at</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>5.3 Índices e Performance</h3>
+            <div class="code-block">
+                <code>
+-- Índices para queries frequentes<br>
+CREATE INDEX idx_os_tecnico ON ordens_servico(tecnico_id);<br>
+CREATE INDEX idx_os_status ON ordens_servico(status);<br>
+CREATE INDEX idx_ambientes_os ON ambientes(os_id);<br>
+CREATE INDEX idx_fotos_ambiente ON fotos(ambiente_id);<br>
+CREATE INDEX idx_fotos_created ON fotos(created_at DESC);<br>
+<br>
+-- Índice para busca textual<br>
+CREATE INDEX idx_os_fulltext ON ordens_servico<br>
+USING GIN(to_tsvector('portuguese', numero_os || ' ' || cliente));<br>
+                </code>
+            </div>
+
+            <h3>5.4 Triggers e Stored Procedures</h3>
+            <div class="code-block">
+                <code>
+-- Trigger: Atualiza updated_at automaticamente<br>
+CREATE TRIGGER update_os_timestamp<br>
+BEFORE UPDATE ON ordens_servico<br>
+FOR EACH ROW EXECUTE FUNCTION update_timestamp();<br>
+<br>
+-- Function: Calcula progresso de O.S.<br>
+CREATE FUNCTION calcular_progresso_os(os_id UUID)<br>
+RETURNS INTEGER AS $<br>
+&nbsp;&nbsp;SELECT (COUNT(*) FILTER (WHERE status = 'concluido') * 100)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;/ NULLIF(COUNT(*), 0)<br>
+&nbsp;&nbsp;FROM ambientes WHERE ordens_servico_id = os_id;<br>
+$ LANGUAGE SQL;<br>
+                </code>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🔄 6. Fluxos de Dados Principais</h2>
+
+            <h3>6.1 Fluxo: Criação de Ordem de Serviço</h3>
+
+            <div class="flow-step">
+                <div class="flow-step-title">1. Gestor acessa Gerenciador O.S.</div>
+                Interface web exibe formulário de criação com campos: cliente, endereço, tipo de serviço, técnico
+                responsável, prazo.
+            </div>
+
+            <div class="flow-step">
+                <div class="flow-step-title">2. Validação Frontend</div>
+                React valida campos obrigatórios, formato de dados, datas. Exibe erros em tempo real.
+            </div>
+
+            <div class="flow-step">
+                <div class="flow-step-title">3. Envio para API</div>
+                POST /api/ordens-servico com payload JSON. Supabase Client adiciona JWT automaticamente no header.
+            </div>
+
+            <div class="flow-step">
+                <div class="flow-step-title">4. Validação Backend + RLS</div>
+                Supabase valida JWT, verifica permissões via RLS policies. Se aprovado, insere registro na tabela
+                ordens_servico.
+            </div>
+
+            <div class="flow-step">
+                <div class="flow-step-title">5. Notificação Realtime</div>
+                Supabase Realtime envia notificação via WebSocket para técnico atribuído. App mobile recebe push
+                notification.
+            </div>
+
+            <div class="flow-step">
+                <div class="flow-step-title">6. Confirmação ao Cliente</div>
+                API retorna O.S. criada com ID gerado. Frontend exibe mensagem de sucesso e redireciona para detalhes da
+                O.S.
+            </div>
+
+            <h3>6.2 Fluxo: Captura Fotográfica em Campo (Offline-First)</h3>
+
+            <div class="flow-step">
+                <div class="flow-step-title">1. Técnico seleciona ambiente</div>
+                App mobile exibe lista de ambientes da O.S. sincronizada previamente. Técnico pode estar offline.
+            </div>
+
+            <div class="flow-step">
+                <div class="flow-step-title">2. Captura de foto</div>
+                App abre câmera nativa via Expo Camera. Foto capturada é salva localmente em alta resolução (3-5MB).
+            </div>
+
+            <div class="flow-step">
+                <div class="flow-step-title">3. Armazenamento Local</div>
+                Foto é armazenada em AsyncStorage com metadata: ambiente_id, timestamp, geolocalização, observação.
+                Status: "pending_upload".
+            </div>
+
+            <div class="flow-step">
+                <div class="flow-step-title">4. Detecção de Conectividade</div>
+                App monitora conectividade via NetInfo. Quando online, queue de upload é ativada automaticamente.
+            </div>
+
+            <div class="flow-step">
+                <div class="flow-step-title">5. Upload Assíncrono</div>
+                Fotos são enviadas para Supabase Storage via upload chunked (5MB/chunk). Barra de progresso exibe
+                status.
+            </div>
+
+            <div class="flow-step">
+                <div class="flow-step-title">6. Registro no Banco</div>
+                Após upload bem-sucedido, registro é criado na tabela fotos com storage_path. Foto local é marcada como
+                "uploaded" e pode ser deletada.
+            </div>
+
+            <h3>6.3 Fluxo: Geração de Relatório Técnico</h3>
+
+            <div class="flow-step">
+                <div class="flow-step-title">1. Solicitação de Relatório</div>
+                Gestor acessa Gerenciador O.S., seleciona O.S. concluída e clica em "Gerar Relatório". Escolhe template
+                (Padrão, Detalhado, Executivo).
+            </div>
+
+            <div class="flow-step">
+                <div class="flow-step-title">2. Coleta de Dados</div>
+                Backend busca todos os dados relacionados: O.S., ambientes, fotos, medições, observações. Dados são
+                agregados em estrutura JSON.
+            </div>
+
+            <div class="flow-step">
+                <div class="flow-step-title">3. Geração do PDF</div>
+                Motor de relatórios (biblioteca PDFKit ou jsPDF) processa template escolhido. Imagens são comprimidas e
+                inseridas. Layout responsivo ajusta número de páginas.
+            </div>
+
+            <div class="flow-step">
+                <div class="flow-step-title">4. Upload do PDF</div>
+                PDF gerado é enviado para Supabase Storage em bucket "relatorios". Nome do arquivo:
+                {numero_os}_{timestamp}.pdf.
+            </div>
+
+            <div class="flow-step">
+                <div class="flow-step-title">5. Notificação e Download</div>
+                Link do PDF é retornado ao frontend. Gestor recebe notificação e pode baixar/visualizar/enviar por
+                email. Cliente também pode acessar via portal.
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>⚡ 7. Gerenciamento de Estado</h2>
+
+            <h3>7.1 Estratégia de Estado</h3>
+            <p>O sistema utiliza uma combinação de ferramentas para diferentes tipos de estado:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tipo de Estado</th>
+                        <th>Ferramenta</th>
+                        <th>Uso</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="highlight">Local (Componente)</span></td>
+                        <td>useState, useReducer</td>
+                        <td>Estado de formulários, toggles, modais</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">Servidor</span></td>
+                        <td>React Query</td>
+                        <td>Dados de API, cache, sincronização</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">Global (Client)</span></td>
+                        <td>Zustand</td>
+                        <td>Autenticação, tema, configurações</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">Persistente (Mobile)</span></td>
+                        <td>AsyncStorage</td>
+                        <td>Queue de upload, dados offline</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>7.2 Exemplo: Store Zustand (Autenticação)</h3>
+            <div class="code-block">
+                <code>
+// stores/authStore.js<br>
+import create from 'zustand';<br>
+import { supabase } from '../lib/supabase';<br>
+<br>
+export const useAuthStore = create((set) => ({<br>
+&nbsp;&nbsp;user: null,<br>
+&nbsp;&nbsp;session: null,<br>
+&nbsp;&nbsp;loading: true,<br>
+<br>
+&nbsp;&nbsp;signIn: async (email, password) => {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;const { data, error } = await supabase.auth.signInWithPassword({<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;email, password<br>
+&nbsp;&nbsp;&nbsp;&nbsp;});<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if (data) set({ user: data.user, session: data.session });<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return { data, error };<br>
+&nbsp;&nbsp;},<br>
+<br>
+&nbsp;&nbsp;signOut: async () => {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;await supabase.auth.signOut();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;set({ user: null, session: null });<br>
+&nbsp;&nbsp;}<br>
+}));<br>
+                </code>
+            </div>
+
+            <h3>7.3 Cache e Invalidação (React Query)</h3>
+            <div class="code-block">
+                <code>
+// hooks/useOrdensServico.js<br>
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';<br>
+<br>
+export function useOrdensServico() {<br>
+&nbsp;&nbsp;const queryClient = useQueryClient();<br>
+<br>
+&nbsp;&nbsp;// Query com cache de 5 minutos<br>
+&nbsp;&nbsp;const { data, isLoading } = useQuery({<br>
+&nbsp;&nbsp;&nbsp;&nbsp;queryKey: ['ordens-servico'],<br>
+&nbsp;&nbsp;&nbsp;&nbsp;queryFn: fetchOrdensServico,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;staleTime: 5 * 60 * 1000<br>
+&nbsp;&nbsp;});<br>
+<br>
+&nbsp;&nbsp;// Mutation com invalidação automática<br>
+&nbsp;&nbsp;const createMutation = useMutation({<br>
+&nbsp;&nbsp;&nbsp;&nbsp;mutationFn: createOS,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;onSuccess: () => {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;queryClient.invalidateQueries(['ordens-servico']);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;});<br>
+<br>
+&nbsp;&nbsp;return { data, isLoading, createOS: createMutation.mutate };<br>
+}<br>
+                </code>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📡 8. APIs e Integrações</h2>
+
+            <h3>8.1 Endpoints Principais</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Método</th>
+                        <th>Endpoint</th>
+                        <th>Descrição</th>
+                        <th>Auth</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="highlight">POST</span></td>
+                        <td>/auth/login</td>
+                        <td>Autenticação de usuário</td>
+                        <td>Não</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">GET</span></td>
+                        <td>/ordens-servico</td>
+                        <td>Lista ordens de serviço (com filtros)</td>
+                        <td>JWT</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">POST</span></td>
+                        <td>/ordens-servico</td>
+                        <td>Cria nova ordem de serviço</td>
+                        <td>JWT</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">GET</span></td>
+                        <td>/ordens-servico/:id</td>
+                        <td>Detalhes de uma O.S. específica</td>
+                        <td>JWT</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">PATCH</span></td>
+                        <td>/ordens-servico/:id</td>
+                        <td>Atualiza status ou dados de O.S.</td>
+                        <td>JWT</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">POST</span></td>
+                        <td>/fotos/upload</td>
+                        <td>Upload de foto para Supabase Storage</td>
+                        <td>JWT</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">POST</span></td>
+                        <td>/relatorios/gerar</td>
+                        <td>Gera PDF de relatório técnico</td>
+                        <td>JWT</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">GET</span></td>
+                        <td>/users/me</td>
+                        <td>Perfil do usuário autenticado</td>
+                        <td>JWT</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>8.2 Formato de Resposta Padrão</h3>
+            <div class="code-block">
+                <code>
+// Sucesso (200-299)<br>
+{<br>
+&nbsp;&nbsp;"success": true,<br>
+&nbsp;&nbsp;"data": { /* payload */ },<br>
+&nbsp;&nbsp;"meta": {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"timestamp": "2025-11-19T14:30:00Z",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"page": 1,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"total": 45<br>
+&nbsp;&nbsp;}<br>
+}<br>
+<br>
+// Erro (400-599)<br>
+{<br>
+&nbsp;&nbsp;"success": false,<br>
+&nbsp;&nbsp;"error": {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"code": "VALIDATION_ERROR",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"message": "Campo obrigatório não preenchido",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"details": { "field": "cliente" }<br>
+&nbsp;&nbsp;}<br>
+}<br>
+                </code>
+            </div>
+
+            <h3>8.3 Rate Limiting e Throttling</h3>
+            <p>Proteção implementada via Supabase Edge Functions e middleware:</p>
+
+            <div class="code-block">
+                <code>
+// 100 requisições por minuto por usuário<br>
+// 1000 requisições por minuto por IP (agregado)<br>
+// Upload de fotos: máximo 20MB/min por usuário<br>
+// Geração de relatórios: máximo 5/hora por usuário<br>
+                </code>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🚀 9. Diagrama de Implantação</h2>
+
+            <div class="diagram">
+                <div class="diagram-title">Arquitetura de Deploy - Produção</div>
+                <div class="diagram-placeholder">☁️</div>
+                <div class="diagram-description">
+                    <strong>Frontend:</strong> Vercel (Edge Network Global)<br>
+                    <strong>Backend:</strong> Supabase (AWS us-east-1)<br>
+                    <strong>Storage:</strong> Supabase Storage (S3-compatible)<br>
+                    <strong>CDN:</strong> Vercel Edge + Supabase CDN<br>
+                    <strong>Monitoring:</strong> Sentry + Vercel Analytics
+                </div>
+            </div>
+
+            <h3>9.1 Ambientes</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Ambiente</th>
+                        <th>URL</th>
+                        <th>Supabase Project</th>
+                        <th>Deploy</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="highlight">Development</span></td>
+                        <td>localhost:3000</td>
+                        <td>Local (Docker)</td>
+                        <td>Manual (npm run dev)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">Staging</span></td>
+                        <td>staging.maffeng.app</td>
+                        <td>maffeng-staging</td>
+                        <td>Auto (push to dev branch)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">Production</span></td>
+                        <td>app.maffeng.com</td>
+                        <td>maffeng-prod</td>
+                        <td>Auto (merge to main)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>9.2 Estratégia de Deploy</h3>
+
+            <div class="flow-step">
+                <div class="flow-step-title">1. Commit e Push</div>
+                Desenvolvedor faz commit em feature branch e abre Pull Request no GitHub.
+            </div>
+
+            <div class="flow-step">
+                <div class="flow-step-title">2. CI Pipeline (GitHub Actions)</div>
+                Testes automatizados rodam: lint, unit tests, build. Se falhar, PR é bloqueado.
+            </div>
+
+            <div class="flow-step">
+                <div class="flow-step-title">3. Preview Deploy (Vercel)</div>
+                Vercel cria preview deployment automático com URL única para testar mudanças.
+            </div>
+
+            <div class="flow-step">
+                <div class="flow-step-title">4. Code Review</div>
+                Time revisa código, testa preview. Aprovação necessária de pelo menos 1 reviewer.
+            </div>
+
+            <div class="flow-step">
+                <div class="flow-step-title">5. Merge to Main</div>
+                Após aprovação, PR é merged. GitHub Actions roda testes completos novamente.
+            </div>
+
+            <div class="flow-step">
+                <div class="flow-step-title">6. Production Deploy</div>
+                Vercel automaticamente faz deploy para produção. Rollback automático se health checks falharem.
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🎯 10. Architecture Decision Records (ADRs)</h2>
+
+            <p>Decisões arquiteturais importantes documentadas para rastreabilidade e contexto:</p>
+
+            <div class="adr-card">
+                <div class="adr-header">
+                    <div class="adr-title">ADR-001: Escolha de Supabase como Backend</div>
+                    <div class="adr-status">✅ ACEITO</div>
+                </div>
+                <div class="adr-content">
+                    <strong>Contexto:</strong> Necessidade de backend escalável com auth, database e storage
+                    integrados.<br><br>
+                    <strong>Decisão:</strong> Adotar Supabase como Backend-as-a-Service principal.<br><br>
+                    <strong>Justificativa:</strong> Reduz tempo de desenvolvimento em 60%, elimina necessidade de
+                    gerenciar infraestrutura, oferece RLS nativo para segurança, possui cliente JavaScript/TypeScript
+                    maduro, comunidade ativa e documentação excelente.<br><br>
+                    <strong>Consequências:</strong> ✅ Desenvolvimento mais rápido | ✅ Segurança robusta via RLS | ⚠️
+                    Vendor lock-in (mitigado com PostgreSQL standard) | ⚠️ Custo crescente com escala (planejado no
+                    roadmap)
+                </div>
+            </div>
+
+            <div class="adr-card">
+                <div class="adr-header">
+                    <div class="adr-title">ADR-002: React Native + Expo para Mobile</div>
+                    <div class="adr-status">✅ ACEITO</div>
+                </div>
+                <div class="adr-content">
+                    <strong>Contexto:</strong> Necessidade de aplicativo mobile cross-platform com acesso a câmera e
+                    funcionalidade offline.<br><br>
+                    <strong>Decisão:</strong> Usar React Native com Expo Managed Workflow.<br><br>
+                    <strong>Justificativa:</strong> Desenvolvimento único para iOS e Android, acesso a APIs nativas via
+                    Expo modules, OTA updates sem app store review, comunidade gigante e reuso de conhecimento React do
+                    web.<br><br>
+                    <strong>Consequências:</strong> ✅ Time-to-market reduzido | ✅ Manutenção unificada | ⚠️ Performance
+                    ligeiramente inferior ao nativo puro (aceitável para caso de uso) | ⚠️ Dependência de Expo (mitigado
+                    com possibilidade de eject)
+                </div>
+            </div>
+
+            <div class="adr-card">
+                <div class="adr-header">
+                    <div class="adr-title">ADR-003: Offline-First para App Mobile</div>
+                    <div class="adr-status">✅ ACEITO</div>
+                </div>
+                <div class="adr-content">
+                    <strong>Contexto:</strong> Técnicos trabalham em ambientes com conectividade limitada ou
+                    instável.<br><br>
+                    <strong>Decisão:</strong> Implementar estratégia offline-first com sync automático quando
+                    online.<br><br>
+                    <strong>Justificativa:</strong> Garante produtividade independente de rede, reduz frustração do
+                    usuário, evita perda de dados, melhora UX com feedback imediato.<br><br>
+                    <strong>Consequências:</strong> ✅ UX superior | ✅ Maior confiabilidade | ⚠️ Complexidade adicional
+                    no código | ⚠️ Necessidade de resolver conflitos de sincronização | ⚠️ Armazenamento local maior
+                </div>
+            </div>
+
+            <div class="adr-card">
+                <div class="adr-header">
+                    <div class="adr-title">ADR-004: React Query para Server State</div>
+                    <div class="adr-status">✅ ACEITO</div>
+                </div>
+                <div class="adr-content">
+                    <strong>Contexto:</strong> Necessidade de gerenciar estado servidor com cache, refetch e
+                    sincronização.<br><br>
+                    <strong>Decisão:</strong> Usar TanStack React Query como camada de gerenciamento de estado
+                    servidor.<br><br>
+                    <strong>Justificativa:</strong> Cache automático e inteligente, invalidação declarativa, retry
+                    logic, loading/error states padronizados, DevTools excelente, reduz boilerplate em 70%.<br><br>
+                    <strong>Consequências:</strong> ✅ Código mais limpo | ✅ Performance melhorada | ✅ Menos bugs de
+                    sincronização | ⚠️ Curva de aprendizado inicial | ✅ Padrão da indústria
+                </div>
+            </div>
+
+            <div class="adr-card">
+                <div class="adr-header">
+                    <div class="adr-title">ADR-005: Zustand para Estado Global Cliente</div>
+                    <div class="adr-status">✅ ACEITO</div>
+                </div>
+                <div class="adr-content">
+                    <strong>Contexto:</strong> Necessidade de estado global leve para auth, tema e
+                    configurações.<br><br>
+                    <strong>Decisão:</strong> Usar Zustand em vez de Redux ou Context API puro.<br><br>
+                    <strong>Justificativa:</strong> API minimalista (< 50 linhas de código), zero boilerplate,
+                        performance superior (sem re-renders desnecessários), TypeScript-first, middleware
+                        integrado.<br><br>
+                        <strong>Consequências:</strong> ✅ Simplicidade extrema | ✅ Bundle size mínimo (1KB) | ✅ Fácil
+                        onboarding | ⚠️ Menos "opinativo" que Redux | ✅ Ideal para escopo do projeto
+                </div>
+            </div>
+
+            <div class="adr-card">
+                <div class="adr-header">
+                    <div class="adr-title">ADR-006: Monorepo vs Multirepo</div>
+                    <div class="adr-status">✅ ACEITO - Multirepo</div>
+                </div>
+                <div class="adr-content">
+                    <strong>Contexto:</strong> Três módulos principais (Mobile, Gerenciador, Auto Relatórios) precisam
+                    de estrutura de repositório.<br><br>
+                    <strong>Decisão:</strong> Usar estratégia multirepo com repositórios separados por módulo.<br><br>
+                    <strong>Justificativa:</strong> Deploy independente por módulo, CI/CD mais simples, permissões de
+                    acesso granulares, menor complexidade de build, alinhado com arquitetura de microserviços.<br><br>
+                    <strong>Consequências:</strong> ✅ Independência total | ✅ Deploys isolados | ⚠️ Código compartilhado
+                    requer npm packages | ⚠️ Sincronização manual de dependências | ✅ Escalabilidade de equipe
+                </div>
+            </div>
+
+            <div class="adr-card">
+                <div class="adr-header">
+                    <div class="adr-title">ADR-007: TypeScript como Opcional (Fase Futura)</div>
+                    <div class="adr-status">✅ ACEITO</div>
+                </div>
+                <div class="adr-content">
+                    <strong>Contexto:</strong> Necessidade de tipagem estática vs velocidade de desenvolvimento
+                    inicial.<br><br>
+                    <strong>Decisão:</strong> Iniciar com JavaScript + JSDoc e migrar para TypeScript na Fase 2 de
+                    maturação.<br><br>
+                    <strong>Justificativa:</strong> Time atual mais produtivo em JS, prototipagem mais rápida, reduz
+                    complexidade inicial, migração incremental possível com JSDoc types.<br><br>
+                    <strong>Consequências:</strong> ✅ Velocidade inicial maior | ⚠️ Menos segurança de tipos (mitigado
+                    com JSDoc) | ✅ Flexibilidade para experimentação | 📅 Migração para TS planejada para Q2 2026
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🔍 11. Padrões de Código e Convenções</h2>
+
+            <h3>11.1 Estrutura de Pastas (Frontend Web)</h3>
+            <div class="code-block">
+                <code>
+gerenciador-os/<br>
+├── src/<br>
+│   ├── components/          # Componentes reutilizáveis<br>
+│   │   ├── common/          # Botões, inputs, cards<br>
+│   │   ├── forms/           # Formulários específicos<br>
+│   │   └── layouts/         # Layouts e shells<br>
+│   ├── pages/               # Páginas/rotas<br>
+│   │   ├── Dashboard.jsx<br>
+│   │   ├── OrdensServico/<br>
+│   │   └── Login.jsx<br>
+│   ├── hooks/               # Custom hooks<br>
+│   │   ├── useAuth.js<br>
+│   │   └── useOrdensServico.js<br>
+│   ├── stores/              # Zustand stores<br>
+│   │   ├── authStore.js<br>
+│   │   └── themeStore.js<br>
+│   ├── lib/                 # Configurações e utilitários<br>
+│   │   ├── supabase.js      # Supabase client<br>
+│   │   └── queryClient.js   # React Query setup<br>
+│   ├── styles/              # CSS global e Tailwind<br>
+│   │   └── globals.css<br>
+│   └── utils/               # Funções helper<br>
+│       ├── formatters.js<br>
+│       └── validators.js<br>
+├── public/                  # Assets estáticos<br>
+├── .env.local               # Variáveis de ambiente<br>
+└── package.json<br>
+                </code>
+            </div>
+
+            <h3>11.2 Estrutura de Pastas (Mobile)</h3>
+            <div class="code-block">
+                <code>
+app-mobile/<br>
+├── src/<br>
+│   ├── screens/             # Telas do app<br>
+│   │   ├── LoginScreen.jsx<br>
+│   │   ├── DashboardScreen.jsx<br>
+│   │   └── CapturaScreen.jsx<br>
+│   ├── components/          # Componentes mobile<br>
+│   ├── navigation/          # React Navigation config<br>
+│   │   └── AppNavigator.jsx<br>
+│   ├── services/            # Lógica de negócio<br>
+│   │   ├── sync.service.js  # Sincronização offline<br>
+│   │   └── camera.service.js<br>
+│   ├── stores/              # Estado global<br>
+│   ├── hooks/               # Custom hooks<br>
+│   └── utils/<br>
+├── assets/                  # Imagens e fontes<br>
+└── app.json                 # Expo config<br>
+                </code>
+            </div>
+
+            <h3>11.3 Convenções de Nomenclatura</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Elemento</th>
+                        <th>Convenção</th>
+                        <th>Exemplo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="highlight">Componentes React</span></td>
+                        <td>PascalCase</td>
+                        <td>ButtonPrimary.jsx, CardOS.jsx</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">Hooks</span></td>
+                        <td>camelCase com prefixo "use"</td>
+                        <td>useAuth.js, useOrdensServico.js</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">Stores</span></td>
+                        <td>camelCase com sufixo "Store"</td>
+                        <td>authStore.js, themeStore.js</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">Utilitários</span></td>
+                        <td>camelCase</td>
+                        <td>formatDate.js, validateEmail.js</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">Constantes</span></td>
+                        <td>UPPER_SNAKE_CASE</td>
+                        <td>API_BASE_URL, MAX_FILE_SIZE</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">Variáveis/Funções</span></td>
+                        <td>camelCase</td>
+                        <td>userData, handleSubmit, isLoading</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>11.4 Padrão de Componente React</h3>
+            <div class="code-block">
+                <code>
+/**<br>
+ * ButtonPrimary - Botão primário do Design System TM<br>
+ * @param {Object} props<br>
+ * @param {string} props.label - Texto do botão<br>
+ * @param {Function} props.onClick - Handler de clique<br>
+ * @param {boolean} props.loading - Estado de carregamento<br>
+ * @param {boolean} props.disabled - Botão desabilitado<br>
+ */<br>
+export function ButtonPrimary({ label, onClick, loading, disabled }) {<br>
+&nbsp;&nbsp;return (<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;button<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;className="btn-primary"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;onClick={onClick}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;disabled={disabled || loading}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{loading ? 'Carregando...' : label}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/button&gt;<br>
+&nbsp;&nbsp;);<br>
+}<br>
+                </code>
+            </div>
+
+            <h3>11.5 ESLint e Prettier</h3>
+            <div class="code-block">
+                <code>
+// .eslintrc.json<br>
+{<br>
+&nbsp;&nbsp;"extends": ["react-app", "prettier"],<br>
+&nbsp;&nbsp;"rules": {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"no-console": "warn",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"react/prop-types": "off",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"react-hooks/exhaustive-deps": "warn"<br>
+&nbsp;&nbsp;}<br>
+}<br>
+<br>
+// .prettierrc<br>
+{<br>
+&nbsp;&nbsp;"semi": true,<br>
+&nbsp;&nbsp;"singleQuote": true,<br>
+&nbsp;&nbsp;"tabWidth": 2,<br>
+&nbsp;&nbsp;"trailingComma": "es5"<br>
+}<br>
+                </code>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🧪 12. Estratégia de Testes</h2>
+
+            <h3>12.1 Pirâmide de Testes</h3>
+
+            <div class="diagram">
+                <div class="diagram-title">Test Pyramid - Distribuição de Testes</div>
+                <div class="diagram-placeholder">🔺</div>
+                <div class="diagram-description">
+                    <strong>E2E Tests (10%):</strong> Fluxos críticos completos<br>
+                    <strong>Integration Tests (30%):</strong> Interações entre componentes<br>
+                    <strong>Unit Tests (60%):</strong> Funções, hooks, utilitários isolados
+                </div>
+            </div>
+
+            <h3>12.2 Ferramentas de Teste</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tipo de Teste</th>
+                        <th>Ferramenta</th>
+                        <th>Escopo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="highlight">Unit Tests</span></td>
+                        <td>Jest + React Testing Library</td>
+                        <td>Componentes, hooks, utils</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">Integration Tests</span></td>
+                        <td>Jest + MSW (Mock Service Worker)</td>
+                        <td>Fluxos de API, interações</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">E2E Tests</span></td>
+                        <td>Playwright</td>
+                        <td>User journeys completos</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">Visual Regression</span></td>
+                        <td>Chromatic (Storybook)</td>
+                        <td>Componentes UI</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>12.3 Exemplo: Teste de Componente</h3>
+            <div class="code-block">
+                <code>
+// ButtonPrimary.test.jsx<br>
+import { render, screen, fireEvent } from '@testing-library/react';<br>
+import { ButtonPrimary } from './ButtonPrimary';<br>
+<br>
+describe('ButtonPrimary', () => {<br>
+&nbsp;&nbsp;it('renderiza com label correta', () => {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;render(&lt;ButtonPrimary label="Enviar" /&gt;);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;expect(screen.getByText('Enviar')).toBeInTheDocument();<br>
+&nbsp;&nbsp;});<br>
+<br>
+&nbsp;&nbsp;it('chama onClick quando clicado', () => {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;const handleClick = jest.fn();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;render(&lt;ButtonPrimary label="Clique" onClick={handleClick} /&gt;);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fireEvent.click(screen.getByText('Clique'));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;expect(handleClick).toHaveBeenCalledTimes(1);<br>
+&nbsp;&nbsp;});<br>
+<br>
+&nbsp;&nbsp;it('não chama onClick quando disabled', () => {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;const handleClick = jest.fn();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;render(&lt;ButtonPrimary label="Clique" onClick={handleClick} disabled /&gt;);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fireEvent.click(screen.getByText('Clique'));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;expect(handleClick).not.toHaveBeenCalled();<br>
+&nbsp;&nbsp;});<br>
+});<br>
+                </code>
+            </div>
+
+            <h3>12.4 Cobertura de Testes</h3>
+            <p>Metas de cobertura por tipo de código:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Meta</th>
+                        <th>Prioridade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="highlight">Business Logic</span></td>
+                        <td>90%+</td>
+                        <td>Crítica</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">Custom Hooks</span></td>
+                        <td>85%+</td>
+                        <td>Alta</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">Utilitários</span></td>
+                        <td>80%+</td>
+                        <td>Alta</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">Componentes UI</span></td>
+                        <td>70%+</td>
+                        <td>Média</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">Geral</span></td>
+                        <td>80%+</td>
+                        <td>-</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>📊 13. Monitoramento e Observabilidade</h2>
+
+            <h3>13.1 Ferramentas de Monitoramento</h3>
+
+            <div class="tech-stack">
+                <div class="tech-card">
+                    <div class="tech-card-title">🐛 Sentry</div>
+                    <div class="tech-card-description">
+                        Error tracking e performance monitoring. Captura exceções, stack traces, breadcrumbs. Alertas em
+                        tempo real via Slack/email.
+                    </div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-card-title">📊 Vercel Analytics</div>
+                    <div class="tech-card-description">
+                        Web vitals e métricas de performance. Core Web Vitals (LCP, FID, CLS), real user monitoring,
+                        geographic distribution.
+                    </div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-card-title">📈 Supabase Dashboard</div>
+                    <div class="tech-card-description">
+                        Métricas de banco de dados. Query performance, connection pool, storage usage, API requests.
+                    </div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-card-title">🔔 Uptime Robot</div>
+                    <div class="tech-card-description">
+                        Monitoramento de disponibilidade. Health checks a cada 5 minutos, alertas de downtime, status
+                        page público.
+                    </div>
+                </div>
+            </div>
+
+            <h3>13.2 Métricas Chave (KPIs Técnicos)</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Métrica</th>
+                        <th>Meta</th>
+                        <th>Ferramenta</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="highlight">Uptime</span></td>
+                        <td>&gt; 99.5%</td>
+                        <td>Uptime Robot</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">API Response Time (p95)</span></td>
+                        <td>&lt; 500ms</td>
+                        <td>Sentry Performance</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">First Contentful Paint</span></td>
+                        <td>&lt; 2s</td>
+                        <td>Vercel Analytics</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">Time to Interactive</span></td>
+                        <td>&lt; 3.5s</td>
+                        <td>Vercel Analytics</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">Error Rate</span></td>
+                        <td>&lt; 0.1%</td>
+                        <td>Sentry</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">Database Query Time (p95)</span></td>
+                        <td>&lt; 100ms</td>
+                        <td>Supabase Dashboard</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>13.3 Logging Estruturado</h3>
+            <div class="code-block">
+                <code>
+// Padrão de log estruturado<br>
+{<br>
+&nbsp;&nbsp;"timestamp": "2025-11-19T14:30:00.000Z",<br>
+&nbsp;&nbsp;"level": "error",<br>
+&nbsp;&nbsp;"message": "Falha ao fazer upload de foto",<br>
+&nbsp;&nbsp;"context": {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"userId": "uuid-123",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"osId": "uuid-456",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"fileSize": 5242880,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"errorCode": "UPLOAD_FAILED"<br>
+&nbsp;&nbsp;},<br>
+&nbsp;&nbsp;"stackTrace": "..."<br>
+}<br>
+                </code>
+            </div>
+
+            <h3>13.4 Alertas Configurados</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Alerta</th>
+                        <th>Condição</th>
+                        <th>Canal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="highlight">Downtime</span></td>
+                        <td>Site inacessível por &gt; 2 minutos</td>
+                        <td>Slack + SMS</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">Erro Crítico</span></td>
+                        <td>&gt; 10 erros/minuto (mesmo tipo)</td>
+                        <td>Slack</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">Performance Degradada</span></td>
+                        <td>API p95 &gt; 1s por 5 minutos</td>
+                        <td>Slack</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">Storage Quota</span></td>
+                        <td>&gt; 80% do limite</td>
+                        <td>Email</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">Database Connections</span></td>
+                        <td>&gt; 90% do pool</td>
+                        <td>Slack</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2">🔄 14. Backup e Disaster Recovery</h2>
+
+                <h3>14.1 Estratégia de Backup</h3>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tipo de Dado</th>
+                            <th>Frequência</th>
+                            <th>Retenção</th>
+                            <th>Localização</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="highlight">Database (PostgreSQL)</span></td>
+                            <td>Diário (automático)</td>
+                            <td>30 dias</td>
+                            <td>Supabase (multi-region)</td>
+                        </tr>
+                        <tr>
+                            <td><span class="highlight">Storage (Fotos/PDFs)</span></td>
+                            <td>Contínuo (S3 versioning)</td>
+                            <td>90 dias</td>
+                            <td>Supabase Storage + Glacier</td>
+                        </tr>
+                        <tr>
+                            <td><span class="highlight">Código-fonte</span></td>
+                            <td>Cada commit</td>
+                            <td>Indefinido</td>
+                            <td>GitHub (cloud backup)</td>
+                        </tr>
+                        <tr>
+                            <td><span class="highlight">Configurações</span></td>
+                            <td>Cada mudança</td>
+                            <td>Indefinido</td>
+                            <td>Git (infra-as-code)</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>14.2 Recovery Time Objective (RTO)</h3>
+                <p>Tempo máximo aceitável para restauração após incidente:</p>
+
+                <div class="code-block">
+                    <code>
+<strong>Cenário 1 - Falha de Aplicação:</strong> RTO = 15 minutos<br>
+&nbsp;&nbsp;→ Rollback automático para versão anterior no Vercel<br>
+<br>
+<strong>Cenário 2 - Corrupção de Dados:</strong> RTO = 2 horas<br>
+&nbsp;&nbsp;→ Restauração de backup diário do Supabase<br>
+<br>
+<strong>Cenário 3 - Falha Completa de Infraestrutura:</strong> RTO = 4 horas<br>
+&nbsp;&nbsp;→ Migração para novo projeto Supabase + redeploy<br>
+                </code>
+                </div>
+
+                <h3>14.3 Recovery Point Objective (RPO)</h3>
+                <p>Perda máxima de dados aceitável:</p>
+
+                <div class="code-block">
+                    <code>
+<strong>Banco de Dados:</strong> RPO = 24 horas<br>
+&nbsp;&nbsp;→ Backup diário às 03:00 AM (horário de menor uso)<br>
+<br>
+<strong>Storage (Fotos):</strong> RPO = 0 (zero data loss)<br>
+&nbsp;&nbsp;→ Replicação síncrona S3 + versionamento ativado<br>
+<br>
+<strong>Código:</strong> RPO = 0 (zero data loss)<br>
+&nbsp;&nbsp;→ Git distributed version control<br>
+                </code>
+                </div>
+
+                <h3>14.4 Plano de Disaster Recovery</h3>
+
+                <div class="flow-step">
+                    <div class="flow-step-title">1. Detecção do Incidente</div>
+                    Alertas automáticos via Sentry/Uptime Robot detectam falha. On-call engineer é notificado via
+                    PagerDuty.
+                </div>
+
+                <div class="flow-step">
+                    <div class="flow-step-title">2. Avaliação de Impacto</div>
+                    Engineer avalia severidade (P0-P4). P0/P1 acionam protocolo de emergência com comunicação imediata
+                    para stakeholders.
+                </div>
+
+                <div class="flow-step">
+                    <div class="flow-step-title">3. Ação Corretiva</div>
+                    Dependendo do tipo de falha: rollback de deploy, restauração de backup, failover para standby, ou
+                    hotfix emergency.
+                </div>
+
+                <div class="flow-step">
+                    <div class="flow-step-title">4. Validação</div>
+                    Testes de smoke realizados para confirmar restauração. Monitoramento intensivo por 24h.
+                </div>
+
+                <div class="flow-step">
+                    <div class="flow-step-title">5. Post-Mortem</div>
+                    Documento post-mortem criado dentro de 48h. Root cause analysis, ações corretivas, melhorias de
+                    processo.
+                </div>
+        </div>
+
+        <div class="section">
+            <h2>🚀 15. Performance e Otimização</h2>
+
+            <h3>15.1 Estratégias de Performance</h3>
+
+            <div class="tech-stack">
+                <div class="tech-card">
+                    <div class="tech-card-title">⚡ Code Splitting</div>
+                    <div class="tech-card-description">
+                        Lazy loading de rotas e componentes pesados. React.lazy() + Suspense para chunks dinâmicos.
+                    </div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-card-title">🖼️ Image Optimization</div>
+                    <div class="tech-card-description">
+                        Compressão automática via Vercel Image Optimization. WebP/AVIF com fallback para JPEG.
+                    </div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-card-title">📦 Bundle Optimization</div>
+                    <div class="tech-card-description">
+                        Tree shaking, minification, compression (Brotli/Gzip). Bundle analyzer para identificar bloat.
+                    </div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-card-title">💾 Caching Strategy</div>
+                    <div class="tech-card-description">
+                        React Query cache + Service Worker para assets estáticos. Cache-Control headers otimizados.
+                    </div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-card-title">🌐 CDN Global</div>
+                    <div class="tech-card-description">
+                        Vercel Edge Network distribui assets em 70+ POPs globalmente. TTFB &lt; 50ms.
+                    </div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-card-title">🗄️ Database Optimization</div>
+                    <div class="tech-card-description">
+                        Índices estratégicos, connection pooling, prepared statements, query optimization.
+                    </div>
+                </div>
+            </div>
+
+            <h3>15.2 Otimizações Específicas Mobile</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Área</th>
+                        <th>Técnica</th>
+                        <th>Impacto</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="highlight">Bundle Size</span></td>
+                        <td>Hermes engine para React Native</td>
+                        <td>-50% no tamanho do app</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">Imagens</span></td>
+                        <td>Compressão on-device antes de upload</td>
+                        <td>-70% no uso de dados</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">Animações</span></td>
+                        <td>React Native Reanimated (thread nativo)</td>
+                        <td>60 FPS consistente</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">Listas</span></td>
+                        <td>FlashList em vez de FlatList</td>
+                        <td>+5x performance em scrolling</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>15.3 Budget de Performance</h3>
+            <div class="code-block">
+                <code>
+<strong>Web (Gerenciador O.S.):</strong><br>
+- Bundle inicial (JS): &lt; 200KB gzipped<br>
+- First Contentful Paint: &lt; 2s<br>
+- Time to Interactive: &lt; 3.5s<br>
+- Largest Contentful Paint: &lt; 2.5s<br>
+<br>
+<strong>Mobile (App Levantamentos):</strong><br>
+- App size (Android): &lt; 25MB<br>
+- App size (iOS): &lt; 30MB<br>
+- Startup time: &lt; 2s<br>
+- Camera capture to preview: &lt; 500ms<br>
+                </code>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🔐 16. Segurança e Compliance</h2>
+
+            <h3>16.1 Medidas de Segurança Implementadas</h3>
+
+            <div class="security-item">
+                <div class="security-item-title">🔒 Criptografia em Trânsito</div>
+                TLS 1.3 obrigatório para todas as conexões. Certificados SSL com renovação automática. HSTS enabled com
+                max-age de 1 ano.
+            </div>
+
+            <div class="security-item">
+                <div class="security-item-title">🗄️ Criptografia em Repouso</div>
+                PostgreSQL com encryption at rest (AES-256). Supabase Storage usa S3 server-side encryption. Backups
+                criptografados.
+            </div>
+
+            <div class="security-item">
+                <div class="security-item-title">🔐 Gestão de Secrets</div>
+                Variáveis de ambiente nunca commitadas no Git. Supabase vault para secrets sensíveis. Rotação de API
+                keys a cada 90 dias.
+            </div>
+
+            <div class="security-item">
+                <div class="security-item-title">🛡️ Proteção contra Ataques</div>
+                SQL Injection: prevenido via prepared statements e RLS. XSS: sanitização automática no React. CSRF:
+                tokens em formulários sensíveis. DDoS: Vercel/Cloudflare rate limiting.
+            </div>
+
+            <div class="security-item">
+                <div class="security-item-title">👤 Privacidade de Dados</div>
+                LGPD compliance: consentimento explícito, direito de exclusão, portabilidade de dados. Dados pessoais
+                minimizados. Logs anonimizados após 90 dias.
+            </div>
+
+            <div class="security-item">
+                <div class="security-item-title">📝 Auditoria</div>
+                Audit logs para todas as ações críticas. Retention de 2 anos. Logs imutáveis (append-only). Acesso
+                restrito a admins.
+            </div>
+
+            <h3>16.2 Checklist de Segurança (Pré-Deploy)</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Status</th>
+                        <th>Responsável</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Dependências auditadas (npm audit)</td>
+                        <td><span class="highlight">✅ Automático CI</span></td>
+                        <td>DevOps</td>
+                    </tr>
+                    <tr>
+                        <td>RLS policies testadas</td>
+                        <td><span class="highlight">⏳ Manual</span></td>
+                        <td>Backend Lead</td>
+                    </tr>
+                    <tr>
+                        <td>Variáveis de ambiente validadas</td>
+                        <td><span class="highlight">✅ Automático</span></td>
+                        <td>DevOps</td>
+                    </tr>
+                    <tr>
+                        <td>HTTPS enforced</td>
+                        <td><span class="highlight">✅ Vercel</span></td>
+                        <td>Infra</td>
+                    </tr>
+                    <tr>
+                        <td>CORS configurado</td>
+                        <td><span class="highlight">⏳ Manual</span></td>
+                        <td>Backend Lead</td>
+                    </tr>
+                    <tr>
+                        <td>Rate limiting ativo</td>
+                        <td><span class="highlight">✅ Supabase</span></td>
+                        <td>Backend Lead</td>
+                    </tr>
+                    <tr>
+                        <td>Backup testado</td>
+                        <td><span class="highlight">⏳ Mensal</span></td>
+                        <td>DevOps</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>📈 17. Escalabilidade</h2>
+
+            <h3>17.1 Estratégia de Escalabilidade Horizontal</h3>
+            <p>O sistema foi projetado para escalar horizontalmente sem grandes refatorações:</p>
+
+            <div class="tech-stack">
+                <div class="tech-card">
+                    <div class="tech-card-title">🌐 Frontend Stateless</div>
+                    <div class="tech-card-description">
+                        Aplicações React/React Native são stateless. Escalam automaticamente via Vercel Edge. Zero
+                        configuração de servidor.
+                    </div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-card-title">🗄️ Database Connection Pooling</div>
+                    <div class="tech-card-description">
+                        Supabase usa PgBouncer para connection pooling. Suporta 10,000+ conexões simultâneas.
+                        Auto-scaling de recursos.
+                    </div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-card-title">📦 Storage S3-Compatible</div>
+                    <div class="tech-card-description">
+                        Supabase Storage escala automaticamente. Sem limite de armazenamento. CDN global para
+                        distribuição.
+                    </div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-card-title">⚡ Serverless Functions</div>
+                    <div class="tech-card-description">
+                        Edge Functions escalam automaticamente com demanda. Pay-per-execution. Zero cold start (<50ms).
+                            </div>
+                    </div>
+                </div>
+
+                <h3>17.2 Limites e Capacidade</h3>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Recurso</th>
+                            <th>Limite Atual</th>
+                            <th>Limite Escalável</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="highlight">Usuários Simultâneos</span></td>
+                            <td>1,000</td>
+                            <td>100,000+ (upgrade de plano)</td>
+                        </tr>
+                        <tr>
+                            <td><span class="highlight">Requests/Segundo</span></td>
+                            <td>1,000</td>
+                            <td>10,000+ (auto-scaling)</td>
+                        </tr>
+                        <tr>
+                            <td><span class="highlight">Database Size</span></td>
+                            <td>8GB</td>
+                            <td>Ilimitado (sharding futuro)</td>
+                        </tr>
+                        <tr>
+                            <td><span class="highlight">Storage</span></td>
+                            <td>100GB</td>
+                            <td>Ilimitado (S3)</td>
+                        </tr>
+                        <tr>
+                            <td><span class="highlight">Ordens de Serviço/Mês</span></td>
+                            <td>10,000</td>
+                            <td>1M+ (particionamento)</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>17.3 Plano de Escalabilidade (Roadmap)</h3>
+
+                <div class="flow-step">
+                    <div class="flow-step-title">Fase 1: 0-100 usuários (Atual)</div>
+                    Setup básico atual é suficiente. Supabase Free Tier + Vercel Hobby. Custo: ~$0/mês.
+                </div>
+
+                <div class="flow-step">
+                    <div class="flow-step-title">Fase 2: 100-1,000 usuários (Q2 2026)</div>
+                    Upgrade para Supabase Pro. Connection pooling otimizado. Read replicas para queries pesadas. Custo:
+                    ~$25/mês.
+                </div>
+
+                <div class="flow-step">
+                    <div class="flow-step-title">Fase 3: 1,000-10,000 usuários (Q4 2026)</div>
+                    Supabase Team plan. Database vertical scaling (mais CPU/RAM). CDN premium. Dedicated support. Custo:
+                    ~$599/mês.
+                </div>
+
+                <div class="flow-step">
+                    <div class="flow-step-title">Fase 4: 10,000+ usuários (2027+)</div>
+                    Supabase Enterprise. Database sharding por região. Multi-region deployment. Custom SLA. Custo:
+                    Negociado.
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>🔄 18. Comunicação entre Módulos</h2>
+
+                <h3>18.1 Integração: Mobile ↔ Gerenciador O.S.</h3>
+
+                <div class="diagram">
+                    <div class="diagram-title">Fluxo de Comunicação Mobile-to-Web</div>
+                    <div class="diagram-placeholder">📱 ↔ 💻</div>
+                    <div class="diagram-description">
+                        App Mobile captura dados → Upload para Supabase Storage → Webhook notifica Gerenciador →
+                        Dashboard atualiza em tempo real via Realtime
+                    </div>
+                </div>
+
+                <h3>18.2 Integração: Gerenciador O.S. ↔ Auto Relatórios</h3>
+
+                <div class="flow-step">
+                    <div class="flow-step-title">1. Trigger de Geração</div>
+                    Gestor clica em "Gerar Relatório" no Gerenciador. Request enviada via API: POST
+                    /api/relatorios/gerar com os_id.
+                </div>
+
+                <div class="flow-step">
+                    <div class="flow-step-title">2. Coleta de Dados</div>
+                    Backend busca todos os dados relacionados: O.S., ambientes, fotos (URLs), medições, observações.
+                    Aggregação em JSON estruturado.
+                </div>
+
+                <div class="flow-step">
+                    <div class="flow-step-title">3. Chamada ao Motor de Relatórios</div>
+                    API interna chama serviço Auto Relatórios com payload completo. Motor seleciona template e renderiza
+                    PDF.
+                </div>
+
+                <div class="flow-step">
+                    <div class="flow-step-title">4. Upload e Notificação</div>
+                    PDF gerado é enviado para Supabase Storage. URL é retornada. Notificação via Realtime atualiza
+                    Gerenciador.
+                </div>
+
+                <h3>18.3 Event-Driven Architecture (Futura)</h3>
+                <p>Para escalabilidade futura, implementação de arquitetura baseada em eventos:</p>
+
+                <div class="code-block">
+                    <code>
+<strong>Eventos Principais:</strong><br>
+- os.created → Notifica técnico + Cria estrutura de ambientes<br>
+- ambiente.fotos_uploaded → Atualiza progresso + Valida cobertura<br>
+- os.completed → Trigger geração de relatório automático<br>
+- relatorio.generated → Notifica gestor + Envia email ao cliente<br>
+<br>
+<strong>Implementação:</strong> Supabase Database Webhooks + Edge Functions<br>
+                </code>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>📚 19. Documentação e Onboarding</h2>
+
+                <h3>19.1 Tipos de Documentação</h3>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tipo</th>
+                            <th>Público</th>
+                            <th>Localização</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="highlight">Documentação Técnica</span></td>
+                            <td>Desenvolvedores</td>
+                            <td>README.md, docs/ no repositório</td>
+                        </tr>
+                        <tr>
+                            <td><span class="highlight">API Reference</span></td>
+                            <td>Integradores</td>
+                            <td>Swagger/OpenAPI (público)</td>
+                        </tr>
+                        <tr>
+                            <td><span class="highlight">Guia do Usuário</span></td>
+                            <td>Clientes finais</td>
+                            <td>help.maffeng.com (futuro)</td>
+                        </tr>
+                        <tr>
+                            <td><span class="highlight">Runbooks</span></td>
+                            <td>DevOps/On-call</td>
+                            <td>Confluence interno</td>
+                        </tr>
+                        <tr>
+                            <td><span class="highlight">ADRs</span></td>
+                            <td>Arquitetos/Tech Leads</td>
+                            <td>docs/adr/ no repositório</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>19.2 Onboarding de Desenvolvedores</h3>
+
+                <div class="flow-step">
+                    <div class="flow-step-title">Dia 1: Setup Local</div>
+                    Clonar repositórios, instalar dependências (Node, npm, Expo CLI), configurar .env com chaves de
+                    desenvolvimento, rodar seed do banco local.
+                </div>
+
+                <div class="flow-step">
+                    <div class="flow-step-title">Dia 2: Arquitetura</div>
+                    Leitura deste SAD, revisão do Design System, entendimento dos fluxos principais, setup de IDE
+                    (ESLint, Prettier).
+                </div>
+
+                <div class="flow-step">
+                    <div class="flow-step-title">Dia 3-5: First Contribution</div>
+                    Pegar issue de "good first issue", desenvolver feature simples, criar PR, passar por code review,
+                    fazer merge.
+                </div>
+
+                <h3>19.3 Padrão de Commit (Conventional Commits)</h3>
+                <div class="code-block">
+                    <code>
+<strong>Formato:</strong> type(scope): subject<br>
+<br>
+<strong>Tipos válidos:</strong><br>
+- feat: Nova funcionalidade<br>
+- fix: Correção de bug<br>
+- docs: Apenas documentação<br>
+- style: Formatação, sem mudança de lógica<br>
+- refactor: Refatoração sem mudança de comportamento<br>
+- test: Adição ou correção de testes<br>
+- chore: Tarefas de build, configs, etc<br>
+<br>
+<strong>Exemplos:</strong><br>
+feat(gerenciador): adiciona filtro por status na lista de O.S.<br>
+fix(mobile): corrige crash ao fazer upload de foto<br>
+docs(readme): atualiza instruções de setup local<br>
+                </code>
+                </div>
+            </div>
+
+            <div class="section">
+
+
+                <footer>
+                    <p><strong>Documento:</strong> Software Architecture Document (SAD) - Projeto MAFFENG</p>
+                    <p><strong>Versão:</strong> 1.0 | <strong>Data:</strong> 19 de Novembro de 2025</p>
+                    <p><strong>Autor:</strong> Thiago Nascimento Barbosa | <strong>Empresa:</strong> TM – Sempre
+                        Tecnologia
+                    </p>
+                    <p style="margin-top: 16px; color: var(--TM-cyan-vibrant);">
+                        ⚡ "A arquitetura não é sobre tecnologia, é sobre habilitar negócios e pessoas." ⚡
+                    </p>
+                </footer>
+            </div>
+</body>
+
+</html>

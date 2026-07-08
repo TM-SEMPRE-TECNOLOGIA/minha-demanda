@@ -1,0 +1,1883 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NFRD - TM Gerenciador de O.S.</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700&family=Inter:wght@400;500;600&family=Roboto+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --TM-navy-deep: #0A1628;
+            --TM-navy-medium: #112240;
+            --TM-navy-light: #1A365D;
+            --TM-neon-green: #64FFDA;
+            --TM-cyan-vibrant: #00D4FF;
+            --TM-text-primary: #E6F1FF;
+            --TM-text-secondary: #8892B0;
+            --TM-text-emphasis: #64FFDA;
+            --TM-warning: #FFA500;
+            --TM-error: #FF6B6B;
+            --TM-success: #10B981;
+            --TM-card-bg: rgba(17, 34, 64, 0.5);
+            --TM-card-border: rgba(100, 255, 218, 0.1);
+            --font-heading: "Exo 2", sans-serif;
+            --font-body: "Inter", sans-serif;
+            --font-mono: "Roboto Mono", monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: linear-gradient(180deg, #0A1628 0%, #112240 50%, #0A1628 100%);
+            color: var(--TM-text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 24px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding: 32px;
+            background: var(--TM-card-bg);
+            border: 1px solid var(--TM-card-border);
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        .header h1 {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--TM-neon-green);
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+
+        .header .subtitle {
+            color: var(--TM-cyan-vibrant);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .header .version {
+            display: inline-block;
+            background: var(--TM-navy-light);
+            color: var(--TM-neon-green);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-top: 16px;
+        }
+
+        .meta-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .meta-card {
+            background: var(--TM-card-bg);
+            border: 1px solid var(--TM-card-border);
+            border-radius: 8px;
+            padding: 16px;
+            backdrop-filter: blur(10px);
+        }
+
+        .meta-label {
+            font-size: 0.75rem;
+            color: var(--TM-text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+
+        .meta-value {
+            font-size: 1rem;
+            color: var(--TM-text-primary);
+            font-weight: 500;
+        }
+
+        .category-section {
+            margin-bottom: 32px;
+        }
+
+        .category-header {
+            background: var(--TM-navy-medium);
+            border: 1px solid var(--TM-card-border);
+            border-radius: 8px;
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 300ms ease-in-out;
+            margin-bottom: 16px;
+        }
+
+        .category-header:hover {
+            border-color: rgba(100, 255, 218, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .category-header-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .category-icon {
+            font-size: 1.5rem;
+        }
+
+        .category-title {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--TM-neon-green);
+        }
+
+        .category-content {
+            background: var(--TM-card-bg);
+            border: 1px solid var(--TM-card-border);
+            border-radius: 8px;
+            padding: 24px;
+            backdrop-filter: blur(10px);
+            display: none;
+        }
+
+        .category-content.active {
+            display: block;
+            animation: fadeIn 300ms ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .requirement-card {
+            background: var(--TM-navy-deep);
+            border: 1px solid var(--TM-navy-light);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 16px;
+            transition: all 300ms ease-in-out;
+        }
+
+        .requirement-card:hover {
+            border-color: rgba(100, 255, 218, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .req-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 12px;
+        }
+
+        .req-id {
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--TM-cyan-vibrant);
+            background: var(--TM-navy-medium);
+            padding: 4px 12px;
+            border-radius: 4px;
+        }
+
+        .req-priority {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border: 1px solid;
+        }
+
+        .priority-critical {
+            background: rgba(255, 107, 107, 0.2);
+            color: var(--TM-error);
+            border-color: var(--TM-error);
+        }
+
+        .priority-high {
+            background: rgba(255, 165, 0, 0.2);
+            color: var(--TM-warning);
+            border-color: var(--TM-warning);
+        }
+
+        .priority-medium {
+            background: rgba(0, 212, 255, 0.2);
+            color: var(--TM-cyan-vibrant);
+            border-color: var(--TM-cyan-vibrant);
+        }
+
+        .req-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--TM-text-primary);
+            margin-bottom: 12px;
+        }
+
+        .req-content {
+            font-size: 0.875rem;
+            color: var(--TM-text-primary);
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .metric-box {
+            background: var(--TM-navy-medium);
+            border: 1px solid var(--TM-card-border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+        }
+
+        .metric-label {
+            font-size: 0.75rem;
+            color: var(--TM-text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .metric-value {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--TM-neon-green);
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .metric-desc {
+            font-size: 0.875rem;
+            color: var(--TM-text-secondary);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 0.875rem;
+        }
+
+        th {
+            background: var(--TM-navy-light);
+            color: var(--TM-neon-green);
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid var(--TM-card-border);
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid var(--TM-card-border);
+            color: var(--TM-text-primary);
+        }
+
+        tr:hover {
+            background: rgba(100, 255, 218, 0.05);
+        }
+
+        .code-block {
+            background: var(--TM-navy-deep);
+            border: 1px solid var(--TM-navy-light);
+            border-radius: 4px;
+            padding: 16px;
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            color: var(--TM-cyan-vibrant);
+            overflow-x: auto;
+            margin: 12px 0;
+        }
+
+        .req-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .req-list li {
+            padding: 6px 0;
+            padding-left: 24px;
+            position: relative;
+            font-size: 0.875rem;
+            color: var(--TM-text-primary);
+        }
+
+        .req-list li:before {
+            content: "▸";
+            position: absolute;
+            left: 8px;
+            color: var(--TM-neon-green);
+            font-weight: bold;
+        }
+
+        .validation-box {
+            background: var(--TM-navy-deep);
+            border-left: 4px solid var(--TM-cyan-vibrant);
+            padding: 16px;
+            border-radius: 4px;
+            margin: 16px 0;
+        }
+
+        .warning-box {
+            background: var(--TM-navy-deep);
+            border-left: 4px solid var(--TM-warning);
+            padding: 16px;
+            border-radius: 4px;
+            margin: 16px 0;
+        }
+
+        .success-box {
+            background: var(--TM-navy-deep);
+            border-left: 4px solid var(--TM-success);
+            padding: 16px;
+            border-radius: 4px;
+            margin: 16px 0;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 48px;
+            padding-top: 24px;
+            border-top: 1px solid var(--TM-card-border);
+            color: var(--TM-text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .footer-highlight {
+            color: var(--TM-neon-green);
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.75rem;
+            }
+
+            .meta-info {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>DOCUMENTO DE REQUISITOS NÃO FUNCIONAIS</h1>
+            <p class="subtitle">TM Gerenciador de Ordens de Serviço</p>
+            <p style="color: var(--TM-text-secondary); margin-top: 12px;">
+                Especificações de Performance, Segurança, Usabilidade e Qualidade
+            </p>
+            <span class="version">Versão 1.0 | Novembro 2025</span>
+        </div>
+
+        <div class="meta-info">
+            <div class="meta-card">
+                <div class="meta-label">Módulo</div>
+                <div class="meta-value">TM Gerenciador de O.S.</div>
+            </div>
+            <div class="meta-card">
+                <div class="meta-label">Tipo de Documento</div>
+                <div class="meta-value">NFRD (Non-Functional)</div>
+            </div>
+            <div class="meta-card">
+                <div class="meta-label">Escopo</div>
+                <div class="meta-value">Web Application</div>
+            </div>
+            <div class="meta-card">
+                <div class="meta-label">Status</div>
+                <div class="meta-value" style="color: var(--TM-warning);">Em Desenvolvimento</div>
+            </div>
+            <div class="meta-card">
+                <div class="meta-label">Prioridade</div>
+                <div class="meta-value" style="color: var(--TM-error);">CRÍTICA</div>
+            </div>
+            <div class="meta-card">
+                <div class="meta-label">Responsável</div>
+                <div class="meta-value">Thiago Nascimento</div>
+            </div>
+        </div>
+
+        <!-- Performance -->
+        <div class="category-section">
+            <div class="category-header" onclick="toggleCategory('performance')">
+                <div class="category-header-left">
+                    <span class="category-icon">⚡</span>
+                    <h2 class="category-title">Performance e Tempo de Resposta</h2>
+                </div>
+                <svg width="20" height="20" fill="none" stroke="#64FFDA" viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6" />
+                </svg>
+            </div>
+            <div class="category-content active" id="performance">
+
+                <div class="requirement-card">
+                    <div class="req-header">
+                        <span class="req-id">NFR-001</span>
+                        <span class="req-priority priority-critical">CRÍTICA</span>
+                    </div>
+                    <div class="req-title">Tempo de Carregamento Inicial</div>
+                    <div class="req-content">
+                        A aplicação deve carregar completamente e estar pronta para interação do usuário dentro de
+                        limites de tempo específicos, garantindo uma experiência fluida mesmo em conexões mais lentas.
+                    </div>
+
+                    <div class="metric-box">
+                        <div class="metric-label">Métrica de Performance</div>
+                        <span class="metric-value">&lt; 3 segundos</span>
+                        <span class="metric-desc">Tempo máximo para First Contentful Paint (FCP)</span>
+                    </div>
+
+                    <div class="metric-box">
+                        <div class="metric-label">Time to Interactive (TTI)</div>
+                        <span class="metric-value">&lt; 5 segundos</span>
+                        <span class="metric-desc">Tempo até a página estar totalmente interativa</span>
+                    </div>
+
+                    <div class="validation-box">
+                        <div class="metric-label">Condições de Teste</div>
+                        <ul class="req-list">
+                            <li>Conexão 4G simulada (3 Mbps down, 750 Kbps up)</li>
+                            <li>Dispositivo médio (CPU 4x slowdown no DevTools)</li>
+                            <li>Cache limpo (primeira visita)</li>
+                            <li>Medição usando Lighthouse CI</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="requirement-card">
+                    <div class="req-header">
+                        <span class="req-id">NFR-002</span>
+                        <span class="req-priority priority-critical">CRÍTICA</span>
+                    </div>
+                    <div class="req-title">Tempo de Resposta de APIs</div>
+                    <div class="req-content">
+                        Todas as requisições à API devem responder dentro de tempos aceitáveis para não comprometer a
+                        experiência do usuário durante operações críticas.
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Tipo de Operação</th>
+                                <th>Tempo Máximo (p95)</th>
+                                <th>Tempo Ideal (p50)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Leitura simples (GET)</td>
+                                <td>500ms</td>
+                                <td>200ms</td>
+                            </tr>
+                            <tr>
+                                <td>Criação/Atualização (POST/PUT)</td>
+                                <td>1.000ms</td>
+                                <td>500ms</td>
+                            </tr>
+                            <tr>
+                                <td>Listagem paginada</td>
+                                <td>800ms</td>
+                                <td>400ms</td>
+                            </tr>
+                            <tr>
+                                <td>Upload de pacote ZIP</td>
+                                <td>5.000ms</td>
+                                <td>3.000ms</td>
+                            </tr>
+                            <tr>
+                                <td>Validação e processamento</td>
+                                <td>2.000ms</td>
+                                <td>1.000ms</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="warning-box">
+                        <div class="metric-label">⚠️ Ações em Caso de Timeout</div>
+                        <ul class="req-list">
+                            <li>Exibir mensagem clara: "Operação está demorando mais que o esperado"</li>
+                            <li>Oferecer opção de cancelamento</li>
+                            <li>Implementar retry automático (máximo 3 tentativas com backoff exponencial)</li>
+                            <li>Logar timeout no Sentry para análise</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="requirement-card">
+                    <div class="req-header">
+                        <span class="req-id">NFR-003</span>
+                        <span class="req-priority priority-high">ALTA</span>
+                    </div>
+                    <div class="req-title">Otimização de Renderização</div>
+                    <div class="req-content">
+                        A interface deve permanecer responsiva durante operações pesadas, evitando bloqueios da thread
+                        principal.
+                    </div>
+
+                    <div class="metric-box">
+                        <div class="metric-label">Frame Rate Mínimo</div>
+                        <span class="metric-value">> 30 FPS</span>
+                        <span class="metric-desc">Durante scroll, animações e transições</span>
+                    </div>
+
+                    <div class="success-box">
+                        <div class="metric-label">✅ Estratégias de Otimização</div>
+                        <ul class="req-list">
+                            <li>Virtualização de listas longas (react-window ou similar)</li>
+                            <li>Lazy loading de componentes pesados</li>
+                            <li>Debounce em campos de busca (300ms)</li>
+                            <li>Web Workers para processamento pesado</li>
+                            <li>Paginação server-side para datasets grandes</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Escalabilidade -->
+        <div class="category-section">
+            <div class="category-header" onclick="toggleCategory('scalability')">
+                <div class="category-header-left">
+                    <span class="category-icon">📈</span>
+                    <h2 class="category-title">Escalabilidade e Capacidade</h2>
+                </div>
+                <svg width="20" height="20" fill="none" stroke="#64FFDA" viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6" />
+                </svg>
+            </div>
+            <div class="category-content" id="scalability">
+
+                <div class="requirement-card">
+                    <div class="req-header">
+                        <span class="req-id">NFR-004</span>
+                        <span class="req-priority priority-critical">CRÍTICA</span>
+                    </div>
+                    <div class="req-title">Usuários Simultâneos</div>
+                    <div class="req-content">
+                        O sistema deve suportar múltiplos usuários operando simultaneamente sem degradação significativa
+                        de performance.
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Fase do Projeto</th>
+                                <th>Usuários Simultâneos</th>
+                                <th>Transações/Segundo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>MVP (Mês 1-3)</td>
+                                <td>10-20</td>
+                                <td>50 TPS</td>
+                            </tr>
+                            <tr>
+                                <td>Lançamento (Mês 6)</td>
+                                <td>50-100</td>
+                                <td>200 TPS</td>
+                            </tr>
+                            <tr>
+                                <td>Ano 1 (Mês 12)</td>
+                                <td>200-500</td>
+                                <td>1.000 TPS</td>
+                            </tr>
+                            <tr>
+                                <td>Ano 2+ (Expansão)</td>
+                                <td>1.000+</td>
+                                <td>5.000+ TPS</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="validation-box">
+                        <div class="metric-label">Testes de Carga Obrigatórios</div>
+                        <ul class="req-list">
+                            <li>Testes de stress antes de cada release major</li>
+                            <li>Ferramenta: k6 ou Apache JMeter</li>
+                            <li>Cenários: pico de 2x a carga esperada</li>
+                            <li>Monitoramento de CPU, memória e latência de DB</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="requirement-card">
+                    <div class="req-header">
+                        <span class="req-id">NFR-005</span>
+                        <span class="req-priority priority-high">ALTA</span>
+                    </div>
+                    <div class="req-title">Volume de Dados</div>
+                    <div class="req-content">
+                        O sistema deve manter performance aceitável mesmo com crescimento significativo no volume de
+                        dados armazenados.
+                    </div>
+
+                    <div class="metric-box">
+                        <div class="metric-label">Capacidade de Ordens de Serviço</div>
+                        <span class="metric-value">100.000+</span>
+                        <span class="metric-desc">O.S. no banco sem degradação de queries</span>
+                    </div>
+
+                    <div class="metric-box">
+                        <div class="metric-label">Pacotes Fotográficos</div>
+                        <span class="metric-value">50.000+</span>
+                        <span class="metric-desc">Pacotes armazenados com metadata indexada</span>
+                    </div>
+
+                    <div class="success-box">
+                        <div class="metric-label">✅ Estratégias de Escalabilidade</div>
+                        <ul class="req-list">
+                            <li>Índices otimizados em colunas de busca frequente</li>
+                            <li>Arquivamento automático de O.S. > 2 anos</li>
+                            <li>Particionamento de tabelas por ano/contrato</li>
+                            <li>CDN para assets estáticos (Cloudflare)</li>
+                            <li>Cache de queries frequentes (Redis/Supabase Edge Functions)</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Segurança -->
+        <div class="category-section">
+            <div class="category-header" onclick="toggleCategory('security')">
+                <div class="category-header-left">
+                    <span class="category-icon">🔐</span>
+                    <h2 class="category-title">Segurança e Proteção de Dados</h2>
+                </div>
+                <svg width="20" height="20" fill="none" stroke="#64FFDA" viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6" />
+                </svg>
+            </div>
+            <div class="category-content" id="security">
+
+                <div class="requirement-card">
+                    <div class="req-header">
+                        <span class="req-id">NFR-006</span>
+                        <span class="req-priority priority-critical">CRÍTICA</span>
+                    </div>
+                    <div class="req-title">Autenticação e Autorização</div>
+                    <div class="req-content">
+                        Todo acesso ao sistema deve ser autenticado e autorizado conforme perfis de usuário, seguindo o
+                        princípio do menor privilégio.
+                    </div>
+
+                    <div class="validation-box">
+                        <div class="metric-label">Requisitos de Autenticação</div>
+                        <ul class="req-list">
+                            <li>JWT com expiração de 7 dias (refresh automático)</li>
+                            <li>Logout em 30 dias de inatividade</li>
+                            <li>Autenticação via Supabase Auth</li>
+                            <li>Suporte a MFA (Multi-Factor Authentication) - Fase 2</li>
+                            <li>Rate limiting de login: 5 tentativas/5 minutos</li>
+                        </ul>
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Perfil</th>
+                                <th>Permissões</th>
+                                <th>Restrições</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Técnico</strong></td>
+                                <td>Visualizar O.S. atribuídas, Upload de pacotes</td>
+                                <td>Sem acesso a gestão ou validação</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Gerente</strong></td>
+                                <td>CRUD completo de O.S., Atribuição, Validação</td>
+                                <td>Sem acesso a configurações de sistema</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Admin</strong></td>
+                                <td>Acesso total, gestão de usuários e contratos</td>
+                                <td>Logs de auditoria obrigatórios</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Diretor</strong></td>
+                                <td>Somente leitura de dashboards e métricas</td>
+                                <td>Sem acesso a operações</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="requirement-card">
+                    <div class="req-header">
+                        <span class="req-id">NFR-007</span>
+                        <span class="req-priority priority-critical">CRÍTICA</span>
+                    </div>
+                    <div class="req-title">Proteção de Dados (LGPD)</div>
+                    <div class="req-content">
+                        O sistema deve estar em conformidade total com a Lei Geral de Proteção de Dados (LGPD),
+                        garantindo privacidade e controle dos dados pessoais.
+                    </div>
+
+                    <div class="success-box">
+                        <div class="metric-label">✅ Medidas de Conformidade LGPD</div>
+                        <ul class="req-list">
+                            <li>Criptografia de dados sensíveis em repouso (AES-256)</li>
+                            <li>Comunicação exclusivamente via HTTPS (TLS 1.3)</li>
+                            <li>Opt-in explícito para coleta de dados analíticos</li>
+                            <li>Direito ao esquecimento: exclusão completa em até 30 dias</li>
+                            <li>Exportação de dados pessoais em formato JSON/CSV</li>
+                            <li>Anonimização de dados em logs e analytics</li>
+                            <li>DPO designado (Thiago Nascimento Barbosa)</li>
+                            <li>Consentimento granular por finalidade de uso</li>
+                        </ul>
+                    </div>
+
+                    <div class="metric-box">
+                        <div class="metric-label">Retenção de Dados</div>
+                        <span class="metric-value">Conta Ativa + 90 dias</span>
+                        <span class="metric-desc">Dados mantidos após cancelamento para compliance fiscal</span>
+                    </div>
+                </div>
+
+                <div class="requirement-card">
+                    <div class="req-header">
+                        <span class="req-id">NFR-008</span>
+                        <span class="req-priority priority-high">ALTA</span>
+                    </div>
+                    <div class="req-title">Proteção Contra Vulnerabilidades</div>
+                    <div class="req-content">
+                        O sistema deve implementar proteções contra as vulnerabilidades mais comuns definidas pelo OWASP
+                        Top 10.
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Vulnerabilidade OWASP</th>
+                                <th>Proteção Implementada</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Injection (SQL, XSS)</td>
+                                <td>Prepared statements, sanitização de inputs, CSP headers</td>
+                            </tr>
+                            <tr>
+                                <td>Broken Authentication</td>
+                                <td>JWT com expiração, rate limiting, MFA (Fase 2)</td>
+                            </tr>
+                            <tr>
+                                <td>Sensitive Data Exposure</td>
+                                <td>HTTPS obrigatório, criptografia em repouso</td>
+                            </tr>
+                            <tr>
+                                <td>XML External Entities (XXE)</td>
+                                <td>Validação de uploads, rejeição de XML malformado</td>
+                            </tr>
+                            <tr>
+                                <td>Broken Access Control</td>
+                                <td>RLS (Row Level Security) no Supabase</td>
+                            </tr>
+                            <tr>
+                                <td>Security Misconfiguration</td>
+                                <td>Ambientes separados, secrets em variáveis de ambiente</td>
+                            </tr>
+                            <tr>
+                                <td>CSRF</td>
+                                <td>CSRF tokens, SameSite cookies</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="warning-box">
+                        <div class="metric-label">⚠️ Auditorias de Segurança</div>
+                        <ul class="req-list">
+                            <li>Scan automatizado de dependências (npm audit, Snyk)</li>
+                            <li>Análise estática de código (SonarQube)</li>
+                            <li>Penetration testing trimestral (Fase Pós-MVP)</li>
+                            <li>Revisão de logs de acesso suspeito</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Disponibilidade -->
+        <div class="category-section">
+            <div class="category-header" onclick="toggleCategory('availability')">
+                <div class="category-header-left">
+                    <span class="category-icon">🛡️</span>
+                    <h2 class="category-title">Disponibilidade e Confiabilidade</h2>
+                </div>
+                <svg width="20" height="20" fill="none" stroke="#64FFDA" viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6" />
+                </svg>
+            </div>
+            <div class="category-content" id="availability">
+
+                <div class="requirement-card">
+                    <div class="req-header">
+                        <span class="req-id">NFR-009</span>
+                        <span class="req-priority priority-critical">CRÍTICA</span>
+                    </div>
+                    <div class="req-title">Uptime do Sistema</div>
+                    <div class="req-content">
+                        O sistema deve manter alta disponibilidade para não interromper operações críticas dos usuários.
+                    </div>
+
+                    <div class="metric-box">
+                        <div class="metric-label">Meta de Disponibilidade</div>
+                        <span class="metric-value">99.5%</span>
+                        <span class="metric-desc">Equivalente a ~3.6 horas de downtime/mês</span>
+                    </div>
+
+                    <div class="metric-box">
+                        <div class="metric-label">Janelas de Manutenção</div>
+                        <span class="metric-value">Domingos 02h-05h BRT</span>
+                        <span class="metric-desc">Manutenção programada com aviso prévio de 48h</span>
+                    </div>
+
+                    <div class="validation-box">
+                        <div class="metric-label">Monitoramento de Uptime</div>
+                        <ul class="req-list">
+                            <li>Health checks a cada 1 minuto (UptimeRobot ou Pingdom)</li>
+                            <li>Alertas via Slack/Email em caso de downtime > 2 minutos</li>
+                            <li>Status page pública (status.maffeng.com)</li>
+                            <li>Histórico de incidentes transparente</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="requirement-card">
+                    <div class="req-header">
+                        <span class="req-id">NFR-010</span>
+                        <span class="req-priority priority-high">ALTA</span>
+                    </div>
+                    <div class="req-title">Recuperação de Desastres</div>
+                    <div class="req-content">
+                        O sistema deve possuir estratégias robustas de backup e recuperação para minimizar perda de
+                        dados em caso de falhas catastróficas.
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Métrica</th>
+                                <th>Objetivo</th>
+                                <th>Estratégia</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>RTO</strong> (Recovery Time)</td>
+                                <td>&lt; 4 horas</td>
+                                <td>Infraestrutura em cloud com failover automático</td>
+                            </tr>
+                            <tr>
+                                <td><strong>RPO</strong> (Recovery Point)</td>
+                                <td>&lt; 24 horas</td>
+                                <td>Backups diários do Supabase</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Retenção de Backups</strong></td>
+                                <td>30 dias</td>
+                                <td>Backups incrementais + snapshots semanais completos</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="success-box">
+                        <div class="metric-label">✅ Plano de Backup</div>
+                        <ul class="req-list">
+                            <li>Backup automático diário do PostgreSQL (Supabase)</li>
+                            <li>Backup semanal completo armazenado em região separada</li>
+                            <li>Backup de configurações e secrets em vault seguro</li>
+                            <li>Testes de restore mensais para validar integridade</li>
+                            <li>Documentação atualizada de procedimentos de recuperação</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="requirement-card">
+                    <div class="req-header">
+                        <span class="req-id">NFR-011</span>
+                        <span class="req-priority priority-medium">MÉDIA</span>
+                    </div>
+                    <div class="req-title">Tolerância a Falhas</div>
+                    <div class="req-content">
+                        O sistema deve continuar operando parcialmente mesmo quando componentes individuais falham.
+                    </div>
+
+                    <div class="validation-box">
+                        <div class="metric-label">Estratégias de Resiliência</div>
+                        <ul class="req-list">
+                            <li>Graceful degradation: funcionalidades não-críticas podem falhar sem quebrar o sistema
+                            </li>
+                            <li>Circuit breakers para APIs externas (Auto Relatórios, TM Levantamentos)</li>
+                            <li>Retry automático com backoff exponencial (máximo 3 tentativas)</li>
+                            <li>Fallback para cache quando banco de dados estiver indisponível</li>
+                            <li>Mensagens de erro claras sem expor detalhes técnicos sensíveis</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Usabilidade -->
+        <div class="category-section">
+            <div class="category-header" onclick="toggleCategory('usability')">
+                <div class="category-header-left">
+                    <span class="category-icon">👤</span>
+                    <h2 class="category-title">Usabilidade e Acessibilidade</h2>
+                </div>
+                <svg width="20" height="20" fill="none" stroke="#64FFDA" viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6" />
+                </svg>
+            </div>
+            <div class="category-content" id="usability">
+
+                <div class="requirement-card">
+                    <div class="req-header">
+                        <span class="req-id">NFR-012</span>
+                        <span class="req-priority priority-high">ALTA</span>
+                    </div>
+                    <div class="req-title">Acessibilidade WCAG</div>
+                    <div class="req-content">
+                        A interface deve ser acessível para usuários com deficiências visuais, motoras ou cognitivas,
+                        seguindo as diretrizes WCAG 2.1.
+                    </div>
+
+                    <div class="metric-box">
+                        <div class="metric-label">Nível de Conformidade</div>
+                        <span class="metric-value">WCAG 2.1 AA</span>
+                        <span class="metric-desc">Padrão mínimo aceitável para aplicações corporativas</span>
+                    </div>
+
+                    <div class="success-box">
+                        <div class="metric-label">✅ Requisitos de Acessibilidade</div>
+                        <ul class="req-list">
+                            <li>Contraste mínimo de 4.5:1 para texto normal, 3:1 para texto grande</li>
+                            <li>Navegação completa via teclado (Tab, Enter, Esc)</li>
+                            <li>ARIA labels em todos os elementos interativos</li>
+                            <li>Suporte a leitores de tela (NVDA, JAWS, VoiceOver)</li>
+                            <li>Foco visível em elementos interativos (outline neon green)</li>
+                            <li>Textos alternativos em todas as imagens</li>
+                            <li>Formulários com labels e mensagens de erro claras</li>
+                        </ul>
+                    </div>
+
+                    <div class="validation-box">
+                        <div class="metric-label">Testes de Acessibilidade</div>
+                        <ul class="req-list">
+                            <li>Análise automatizada com Axe DevTools</li>
+                            <li>Teste manual de navegação por teclado</li>
+                            <li>Validação com leitor de tela (NVDA no Windows)</li>
+                            <li>Lighthouse Accessibility Score > 90</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="requirement-card">
+                    <div class="req-header">
+                        <span class="req-id">NFR-013</span>
+                        <span class="req-priority priority-high">ALTA</span>
+                    </div>
+                    <div class="req-title">Responsividade e Multi-dispositivo</div>
+                    <div class="req-content">
+                        A interface deve funcionar perfeitamente em diferentes tamanhos de tela e dispositivos, seguindo
+                        princípios mobile-first.
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Breakpoint</th>
+                                <th>Resolução</th>
+                                <th>Layout</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Mobile (S)</td>
+                                <td>320px - 639px</td>
+                                <td>1 coluna, menu hambúrguer, cards empilhados</td>
+                            </tr>
+                            <tr>
+                                <td>Tablet (M)</td>
+                                <td>640px - 1023px</td>
+                                <td>2 colunas, sidebar colapsável</td>
+                            </tr>
+                            <tr>
+                                <td>Desktop (L)</td>
+                                <td>1024px - 1535px</td>
+                                <td>3 colunas, sidebar fixa</td>
+                            </tr>
+                            <tr>
+                                <td>Widescreen (XL)</td>
+                                <td>1536px+</td>
+                                <td>4 colunas, layout otimizado para telas grandes</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="validation-box">
+                        <div class="metric-label">Testes de Responsividade</div>
+                        <ul class="req-list">
+                            <li>Teste em Chrome DevTools para todos os breakpoints</li>
+                            <li>Validação em dispositivos físicos (iPhone, iPad, Android)</li>
+                            <li>Teste de rotação de tela (portrait/landscape)</li>
+                            <li>Touch targets mínimos de 44x44px em mobile</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="requirement-card">
+                    <div class="req-header">
+                        <span class="req-id">NFR-014</span>
+                        <span class="req-priority priority-medium">MÉDIA</span>
+                    </div>
+                    <div class="req-title">Curva de Aprendizado</div>
+                    <div class="req-content">
+                        Novos usuários devem conseguir realizar tarefas básicas sem necessidade de treinamento extenso.
+                    </div>
+
+                    <div class="metric-box">
+                        <div class="metric-label">Time to First Value</div>
+                        <span class="metric-value">&lt; 10 minutos</span>
+                        <span class="metric-desc">Desde o login até completar primeira tarefa</span>
+                    </div>
+
+                    <div class="success-box">
+                        <div class="metric-label">✅ Facilitadores de Usabilidade</div>
+                        <ul class="req-list">
+                            <li>Tour guiado para novos usuários (opcional, skippable)</li>
+                            <li>Tooltips contextuais em campos complexos</li>
+                            <li>Mensagens de erro claras com sugestões de correção</li>
+                            <li>Confirmações antes de ações destrutivas</li>
+                            <li>Undo/Redo em operações críticas</li>
+                            <li>Atalhos de teclado documentados (Ctrl+K para busca rápida)</li>
+                            <li>Feedback visual imediato para todas as ações</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Manutenibilidade -->
+        <div class="category-section">
+            <div class="category-header" onclick="toggleCategory('maintainability')">
+                <div class="category-header-left">
+                    <span class="category-icon">🔧</span>
+                    <h2 class="category-title">Manutenibilidade e Qualidade de Código</h2>
+                </div>
+                <svg width="20" height="20" fill="none" stroke="#64FFDA" viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6" />
+                </svg>
+            </div>
+            <div class="category-content" id="maintainability">
+
+                <div class="requirement-card">
+                    <div class="req-header">
+                        <span class="req-id">NFR-015</span>
+                        <span class="req-priority priority-high">ALTA</span>
+                    </div>
+                    <div class="req-title">Cobertura de Testes</div>
+                    <div class="req-content">
+                        O código deve possuir testes automatizados suficientes para garantir qualidade e facilitar
+                        refatorações futuras.
+                    </div>
+
+                    <div class="metric-box">
+                        <div class="metric-label">Code Coverage Mínimo</div>
+                        <span class="metric-value">> 80%</span>
+                        <span class="metric-desc">Cobertura de linhas de código por testes automatizados</span>
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Tipo de Teste</th>
+                                <th>Ferramenta</th>
+                                <th>Escopo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Unit Tests</td>
+                                <td>Jest + React Testing Library</td>
+                                <td>Funções puras, hooks, utils</td>
+                            </tr>
+                            <tr>
+                                <td>Integration Tests</td>
+                                <td>Jest + MSW (Mock Service Worker)</td>
+                                <td>Fluxos de componentes + API</td>
+                            </tr>
+                            <tr>
+                                <td>E2E Tests</td>
+                                <td>Playwright ou Cypress</td>
+                                <td>Jornadas críticas completas</td>
+                            </tr>
+                            <tr>
+                                <td>Visual Regression</td>
+                                <td>Chromatic (Fase 2)</td>
+                                <td>Componentes do Design System</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="validation-box">
+                        <div class="metric-label">Cenários de Teste Obrigatórios</div>
+                        <ul class="req-list">
+                            <li>Importação de Excel com dados válidos e inválidos</li>
+                            <li>Atribuição de O.S. para técnico</li>
+                            <li>Upload de pacote ZIP e validação</li>
+                            <li>Aprovação/Rejeição de levantamento</li>
+                            <li>Reatribuição de O.S. entre técnicos</li>
+                            <li>Filtros e busca no dashboard</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="requirement-card">
+                    <div class="req-header">
+                        <span class="req-id">NFR-016</span>
+                        <span class="req-priority priority-high">ALTA</span>
+                    </div>
+                    <div class="req-title">Qualidade de Código</div>
+                    <div class="req-content">
+                        O código deve seguir padrões consistentes de formatação, nomenclatura e estrutura para facilitar
+                        manutenção e onboarding de novos desenvolvedores.
+                    </div>
+
+                    <div class="success-box">
+                        <div class="metric-label">✅ Padrões de Código</div>
+                        <ul class="req-list">
+                            <li>ESLint configurado com regras rigorosas (Airbnb + TypeScript)</li>
+                            <li>Prettier para formatação automática</li>
+                            <li>Husky + lint-staged: validação pre-commit</li>
+                            <li>Conventional Commits obrigatórios</li>
+                            <li>TypeScript strict mode habilitado</li>
+                            <li>SonarQube/CodeClimate: debt ratio &lt; 5%</li>
+                        </ul>
+                    </div>
+
+                    <div class="code-block">
+                        // Exemplo de estrutura de componente React
+                        interface Props {
+                        orderId: string;
+                        onAssign: (technicianId: string) => Promise<void>;
+                            }
+
+                            export const OrderAssignmentModal: React.FC<Props> = ({ orderId, onAssign }) => {
+                                const [selectedTech, setSelectedTech] = useState<string>('');
+                                    const [loading, setLoading] = useState(false);
+
+                                    const handleAssign = async () => {
+                                    setLoading(true);
+                                    try {
+                                    await onAssign(selectedTech);
+                                    } catch (error) {
+                                    toast.error('Falha na atribuição');
+                                    } finally {
+                                    setLoading(false);
+                                    }
+                                    };
+
+                                    return (/* JSX */);
+                                    };
+                    </div>
+                </div>
+
+                <div class="requirement-card">
+                    <div class="req-header">
+                        <span class="req-id">NFR-017</span>
+                        <span class="req-priority priority-medium">MÉDIA</span>
+                    </div>
+                    <div class="req-title">Documentação Técnica</div>
+                    <div class="req-content">
+                        O código e a arquitetura devem estar documentados de forma clara para facilitar manutenção e
+                        expansão futura.
+                    </div>
+
+                    <div class="validation-box">
+                        <div class="metric-label">Documentação Obrigatória</div>
+                        <ul class="req-list">
+                            <li>README.md com setup de desenvolvimento</li>
+                            <li>Comentários JSDoc em funções públicas</li>
+                            <li>Swagger/OpenAPI para todas as APIs REST</li>
+                            <li>ADRs (Architecture Decision Records) para decisões importantes</li>
+                            <li>Storybook para componentes do Design System (Fase 2)</li>
+                            <li>Diagramas de fluxo atualizados no Miro/FigJam</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Compatibilidade -->
+        <div class="category-section">
+            <div class="category-header" onclick="toggleCategory('compatibility')">
+                <div class="category-header-left">
+                    <span class="category-icon">🌐</span>
+                    <h2 class="category-title">Compatibilidade e Interoperabilidade</h2>
+                </div>
+                <svg width="20" height="20" fill="none" stroke="#64FFDA" viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6" />
+                </svg>
+            </div>
+            <div class="category-content" id="compatibility">
+
+                <div class="requirement-card">
+                    <div class="req-header">
+                        <span class="req-id">NFR-018</span>
+                        <span class="req-priority priority-high">ALTA</span>
+                    </div>
+                    <div class="req-title">Compatibilidade de Navegadores</div>
+                    <div class="req-content">
+                        A aplicação deve funcionar corretamente nos navegadores mais utilizados pelos usuários
+                        corporativos.
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Navegador</th>
+                                <th>Versões Suportadas</th>
+                                <th>Market Share</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Chrome</td>
+                                <td>Últimas 2 versões</td>
+                                <td>~65%</td>
+                            </tr>
+                            <tr>
+                                <td>Firefox</td>
+                                <td>Últimas 2 versões</td>
+                                <td>~10%</td>
+                            </tr>
+                            <tr>
+                                <td>Safari (macOS/iOS)</td>
+                                <td>Últimas 2 versões</td>
+                                <td>~15%</td>
+                            </tr>
+                            <tr>
+                                <td>Edge</td>
+                                <td>Últimas 2 versões (Chromium)</td>
+                                <td>~8%</td>
+                            </tr>
+                            <tr>
+                                <td>IE 11</td>
+                                <td>❌ Não suportado</td>
+                                <td>&lt;1%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="warning-box">
+                        <div class="metric-label">⚠️ Browsers Não Suportados</div>
+                        <ul class="req-list">
+                            <li>Internet Explorer (todas as versões)</li>
+                            <li>Navegadores móveis muito antigos (&lt; 2020)</li>
+                            <li>Mensagem amigável exibida para usuários desses browsers</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="requirement-card">
+                    <div class="req-header">
+                        <span class="req-id">NFR-019</span>
+                        <span class="req-priority priority-critical">CRÍTICA</span>
+                    </div>
+                    <div class="req-title">Integração com Ecossistema MAFFENG</div>
+                    <div class="req-content">
+                        O sistema deve integrar-se perfeitamente com os demais módulos do ecossistema via APIs REST e
+                        webhooks.
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Módulo</th>
+                                <th>Tipo de Integração</th>
+                                <th>Latência Máxima</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>TM Levantamentos (Mobile)</td>
+                                <td>POST /api/upload-pacote</td>
+                                <td>5 segundos</td>
+                            </tr>
+                            <tr>
+                                <td>TM Auto Relatórios</td>
+                                <td>POST /api/generate-report + Webhook</td>
+                                <td>10 segundos</td>
+                            </tr>
+                            <tr>
+                                <td>TM Painel do Diretor</td>
+                                <td>GET /api/metrics (polling ou real-time)</td>
+                                <td>1 segundo</td>
+                            </tr>
+                            <tr>
+                                <td>TM Ajustes Administrativos</td>
+                                <td>POST /api/financial-metrics</td>
+                                <td>2 segundos</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="validation-box">
+                        <div class="metric-label">Requisitos de API</div>
+                        <ul class="req-list">
+                            <li>Versionamento semântico de APIs (v1, v2, etc.)</li>
+                            <li>Retrocompatibilidade por no mínimo 6 meses</li>
+                            <li>Documentação OpenAPI 3.0 automática</li>
+                            <li>Rate limiting configurável por cliente</li>
+                            <li>Retry automático com backoff exponencial</li>
+                            <li>Logs detalhados de todas as chamadas para auditoria</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Observabilidade -->
+        <div class="category-section">
+            <div class="category-header" onclick="toggleCategory('observability')">
+                <div class="category-header-left">
+                    <span class="category-icon">📊</span>
+                    <h2 class="category-title">Observabilidade e Monitoramento</h2>
+                </div>
+                <svg width="20" height="20" fill="none" stroke="#64FFDA" viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6" />
+                </svg>
+            </div>
+            <div class="category-content" id="observability">
+
+                <div class="requirement-card">
+                    <div class="req-header">
+                        <span class="req-id">NFR-020</span>
+                        <span class="req-priority priority-critical">CRÍTICA</span>
+                    </div>
+                    <div class="req-title">Logging e Rastreamento de Erros</div>
+                    <div class="req-content">
+                        Todos os erros e eventos importantes devem ser logados para permitir debugging eficiente e
+                        análise de incidentes.
+                    </div>
+
+                    <div class="success-box">
+                        <div class="metric-label">✅ Estratégia de Logging</div>
+                        <ul class="req-list">
+                            <li>Sentry para tracking de exceções (frontend + backend)</li>
+                            <li>Contexto completo: user ID, session ID, stack trace</li>
+                            <li>Breadcrumbs de ações do usuário antes do erro</li>
+                            <li>Alertas automáticos para erros críticos (Slack/Email)</li>
+                            <li>Logs estruturados em JSON para fácil parsing</li>
+                            <li>Retenção de logs: 30 dias (produção), 7 dias (staging)</li>
+                        </ul>
+                    </div>
+
+                    <div class="metric-box">
+                        <div class="metric-label">Error Rate Aceitável</div>
+                        <span class="metric-value">&lt; 1%</span>
+                        <span class="metric-desc">Percentual de requisições que resultam em erro</span>
+                    </div>
+                </div>
+
+                <div class="requirement-card">
+                    <div class="req-header">
+                        <span class="req-id">NFR-021</span>
+                        <span class="req-priority priority-high">ALTA</span>
+                    </div>
+                    <div class="req-title">Métricas de Uso e Analytics</div>
+                    <div class="req-content">
+                        O sistema deve coletar métricas de uso para entender comportamento dos usuários e orientar
+                        decisões de produto.
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Categoria</th>
+                                <th>Métricas</th>
+                                <th>Ferramenta</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Engajamento</td>
+                                <td>DAU, MAU, Session Duration</td>
+                                <td>Mixpanel/Amplitude</td>
+                            </tr>
+                            <tr>
+                                <td>Features</td>
+                                <td>Feature Adoption Rate, Clicks</td>
+                                <td>Mixpanel</td>
+                            </tr>
+                            <tr>
+                                <td>Performance</td>
+                                <td>Page Load, API Latency</td>
+                                <td>Datadog APM</td>
+                            </tr>
+                            <tr>
+                                <td>Business</td>
+                                <td>O.S. criadas, Uploads, Validações</td>
+                                <td>PostgreSQL + Dashboard</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="validation-box">
+                        <div class="metric-label">Privacidade em Analytics</div>
+                        <ul class="req-list">
+                            <li>Anonimização de IPs dos usuários</li>
+                            <li>Opt-out disponível nas configurações</li>
+                            <li>Sem tracking de dados sensíveis (CPF, emails, senhas)</li>
+                            <li>Conformidade com LGPD e GDPR</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="requirement-card">
+                    <div class="req-header">
+                        <span class="req-id">NFR-022</span>
+                        <span class="req-priority priority-medium">MÉDIA</span>
+                    </div>
+                    <div class="req-title">Alertas e Notificações</div>
+                    <div class="req-content">
+                        A equipe técnica deve ser notificada automaticamente sobre eventos críticos do sistema.
+                    </div>
+
+                    <div class="success-box">
+                        <div class="metric-label">✅ Sistema de Alertas</div>
+                        <ul class="req-list">
+                            <li>Downtime > 2 minutos → Slack + Email imediato</li>
+                            <li>Error rate > 5% → Slack com severidade alta</li>
+                            <li>API latency > 2s (p95) → Slack warning</li>
+                            <li>CPU/Memory > 80% → Slack + PagerDuty (Fase 2)</li>
+                            <li>Falha em backup → Email para admin</li>
+                            <li>Tentativas de acesso suspeitas → Email de segurança</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Conformidade Regulatória -->
+        <div class="category-section">
+            <div class="category-header" onclick="toggleCategory('compliance')">
+                <div class="category-header-left">
+                    <span class="category-icon">⚖️</span>
+                    <h2 class="category-title">Conformidade Regulatória e Legal</h2>
+                </div>
+                <svg width="20" height="20" fill="none" stroke="#64FFDA" viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6" />
+                </svg>
+            </div>
+            <div class="category-content" id="compliance">
+
+                <div class="requirement-card">
+                    <div class="req-header">
+                        <span class="req-id">NFR-023</span>
+                        <span class="req-priority priority-critical">CRÍTICA</span>
+                    </div>
+                    <div class="req-title">Conformidade com LGPD (Lei Geral de Proteção de Dados)</div>
+                    <div class="req-content">
+                        O sistema deve estar em total conformidade com a LGPD (Lei nº 13.709/2018), garantindo os
+                        direitos dos titulares de dados.
+                    </div>
+
+                    <div class="validation-box">
+                        <div class="metric-label">Direitos dos Titulares (Art. 18 LGPD)</div>
+                        <ul class="req-list">
+                            <li><strong>Acesso:</strong> Usuário pode visualizar todos os seus dados pessoais</li>
+                            <li><strong>Correção:</strong> Edição de dados pessoais via perfil</li>
+                            <li><strong>Anonimização:</strong> Dados podem ser anonimizados a pedido</li>
+                            <li><strong>Portabilidade:</strong> Exportação em JSON/CSV</li>
+                            <li><strong>Exclusão:</strong> Direito ao esquecimento (30 dias)</li>
+                            <li><strong>Revogação:</strong> Retirada de consentimento a qualquer momento</li>
+                            <li><strong>Informação:</strong> Transparência sobre uso dos dados</li>
+                        </ul>
+                    </div>
+
+                    <div class="success-box">
+                        <div class="metric-label">✅ Medidas Técnicas LGPD</div>
+                        <ul class="req-list">
+                            <li>Política de Privacidade clara e acessível</li>
+                            <li>Termos de Uso com cláusula de proteção de dados</li>
+                            <li>DPO designado: Thiago Nascimento Barbosa (contato@maffeng.com)</li>
+                            <li>Registro de operações de tratamento de dados</li>
+                            <li>Processo documentado de resposta a incidentes</li>
+                            <li>Treinamento de equipe sobre LGPD</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="requirement-card">
+                    <div class="req-header">
+                        <span class="req-id">NFR-024</span>
+                        <span class="req-priority priority-high">ALTA</span>
+                    </div>
+                    <div class="req-title">Auditoria e Rastreabilidade</div>
+                    <div class="req-content">
+                        Todas as ações críticas no sistema devem ser registradas em logs de auditoria imutáveis para
+                        compliance e investigação de incidentes.
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Evento</th>
+                                <th>Dados Registrados</th>
+                                <th>Retenção</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Login/Logout</td>
+                                <td>User ID, IP, timestamp, sucesso/falha</td>
+                                <td>1 ano</td>
+                            </tr>
+                            <tr>
+                                <td>Criação de O.S.</td>
+                                <td>User ID, O.S. ID, timestamp, método</td>
+                                <td>Indefinido</td>
+                            </tr>
+                            <tr>
+                                <td>Atribuição/Reatribuição</td>
+                                <td>Gerente ID, Técnico ID, motivo</td>
+                                <td>Indefinido</td>
+                            </tr>
+                            <tr>
+                                <td>Upload de Pacote</td>
+                                <td>Técnico ID, O.S. ID, tamanho, checksum</td>
+                                <td>Indefinido</td>
+                            </tr>
+                            <tr>
+                                <td>Aprovação/Rejeição</td>
+                                <td>Gerente ID, pacote ID, motivo, timestamp</td>
+                                <td>Indefinido</td>
+                            </tr>
+                            <tr>
+                                <td>Exclusão de Dados</td>
+                                <td>Admin ID, tipo de dado, justificativa</td>
+                                <td>5 anos</td>
+                            </tr>
+                            <tr>
+                                <td>Alteração de Permissões</td>
+                                <td>Admin ID, user ID afetado, mudanças</td>
+                                <td>2 anos</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="warning-box">
+                        <div class="metric-label">⚠️ Segurança dos Logs de Auditoria</div>
+                        <ul class="req-list">
+                            <li>Armazenamento em tabela separada write-only</li>
+                            <li>Sem possibilidade de edição ou exclusão (append-only)</li>
+                            <li>Backup independente com retenção prolongada</li>
+                            <li>Acesso restrito apenas a admins e auditores</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Resumo e Aceitação -->
+        <div class="category-section">
+            <div class="category-header" onclick="toggleCategory('summary')">
+                <div class="category-header-left">
+                    <span class="category-icon">✅</span>
+                    <h2 class="category-title">Resumo e Critérios de Aceitação</h2>
+                </div>
+                <svg width="20" height="20" fill="none" stroke="#64FFDA" viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6" />
+                </svg>
+            </div>
+            <div class="category-content" id="summary">
+
+                <div class="requirement-card">
+                    <div class="req-title">Consolidação de Requisitos Não Funcionais</div>
+                    <div class="req-content" style="margin-bottom: 20px;">
+                        Este documento estabelece 24 requisitos não funcionais críticos para o sucesso do TM Gerenciador
+                        de O.S. A conformidade com estes requisitos é obrigatória antes do lançamento em produção.
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Categoria</th>
+                                <th>Requisitos</th>
+                                <th>Prioridade Crítica</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Performance</td>
+                                <td>3 requisitos</td>
+                                <td>2 críticos</td>
+                            </tr>
+                            <tr>
+                                <td>Escalabilidade</td>
+                                <td>2 requisitos</td>
+                                <td>1 crítico</td>
+                            </tr>
+                            <tr>
+                                <td>Segurança</td>
+                                <td>3 requisitos</td>
+                                <td>3 críticos</td>
+                            </tr>
+                            <tr>
+                                <td>Disponibilidade</td>
+                                <td>3 requisitos</td>
+                                <td>1 crítico</td>
+                            </tr>
+                            <tr>
+                                <td>Usabilidade</td>
+                                <td>3 requisitos</td>
+                                <td>0 críticos</td>
+                            </tr>
+                            <tr>
+                                <td>Manutenibilidade</td>
+                                <td>3 requisitos</td>
+                                <td>0 críticos</td>
+                            </tr>
+                            <tr>
+                                <td>Compatibilidade</td>
+                                <td>2 requisitos</td>
+                                <td>1 crítico</td>
+                            </tr>
+                            <tr>
+                                <td>Observabilidade</td>
+                                <td>3 requisitos</td>
+                                <td>1 crítico</td>
+                            </tr>
+                            <tr>
+                                <td>Conformidade</td>
+                                <td>2 requisitos</td>
+                                <td>1 crítico</td>
+                            </tr>
+                            <tr>
+                                <td><strong>TOTAL</strong></td>
+                                <td><strong>24 requisitos</strong></td>
+                                <td><strong>10 críticos</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="requirement-card">
+                    <div class="req-title">Checklist de Pré-Lançamento</div>
+                    <div class="req-content">
+                        Todos os itens abaixo devem ser validados antes do deploy em produção (v1.0).
+                    </div>
+
+                    <div class="success-box">
+                        <div class="metric-label">✅ Performance e Escalabilidade</div>
+                        <ul class="req-list">
+                            <li>[ ] FCP &lt; 3s, TTI &lt; 5s em conexão 4G</li>
+                            <li>[ ] API response time &lt; 500ms (p95) para operações comuns</li>
+                            <li>[ ] Testes de carga passando com 100 usuários simultâneos</li>
+                            <li>[ ] Sistema funciona com 10.000+ O.S. sem degradação</li>
+                        </ul>
+                    </div>
+
+                    <div class="success-box">
+                        <div class="metric-label">✅ Segurança e Conformidade</div>
+                        <ul class="req-list">
+                            <li>[ ] Autenticação JWT implementada e testada</li>
+                            <li>[ ] RLS (Row Level Security) ativo no Supabase</li>
+                            <li>[ ] HTTPS obrigatório em produção</li>
+                            <li>[ ] Política de Privacidade e Termos de Uso publicados</li>
+                            <li>[ ] DPO designado e contato público</li>
+                            <li>[ ] Scan de vulnerabilidades (npm audit) sem issues críticos</li>
+                            <li>[ ] Logs de auditoria funcionando</li>
+                        </ul>
+                    </div>
+
+                    <div class="success-box">
+                        <div class="metric-label">✅ Disponibilidade e Monitoramento</div>
+                        <ul class="req-list">
+                            <li>[ ] Backups automáticos configurados</li>
+                            <li>[ ] Health checks e uptime monitoring ativos</li>
+                            <li>[ ] Sentry configurado para tracking de erros</li>
+                            <li>[ ] Alertas para downtime e erros críticos</li>
+                            <li>[ ] Status page pública disponível</li>
+                        </ul>
+                    </div>
+
+                    <div class="success-box">
+                        <div class="metric-label">✅ Usabilidade e Qualidade</div>
+                        <ul class="req-list">
+                            <li>[ ] Lighthouse Accessibility Score > 90</li>
+                            <li>[ ] Responsividade testada em mobile, tablet e desktop</li>
+                            <li>[ ] Navegação por teclado funcional</li>
+                            <li>[ ] Compatibilidade validada em Chrome, Firefox, Safari, Edge</li>
+                            <li>[ ] Code coverage > 80%</li>
+                            <li>[ ] Testes E2E dos fluxos críticos passando</li>
+                        </ul>
+                    </div>
+
+                    <div class="success-box">
+                        <div class="metric-label">✅ Integrações</div>
+                        <ul class="req-list">
+                            <li>[ ] Integração com TM Levantamentos (upload de pacotes) testada</li>
+                            <li>[ ] Integração com TM Auto Relatórios (geração) testada</li>
+                            <li>[ ] APIs documentadas com OpenAPI/Swagger</li>
+                            <li>[ ] Rate limiting configurado</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="requirement-card">
+                    <div class="req-title">Ferramentas e Stack Técnico Validado</div>
+                    <div class="req-content">
+                        As ferramentas abaixo foram selecionadas para atender aos requisitos não funcionais deste
+                        documento.
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Categoria</th>
+                                <th>Ferramenta</th>
+                                <th>Propósito</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Backend</td>
+                                <td>Supabase (PostgreSQL)</td>
+                                <td>Database, Auth, Storage, Real-time</td>
+                            </tr>
+                            <tr>
+                                <td>Frontend</td>
+                                <td>React + TypeScript + Vite</td>
+                                <td>UI framework com type-safety</td>
+                            </tr>
+                            <tr>
+                                <td>Styling</td>
+                                <td>Tailwind CSS</td>
+                                <td>Utility-first CSS (Design System TM)</td>
+                            </tr>
+                            <tr>
+                                <td>Testes</td>
+                                <td>Jest + React Testing Library</td>
+                                <td>Unit e integration tests</td>
+                            </tr>
+                            <tr>
+                                <td>E2E</td>
+                                <td>Playwright ou Cypress</td>
+                                <td>Testes end-to-end</td>
+                            </tr>
+                            <tr>
+                                <td>Error Tracking</td>
+                                <td>Sentry</td>
+                                <td>Monitoramento de exceções</td>
+                            </tr>
+                            <tr>
+                                <td>Analytics</td>
+                                <td>Mixpanel ou Amplitude</td>
+                                <td>Product analytics</td>
+                            </tr>
+                            <tr>
+                                <td>APM</td>
+                                <td>Datadog ou New Relic</td>
+                                <td>Application Performance Monitoring</td>
+                            </tr>
+                            <tr>
+                                <td>Uptime</td>
+                                <td>UptimeRobot ou Pingdom</td>
+                                <td>Monitoramento de disponibilidade</td>
+                            </tr>
+                            <tr>
+                                <td>Deploy</td>
+                                <td>Vercel</td>
+                                <td>Hosting e CI/CD</td>
+                            </tr>
+                            <tr>
+                                <td>Code Quality</td>
+                                <td>ESLint + Prettier + Husky</td>
+                                <td>Linting e formatação</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong class="footer-highlight">TM Gerenciador de O.S.</strong> - Documento de Requisitos Não Funcionais
+            </p>
+            <p style="margin-top: 8px;">Preparado por: <span class="footer-highlight">Thiago Nascimento Barbosa</span> |
+                TM – Sempre Tecnologia</p>
+            <p style="margin-top: 4px;">Ecossistema MAFFENG | Novembro 2025</p>
+            <p style="margin-top: 16px; font-size: 0.75rem; color: var(--TM-text-secondary);">
+                Este documento complementa o FRD e deve ser seguido rigorosamente durante todo o desenvolvimento
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function toggleCategory(categoryId) {
+            const content = document.getElementById(categoryId);
+            content.classList.toggle('active');
+        }
+
+        // Inicializar primeira categoria aberta
+        document.addEventListener('DOMContentLoaded', () => {
+            const firstCategory = document.getElementById('performance');
+            if (firstCategory) {
+                firstCategory.classList.add('active');
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matriz SWOT - Ecossistema MAFFENG</title>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --TM-navy-deep: #0A1628;
+            --TM-navy-medium: #112240;
+            --TM-navy-light: #1A365D;
+            --TM-neon-green: #64FFDA;
+            --TM-cyan-vibrant: #00D4FF;
+            --TM-text-primary: #E6F1FF;
+            --TM-text-secondary: #8892B0;
+            --TM-card-bg: rgba(17, 34, 64, 0.5);
+            --TM-card-border: rgba(100, 255, 218, 0.1);
+            --font-heading: "Exo 2", sans-serif;
+            --font-body: "Inter", sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: linear-gradient(180deg, #0A1628 0%, #112240 50%, #0A1628 100%);
+            color: var(--TM-text-primary);
+            min-height: 100vh;
+            padding: 32px 16px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .header h1 {
+            font-family: var(--font-heading);
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--TM-neon-green);
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+        }
+
+        .header .subtitle {
+            font-size: 18px;
+            color: var(--TM-cyan-vibrant);
+            font-weight: 600;
+        }
+
+        .header .description {
+            font-size: 14px;
+            color: var(--TM-text-secondary);
+            margin-top: 16px;
+            line-height: 1.6;
+        }
+
+        .swot-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .swot-card {
+            background: var(--TM-card-bg);
+            border: 1px solid var(--TM-card-border);
+            border-radius: 8px;
+            padding: 24px;
+            backdrop-filter: blur(10px);
+            transition: all 300ms ease-in-out;
+        }
+
+        .swot-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            border-color: var(--TM-neon-green);
+        }
+
+        .swot-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid;
+        }
+
+        .strengths .swot-header {
+            border-color: var(--TM-neon-green);
+        }
+
+        .weaknesses .swot-header {
+            border-color: #FF6B6B;
+        }
+
+        .opportunities .swot-header {
+            border-color: var(--TM-cyan-vibrant);
+        }
+
+        .threats .swot-header {
+            border-color: #FFA500;
+        }
+
+        .swot-icon {
+            font-size: 24px;
+        }
+
+        .swot-title {
+            font-family: var(--font-heading);
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .strengths .swot-title {
+            color: var(--TM-neon-green);
+        }
+
+        .weaknesses .swot-title {
+            color: #FF6B6B;
+        }
+
+        .opportunities .swot-title {
+            color: var(--TM-cyan-vibrant);
+        }
+
+        .threats .swot-title {
+            color: #FFA500;
+        }
+
+        .swot-items {
+            list-style: none;
+        }
+
+        .swot-items li {
+            padding: 12px 0;
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--TM-text-primary);
+            border-bottom: 1px solid rgba(100, 255, 218, 0.05);
+            display: flex;
+            gap: 8px;
+        }
+
+        .swot-items li:last-child {
+            border-bottom: none;
+        }
+
+        .swot-items li::before {
+            content: "▸";
+            color: var(--TM-text-secondary);
+            flex-shrink: 0;
+        }
+
+        .analysis-section {
+            background: var(--TM-card-bg);
+            border: 1px solid var(--TM-card-border);
+            border-radius: 8px;
+            padding: 24px;
+            margin-top: 32px;
+        }
+
+        .analysis-section h2 {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--TM-neon-green);
+            margin-bottom: 16px;
+        }
+
+        .analysis-section p {
+            font-size: 14px;
+            line-height: 1.8;
+            color: var(--TM-text-primary);
+            margin-bottom: 12px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 48px;
+            padding-top: 24px;
+            border-top: 1px solid var(--TM-card-border);
+            color: var(--TM-text-secondary);
+            font-size: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .swot-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .header h1 {
+                font-size: 24px;
+            }
+
+            .header .subtitle {
+                font-size: 16px;
+            }
+
+            body {
+                padding: 24px 12px;
+            }
+
+            .swot-card {
+                padding: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>MATRIZ SWOT</h1>
+            <div class="subtitle">Ecossistema MAFFENG - Automação Técnica</div>
+            <div class="description">
+                Análise estratégica do ecossistema integrado de aplicativos técnicos, administrativos e gerenciais desenvolvido pela TM - Soluções Tecnológicas
+            </div>
+        </div>
+
+        <div class="swot-grid">
+            <!-- FORÇAS -->
+            <div class="swot-card strengths">
+                <div class="swot-header">
+                    <div class="swot-icon">💪</div>
+                    <div class="swot-title">FORÇAS (Strengths)</div>
+                </div>
+                <ul class="swot-items">
+                    <li>Arquitetura modular que permite comercialização independente ou em conjunto dos módulos</li>
+                    <li>Stack tecnológico moderno e escalável (Supabase, TypeScript, React, Python)</li>
+                    <li>Automação completa do fluxo técnico desde captura até relatório final</li>
+                    <li>Design System profissional (TM) garantindo consistência visual em todos os módulos</li>
+                    <li>Funcionalidade offline no app móvel, essencial para trabalho em campo</li>
+                    <li>Autenticação centralizada com controle de acesso granular por perfil</li>
+                    <li>Integração nativa entre todos os módulos via banco de dados único</li>
+                    <li>Geração automática de relatórios .docx com templates padronizados</li>
+                    <li>Dashboard executivo consolidando métricas de todos os módulos</li>
+                    <li>Prototipagem completa do módulo móvel já finalizada</li>
+                </ul>
+            </div>
+
+            <!-- FRAQUEZAS -->
+            <div class="swot-card weaknesses">
+                <div class="swot-header">
+                    <div class="swot-icon">⚠️</div>
+                    <div class="swot-title">FRAQUEZAS (Weaknesses)</div>
+                </div>
+                <ul class="swot-items">
+                    <li>Dependência crítica do módulo Gerenciador de O.S. ainda em concepção</li>
+                    <li>Módulos principais ainda não operacionais (apenas protótipos e conceitos)</li>
+                    <li>Falta de integração REST para o módulo Auto Relatórios</li>
+                    <li>Ausência de testes funcionais do fluxo completo end-to-end</li>
+                    <li>Complexidade técnica pode dificultar manutenção futura</li>
+                    <li>Time reduzido (projeto individual) limitando velocidade de desenvolvimento</li>
+                    <li>Falta de validação de mercado com usuários reais</li>
+                    <li>Documentação técnica ainda incompleta em alguns módulos</li>
+                    <li>Necessidade de múltiplas tecnologias (TypeScript, Python) pode aumentar curva de aprendizado</li>
+                    <li>Módulos Administrativo e Painel do Diretor ainda conceituais</li>
+                </ul>
+            </div>
+
+            <!-- OPORTUNIDADES -->
+            <div class="swot-card opportunities">
+                <div class="swot-header">
+                    <div class="swot-icon">🚀</div>
+                    <div class="swot-title">OPORTUNIDADES (Opportunities)</div>
+                </div>
+                <ul class="swot-items">
+                    <li>Mercado crescente de automação técnica no setor de engenharia e infraestrutura</li>
+                    <li>Possibilidade de comercialização SaaS com modelo de assinatura recorrente</li>
+                    <li>Expansão para outros setores que necessitam levantamentos fotográficos</li>
+                    <li>Parcerias estratégicas com empresas de engenharia e construtoras</li>
+                    <li>Transformação em PJ facilitará captação de investimentos e expansão</li>
+                    <li>Marca MAFFENG pode se tornar referência em automação técnica</li>
+                    <li>Vitrine para TM - Soluções Tecnológicas atrair novos clientes</li>
+                    <li>Possibilidade de white label para grandes clientes corporativos</li>
+                    <li>Integração com outras plataformas e sistemas ERP existentes</li>
+                    <li>Desenvolvimento de módulos adicionais baseados em demanda do mercado</li>
+                </ul>
+            </div>
+
+            <!-- AMEAÇAS -->
+            <div class="swot-card threats">
+                <div class="swot-header">
+                    <div class="swot-icon">⚡</div>
+                    <div class="swot-title">AMEAÇAS (Threats)</div>
+                </div>
+                <ul class="swot-items">
+                    <li>Concorrentes estabelecidos com soluções similares já no mercado</li>
+                    <li>Mudanças tecnológicas rápidas podem tornar stack obsoleta</li>
+                    <li>Dependência de serviços terceiros (Supabase) cria risco operacional</li>
+                    <li>Resistência à adoção de novas tecnologias por empresas tradicionais</li>
+                    <li>Custos de infraestrutura podem crescer rapidamente com escalabilidade</li>
+                    <li>Regulamentações de proteção de dados (LGPD) exigem conformidade rigorosa</li>
+                    <li>Ciclos de venda longos no mercado B2B corporativo</li>
+                    <li>Necessidade de suporte técnico especializado pode limitar crescimento</li>
+                    <li>Piratearia e cópias não autorizadas do software</li>
+                    <li>Crises econômicas reduzindo investimento em automação</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="analysis-section">
+            <h2>Análise Estratégica e Recomendações</h2>
+            <p><strong>Priorização Imediata:</strong> O desenvolvimento do módulo Gerenciador de O.S. deve ser a prioridade absoluta, pois é o núcleo de integração que conecta todos os outros módulos. Sem ele funcional, o ecossistema permanece fragmentado.</p>
+            
+            <p><strong>Estratégia de Lançamento:</strong> Considerar um lançamento faseado começando pelo fluxo básico (Levantamentos → Gerenciador → Auto Relatórios) antes de expandir para os módulos administrativos e de BI, permitindo validação de mercado mais rápida.</p>
+            
+            <p><strong>Mitigação de Riscos:</strong> Desenvolver documentação técnica completa, estabelecer planos de backup da infraestrutura Supabase, e criar testes automatizados para garantir qualidade e facilitar manutenção futura.</p>
+            
+            <p><strong>Monetização:</strong> O modelo modular permite diferentes estratégias de precificação: licença por módulo, pacotes bundled com desconto, ou modelo freemium com funcionalidades premium, maximizando oportunidades de receita.</p>
+            
+            <p><strong>Posicionamento de Mercado:</strong> A transição para PJ e o uso da marca MAFFENG como vitrine tecnológica fortalece a credibilidade e abre portas para contratos corporativos de maior valor, posicionando a solução como premium no segmento de automação técnica.</p>
+        </div>
+
+        <div class="footer">
+            <p>Documento elaborado para TM - Soluções Tecnológicas | Ecossistema MAFFENG</p>
+            <p>Novembro 2025 | Análise baseada no Plano Mestre Integrado</p>
+        </div>
+    </div>
+</body>
+</html>
