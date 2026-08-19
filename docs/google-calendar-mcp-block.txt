@@ -1,0 +1,9 @@
+      google-calendar:
+        command: npx
+        args:
+          - -y
+          - '@cocal/google-calendar-mcp'
+        env:
+          GOOGLE_OAUTH_CREDENTIALS: C:\Users\thiag\Desktop\gcp-oauth.keys.json
+          GOOGLE_ACCOUNT_MODE: personal
+        timeout: 120

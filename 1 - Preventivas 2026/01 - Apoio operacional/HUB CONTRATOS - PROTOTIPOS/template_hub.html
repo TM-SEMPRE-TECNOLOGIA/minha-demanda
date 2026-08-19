@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAFFENG · Hub de Contratos — Modelo 2 | TM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ── Design System MAFFENG — modelo 2 (alerta em painel lateral) ──
+     REVISÃO DE CORES (feedback Thiago 06/08):
+     · Vermelho #E20014 = SOMENTE emergência/urgência + marca (logo).
+     · Navy #181F4B = identidade estrutural (chips, badges, botões, títulos).
+     · Neutros #F5F5F3/#111111 = fundos; âmbar #B45309 = avisos normais. */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --brand: #E20014; --brand-deep: #B8000F; --brand-soft: #FBE9EA;
+    --ink: #181F4B; --ink-soft: #2A3270; --ink-alpha: rgba(24,31,75,.12);
+    --warn: #B45309; --warn-soft: #FDF3E7;
+    --danger: #B8000F;
+    --bg: #F5F5F3; --bg-card: #FFFFFF; --bg-hover: #ECEBE7; --bg-sidebar: #FAF9F6;
+    --bg-muted: #EFEEE9;
+    --text: #111111; --text-muted: #55554F; --text-subtle: #8B8B84;
+    --border: #D9D8D2; --border-hover: #B4B3AC; --border-strong: #111111;
+    --success: #4F7A3A;
+    --font-serif: "Roboto Slab", Georgia, serif; --font-sans: "Inter", system-ui, sans-serif; --font-mono: "JetBrains Mono", ui-monospace, monospace;
+    --radius-sm: 4px; --radius-md: 6px; --radius-lg: 8px; --radius-xl: 12px;
+    --shadow-sm: 0 1px 0 rgba(17,17,17,.04), 0 1px 2px rgba(17,17,17,.04);
+    --shadow-md: 0 2px 4px -1px rgba(17,17,17,.08), 0 1px 2px rgba(17,17,17,.04);
+    --shadow-lg: 0 8px 16px -4px rgba(17,17,17,.10), 0 2px 4px -1px rgba(17,17,17,.06);
+  }
+  html.dark {
+    --brand: #FF4D5C; --brand-deep: #E20014; --brand-soft: #331012;
+    --ink: #AAB2F2; --ink-soft: #C6CBFA; --ink-alpha: rgba(170,178,242,.16);
+    --warn: #E8A33D; --warn-soft: #33250F;
+    --danger: #FF5C68;
+    --bg: #111111; --bg-card: #1A1A1A; --bg-hover: #242424; --bg-sidebar: #161616;
+    --bg-muted: #1E1E1E;
+    --text: #F5F5F3; --text-muted: #A6A6A0; --text-subtle: #6E6E68;
+    --border: #2E2E2E; --border-hover: #454545; --border-strong: #F5F5F3;
+  }
+  body { font-family: var(--font-sans); background: var(--bg); color: var(--text); font-size: 14px; line-height: 1.6; transition: background .3s, color .3s; }
+
+  /* ── HEADER (limpo) ── */
+  header { background: var(--bg-card); border-bottom: 1px solid var(--border); padding: 0 24px; height: 56px; display: flex; align-items: center; gap: 14px; position: sticky; top: 0; z-index: 100; box-shadow: var(--shadow-sm); }
+  .hdr-brand { display: flex; align-items: center; gap: 10px; flex-shrink: 0; cursor: pointer; }
+  .hdr-logo-mark { width: 28px; height: 28px; background: var(--brand); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; }
+  .hdr-logo-mark svg { width: 16px; height: 16px; stroke: #fff; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+  .hdr-wordmark { font-family: var(--font-serif); font-weight: 600; font-size: 14px; letter-spacing: -0.01em; white-space: nowrap; }
+  .hdr-wordmark em { font-style: normal; color: var(--ink); }
+  .hdr-div { width: 1px; height: 20px; background: var(--border); }
+  .hdr-crumb { font-size: 12px; color: var(--text-subtle); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .hdr-crumb b { color: var(--text-muted); font-weight: 600; }
+  .hdr-right { margin-left: auto; display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+  .user-chip { display: flex; align-items: center; gap: 8px; border: 1px solid var(--border); border-radius: 20px; padding: 3px 6px 3px 4px; background: var(--bg); }
+  .user-avatar { width: 24px; height: 24px; border-radius: 50%; background: var(--ink); color: #fff; font-size: 10px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+  .user-chip .u-name { font-size: 12px; font-weight: 600; }
+  .role-tag { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; padding: 1px 6px; border-radius: var(--radius-sm); }
+  .role-dev { background: var(--ink-alpha); color: var(--ink); }
+  .role-gerente { background: rgba(52,88,120,.12); color: #345878; }
+  .role-usuario { background: rgba(79,122,58,.12); color: var(--success); }
+  .dark-toggle { width: 32px; height: 32px; border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--bg); cursor: pointer; display: flex; align-items: center; justify-content: center; }
+  .dark-toggle svg { width: 15px; height: 15px; stroke: var(--text-muted); fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* ── LOGIN ── */
+  .login-screen { min-height: calc(100vh - 56px - 62px); display: flex; align-items: center; justify-content: center; padding: 32px; }
+  .login-card { width: 100%; max-width: 420px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-xl); padding: 32px; box-shadow: var(--shadow-lg); }
+  .login-card .tm-mark { width: 44px; height: 44px; background: var(--brand); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+  .login-card .tm-mark svg { width: 22px; height: 22px; stroke: #fff; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+  .login-title { font-family: var(--font-serif); font-size: 22px; font-weight: 600; margin-bottom: 4px; }
+  .login-sub { font-size: 13px; color: var(--text-muted); margin-bottom: 24px; }
+  .login-field { margin-bottom: 16px; }
+  .login-field label { display: block; font-size: 12px; font-weight: 600; color: var(--text-muted); margin-bottom: 6px; }
+  .login-field input { width: 100%; padding: 9px 12px; border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--bg-card); color: var(--text); font-family: var(--font-sans); font-size: 14px; }
+  .login-field input:focus { outline: none; border-color: var(--ink); box-shadow: 0 0 0 3px var(--ink-alpha); }
+  .role-options { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+  .role-option { display: flex; align-items: center; gap: 12px; padding: 12px; border: 1px solid var(--border); border-radius: var(--radius-lg); cursor: pointer; transition: border-color .15s, background .15s; }
+  .role-option:hover { border-color: var(--border-hover); background: var(--bg-hover); }
+  .role-option.sel { border-color: var(--ink); background: var(--ink-alpha); }
+  .role-option input { accent-color: var(--ink); }
+  .role-option .ro-name { font-weight: 600; font-size: 14px; }
+  .role-option .ro-desc { font-size: 12px; color: var(--text-muted); }
+  .btn-primary { width: 100%; padding: 11px; border: none; border-radius: var(--radius-md); background: var(--ink); color: #fff; font-family: var(--font-sans); font-size: 14px; font-weight: 600; cursor: pointer; transition: background .15s; }
+  .btn-primary:hover { background: var(--ink-soft); }
+  .login-hint { margin-top: 14px; font-size: 11px; color: var(--text-subtle); text-align: center; }
+
+  /* ── HUB (cards compactos — 9 contratos visíveis) ── */
+  .page { padding: 20px 24px 24px; max-width: 1320px; margin: 0 auto; }
+  .page-title { font-family: var(--font-serif); font-size: 19px; font-weight: 600; margin-bottom: 2px; }
+  .page-sub { font-size: 13px; color: var(--text-muted); margin-bottom: 14px; }
+  .hub-toolbar { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
+  .hub-search { flex: 1; min-width: 200px; padding: 8px 12px; border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--bg-card); font-family: var(--font-sans); font-size: 13px; color: var(--text); }
+  .hub-search:focus { outline: none; border-color: var(--ink); box-shadow: 0 0 0 3px var(--ink-alpha); }
+  .hub-cnt { font-size: 12px; color: var(--text-subtle); font-family: var(--font-mono); }
+  .hub-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(168px, 1fr)); gap: 10px; }
+  .contract-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 10px 12px; cursor: pointer; transition: border-color .15s, box-shadow .15s, transform .15s; display: flex; flex-direction: column; gap: 6px; }
+  .contract-card:hover { border-color: var(--ink); box-shadow: var(--shadow-md); transform: translateY(-1px); }
+  .contract-card .cc-top { display: flex; align-items: center; gap: 8px; }
+  .contract-card .cc-code { font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: var(--ink); background: var(--ink-alpha); padding: 2px 7px; border-radius: var(--radius-sm); }
+  .contract-card .cc-alert-dot { margin-left: auto; width: 17px; height: 17px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; }
+  .cc-alert-dot.has { background: var(--warn-soft); color: var(--warn); }
+  .contract-card .cc-name { font-family: var(--font-serif); font-size: 13.5px; font-weight: 600; line-height: 1.25; min-height: 34px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .contract-card .cc-meta { font-size: 11px; color: var(--text-muted); display: flex; align-items: center; gap: 8px; }
+  .contract-card .cc-meta b { color: var(--text); font-weight: 600; }
+  .cc-actions { display: flex; align-items: center; gap: 6px; border-top: 1px solid var(--border); padding-top: 7px; margin-top: auto; }
+  .po-chip { display: inline-flex; align-items: center; gap: 5px; font-family: var(--font-mono); font-size: 10.5px; font-weight: 600; padding: 3px 8px; border-radius: var(--radius-sm); }
+  .po-chip.ok { border: 1px solid rgba(79,122,58,.35); background: rgba(79,122,58,.08); color: var(--success); }
+  .po-chip.off { border: 1px solid var(--border); background: var(--bg); color: var(--text-subtle); }
+  .cc-foot-status { margin-left: auto; font-size: 10.5px; color: var(--text-subtle); }
+  .cc-foot-status.has { color: var(--warn); }
+
+  /* ── CONTRATO VIEW (modelo 2: alerta em painel lateral dedicado) ── */
+  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-muted); cursor: pointer; margin-bottom: 14px; background: none; border: none; font-family: var(--font-sans); }
+  .back-link:hover { color: var(--ink); }
+  .contract-head { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 8px; flex-wrap: wrap; }
+  .contract-head .ch-title { font-family: var(--font-serif); font-size: 22px; font-weight: 600; }
+  .contract-head .ch-meta { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+  /* ── SUB-HEADER horizontal (infos do contrato bem distribuídas) ── */
+  .sub-header { display: flex; align-items: stretch; gap: 0; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-xl); margin-bottom: 12px; box-shadow: var(--shadow-sm); overflow: hidden; flex-wrap: wrap; }
+  .sh-item { display: flex; flex-direction: column; justify-content: center; gap: 2px; padding: 10px 18px; border-right: 1px solid var(--border); min-width: 0; }
+  .sh-item:last-child { border-right: none; }
+  .sh-main { background: var(--bg-muted); }
+  .sh-main .sh-value { font-family: var(--font-serif); font-size: 17px; font-weight: 600; }
+  .sh-grow { flex: 1 1 auto; }
+  .sh-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--text-subtle); }
+  .sh-value { font-size: 13px; font-weight: 600; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+  /* ── PINTURA DO CONTRATO (abaixo do sub-header) ── */
+  .paint-strip { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; background: var(--bg-card); border: 1px solid var(--border); border-left: 3px solid var(--ink); border-radius: var(--radius-lg); padding: 10px 14px; margin-bottom: 16px; }
+  .paint-strip .paint-panel-label { margin: 0; font-size: 11px; font-weight: 700; color: var(--text-muted); }
+  .paint-strip #paint-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+  .paint-strip #paint-sig { margin-left: auto; }
+  @media (max-width: 720px) { .paint-strip #paint-sig { margin-left: 0; } }
+  .contract-layout { display: grid; grid-template-columns: 230px 1fr 320px; gap: 16px; align-items: start; }
+  @media (max-width: 1100px) { .contract-layout { grid-template-columns: 1fr; } }
+
+  /* Sidebar esquerda — categorização */
+  .cat-sidebar { display: flex; flex-direction: column; gap: 14px; position: sticky; top: 72px; }
+  .cat-block { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-xl); padding: 12px; box-shadow: var(--shadow-sm); }
+  .cat-label { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--text-subtle); margin-bottom: 8px; }
+  .un-btn { display: flex; align-items: center; justify-content: space-between; width: 100%; text-align: left; padding: 6px 9px; border: 1px solid transparent; border-radius: var(--radius-md); background: transparent; color: var(--text); font-family: var(--font-sans); font-size: 12.5px; cursor: pointer; transition: background .12s, border-color .12s; }
+  .un-btn:hover { background: var(--bg-hover); }
+  .un-btn.active { background: var(--ink-alpha); border-color: var(--ink-alpha); color: var(--ink); font-weight: 600; }
+  .un-btn .un-badge { font-family: var(--font-mono); font-size: 10.5px; color: var(--text-subtle); background: var(--bg-muted); border-radius: 20px; padding: 0 7px; }
+  .un-btn.active .un-badge { background: var(--ink); color: #fff; }
+  .cat-sep { height: 1px; background: var(--border); margin: 6px 0; }
+
+  /* Painel de pintura — NEUTRO (nada de vermelho gritante) */
+  .paint-panel { border: 1px solid var(--border); border-left: 3px solid var(--ink); border-radius: var(--radius-lg); padding: 10px; background: var(--bg-muted); }
+  .paint-panel-label { font-size: 11px; font-weight: 700; color: var(--text-muted); margin-bottom: 8px; display: block; }
+  .paint-pill { display: inline-flex; align-items: center; gap: 6px; font-size: 11.5px; padding: 4px 8px; border-radius: var(--radius-sm); margin: 3px 3px 0 0; background: var(--bg-card); color: var(--ink); border: 1px solid var(--border-hover); }
+  .paint-pill .paint-pill-code { font-family: var(--font-mono); font-weight: 700; color: var(--ink-soft); }
+  .paint-sig { margin-top: 8px; font-size: 11px; color: var(--text-muted); }
+  .paint-sig strong { color: var(--text); }
+
+  /* Área central — busca + itens */
+  .search-wrap { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-xl); padding: 12px; margin-bottom: 14px; box-shadow: var(--shadow-sm); }
+  .search-row { display: flex; gap: 8px; align-items: center; }
+  .search-box { flex: 1; position: relative; }
+  .search-box input { width: 100%; padding: 8px 32px 8px 12px; border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--bg); font-family: var(--font-sans); font-size: 13px; color: var(--text); }
+  .search-box input:focus { outline: none; border-color: var(--ink); box-shadow: 0 0 0 3px var(--ink-alpha); background: var(--bg-card); }
+  .search-clear { position: absolute; right: 4px; top: 50%; transform: translateY(-50%); width: 24px; height: 24px; border: none; background: transparent; color: var(--text-subtle); cursor: pointer; font-size: 14px; border-radius: var(--radius-sm); }
+  .search-clear:hover { color: var(--text); background: var(--bg-hover); }
+  .suggestions { position: absolute; top: 110%; left: 0; right: 0; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-md); box-shadow: var(--shadow-lg); z-index: 50; max-height: 260px; overflow-y: auto; }
+  .sugg-item { padding: 7px 12px; font-size: 12.5px; cursor: pointer; display: flex; gap: 8px; align-items: baseline; }
+  .sugg-item:hover { background: var(--bg-hover); }
+  .sugg-item .s-code { font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--ink); min-width: 46px; }
+  .sugg-item .s-sec { font-size: 10.5px; color: var(--text-subtle); margin-left: auto; white-space: nowrap; }
+  .cnt-badge { font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); background: var(--bg-muted); border-radius: 20px; padding: 3px 10px; white-space: nowrap; }
+
+  .secao { margin-bottom: 14px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-xl); overflow: hidden; }
+  .secao.hidden { display: none; }
+  .secao-header { display: flex; align-items: center; gap: 10px; padding: 10px 16px; background: var(--bg-muted); border-bottom: 1px solid var(--border); }
+  .secao-num { font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: var(--ink); background: var(--ink-alpha); padding: 2px 8px; border-radius: var(--radius-sm); }
+  .secao-nome { font-family: var(--font-serif); font-weight: 600; font-size: 14px; }
+  .secao-cnt { margin-left: auto; font-size: 11px; color: var(--text-subtle); font-family: var(--font-mono); }
+  table { width: 100%; border-collapse: collapse; }
+  th { text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--text-subtle); font-weight: 600; padding: 7px 16px; border-bottom: 1px solid var(--border); }
+  td { padding: 8px 16px; border-bottom: 1px solid var(--border); font-size: 13.5px; vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  td.item-code { font-family: var(--font-mono); font-size: 12.5px; font-weight: 600; color: var(--text-muted); white-space: nowrap; width: 70px; }
+  td.un-chip { font-size: 12px; color: var(--text-muted); white-space: nowrap; width: 80px; }
+  mark { background: var(--ink-alpha); color: var(--ink); padding: 0 2px; border-radius: 2px; }
+  .no-results { text-align: center; padding: 36px 16px; color: var(--text-subtle); }
+  .no-results-title { font-family: var(--font-serif); font-size: 15px; font-weight: 600; color: var(--text-muted); }
+
+  /* Grid de agências (prefixos REAIS dos memoriais) */
+  .pref-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 8px; }
+  .pref-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 10px 12px; display: flex; gap: 10px; align-items: center; }
+  .pref-num { font-family: var(--font-mono); font-size: 11px; font-weight: 600; color: var(--ink); background: var(--ink-alpha); border: 1px solid var(--ink-alpha); padding: 4px 10px; border-radius: var(--radius-sm); white-space: nowrap; min-width: 52px; text-align: center; }
+  .pref-dep { font-weight: 600; font-size: 13px; line-height: 1.3; }
+  .pref-cidade { font-size: 11px; color: var(--text-subtle); }
+  .pref-km { font-family: var(--font-mono); font-size: 11px; padding: 2px 7px; border-radius: var(--radius-sm); border: 1px solid rgba(79,122,58,.25); background: rgba(79,122,58,.08); color: var(--success); margin-left: auto; white-space: nowrap; }
+
+  /* Painel lateral direito — alerta + documentos (NEUTRO; vermelho só urgência/emergência) */
+  .side-panel { display: flex; flex-direction: column; gap: 12px; position: sticky; top: 72px; }
+  .alert-panel { border: 1px solid var(--border); border-top: 3px solid var(--warn); background: var(--bg-card); border-radius: var(--radius-xl); padding: 14px; box-shadow: var(--shadow-sm); }
+  .alert-panel .ap-head { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+  .alert-panel .ap-title { font-weight: 700; font-size: 13px; color: var(--warn); }
+  .alert-panel .ap-count { font-family: var(--font-mono); font-size: 11px; background: var(--warn-soft); color: var(--warn); padding: 1px 7px; border-radius: 20px; margin-left: auto; }
+  .alert-panel .ap-item { border: 1px solid var(--border); border-left: 3px solid var(--warn); border-radius: var(--radius-md); padding: 10px 12px; margin-bottom: 8px; font-size: 12.5px; }
+  .alert-panel .ap-item b { color: var(--ink); }
+  .alert-panel .ap-item .ap-tag { display: inline-block; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; background: var(--warn-soft); color: var(--warn); border-radius: var(--radius-sm); padding: 1px 6px; margin-bottom: 4px; }
+  .alert-panel .ap-item.sev-urgencia { border-left-color: var(--danger); }
+  .alert-panel .ap-item.sev-urgencia .ap-tag { background: var(--brand-soft); color: var(--danger); }
+  .alert-panel .ap-item.sev-urgencia b { color: var(--danger); }
+  .alert-panel .ap-empty { font-size: 12.5px; color: var(--text-subtle); padding: 8px 2px; }
+  .doc-panel { border: 1px solid var(--border); background: var(--bg-card); border-radius: var(--radius-xl); padding: 14px; box-shadow: var(--shadow-sm); }
+  .doc-panel .dp-head { font-weight: 700; font-size: 13px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; color: var(--ink); }
+  .doc-panel .dp-head .dp-ic { color: var(--ink); }
+  .doc-item { display: flex; align-items: center; gap: 8px; border: 1px solid var(--border); border-radius: var(--radius-md); padding: 8px 10px; margin-bottom: 8px; font-size: 12.5px; }
+  .doc-item .di-ic { width: 26px; height: 26px; border-radius: var(--radius-sm); background: var(--ink-alpha); color: var(--ink); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 12px; font-weight: 700; }
+  .doc-item .di-name { font-weight: 600; line-height: 1.3; }
+  .doc-item .di-meta { font-size: 10.5px; color: var(--text-subtle); }
+  .doc-item .di-btn { margin-left: auto; }
+  .rat-btn { display: inline-flex; align-items: center; gap: 5px; font-family: var(--font-mono); font-size: 11px; font-weight: 600; padding: 4px 9px; border-radius: var(--radius-sm); border: 1px solid var(--ink); color: var(--ink); background: transparent; cursor: pointer; text-decoration: none; transition: background .15s, color .15s; }
+  .rat-btn:hover { background: var(--ink); color: #fff; }
+  .rat-btn.off { border-color: var(--border); color: var(--text-subtle); cursor: not-allowed; }
+  .rat-btn.off:hover { background: transparent; color: var(--text-subtle); }
+
+  /* ── FOOTER de verdade (padrão app Explan) ── */
+  footer {
+    background: var(--ink);
+    color: rgba(235,230,221,.75);
+    text-align: center;
+    padding: 18px;
+    font-size: 11px;
+    letter-spacing: .04em;
+    margin-top: 28px;
+  }
+  footer a { color: rgba(235,230,221,.9); text-decoration: none; font-weight: 600; }
+  footer a:hover { color: #fff; text-decoration: underline; }
+
+  .hidden { display: none !important; }
+  @media (max-width: 720px) { header { padding: 0 14px; } .page { padding: 16px; } }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="hdr-brand" onclick="goHub()">
+    <div class="hdr-logo-mark"><svg viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3z"/><path d="M9 12l2 2 4-4"/></svg></div>
+    <div class="hdr-wordmark">MAFFENG <em>·</em> Hub de Contratos</div>
+  </div>
+  <div class="hdr-div"></div>
+  <div class="hdr-crumb" id="hdr-crumb">Seleção de contrato</div>
+  <div class="hdr-right">
+    <div class="user-chip" id="user-chip">
+      <div class="user-avatar" id="user-avatar">T</div>
+      <span class="u-name" id="user-name">Thiago</span>
+      <span class="role-tag role-dev" id="user-role-tag">Dev</span>
+    </div>
+    <button class="dark-toggle" onclick="toggleDark()" title="Tema"><svg viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+  </div>
+</header>
+
+<!-- LOGIN -->
+<div id="login-screen" class="login-screen">
+  <div class="login-card">
+    <div class="tm-mark"><svg viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3z"/><path d="M9 12l2 2 4-4"/></svg></div>
+    <div class="login-title">Acesso ao Hub de Contratos</div>
+    <div class="login-sub">Preventivas 2026 — Apoio operacional. Escolha o papel para simular a permissão.</div>
+    <div class="login-field">
+      <label>Usuário</label>
+      <input id="login-user" value="Thiago" />
+    </div>
+    <div class="login-field">
+      <label>Papel de acesso</label>
+      <div class="role-options" id="role-options">
+        <label class="role-option sel"><input type="radio" name="role" value="dev" checked><span><span class="ro-name">Dev <span class="role-tag role-dev">Dev</span></span><br><span class="ro-desc">Acesso total: edição, versões e publicar</span></span></label>
+        <label class="role-option"><input type="radio" name="role" value="gerente"><span><span class="ro-name">Gerente <span class="role-tag role-gerente">Gerente</span></span><br><span class="ro-desc">Visualiza tudo e aprova alterações</span></span></label>
+        <label class="role-option"><input type="radio" name="role" value="usuario"><span><span class="ro-name">Usuário comum <span class="role-tag role-usuario">Usuário</span></span><br><span class="ro-desc">Somente leitura dos itens e alertas</span></span></label>
+      </div>
+    </div>
+    <button class="btn-primary" onclick="doLogin()">Entrar</button>
+    <div class="login-hint">Protótipo de UI — autenticação real será implementada na Vercel (fase Workspace).</div>
+  </div>
+</div>
+
+<!-- HUB -->
+<div id="hub-screen" class="page hidden">
+  <div class="page-title">Selecione o contrato</div>
+  <div class="page-sub">Cards compactos para visualizar todos os contratos de uma vez. Abra o contrato para ver itens, agências, alertas e baixar a <b style="color:var(--ink)">Previsão Orçamentária</b>.</div>
+  <div class="hub-toolbar">
+    <input class="hub-search" id="hub-search" placeholder="Buscar por código ou cidade…" oninput="filterHub(this.value)">
+    <span class="hub-cnt" id="hub-cnt">9 contratos</span>
+  </div>
+  <div class="hub-grid" id="hub-grid"></div>
+</div>
+
+<!-- CONTRATO (modelo 2) -->
+<div id="contract-screen" class="page hidden">
+  <button class="back-link" onclick="goHub()">← Voltar ao hub</button>
+
+  <!-- Sub-header horizontal: infos do contrato bem distribuídas -->
+  <div class="sub-header">
+    <div class="sh-item sh-main"><span class="sh-label">Contrato</span><span class="sh-value" id="sh-codigo">0908 — SÃO PAULO</span></div>
+    <div class="sh-item"><span class="sh-label">Lote</span><span class="sh-value" id="sh-lote">03</span></div>
+    <div class="sh-item sh-grow"><span class="sh-label">Empresa</span><span class="sh-value" id="sh-empresa">MAFFENG ENGENHARIA E MANUTENÇÃO LTDA</span></div>
+    <div class="sh-item"><span class="sh-label">BDI</span><span class="sh-value" id="sh-bdi">28,82%</span></div>
+  </div>
+
+  <!-- Pintura do contrato (abaixo do sub-header) -->
+  <div class="paint-strip">
+    <span class="paint-panel-label">Pintura do contrato</span>
+    <div id="paint-pills"></div>
+    <div class="paint-sig" id="paint-sig"></div>
+  </div>
+
+  <div class="contract-layout">
+    <!-- Sidebar esquerda: categorização -->
+    <aside class="cat-sidebar">
+      <div class="cat-block">
+        <div class="cat-label">Unidade</div>
+        <button class="un-btn active" data-un="todos" onclick="filtrarUn('todos')">
+          <span>Todos</span><span class="un-badge" id="cnt-todos">0</span>
+        </button>
+        <div class="cat-sep"></div>
+        <div id="un-buttons"></div>
+      </div>
+      <div class="cat-block">
+        <div class="cat-label">Contrato</div>
+        <button class="un-btn" data-un="prefixos" onclick="mostrarAgencias()">
+          <span>Agências</span><span class="un-badge" id="cnt-pref">0</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Área central: busca + itens -->
+    <div>
+      <div class="search-wrap">
+        <div class="search-row">
+          <div class="search-box">
+            <input type="text" id="busca" placeholder="Buscar por código (2.12), palavra-chave (piso), sigla (ART)…" autocomplete="off" spellcheck="false" oninput="onBusca(this.value)" onkeydown="if(event.key==='Escape')limparBusca()">
+            <button class="search-clear" id="btn-clear" onclick="limparBusca()" title="Limpar (Esc)">✕</button>
+            <div class="suggestions hidden" id="suggestions"></div>
+          </div>
+          <span class="cnt-badge" id="cnt-exibidos">0 itens</span>
+        </div>
+      </div>
+      <div id="itens-view"></div>
+      <div id="prefixos-view" class="hidden"></div>
+    </div>
+
+    <!-- Painel lateral direito: alerta + documentos -->
+    <aside class="side-panel">
+      <div class="alert-panel" id="alert-panel">
+        <div class="ap-head">
+          <span class="ap-title">Atenção</span>
+          <span class="ap-count" id="ap-count">0 avisos</span>
+        </div>
+        <div id="ap-body"></div>
+      </div>
+
+      <!-- Documentos de apoio (downloads somente aqui — lateral) -->
+      <div class="doc-panel">
+        <div class="dp-head"><span class="dp-ic">📄</span> Documentos de apoio</div>
+        <div class="doc-item">
+          <div class="di-ic">PO</div>
+          <div><div class="di-name" id="d-po-name">Previsão Orçamentária</div><div class="di-meta" id="d-po-meta">xlsx · aguardando modelo</div></div>
+          <a class="rat-btn di-btn" id="d-po-btn" href="#" onclick="return downloadPO(currentCodigo)">Baixar</a>
+        </div>
+        <div class="doc-item">
+          <div class="di-ic">XL</div>
+          <div><div class="di-name">Memorial de cálculo</div><div class="di-meta">xlsx · todos os contratos</div></div>
+          <a class="rat-btn di-btn" href="#" onclick="return downloadPlanilha()">Baixar</a>
+        </div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  Desenvolvido por <a href="https://thiagonascimentobarbosapro.com" target="_blank">TM · Sempre Tecnologia</a>
+  &nbsp;·&nbsp; Uso exclusivo MAFFENG Engenharia e Manutenção &nbsp;·&nbsp; 2026
+</footer>
+
+<script>
+/* Dados REAIS extraídos dos 9 memoriais (itens por contrato + agências). */
+const DADOS_REAIS = __DADOS_REAIS__;
+
+/* Nomes de exibição (com acentuação) e pintura/sig por contrato */
+const NOMES = {
+  "0908": "SÃO PAULO", "1507": "CUIABÁ", "1565": "SÃO JOSÉ DO RIO PRETO",
+  "2056": "DIVINÓPOLIS", "2057": "VARGINHA", "2626": "SALINAS",
+  "2627": "GOVERNADOR VALADARES", "3575": "TANGARÁ DA SERRA", "6122": "MATO GROSSO DO SUL"
+};
+const PINTURA = {
+  "0908": [{ c: "17.6", t: "Teto, muros e paredes EXTERNAS" }, { c: "17.11", t: "TODA a pintura INTERNA" }],
+  "1507": [{ c: "17.6", t: "Teto, muros e paredes EXTERNAS" }],
+  "1565": [{ c: "17.11", t: "TODA a pintura INTERNA" }],
+  "2056": [{ c: "17.6", t: "Teto, muros e paredes EXTERNAS" }, { c: "17.11", t: "TODA a pintura INTERNA" }],
+  "2057": [{ c: "17.6", t: "Teto, muros e paredes EXTERNAS" }],
+  "2626": [{ c: "17.11", t: "TODA a pintura INTERNA" }],
+  "2627": [{ c: "17.6", t: "Teto, muros e paredes EXTERNAS" }],
+  "3575": [{ c: "17.11", t: "TODA a pintura INTERNA" }],
+  "6122": [{ c: "17.6", t: "Teto, muros e paredes EXTERNAS" }]
+};
+const SIG = {
+  "0908": { civil: "Luiza", eletr: "André Capanema" }, "1507": { civil: "Luiza", eletr: "—" },
+  "1565": { civil: "Luiza", eletr: "André Capanema" }, "2056": { civil: "Luiza", eletr: "André Capanema" },
+  "2057": { civil: "Luiza", eletr: "—" }, "2626": { civil: "Luiza", eletr: "André Capanema" },
+  "2627": { civil: "Luiza", eletr: "—" }, "3575": { civil: "Luiza", eletr: "André Capanema" },
+  "6122": { civil: "Luiza", eletr: "—" }
+};
+
+/* Previsão Orçamentária (antigo RAT) — arquivos reais nas pastas de documento.
+   Na implementação (Vercel) estes arquivos serão hospedados e os links trocados. */
+const ARQUIVOS = {
+  PO: {
+    "0908": { caminho: "C:/Users/thiag/Desktop/Minha Demanda/1 - Preventivas 2026/02 - Documentos Preventivas/4 - CONTRATO - SÃO PAULO - 0908 - ATUALIZADO/Modelo RAT - SP 0908 - VALOR REPACUADA.xlsx", nome: "Previsão Orçamentária — SP 0908", meta: "xlsx · valor repactuada" },
+    "1507": { caminho: "C:/Users/thiag/Desktop/Minha Demanda/1 - Preventivas 2026/02 - Documentos Preventivas/5 - CONTRATO - CUIABA - 1507 - ATUALIZADO/PREVISÃO ORÇAMENTÁRIA PARA APROVAÇÃO - CUIABA - LEVANTAMENTO PREVENTIVO - Atualizado Fevereiro 2026.xlsx", nome: "Previsão Orçamentária — CUIABÁ 1507", meta: "xlsx · 243 KB" },
+    "1565": { caminho: "C:/Users/thiag/Desktop/Minha Demanda/1 - Preventivas 2026/02 - Documentos Preventivas/9 - CONTRATO - SAO JOSE DO RIO PRETO - 1565 - ATUALIZADO/Modelo RAT - SP 1565.xlsx", nome: "Previsão Orçamentária — SP 1565", meta: "xlsx · 308 KB" },
+    "2056": { caminho: "C:/Users/thiag/Desktop/Minha Demanda/1 - Preventivas 2026/02 - Documentos Preventivas/1 - CONTRATO - DIVINÓPOLIS - 2056 - ATUALIZADO/PREVISÃO ORÇAMENTÁRIA PARA APROVAÇÃO - DIVINÓPOLIS - LEVANTAMENTO PREVENTIVO - REPACTUAÇÃO - Atualizado Fevereiro 2026.xlsx", nome: "Previsão Orçamentária — DIVINÓPOLIS 2056", meta: "xlsx · 512 KB" },
+    "2057": { caminho: "C:/Users/thiag/Desktop/Minha Demanda/1 - Preventivas 2026/02 - Documentos Preventivas/2 - CONTRATO - VARGINHA - 2057 - ATUALIZADO/PREVISÃO ORÇAMENTÁRIA PARA APROVAÇÃO - VARGINHA - LEVANTAMENTO PREVENTIVO - REPACTUAÇÃO - Atualizado Fevereiro 2026.xlsx", nome: "Previsão Orçamentária — VARGINHA 2057", meta: "xlsx · 376 KB" },
+    "2626": { caminho: "C:/Users/thiag/Desktop/Minha Demanda/1 - Preventivas 2026/02 - Documentos Preventivas/6 - CONTRATO - SALINAS - 2626 - ATUALIZADO/PREVISÃO ORÇAMENTÁRIA PARA APROVAÇÃO - SALINAS - LEVANTAMENTO PREVENTIVO - Atualizado Fevereiro 2026.xlsx", nome: "Previsão Orçamentária — SALINAS 2626", meta: "xlsx · 314 KB" },
+    "2627": { caminho: "C:/Users/thiag/Desktop/Minha Demanda/1 - Preventivas 2026/02 - Documentos Preventivas/7 - CONTRATO - VALADARES - 2627 - ATUALIZADO/PREVISÃO ORÇAMENTÁRIA PARA APROVAÇÃO - VALADARES - LEVANTAMENTO PREVENTIVO - Atualizado Fevereiro 2026.xlsx", nome: "Previsão Orçamentária — VALADARES 2627", meta: "xlsx · 533 KB" },
+    "3575": { caminho: "C:/Users/thiag/Desktop/Minha Demanda/1 - Preventivas 2026/02 - Documentos Preventivas/8 - CONTRATO - TANGARA DA SERRA - 3575 - ATUALIZADO/PREVISÃO ORÇAMENTÁRIA PARA APROVAÇÃO - TANGARA DA SERRA - LEVANTAMENTO PREVENTIVO - Atualizado Fev 2026.xlsx", nome: "Previsão Orçamentária — TANGARÁ DA SERRA 3575", meta: "xlsx · 364 KB" },
+    "6122": { caminho: "C:/Users/thiag/Desktop/Minha Demanda/1 - Preventivas 2026/02 - Documentos Preventivas/3 - CONTRATO - MATO GROSSO DO SUL - 6122 - ATUALIZADO/PREVISÃO ORÇAMENTÁRIA PARA APROVAÇÃO - MATO GROSSO DO SUL - LEVANTAMENTO PREVENTIVO - Atualizado Fevereiro 2026.xlsx", nome: "Previsão Orçamentária — MATO GROSSO DO SUL 6122", meta: "xlsx · 384 KB" }
+  },
+  PLANILHA: { caminho: "C:/Users/thiag/Desktop/Minha Demanda/1 - Preventivas 2026/02 - Documentos Preventivas/MEMORIAL DE CÁLCULO - PARA TODOS OS CONTRATOS.xlsx", nome: "Memorial de cálculo", meta: "xlsx · todos os contratos" }
+};
+
+/* Alertas (avisos de procedimento). Severidade: aviso = âmbar (neutro);
+   urgencia/emergencia = vermelho (reservado). */
+const ALERTAS = {
+  "0908": [
+    { tag: "Ordem", titulo: "Detalhes das paredes:", texto: "colocar logo abaixo dela. NÃO colocar todos os detalhes no final do tópico.", sev: "aviso" },
+    { tag: "Orçamentos", titulo: "Formato PDF:", texto: "enviar apenas em PDF com assinatura eletrônica. NÃO enviar em Excel.", sev: "aviso" },
+    { tag: "Urgência (exemplo)", titulo: "Prazo de resposta:", texto: "este card demonstra a cor vermelha — reservada só para urgência/emergência.", sev: "urgencia" }
+  ],
+  "1565": [
+    { tag: "Orçamentos", titulo: "Formato PDF:", texto: "enviar apenas em PDF com assinatura eletrônica. NÃO enviar em Excel.", sev: "aviso" }
+  ],
+  "2626": [
+    { tag: "Ordem", titulo: "Detalhes das paredes:", texto: "colocar logo abaixo dela. NÃO colocar todos os detalhes no final do tópico.", sev: "aviso" },
+    { tag: "Orçamentos", titulo: "Formato PDF:", texto: "enviar apenas em PDF com assinatura eletrônica. NÃO enviar em Excel.", sev: "aviso" }
+  ],
+  "3575": [
+    { tag: "Orçamentos", titulo: "Formato PDF:", texto: "enviar apenas em PDF com assinatura eletrônica. NÃO enviar em Excel.", sev: "aviso" }
+  ]
+};
+
+const CONTRATOS = Object.keys(DADOS_REAIS).map(codigo => ({
+  codigo,
+  nome: NOMES[codigo] || DADOS_REAIS[codigo].nome,
+  lote: DADOS_REAIS[codigo].lote,
+  alerta: (ALERTAS[codigo] || []).length,
+  temPO: !!ARQUIVOS.PO[codigo],
+  nItens: DADOS_REAIS[codigo].secoes.reduce((a, s) => a + s.itens.length, 0),
+  nAgencias: DADOS_REAIS[codigo].prefixos.length
+})).sort((a, b) => a.codigo.localeCompare(b.codigo));
+
+let user = null, currentCodigo = null, unAtiva = "todos", buscaAtual = "";
+let DADOS_ATUAL = null;
+
+function toggleDark() { document.documentElement.classList.toggle('dark'); }
+
+function fileUrl(caminho) {
+  return 'file:///' + encodeURI(caminho).replace(/#/g, '%23');
+}
+
+function downloadPO(codigo) {
+  const c = CONTRATOS.find(x => x.codigo === codigo);
+  const f = ARQUIVOS.PO[codigo];
+  if (f) { window.open(fileUrl(f.caminho), '_blank'); return false; }
+  alert('Previsão Orçamentária do contrato ' + codigo + ' (' + c.nome + ') ainda não disponível.\nO slot de download já está pronto — basta colocar o arquivo na pasta do contrato.');
+  return false;
+}
+
+function downloadPlanilha() {
+  const f = ARQUIVOS.PLANILHA;
+  window.open(fileUrl(f.caminho), '_blank');
+  return false;
+}
+
+function doLogin() {
+  const name = document.getElementById('login-user').value.trim() || "Usuário";
+  const role = document.querySelector('input[name="role"]:checked').value;
+  user = { name, role };
+  const map = { dev: ["Thiago", "T", "role-dev", "Dev"], gerente: [name, name[0], "role-gerente", "Gerente"], usuario: [name, name[0], "role-usuario", "Usuário"] };
+  const [un, av, rc, rt] = map[role];
+  document.getElementById('user-name').textContent = un;
+  document.getElementById('user-avatar').textContent = av;
+  const tag = document.getElementById('user-role-tag');
+  tag.className = 'role-tag ' + rc;
+  tag.textContent = rt;
+  document.getElementById('login-screen').classList.add('hidden');
+  goHub();
+}
+
+function goHub() {
+  currentCodigo = null;
+  DADOS_ATUAL = null;
+  document.getElementById('contract-screen').classList.add('hidden');
+  document.getElementById('hub-screen').classList.remove('hidden');
+  document.getElementById('hdr-crumb').textContent = "Seleção de contrato";
+  renderHub();
+}
+
+function renderHub() {
+  const grid = document.getElementById('hub-grid');
+  const q = (document.getElementById('hub-search').value || '').toLowerCase();
+  const list = CONTRATOS.filter(c => (c.codigo + ' ' + c.nome).toLowerCase().includes(q));
+  document.getElementById('hub-cnt').textContent = list.length + ' contrato' + (list.length === 1 ? '' : 's');
+  grid.innerHTML = list.map(c => `
+    <div class="contract-card" onclick="openContract('${c.codigo}')">
+      <div class="cc-top">
+        <span class="cc-code">${c.codigo}</span>
+        ${c.alerta ? `<span class="cc-alert-dot has" title="${c.alerta} aviso(s)">${c.alerta}</span>` : ''}
+      </div>
+      <div class="cc-name">${c.nome}</div>
+      <div class="cc-meta"><span>Lote <b>${c.lote}</b> · ${c.nItens} itens</span></div>
+      <div class="cc-actions">
+        ${c.temPO
+          ? `<span class="po-chip ok" title="Previsão Orçamentária disponível no painel lateral">✓ Previsão Orç.</span>`
+          : `<span class="po-chip off" title="Previsão Orçamentária ainda não disponível">— Previsão Orç.</span>`}
+        <span class="cc-foot-status ${c.alerta ? 'has' : ''}">${c.alerta ? '⚠ ' + c.alerta : ''}</span>
+      </div>
+    </div>`).join('');
+}
+
+function filterHub(v) { renderHub(); }
+
+function openContract(codigo) {
+  const c = CONTRATOS.find(x => x.codigo === codigo);
+  const d = DADOS_REAIS[codigo];
+  DADOS_ATUAL = d;
+  currentCodigo = codigo;
+  document.getElementById('hub-screen').classList.add('hidden');
+  document.getElementById('contract-screen').classList.remove('hidden');
+  document.getElementById('hdr-crumb').innerHTML = `Contrato <b>${c.codigo} — ${c.nome}</b>`;
+  document.getElementById('sh-codigo').textContent = `${c.codigo} — ${c.nome}`;
+  document.getElementById('sh-lote').textContent = String(d.lote || c.lote || '—');
+  document.getElementById('sh-empresa').textContent = d.proponente || c.nome;
+  const bdi = typeof d.bdi === 'number' ? (d.bdi * 100).toFixed(2).replace('.', ',') + '%' : '—';
+  document.getElementById('sh-bdi').textContent = bdi;
+
+  /* Previsão Orçamentária — painel lateral */
+  const dPoName = document.getElementById('d-po-name');
+  const dPoMeta = document.getElementById('d-po-meta');
+  const dPoBtn = document.getElementById('d-po-btn');
+  const f = ARQUIVOS.PO[codigo];
+  if (f) {
+    dPoName.textContent = f.nome;
+    dPoMeta.textContent = f.meta;
+    dPoBtn.innerHTML = 'Baixar';
+    dPoBtn.classList.remove('off');
+  } else {
+    dPoName.textContent = 'Previsão Orçamentária';
+    dPoMeta.textContent = 'aguardando modelo';
+    dPoBtn.innerHTML = 'Em breve';
+    dPoBtn.classList.add('off');
+  }
+
+  /* Alertas — âmbar p/ aviso, vermelho p/ urgência/emergência */
+  const ap = document.getElementById('ap-body');
+  const cnt = document.getElementById('ap-count');
+  const avisos = ALERTAS[codigo] || [];
+  if (avisos.length) {
+    cnt.textContent = avisos.length + (avisos.length === 1 ? ' aviso' : ' avisos');
+    ap.innerHTML = avisos.map(a => `
+      <div class="ap-item ${a.sev === 'urgencia' ? 'sev-urgencia' : ''}">
+        <span class="ap-tag">${a.tag}</span><br>
+        <b>${a.titulo}</b> ${a.texto}
+      </div>`).join('');
+  } else {
+    cnt.textContent = "0 avisos";
+    ap.innerHTML = `<div class="ap-empty">Sem alertas ativos para este contrato. ✔</div>`;
+  }
+
+  /* Pintura + responsáveis (neutro) */
+  document.getElementById('paint-pills').innerHTML = (PINTURA[codigo] || []).map(p =>
+    `<span class="paint-pill"><span class="paint-pill-code">${p.c}</span> ${p.t}</span>`).join('');
+  document.getElementById('paint-sig').innerHTML =
+    `📝 <strong>Civil:</strong> ${SIG[codigo].civil} &nbsp;|&nbsp; <strong>Eletr.:</strong> ${SIG[codigo].eletr}`;
+
+  unAtiva = "todos";
+  buscaAtual = "";
+  document.getElementById('busca').value = '';
+  renderCategorias();
+  renderItens();
+  window.scrollTo(0, 0);
+}
+
+/* ── CATEGORIZAÇÃO (unidades reais do contrato) ── */
+function renderCategorias() {
+  const unidades = [...new Set(DADOS_ATUAL.secoes.flatMap(s => s.itens.map(i => i.unidade)))].sort();
+  const box = document.getElementById('un-buttons');
+  document.getElementById('cnt-todos').textContent = totalItens();
+  document.getElementById('cnt-pref').textContent = DADOS_ATUAL.prefixos.length;
+  box.innerHTML = unidades.map(u =>
+    `<button class="un-btn ${unAtiva === u ? 'active' : ''}" data-un="${u}" onclick="filtrarUn('${u}')">
+      <span>${u}</span><span class="un-badge">${contarUn(u)}</span>
+    </button>`).join('');
+  document.querySelectorAll('#un-buttons .un-btn').forEach(b => {
+    b.classList.toggle('active', unAtiva === b.dataset.un);
+  });
+  const todosBtn = document.querySelector('.un-btn[data-un="todos"]');
+  if (todosBtn) todosBtn.classList.toggle('active', unAtiva === 'todos');
+}
+
+function totalItens() { return DADOS_ATUAL.secoes.reduce((a, s) => a + s.itens.length, 0); }
+function contarUn(u) { return DADOS_ATUAL.secoes.reduce((a, s) => a + s.itens.filter(i => i.unidade === u).length, 0); }
+
+function filtrarUn(u) {
+  unAtiva = u;
+  renderCategorias();
+  renderItens();
+}
+
+function mostrarAgencias() {
+  unAtiva = 'prefixos';
+  renderCategorias();
+  document.getElementById('itens-view').classList.add('hidden');
+  const box = document.getElementById('prefixos-view');
+  box.classList.remove('hidden');
+  const prefs = DADOS_ATUAL.prefixos;
+  if (!prefs.length) {
+    box.innerHTML = `<div class="no-results"><div class="no-results-title">Nenhuma agência listada</div><div>Este contrato não possui lista de agências no memorial original.</div></div>`;
+    document.getElementById('cnt-exibidos').textContent = '0 agências';
+    return;
+  }
+  box.innerHTML = `<div class="pref-grid">${prefs.map(p => `
+    <div class="pref-card">
+      <span class="pref-num">${escHtml(p.prefixo || '')}</span>
+      <div><div class="pref-dep">${escHtml(p.dependencia || '')}</div><div class="pref-cidade">${escHtml([p.cidade, p.endereco].filter(Boolean).join(' · '))}</div></div>
+      ${p.km ? `<span class="pref-km">${escHtml(p.km)}</span>` : ''}
+    </div>`).join('')}</div>`;
+  document.getElementById('cnt-exibidos').textContent = prefs.length + ' agências';
+}
+
+/* ── BUSCA (código, palavra-chave, sigla) ── */
+function tokenizar(q) {
+  return q.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').split(/\s+/).filter(Boolean);
+}
+
+function escHtml(s) {
+  return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+function hl(texto, q) {
+  const tks = tokenizar(q);
+  let out = escHtml(texto);
+  tks.forEach(t => {
+    const re = new RegExp('(' + t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+    out = out.replace(re, '<mark>$1</mark>');
+  });
+  return out;
+}
+
+function itemPassaFiltro(item) {
+  if (unAtiva && unAtiva !== 'todos' && unAtiva !== 'prefixos' && item.unidade !== unAtiva) return false;
+  if (!buscaAtual) return true;
+  const tks = tokenizar(buscaAtual);
+  const alvo = (item.item + ' ' + item.descricao + ' ' + item.unidade).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  return tks.every(t => alvo.includes(t));
+}
+
+function onBusca(v) {
+  buscaAtual = v;
+  document.getElementById('btn-clear').style.display = v ? 'block' : 'none';
+  if (v.trim()) {
+    mostrarSugestoes(v);
+  } else {
+    document.getElementById('suggestions').classList.add('hidden');
+  }
+  renderItens();
+}
+
+function limparBusca() {
+  document.getElementById('busca').value = '';
+  buscaAtual = '';
+  document.getElementById('btn-clear').style.display = 'none';
+  document.getElementById('suggestions').classList.add('hidden');
+  renderItens();
+}
+
+function mostrarSugestoes(q) {
+  const tks = tokenizar(q);
+  const sugs = [];
+  DADOS_ATUAL.secoes.forEach(s => s.itens.forEach(i => {
+    const alvo = (i.item + ' ' + i.descricao + ' ' + i.unidade).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    if (tks.every(t => alvo.includes(t))) sugs.push({ i, s });
+  }));
+  const box = document.getElementById('suggestions');
+  if (!sugs.length) { box.classList.add('hidden'); return; }
+  box.innerHTML = sugs.slice(0, 8).map(({ i, s }) =>
+    `<div class="sugg-item" onclick="selecionarSugestao('${i.item}')">
+      <span class="s-code">${i.item}</span>
+      <span>${escHtml(i.descricao)}</span>
+      <span class="s-sec">${s.codigo} · ${s.nome}</span>
+    </div>`).join('');
+  box.classList.remove('hidden');
+}
+
+function selecionarSugestao(item) {
+  document.getElementById('busca').value = item;
+  buscaAtual = item;
+  document.getElementById('suggestions').classList.add('hidden');
+  renderItens();
+}
+
+/* ── RENDERIZAÇÃO DE ITENS (todos os itens reais do contrato) ── */
+function renderItens() {
+  if (unAtiva === 'prefixos') return;
+  document.getElementById('prefixos-view').classList.add('hidden');
+  document.getElementById('itens-view').classList.remove('hidden');
+
+  let exibidos = 0;
+  const html = DADOS_ATUAL.secoes.map(s => {
+    const itens = s.itens.filter(itemPassaFiltro);
+    if (!itens.length) return '';
+    exibidos += itens.length;
+    return `
+    <div class="secao">
+      <div class="secao-header">
+        <span class="secao-num">${s.codigo}</span>
+        <span class="secao-nome">${s.nome}</span>
+        <span class="secao-cnt">${itens.length} itens</span>
+      </div>
+      <table>
+        <thead><tr><th>Código</th><th>Descrição</th><th>Un.</th></tr></thead>
+        <tbody>${itens.map(i => `
+          <tr>
+            <td class="item-code">${i.item}</td>
+            <td>${buscaAtual ? hl(i.descricao, buscaAtual) : escHtml(i.descricao)}</td>
+            <td class="un-chip">${i.unidade}</td>
+          </tr>`).join('')}
+        </tbody>
+      </table>
+    </div>`;
+  }).join('');
+
+  document.getElementById('cnt-exibidos').textContent = exibidos + (exibidos === 1 ? ' item' : ' itens');
+  document.getElementById('itens-view').innerHTML = html ||
+    `<div class="no-results"><div class="no-results-title">Nenhum item encontrado</div><div>Busque por código (2.12), palavra-chave (piso) ou sigla (ART).</div></div>`;
+}
+
+document.addEventListener('keydown', e => {
+  if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+    e.preventDefault();
+    const el = document.getElementById('busca');
+    if (!document.getElementById('contract-screen').classList.contains('hidden')) {
+      el.focus(); el.select();
+    }
+  }
+});
+
+renderHub();
+</script>
+</body>
+</html>

@@ -17,12 +17,13 @@ def main(md_path):
 
     memorial_start = find_memorial_start(lines)
     if memorial_start is None:
-        print('⚠️  Memorial final não encontrado no documento.')
-        print('   Execute gerar_memorial.py primeiro e cole o memorial no relatório.')
-        return
-
-    body_lines     = lines[:memorial_start]
-    memorial_lines = lines[memorial_start:]
+        print('[INFO] Memorial final ainda não anexado no arquivo markdown.')
+        print('       Verificando divergências entre Tabelas de Cálculo do Corpo vs Tabelas de Itens do Corpo...\n')
+        body_lines     = lines
+        memorial_lines = []
+    else:
+        body_lines     = lines[:memorial_start]
+        memorial_lines = lines[memorial_start:]
 
     # Corpo: totais das tabelas de cálculo
     body_occs = parse_calc_occurrences(body_lines)
@@ -31,7 +32,7 @@ def main(md_path):
         body_calc[occ['code']] += occ['total_value']
 
     # Corpo: totais das tabelas Itens
-    _, body_itens_total = parse_itens_tables(body_lines)
+    body_info, body_itens_total = parse_itens_tables(body_lines)
 
     # Memorial: totais das tabelas Itens
     memorial_info, memorial_itens_total = parse_itens_tables(memorial_lines)
@@ -49,12 +50,12 @@ def main(md_path):
         bc  = round(body_calc.get(code, 0), 2)
         bi  = round(float(body_itens_total.get(code, 0)), 2)
         mi  = round(float(memorial_itens_total.get(code, 0)), 2)
-        unit = memorial_info.get(code, {}).get('unit', '')
+        unit = memorial_info.get(code, {}).get('unit', body_info.get(code, {}).get('unit', ''))
         issues = []
 
         if abs(bc - bi) > 0.01:
             issues.append(f'Cálculo corpo ({bc}) ≠ Itens corpo ({bi})')
-        if abs(bc - mi) > 0.01:
+        if mi > 0 and abs(bc - mi) > 0.01:
             issues.append(f'Cálculo corpo ({bc}) ≠ Itens memorial ({mi})')
         if bi > 0 and mi > 0 and abs(bi - mi) > 0.01:
             issues.append(f'Itens corpo ({bi}) ≠ Itens memorial ({mi})')

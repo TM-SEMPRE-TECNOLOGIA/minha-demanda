@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mission Control · Centro de Comando | UX 03 — Orquestração</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════════════
+   DS ORÁCULO (Mission Control) — tokens 1:1 do index.css do Mission Control
+   Tema Zinc/Neutro shadcn · primary quase preto · accent INDIGO
+   UX 03 — CENTRO DE COMANDO (time + fila + log em tempo real)
+   ═══════════════════════════════════════════════════════════════ */
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --card-border: 240 5.9% 90%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --popover-border: 240 5.9% 90%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 239 84% 67%;
+    --sidebar: 240 20% 98%;
+    --sidebar-foreground: 240 10% 18%;
+    --sidebar-border: 240 18% 88%;
+    --sidebar-primary: 239 84% 67%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 239 100% 97%;
+    --sidebar-accent-foreground: 240 16% 14%;
+    --sidebar-ring: 239 84% 67%;
+    --primary-hover: 240 5.9% 20%;
+    --oracle: 239 84% 67%;
+    --oracle-deep: 239 84% 55%;
+    --oracle-soft: 239 100% 97%;
+    --bg-hover: 240 4.8% 95.9%;
+    --bg-secondary: 240 4.8% 95.9%;
+    --subtle: 240 5% 55%;
+    --success: 142 71% 45%;
+    --success-soft: 142 70% 96%;
+    --info: 239 84% 67%;
+    --radius: 0.5rem;
+  }
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --card-border: 240 3.7% 15.9%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --popover-border: 240 3.7% 15.9%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 238 92% 76%;
+    --sidebar: 240 14% 9%;
+    --sidebar-foreground: 240 10% 92%;
+    --sidebar-border: 240 16% 20%;
+    --sidebar-primary: 238 92% 76%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 22% 15%;
+    --sidebar-accent-foreground: 240 12% 96%;
+    --sidebar-ring: 238 92% 76%;
+    --primary-hover: 0 0% 90%;
+    --oracle: 238 92% 76%;
+    --oracle-deep: 238 92% 70%;
+    --oracle-soft: 240 22% 15%;
+    --bg-hover: 240 3.7% 15.9%;
+    --bg-secondary: 240 3.7% 15.9%;
+    --subtle: 240 5% 55%;
+    --success: 142 69% 58%;
+    --success-soft: 142 30% 18%;
+    --info: 238 92% 76%;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-font-smoothing: antialiased; }
+  body {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-size: 14px; line-height: 1.55;
+    min-height: 100vh;
+    transition: background .25s, color .25s;
+  }
+  .font-mono { font-family: "JetBrains Mono", ui-monospace, monospace; }
+
+  header {
+    position: sticky; top: 0; z-index: 50;
+    background: hsl(var(--background) / .8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid hsl(var(--border));
+    padding: 0 24px; height: 56px;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .brand { display: flex; align-items: center; gap: 11px; cursor: pointer; }
+  .brand-mark { width: 28px; height: 28px; border-radius: 8px; background: hsl(var(--primary)); display: grid; place-items: center; color: hsl(var(--primary-foreground)); font-weight: 700; font-size: 13px; }
+  .brand-name { font-weight: 600; font-size: 14.5px; letter-spacing: -.01em; }
+  .brand-sub { font-family: "JetBrains Mono", monospace; font-size: 9.5px; text-transform: uppercase; letter-spacing: .18em; color: hsl(var(--muted-foreground)); }
+  .hdr-div { width: 1px; height: 24px; background: hsl(var(--border)); }
+  .hdr-crumb { display: flex; align-items: center; gap: 8px; color: hsl(var(--muted-foreground)); font-size: 13px; }
+  .hdr-crumb b { color: hsl(var(--foreground)); font-weight: 600; }
+  .hdr-right { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+  .icon-btn { width: 32px; height: 32px; border-radius: 8px; border: 1px solid hsl(var(--border)); background: hsl(var(--card)); color: hsl(var(--muted-foreground)); cursor: pointer; display: grid; place-items: center; font-size: 15px; transition: all .15s; }
+  .icon-btn:hover { border-color: hsl(var(--sidebar-primary)); color: hsl(var(--foreground)); background: hsl(var(--bg-hover)); }
+
+  .wrap { max-width: 1320px; margin: 0 auto; padding: 24px 24px 60px; }
+
+  .hero { margin-bottom: 20px; }
+  .hero .eyebrow { font-family: "JetBrains Mono", monospace; font-size: 11px; text-transform: uppercase; letter-spacing: .16em; color: hsl(var(--oracle-deep)); font-weight: 600; display: inline-flex; align-items: center; gap: 8px; }
+  .hero .eyebrow::before { content: ""; width: 22px; height: 2px; background: hsl(var(--oracle)); border-radius: 2px; }
+  .hero h1 { font-size: 28px; font-weight: 800; margin: 6px 0 6px; letter-spacing: -.025em; }
+  .hero p { color: hsl(var(--muted-foreground)); max-width: 680px; font-size: 14px; }
+  .hero-meta { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+  .chip { display: inline-flex; align-items: center; gap: 7px; padding: 4px 11px; border-radius: 999px; background: hsl(var(--card)); border: 1px solid hsl(var(--border)); font-size: 11.5px; color: hsl(var(--muted-foreground)); }
+  .chip .dot { width: 7px; height: 7px; border-radius: 50%; background: hsl(var(--success)); }
+  .chip strong { color: hsl(var(--foreground)); font-weight: 600; }
+
+  .section-title { font-weight: 600; font-size: 14.5px; margin-bottom: 10px; display: flex; align-items: center; gap: 9px; letter-spacing: -.01em; }
+  .section-title .num { font-family: "JetBrains Mono", monospace; font-size: 10px; font-weight: 600; color: hsl(var(--oracle-deep)); background: hsl(var(--oracle-soft)); border: 1px solid hsl(var(--oracle) / .3); padding: 2px 8px; border-radius: 6px; }
+
+  /* ── LAYOUT 3 PAINÉIS ───────────────────────────────────── */
+  .cmd-grid {
+    display: grid; gap: 16px;
+    grid-template-columns: 250px minmax(0, 1fr) 320px;
+    align-items: start;
+  }
+  @media (max-width: 1080px) { .cmd-grid { grid-template-columns: 220px minmax(0, 1fr); } .cmd-right { grid-column: 1 / -1; } }
+  @media (max-width: 760px) { .cmd-grid { grid-template-columns: 1fr; } .cmd-left, .cmd-right { grid-column: 1; } }
+
+  .panel { background: hsl(var(--card)); border: 1px solid hsl(var(--border)); border-radius: 12px; overflow: hidden; }
+  .panel-head { padding: 12px 16px; border-bottom: 1px solid hsl(var(--border)); display: flex; align-items: center; gap: 10px; }
+  .panel-head h3 { font-size: 13.5px; font-weight: 600; }
+  .panel-head .ph-right { margin-left: auto; font-family: "JetBrains Mono", monospace; font-size: 10.5px; color: hsl(var(--subtle)); }
+
+  /* ── ESQUERDA: TIME DE AGENTES ─────────────────────────── */
+  .agent-list { display: flex; flex-direction: column; gap: 9px; padding: 12px; }
+  .agent-card {
+    border: 1px solid hsl(var(--border)); border-radius: 11px;
+    padding: 11px 12px; display: flex; flex-direction: column; gap: 7px;
+    background: hsl(var(--background)); transition: all .2s;
+  }
+  .agent-card.working { border-color: hsl(var(--oracle) / .55); box-shadow: 0 0 0 1px hsl(var(--oracle) / .25); }
+  .agent-top { display: flex; align-items: center; gap: 10px; }
+  .agent-avatar { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; font-size: 12px; font-weight: 700; color: #fff; flex-shrink: 0; }
+  .agent-name { font-weight: 600; font-size: 13px; }
+  .agent-role { font-size: 11px; color: hsl(var(--muted-foreground)); }
+  .agent-st { margin-left: auto; font-family: "JetBrains Mono", monospace; font-size: 9.5px; text-transform: uppercase; letter-spacing: .06em; color: hsl(var(--success)); }
+  .agent-card.working .agent-st { color: hsl(var(--oracle-deep)); animation: pulse 1s infinite; }
+  .agent-task { font-size: 11px; color: hsl(var(--muted-foreground)); display: flex; align-items: center; gap: 6px; }
+  .agent-task .at-ic { font-size: 12px; }
+  .agent-load { height: 4px; border-radius: 99px; background: hsl(var(--bg-secondary)); overflow: hidden; }
+  .agent-load > i { display: block; height: 100%; background: hsl(var(--oracle)); width: 0%; transition: width .3s; }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .45; } }
+
+  /* ── CENTRO: COMANDO / FILA ────────────────────────────── */
+  .contrato-picker { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px; }
+  .contrato-chip { border: 1px solid hsl(var(--border)); background: hsl(var(--card)); border-radius: 9px; padding: 7px 11px; cursor: pointer; font-family: "JetBrains Mono", monospace; font-size: 12.5px; font-weight: 600; transition: all .15s; }
+  .contrato-chip:hover { border-color: hsl(var(--sidebar-primary)); background: hsl(var(--bg-hover)); }
+  .contrato-chip.active { border-color: hsl(var(--oracle)); background: hsl(var(--oracle-soft)); color: hsl(var(--oracle-deep)); box-shadow: 0 0 0 1px hsl(var(--oracle) / .4); }
+
+  .app-list { display: flex; flex-direction: column; gap: 8px; padding: 12px; }
+  .app-row {
+    display: flex; align-items: center; gap: 11px;
+    border: 1px solid hsl(var(--border)); border-radius: 10px;
+    padding: 9px 12px; background: hsl(var(--background)); transition: all .15s;
+  }
+  .app-row:hover { border-color: hsl(var(--sidebar-primary)); }
+  .app-row.running { border-color: hsl(var(--oracle) / .6); }
+  .app-row.done { border-color: hsl(var(--success) / .45); }
+  .app-row .ar-ic { width: 32px; height: 32px; border-radius: 8px; background: hsl(var(--oracle-soft)); color: hsl(var(--oracle-deep)); display: grid; place-items: center; font-size: 15px; flex-shrink: 0; border: 1px solid hsl(var(--oracle) / .2); }
+  .app-row.done .ar-ic { background: hsl(var(--success-soft)); color: hsl(var(--success)); border-color: hsl(var(--success) / .25); }
+  .app-row .ar-body { flex: 1; min-width: 0; }
+  .app-row .ar-name { font-weight: 600; font-size: 13px; }
+  .app-row .ar-meta { font-size: 11px; color: hsl(var(--muted-foreground)); font-family: "JetBrains Mono", monospace; }
+  .app-row .ar-state { font-size: 11px; font-weight: 500; width: 78px; text-align: right; font-family: "JetBrains Mono", monospace; }
+  .app-row.running .ar-state { color: hsl(var(--oracle-deep)); }
+  .app-row.done .ar-state { color: hsl(var(--success)); }
+  .app-row .ar-bar { width: 70px; height: 4px; border-radius: 99px; background: hsl(var(--bg-secondary)); overflow: hidden; }
+  .app-row .ar-bar > i { display: block; height: 100%; background: hsl(var(--oracle)); width: 0%; transition: width .3s; }
+  .btn-run {
+    border: none; border-radius: 8px; cursor: pointer;
+    font-family: "Inter", sans-serif; font-weight: 600; font-size: 12px;
+    padding: 6px 14px; background: hsl(var(--primary)); color: hsl(var(--primary-foreground));
+    transition: all .15s;
+  }
+  .btn-run:hover:not(:disabled) { background: hsl(var(--primary-hover)); }
+  .btn-run:disabled { opacity: .5; cursor: not-allowed; }
+  .btn-run.go { background: hsl(var(--bg-secondary)); color: hsl(var(--foreground)); border: 1px solid hsl(var(--border)); }
+  .btn-run.done-btn { background: transparent; color: hsl(var(--success)); border: 1px solid hsl(var(--success) / .4); }
+
+  .status-line {
+    display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+    padding: 11px 16px; border-top: 1px solid hsl(var(--border));
+    font-family: "JetBrains Mono", monospace; font-size: 11.5px; color: hsl(var(--muted-foreground));
+  }
+  .status-line .st-dot { width: 8px; height: 8px; border-radius: 50%; background: hsl(var(--subtle)); }
+  .status-line.on .st-dot { background: hsl(var(--oracle)); animation: pulse 1s infinite; }
+  .status-line.on { color: hsl(var(--oracle-deep)); }
+
+  /* ── DIREITA: LOG EM TEMPO REAL ────────────────────────── */
+  .log-body { padding: 10px 14px; max-height: 480px; overflow-y: auto; font-family: "JetBrains Mono", monospace; font-size: 11px; display: flex; flex-direction: column; gap: 5px; }
+  .log-line { display: flex; gap: 8px; color: hsl(var(--muted-foreground)); line-height: 1.5; }
+  .log-line .t { color: hsl(var(--subtle)); flex-shrink: 0; }
+  .log-line .agent { color: hsl(var(--oracle-deep)); flex-shrink: 0; font-weight: 600; }
+  .log-line .agent.oraculo { color: hsl(258 90% 66%); }
+  .log-line.ok { color: hsl(var(--success)); }
+  .log-empty { color: hsl(var(--subtle)); padding: 4px 0; }
+  .log-cta { padding: 12px 16px; border-top: 1px solid hsl(var(--border)); }
+  .btn-outline { border: 1px solid hsl(var(--border)); background: transparent; color: hsl(var(--foreground)); border-radius: 8px; padding: 7px 13px; font-size: 12.5px; cursor: pointer; transition: all .15s; }
+  .btn-outline:hover { background: hsl(var(--bg-hover)); }
+
+  footer { border-top: 1px solid hsl(var(--border)); padding: 18px 24px; color: hsl(var(--subtle)); font-size: 12px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  footer .f-right { margin-left: auto; font-family: "JetBrains Mono", monospace; font-size: 11px; }
+  ::-webkit-scrollbar { width: 9px; height: 9px; }
+  ::-webkit-scrollbar-thumb { background: hsl(var(--border)); border-radius: 99px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  @media (max-width: 640px) {
+    .wrap { padding: 18px 14px 40px; }
+    .hero h1 { font-size: 24px; }
+    .hdr-crumb { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand" onclick="toggleTheme()" title="alternar tema">
+    <div class="brand-mark">🦉</div>
+    <div>
+      <div class="brand-name">Mission Control</div>
+      <div class="brand-sub">Centro de Comando · UX 03 Orquestração</div>
+    </div>
+  </div>
+  <div class="hdr-div"></div>
+  <div class="hdr-crumb">Mission Control <span>›</span> <b>Centro de Comando</b></div>
+  <div class="hdr-right">
+    <button class="icon-btn" id="themeBtn" onclick="toggleTheme()" title="Alternar tema">🌙</button>
+    <button class="icon-btn" onclick="resetAll()" title="Limpar execuções">↺</button>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="hero">
+    <span class="eyebrow">Orquestração · Time em tempo real</span>
+    <h1>Centro de Comando</h1>
+    <p>O <b>time de agentes</b> fica à esquerda, as <b>skills</b> no centro e o <b>log de execução</b> à direita. Dispare apps e veja cada agente assumir sua tarefa, com progresso e histórico ao vivo — tudo em paralelo, até o resultado final.</p>
+    <div class="hero-meta">
+      <span class="chip"><span class="dot"></span> <strong id="metaContratos">9</strong>&nbsp;contratos</span>
+      <span class="chip"><strong id="metaApps">10</strong>&nbsp;apps / skills</span>
+      <span class="chip"><strong id="metaItens">—</strong>&nbsp;itens no contrato ativo</span>
+      <span class="chip"><strong id="metaAgentes">5</strong>&nbsp;agentes</span>
+    </div>
+  </div>
+
+  <div class="cmd-grid">
+
+    <!-- ESQUERDA: TIME -->
+    <div class="cmd-left">
+      <div class="panel">
+        <div class="panel-head"><h3>🦉 Time de agentes</h3><span class="ph-right" id="teamCount">5 ativos</span></div>
+        <div class="agent-list" id="agentList"></div>
+      </div>
+    </div>
+
+    <!-- CENTRO: COMANDO -->
+    <div class="cmd-center">
+      <div class="panel">
+        <div class="panel-head"><h3>⚡ Comando de execução</h3><span class="ph-right" id="contractLabel">contrato 0908</span></div>
+        <div style="padding:12px 16px 0;">
+          <div class="contrato-picker" id="contratoPicker"></div>
+        </div>
+        <div class="app-list" id="appList"></div>
+        <div class="status-line" id="statusLine"><span class="st-dot"></span> <span id="statusText">ocioso — clique em Executar em uma skill</span></div>
+      </div>
+    </div>
+
+    <!-- DIREITA: LOG -->
+    <div class="cmd-right">
+      <div class="panel">
+        <div class="panel-head"><h3>📡 Log de execução</h3><span class="ph-right" id="logCount">0 eventos</span></div>
+        <div class="log-body" id="logBody">
+          <div class="log-empty">Ainda sem eventos. Dispare uma skill para ver o time trabalhar.</div>
+        </div>
+        <div class="log-cta">
+          <button class="btn-outline" onclick="resetAll()">↺ Limpar tudo</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</main>
+
+<footer>
+  <span>Mission Control · TM Sempre Tecnologia</span>
+  <span class="f-right">UX 03 · Centro de Comando (time + fila + log) · DS Oráculo · dados-contratos.json</span>
+</footer>
+
+<script>
+/* ═══════════════════════════════════════════════════════════
+   DADOS REAIS — extraídos de dados-contratos.json (não inventado)
+   ═══════════════════════════════════════════════════════════ */
+const CONTRATOS = [
+  { codigo: "0908", nome: "SAO PAULO",   lote: "03", secoes: 62, itens: 467 },
+  { codigo: "1507", nome: "CUIABA",      lote: "",   secoes: 61, itens: 446 },
+  { codigo: "1565", nome: "SJRP",        lote: "04", secoes: 62, itens: 467 },
+  { codigo: "2056", nome: "DIVINOPOLIS", lote: "03", secoes: 20, itens: 447 },
+  { codigo: "2057", nome: "VARGINHA",    lote: "04", secoes: 30, itens: 478 },
+  { codigo: "2626", nome: "SALINAS",     lote: "01", secoes: 30, itens: 499 },
+  { codigo: "2627", nome: "VALADARES",   lote: "02", secoes: 30, itens: 499 },
+  { codigo: "3575", nome: "TANGARA",     lote: "",   secoes: 30, itens: 477 },
+  { codigo: "6122", nome: "MATO GROSSO DO SUL", lote: "07", secoes: 20, itens: 447 }
+];
+
+const APPS = [
+  { id: "rel-sp2",      ic: "📄", nome: "Gerar Relatório SP2",        desc: "SP2 — memória de cálculo + fotos 7cm.",           cat: "relatorio",    grupo: "rel",  agente: "Relatórios" },
+  { id: "rel-trad",     ic: "📑", nome: "Gerar Relatório Tradicional",desc: "Tradicional — fotos 10cm.",                       cat: "relatorio",    grupo: "rel",  agente: "Relatórios" },
+  { id: "rel-sp1",      ic: "🗂️", nome: "Gerar Relatório SP1",        desc: "Modo SP1.",                                       cat: "relatorio",    grupo: "rel",  agente: "Relatórios" },
+  { id: "memorial",     ic: "📘", nome: "Gerar Memorial Final",       desc: "Memorial descritivo consolidado.",                cat: "documento",    grupo: "doc",  agente: "Documentos" },
+  { id: "descricoes",   ic: "✍️", nome: "Validar / Gerar Descrições", desc: "Placeholders + descrições dos itens.",            cat: "documento",    grupo: "doc",  agente: "Documentos" },
+  { id: "docx",         ic: "⬇️", nome: "Baixar .docx",               desc: "Relatório .docx para a pasta do contrato.",       cat: "download",     grupo: "doc",  agente: "Downloads" },
+  { id: "fotos",        ic: "📷", nome: "Ver Fotos",                  desc: "Análise das fotos da vistoria.",                  cat: "visualizacao", grupo: "view", agente: "Visual" },
+  { id: "pasta",        ic: "📁", nome: "Abrir Pasta",                desc: "Pasta do contrato no disco.",                     cat: "visualizacao", grupo: "view", agente: "Visual" },
+  { id: "orcamento",    ic: "💰", nome: "Previsão Orçamentária",      desc: "Planilha de previsão (download .xlsx).",          cat: "download",     grupo: "doc",  agente: "Downloads" },
+  { id: "memorial-calc",ic: "🧮", nome: "Memorial de Cálculo",        desc: "Planilha do memorial (download .xlsx).",          cat: "download",     grupo: "doc",  agente: "Downloads" }
+];
+
+const AGENTES = [
+  { nome: "Oráculo",     avatar: "🦉", cor: "#6366F1", role: "Orquestrador" },
+  { nome: "Relatórios",  avatar: "R",  cor: "#52525B", role: "Pipeline V5" },
+  { nome: "Documentos",  avatar: "D",  cor: "#0284C7", role: "Memorial/Descrições" },
+  { nome: "Visual",      avatar: "V",  cor: "#059669", role: "Fotos/Pastas" },
+  { nome: "Downloads",   avatar: "DL", cor: "#64748B", role: ".docx / .xlsx" }
+];
+
+let contratoAtivo = "0908";
+let tasks = [];   // { id, pct, state, agente }
+let running = 0;
+let dark = false;
+
+const fmt = () => new Date().toTimeString().slice(0, 8);
+
+function log(agent, msg, ok, isOrc) {
+  const body = document.getElementById("logBody");
+  const empty = body.querySelector(".log-empty");
+  if (empty) empty.remove();
+  const line = document.createElement("div");
+  line.className = "log-line" + (ok ? " ok" : "");
+  line.innerHTML = `<span class="t">${fmt()}</span><span class="agent${isOrc ? " oraculo" : ""}">[${agent}]</span><span>${msg}</span>`;
+  body.appendChild(line);
+  body.scrollTop = body.scrollHeight;
+  document.getElementById("logCount").textContent = body.querySelectorAll(".log-line").length + " eventos";
+}
+
+/* ── RENDER ─────────────────────────────────────────────── */
+function renderContratos() {
+  const picker = document.getElementById("contratoPicker");
+  picker.innerHTML = "";
+  CONTRATOS.forEach(c => {
+    const el = document.createElement("button");
+    el.className = "contrato-chip" + (c.codigo === contratoAtivo ? " active" : "");
+    el.textContent = c.codigo;
+    el.title = c.nome + (c.lote ? " · Lote " + c.lote : "");
+    el.onclick = () => {
+      contratoAtivo = c.codigo;
+      document.getElementById("contractLabel").textContent = `contrato ${c.codigo}`;
+      document.getElementById("metaItens").textContent = c.itens;
+      renderContratos();
+      renderApps();
+      log("Oráculo", `contexto trocado para ${c.codigo} ${c.nome} — ${c.itens} itens`, false, true);
+    };
+    picker.appendChild(el);
+  });
+}
+
+function renderApps() {
+  const box = document.getElementById("appList");
+  box.innerHTML = "";
+  APPS.forEach(a => {
+    const t = tasks.find(x => x.id === a.id);
+    let stTxt = "disponível", btnTxt = "▶ Executar", disabled = false, bar = "", cls = "", btnCls = "";
+    if (t) {
+      if (t.state === "queued") { stTxt = "fila"; btnTxt = "⏳"; disabled = true; btnCls = "go"; }
+      else if (t.state === "running") { stTxt = Math.round(t.pct) + "%"; btnTxt = "⏳"; disabled = true; btnCls = "go"; cls = " running"; bar = `<div class="ar-bar"><i style="width:${t.pct}%"></i></div>`; }
+      else { stTxt = "✓ ok"; btnTxt = "✓ Feito"; disabled = true; btnCls = "done-btn"; cls = " done"; bar = `<div class="ar-bar"><i style="width:100%"></i></div>`; }
+    }
+    const row = document.createElement("div");
+    row.className = "app-row" + cls;
+    row.innerHTML = `
+      <div class="ar-ic">${a.ic}</div>
+      <div class="ar-body">
+        <div class="ar-name">${a.nome}</div>
+        <div class="ar-meta">${a.agente} · ${a.grupo} · ${contratoAtivo}</div>
+      </div>
+      ${bar}
+      <span class="ar-state">${stTxt}</span>
+      <button class="btn-run ${btnCls}" ${disabled ? "disabled" : ""} onclick="launch('${a.id}')">${btnTxt}</button>`;
+    box.appendChild(row);
+  });
+}
+
+function renderAgents() {
+  const box = document.getElementById("agentList");
+  box.innerHTML = "";
+  AGENTES.forEach(ag => {
+    const myTasks = tasks.filter(t => t.agente === ag.nome);
+    const active = myTasks.find(t => t.state === "running");
+    const doneCount = myTasks.filter(t => t.state === "done").length;
+    const load = myTasks.length ? Math.round(doneCount / myTasks.length * 100) : 0;
+    const working = !!active;
+    const el = document.createElement("div");
+    el.className = "agent-card" + (working ? " working" : "");
+    el.innerHTML = `
+      <div class="agent-top">
+        <span class="agent-avatar" style="background:${ag.cor};">${ag.avatar}</span>
+        <div>
+          <div class="agent-name">${ag.nome}</div>
+          <div class="agent-role">${ag.role}</div>
+        </div>
+        <span class="agent-st">${working ? "trabalhando" : "ativo"}</span>
+      </div>
+      <div class="agent-task">
+        <span class="at-ic">${active ? "▶" : doneCount ? "✓" : "·"}</span>
+        <span>${active ? APPS.find(a => a.id === active.id).nome + " " + Math.round(active.pct) + "%" : doneCount ? doneCount + " skill(s) concluída(s)" : "aguardando tarefa"}</span>
+      </div>
+      <div class="agent-load"><i style="width:${load}%"></i></div>`;
+    box.appendChild(el);
+  });
+  document.getElementById("teamCount").textContent = AGENTES.length + " ativos";
+}
+
+function renderStatus() {
+  const line = document.getElementById("statusLine");
+  const txt = document.getElementById("statusText");
+  if (!tasks.length) {
+    line.className = "status-line";
+    txt.textContent = "ocioso — clique em Executar em uma skill";
+    return;
+  }
+  const done = tasks.filter(t => t.state === "done").length;
+  if (done === tasks.length) {
+    line.className = "status-line on";
+    txt.textContent = `todos concluídos (${done}/${tasks.length}) — resultado final pronto`;
+    return;
+  }
+  line.className = "status-line on";
+  txt.textContent = `${running} em execução · ${done}/${tasks.length} concluídos`;
+}
+
+function renderAll() {
+  renderContratos();
+  renderApps();
+  renderAgents();
+  renderStatus();
+}
+
+/* ── EXECUÇÃO ───────────────────────────────────────────── */
+function launch(appId) {
+  const app = APPS.find(a => a.id === appId);
+  if (!app) return;
+  if (tasks.some(t => t.id === appId && t.state !== "done")) return;
+  const t = { id: appId, pct: 0, state: "queued", agente: app.agente };
+  tasks.push(t);
+  renderAll();
+  log("Oráculo", `tarefa "${app.nome}" despachada para ${app.agente} (contrato ${contratoAtivo})`, false, true);
+  const startDelay = tasks.filter(x => x.state === "queued").length * 300;
+  setTimeout(() => {
+    t.state = "running";
+    running++;
+    renderAll();
+    log(app.agente, `assumiu "${app.nome}" — executando`, false);
+    const timer = setInterval(() => {
+      t.pct = Math.min(100, t.pct + Math.random() * 17 + 6);
+      renderApps();
+      renderAgents();
+      renderStatus();
+      if (t.pct >= 100) {
+        clearInterval(timer);
+        t.state = "done";
+        running = Math.max(0, running - 1);
+        renderAll();
+        log(app.agente, `concluiu "${app.nome}" ✓ (100%)`, true);
+      }
+    }, 250);
+  }, startDelay);
+}
+
+function resetAll() {
+  tasks = [];
+  running = 0;
+  contratoAtivo = "0908";
+  document.getElementById("contractLabel").textContent = "contrato 0908";
+  document.getElementById("logBody").innerHTML = `<div class="log-empty">Ainda sem eventos. Dispare uma skill para ver o time trabalhar.</div>`;
+  document.getElementById("logCount").textContent = "0 eventos";
+  const c0 = CONTRATOS.find(x => x.codigo === contratoAtivo);
+  document.getElementById("metaItens").textContent = c0.itens;
+  renderAll();
+}
+
+function toggleTheme() {
+  dark = !dark;
+  document.documentElement.classList.toggle("dark", dark);
+  document.getElementById("themeBtn").textContent = dark ? "☀️" : "🌙";
+}
+
+/* init */
+document.getElementById("metaContratos").textContent = CONTRATOS.length;
+document.getElementById("metaApps").textContent = APPS.length;
+document.getElementById("metaAgentes").textContent = AGENTES.length;
+const c0 = CONTRATOS.find(x => x.codigo === contratoAtivo);
+document.getElementById("metaItens").textContent = c0.itens;
+renderAll();
+</script>
+</body>
+</html>

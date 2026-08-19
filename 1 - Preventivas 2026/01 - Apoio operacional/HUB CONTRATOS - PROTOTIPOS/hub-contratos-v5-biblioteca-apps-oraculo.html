@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mission Control · Biblioteca de Apps | Protótipo v5</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ═══════════════════════════════════════════════════════════════
+     DS ORÁCULO (Mission Control) — tokens 1:1 do index.css do Mission Control
+     Tema Zinc/Neutro shadcn · primary quase preto · accent INDIGO
+     ═══════════════════════════════════════════════════════════════ */
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --card-border: 240 5.9% 90%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --popover-border: 240 5.9% 90%;
+
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 239 84% 67%;               /* indigo — foco estilo Oráculo */
+
+    --sidebar: 240 20% 98%;
+    --sidebar-foreground: 240 10% 18%;
+    --sidebar-border: 240 18% 88%;
+    --sidebar-primary: 239 84% 67%;    /* indigo #6366F1 */
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 239 100% 97%;    /* indigo-50 */
+    --sidebar-accent-foreground: 240 16% 14%;
+    --sidebar-ring: 239 84% 67%;
+
+    /* tokens auxiliares derivados do tema (sem cor de marca quente) */
+    --primary-hover: 240 5.9% 20%;
+    --oracle: 239 84% 67%;             /* indigo accent */
+    --oracle-deep: 239 84% 55%;
+    --oracle-soft: 239 100% 97%;       /* indigo-50 */
+    --bg-hover: 240 4.8% 95.9%;
+    --bg-secondary: 240 4.8% 95.9%;
+    --subtle: 240 5% 55%;
+    --success: 142 71% 45%;
+    --success-soft: 142 70% 96%;
+    --info: 239 84% 67%;
+
+    --radius: 0.5rem;
+  }
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --card-border: 240 3.7% 15.9%;
+
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --popover-border: 240 3.7% 15.9%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 238 92% 76%;
+
+    --sidebar: 240 14% 9%;
+    --sidebar-foreground: 240 10% 92%;
+    --sidebar-border: 240 16% 20%;
+    --sidebar-primary: 238 92% 76%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 22% 15%;
+    --sidebar-accent-foreground: 240 12% 96%;
+    --sidebar-ring: 238 92% 76%;
+
+    --primary-hover: 0 0% 90%;
+    --oracle: 238 92% 76%;
+    --oracle-deep: 238 92% 70%;
+    --oracle-soft: 240 22% 15%;
+    --bg-hover: 240 3.7% 15.9%;
+    --bg-secondary: 240 3.7% 15.9%;
+    --subtle: 240 5% 55%;
+    --success: 142 69% 58%;
+    --success-soft: 142 30% 18%;
+    --info: 238 92% 76%;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-font-smoothing: antialiased; }
+  body {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-size: 14px; line-height: 1.55;
+    min-height: 100vh;
+    transition: background .25s, color .25s;
+  }
+  .font-display { font-family: "Inter", sans-serif; }
+  .font-mono { font-family: "JetBrains Mono", ui-monospace, monospace; }
+
+  /* ── HEADER ─────────────────────────────────────────────── */
+  header {
+    position: sticky; top: 0; z-index: 50;
+    background: hsl(var(--background) / .8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid hsl(var(--border));
+    padding: 0 24px; height: 56px;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .brand { display: flex; align-items: center; gap: 11px; cursor: pointer; }
+  .brand-mark {
+    width: 28px; height: 28px; border-radius: 8px;
+    background: hsl(var(--primary));
+    display: grid; place-items: center;
+    color: hsl(var(--primary-foreground));
+    font-weight: 700; font-size: 13px;
+  }
+  .brand-name { font-weight: 600; font-size: 14.5px; letter-spacing: -.01em; }
+  .brand-sub { font-family: "JetBrains Mono", monospace; font-size: 9.5px; text-transform: uppercase; letter-spacing: .18em; color: hsl(var(--muted-foreground)); }
+  .hdr-div { width: 1px; height: 24px; background: hsl(var(--border)); }
+  .hdr-crumb { display: flex; align-items: center; gap: 8px; color: hsl(var(--muted-foreground)); font-size: 13px; }
+  .hdr-crumb b { color: hsl(var(--foreground)); font-weight: 600; }
+  .hdr-right { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+  .icon-btn {
+    width: 32px; height: 32px; border-radius: 8px;
+    border: 1px solid hsl(var(--border)); background: hsl(var(--card));
+    color: hsl(var(--muted-foreground)); cursor: pointer;
+    display: grid; place-items: center; font-size: 15px;
+    transition: all .15s;
+  }
+  .icon-btn:hover { border-color: hsl(var(--sidebar-primary)); color: hsl(var(--foreground)); background: hsl(var(--bg-hover)); }
+
+  /* ── LAYOUT ─────────────────────────────────────────────── */
+  .wrap { max-width: 1220px; margin: 0 auto; padding: 28px 24px 80px; }
+
+  /* Hero da biblioteca */
+  .hero { margin-bottom: 26px; }
+  .hero .eyebrow {
+    font-family: "JetBrains Mono", monospace; font-size: 11px; text-transform: uppercase;
+    letter-spacing: .16em; color: hsl(var(--oracle-deep)); font-weight: 600;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .hero .eyebrow::before { content: ""; width: 22px; height: 2px; background: hsl(var(--oracle)); border-radius: 2px; }
+  .hero h1 { font-family: "Inter", sans-serif; font-size: 28px; font-weight: 700; margin: 10px 0 8px; letter-spacing: -.02em; }
+  .hero p { color: hsl(var(--muted-foreground)); max-width: 640px; font-size: 14.5px; }
+  .hero-meta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+
+  .chip {
+    display: inline-flex; align-items: center; gap: 7px;
+    padding: 5px 12px; border-radius: 999px;
+    background: hsl(var(--card)); border: 1px solid hsl(var(--border));
+    font-size: 12px; color: hsl(var(--muted-foreground));
+  }
+  .chip .dot { width: 7px; height: 7px; border-radius: 50%; background: hsl(var(--success)); }
+  .chip strong { color: hsl(var(--foreground)); font-weight: 600; }
+
+  /* ── SELEÇÃO DE CONTRATO ────────────────────────────────── */
+  .section-title {
+    font-weight: 600; font-size: 15px;
+    margin-bottom: 4px; display: flex; align-items: center; gap: 9px;
+    letter-spacing: -.01em;
+  }
+  .section-title .num {
+    font-family: "JetBrains Mono", monospace; font-size: 10px; font-weight: 600;
+    color: hsl(var(--oracle-deep)); background: hsl(var(--oracle-soft));
+    border: 1px solid hsl(var(--oracle) / .3);
+    padding: 2px 8px; border-radius: 6px;
+  }
+  .section-sub { color: hsl(var(--muted-foreground)); font-size: 12.5px; margin-bottom: 14px; }
+
+  .contrato-picker { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+  .contrato-chip {
+    border: 1px solid hsl(var(--border)); background: hsl(var(--card));
+    border-radius: 10px; padding: 8px 13px; cursor: pointer;
+    display: flex; flex-direction: column; gap: 1px; min-width: 132px;
+    transition: all .15s; text-align: left;
+  }
+  .contrato-chip:hover { border-color: hsl(var(--sidebar-primary)); background: hsl(var(--bg-hover)); }
+  .contrato-chip.active {
+    border-color: hsl(var(--oracle)); background: hsl(var(--oracle-soft));
+    box-shadow: 0 0 0 1px hsl(var(--oracle) / .4);
+  }
+  .contrato-chip .cc-cod { font-family: "JetBrains Mono", monospace; font-weight: 600; font-size: 14px; color: hsl(var(--foreground)); }
+  .contrato-chip.active .cc-cod { color: hsl(var(--oracle-deep)); }
+  .contrato-chip .cc-nome { font-size: 11px; color: hsl(var(--muted-foreground)); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .contrato-chip .cc-lote { font-size: 10px; color: hsl(var(--subtle)); font-family: "JetBrains Mono", monospace; }
+
+  .contrato-detail {
+    display: flex; flex-wrap: wrap; gap: 8px 22px; align-items: center;
+    background: hsl(var(--card)); border: 1px solid hsl(var(--border));
+    border-radius: var(--radius); padding: 13px 18px; margin: 12px 0 6px;
+  }
+  .contrato-detail .kv { display: flex; flex-direction: column; gap: 1px; }
+  .contrato-detail .kv label { font-size: 10px; text-transform: uppercase; letter-spacing: .08em; color: hsl(var(--subtle)); font-family: "JetBrains Mono", monospace; }
+  .contrato-detail .kv span { font-weight: 600; font-size: 13.5px; }
+
+  /* ── GRID DE APPS (biblioteca/launcher) ─────────────────── */
+  .apps-toolbar { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
+  .search-box {
+    flex: 1; min-width: 220px; position: relative;
+  }
+  .search-box input {
+    width: 100%; padding: 9px 13px 9px 36px;
+    border-radius: 10px; border: 1px solid hsl(var(--border));
+    background: hsl(var(--card)); color: hsl(var(--foreground));
+    font-family: "Inter", sans-serif; font-size: 13px; outline: none;
+    transition: border-color .15s;
+  }
+  .search-box input:focus { border-color: hsl(var(--oracle)); box-shadow: 0 0 0 3px hsl(var(--oracle) / .15); }
+  .search-box .s-ico { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: hsl(var(--subtle)); font-size: 14px; }
+  .filter-group { display: flex; gap: 6px; }
+  .filter-pill {
+    border: 1px solid hsl(var(--border)); background: hsl(var(--card));
+    color: hsl(var(--muted-foreground)); border-radius: 999px;
+    padding: 6px 13px; font-size: 12px; cursor: pointer; transition: all .15s;
+  }
+  .filter-pill:hover { border-color: hsl(var(--sidebar-primary)); }
+  .filter-pill.active { background: hsl(var(--primary)); border-color: hsl(var(--primary)); color: hsl(var(--primary-foreground)); font-weight: 500; }
+
+  .apps-grid {
+    display: grid; gap: 14px;
+    grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
+  }
+  .app-card {
+    background: hsl(var(--card)); border: 1px solid hsl(var(--border));
+    border-radius: var(--radius); padding: 16px;
+    display: flex; flex-direction: column; gap: 10px;
+    position: relative; overflow: hidden;
+    transition: transform .15s, box-shadow .15s, border-color .15s;
+  }
+  .app-card:hover { transform: translateY(-2px); box-shadow: 0 8px 22px -8px hsl(var(--foreground) / .18); border-color: hsl(var(--sidebar-primary)); }
+  .app-card.running { border-color: hsl(var(--oracle) / .65); box-shadow: 0 0 0 1px hsl(var(--oracle) / .3), 0 8px 22px -8px hsl(var(--oracle) / .25); }
+  .app-card.done { border-color: hsl(var(--success) / .5); }
+
+  .app-top { display: flex; align-items: flex-start; gap: 12px; }
+  .app-ic {
+    width: 40px; height: 40px; border-radius: 9px; flex-shrink: 0;
+    display: grid; place-items: center; font-size: 18px;
+    background: hsl(var(--oracle-soft)); color: hsl(var(--oracle-deep));
+    border: 1px solid hsl(var(--oracle) / .22);
+  }
+  .app-card.done .app-ic { background: hsl(var(--success-soft)); color: hsl(var(--success)); border-color: hsl(var(--success) / .25); }
+  .app-body { flex: 1; min-width: 0; }
+  .app-name { font-weight: 600; font-size: 14.5px; line-height: 1.25; letter-spacing: -.01em; }
+  .app-desc { color: hsl(var(--muted-foreground)); font-size: 12px; margin-top: 3px; line-height: 1.45; }
+  .app-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 7px; }
+  .tag {
+    font-size: 10px; font-family: "JetBrains Mono", monospace;
+    padding: 2px 7px; border-radius: 5px;
+    background: hsl(var(--bg-secondary)); color: hsl(var(--muted-foreground));
+    border: 1px solid hsl(var(--border));
+  }
+
+  .status-row { display: flex; align-items: center; justify-content: space-between; margin-top: 2px; }
+  .status {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 11.5px; font-weight: 500;
+  }
+  .status .sdot { width: 8px; height: 8px; border-radius: 50%; }
+  .status.avail { color: hsl(var(--muted-foreground)); }
+  .status.avail .sdot { background: hsl(var(--subtle)); }
+  .status.queued { color: hsl(var(--info)); }
+  .status.queued .sdot { background: hsl(var(--info)); }
+  .status.running { color: hsl(var(--oracle-deep)); }
+  .status.running .sdot { background: hsl(var(--oracle)); animation: pulse 1s infinite; }
+  .status.done { color: hsl(var(--success)); }
+  .status.done .sdot { background: hsl(var(--success)); }
+  @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: .4; transform: scale(.8); } }
+
+  .btn {
+    border: none; border-radius: 8px; cursor: pointer;
+    font-family: "Inter", sans-serif; font-weight: 500; font-size: 12.5px;
+    padding: 7px 13px; display: inline-flex; align-items: center; gap: 7px;
+    transition: all .15s;
+  }
+  .btn-primary { background: hsl(var(--primary)); color: hsl(var(--primary-foreground)); }
+  .btn-primary:hover:not(:disabled) { background: hsl(var(--primary-hover)); }
+  .btn-outline { background: transparent; border: 1px solid hsl(var(--border)); color: hsl(var(--foreground)); }
+  .btn-outline:hover:not(:disabled) { background: hsl(var(--bg-hover)); }
+  .btn-ghost { background: transparent; color: hsl(var(--muted-foreground)); }
+  .btn-ghost:hover:not(:disabled) { background: hsl(var(--bg-hover)); color: hsl(var(--foreground)); }
+  .btn:disabled { opacity: .5; cursor: not-allowed; }
+  .btn .spinner {
+    width: 13px; height: 13px; border-radius: 50%;
+    border: 2px solid hsl(var(--primary-foreground) / .4); border-top-color: hsl(var(--primary-foreground));
+    animation: spin .7s linear infinite;
+  }
+  .dark .btn .spinner { border-color: hsl(var(--primary-foreground) / .4); border-top-color: hsl(var(--primary-foreground)); }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .progress {
+    height: 5px; border-radius: 99px; background: hsl(var(--bg-secondary));
+    overflow: hidden; margin-top: 8px;
+  }
+  .progress > i {
+    display: block; height: 100%; border-radius: 99px;
+    background: hsl(var(--oracle)); width: 0%;
+    transition: width .3s ease;
+  }
+  .app-card.done .progress > i { background: hsl(var(--success)); }
+  .app-card.running .progress > i { background: hsl(var(--oracle)); }
+
+  /* ── PAINEL DE EXECUÇÃO EM PARALELO ─────────────────────── */
+  .exec-panel {
+    margin-top: 34px;
+    background: hsl(var(--card)); border: 1px solid hsl(var(--border));
+    border-radius: 10px; overflow: hidden;
+  }
+  .exec-head {
+    display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+    padding: 14px 18px; border-bottom: 1px solid hsl(var(--border));
+  }
+  .exec-head h3 { font-size: 15px; font-weight: 600; letter-spacing: -.01em; }
+  .exec-status {
+    margin-left: auto; display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; font-family: "JetBrains Mono", monospace;
+    padding: 5px 12px; border-radius: 999px;
+    background: hsl(var(--bg-secondary)); color: hsl(var(--muted-foreground));
+    border: 1px solid hsl(var(--border));
+  }
+  .exec-status.on { background: hsl(var(--oracle-soft)); color: hsl(var(--oracle-deep)); border-color: hsl(var(--oracle) / .3); }
+  .exec-status.on .dot { background: hsl(var(--oracle)); animation: pulse 1s infinite; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: hsl(var(--subtle)); }
+
+  .exec-queue { padding: 14px 18px; display: flex; flex-direction: column; gap: 8px; max-height: 320px; overflow-y: auto; }
+  .queue-item {
+    display: flex; align-items: center; gap: 12px;
+    padding: 10px 14px; border-radius: 8px;
+    border: 1px solid hsl(var(--border)); background: hsl(var(--background));
+  }
+  .queue-item .qi-ic { width: 28px; height: 28px; border-radius: 7px; background: hsl(var(--oracle-soft)); color: hsl(var(--oracle-deep)); display: grid; place-items: center; font-size: 13px; flex-shrink: 0; }
+  .queue-item .qi-name { font-weight: 500; font-size: 13px; }
+  .queue-item .qi-contract { font-size: 11px; color: hsl(var(--muted-foreground)); font-family: "JetBrains Mono", monospace; }
+  .queue-item .qi-bar { flex: 1; min-width: 90px; }
+  .queue-item .qi-pct { font-family: "JetBrains Mono", monospace; font-size: 11px; color: hsl(var(--muted-foreground)); width: 40px; text-align: right; }
+  .queue-item .qi-state { font-size: 11px; font-weight: 500; width: 86px; text-align: right; }
+  .queue-item.qi-done { border-color: hsl(var(--success) / .4); }
+  .queue-item.qi-done .qi-state { color: hsl(var(--success)); }
+  .queue-item.qi-run { border-color: hsl(var(--oracle) / .5); }
+  .queue-item.qi-run .qi-state { color: hsl(var(--oracle-deep)); }
+
+  .exec-empty { padding: 26px; text-align: center; color: hsl(var(--subtle)); font-size: 13px; }
+
+  /* ── TIME DE AGENTES (orquestração) ─────────────────────── */
+  .team-strip {
+    display: flex; flex-wrap: wrap; gap: 9px; align-items: center;
+    margin: 16px 0 26px;
+  }
+  .agent-pill {
+    display: inline-flex; align-items: center; gap: 9px;
+    background: hsl(var(--card)); border: 1px solid hsl(var(--border));
+    border-radius: 999px; padding: 6px 13px 6px 7px;
+    font-size: 12px;
+  }
+  .agent-avatar {
+    width: 26px; height: 26px; border-radius: 50%;
+    display: grid; place-items: center; font-size: 10px; font-weight: 700;
+    color: #fff;
+  }
+  .agent-pill .a-name { font-weight: 600; }
+  .agent-pill .a-role { color: hsl(var(--muted-foreground)); font-size: 11px; }
+  .agent-pill .a-st { font-family: "JetBrains Mono", monospace; font-size: 10px; text-transform: uppercase; letter-spacing: .06em; color: hsl(var(--success)); }
+  .agent-pill.working .a-st { color: hsl(var(--oracle-deep)); }
+  .agent-pill.working { border-color: hsl(var(--oracle) / .5); }
+
+  /* ── FOOTER ─────────────────────────────────────────────── */
+  footer {
+    border-top: 1px solid hsl(var(--border));
+    padding: 20px 24px; color: hsl(var(--subtle)); font-size: 12px;
+    display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+  }
+  footer .f-right { margin-left: auto; font-family: "JetBrains Mono", monospace; font-size: 11px; }
+
+  /* scrollbar */
+  ::-webkit-scrollbar { width: 9px; height: 9px; }
+  ::-webkit-scrollbar-thumb { background: hsl(var(--border)); border-radius: 99px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+
+  @media (max-width: 640px) {
+    .wrap { padding: 20px 14px 60px; }
+    .hero h1 { font-size: 22px; }
+    .hdr-crumb { display: none; }
+    .apps-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand" onclick="toggleTheme()" title="TM · alternar tema">
+    <div class="brand-mark">TM</div>
+    <div>
+      <div class="brand-name">Mission Control</div>
+      <div class="brand-sub">Biblioteca de Apps · DS Oráculo</div>
+    </div>
+  </div>
+  <div class="hdr-div"></div>
+  <div class="hdr-crumb">Mission Control <span>›</span> <b>Biblioteca de Apps</b></div>
+  <div class="hdr-right">
+    <button class="icon-btn" id="themeBtn" onclick="toggleTheme()" title="Alternar tema">🌙</button>
+    <button class="icon-btn" onclick="resetAll()" title="Limpar execuções">↺</button>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- HERO -->
+  <div class="hero">
+    <span class="eyebrow">Launcher · Skills em paralelo</span>
+    <h1>Biblioteca de Apps</h1>
+    <p>Cada <b>app</b> é uma skill executável do fluxo preventivo — relatório, memorial, descrições, fotos, downloads. Selecione o contrato, dispare quantos apps quiser e o <b>time de agentes</b> orquestra a execução em paralelo até o resultado final.</p>
+    <div class="hero-meta">
+      <span class="chip"><span class="dot"></span> <strong id="metaContratos">9</strong>&nbsp;contratos</span>
+      <span class="chip"><strong id="metaApps">10</strong>&nbsp;apps / skills</span>
+      <span class="chip"><strong id="metaItens">—</strong>&nbsp;itens no contrato ativo</span>
+      <span class="chip">⚙️ Execução <strong>paralela</strong></span>
+    </div>
+  </div>
+
+  <!-- TIME DE AGENTES -->
+  <div class="section-title"><span class="num">TIME</span> Agentes orquestradores</div>
+  <div class="section-sub">A ativação do time acontece ao disparar apps — cada skill é executada por um agente dedicado, em paralelo.</div>
+  <div class="team-strip" id="teamStrip"></div>
+
+  <!-- CONTRATOS -->
+  <div class="section-title"><span class="num">01</span> Selecione o contrato</div>
+  <div class="section-sub">O contrato ativo filtra o contexto dos apps (caminho, fotos, .docx, orçamento).</div>
+  <div class="contrato-picker" id="contratoPicker"></div>
+  <div class="contrato-detail" id="contratoDetail"></div>
+
+  <!-- APPS -->
+  <div class="section-title" style="margin-top:30px;"><span class="num">02</span> Biblioteca de Apps</div>
+  <div class="section-sub">Cada card é uma skill. Execute em paralelo — o time de agentes orquestra e entrega o resultado final.</div>
+
+  <div class="apps-toolbar">
+    <div class="search-box">
+      <span class="s-ico">🔍</span>
+      <input type="text" id="searchInput" placeholder="Buscar app ou skill...">
+    </div>
+    <div class="filter-group" id="filterGroup">
+      <button class="filter-pill active" data-f="all">Todos</button>
+      <button class="filter-pill" data-f="relatorio">Relatórios</button>
+      <button class="filter-pill" data-f="documento">Documentos</button>
+      <button class="filter-pill" data-f="visualizacao">Visualização</button>
+      <button class="filter-pill" data-f="download">Download</button>
+    </div>
+  </div>
+
+  <div class="apps-grid" id="appsGrid"></div>
+
+  <!-- EXECUÇÃO EM PARALELO -->
+  <div class="exec-panel">
+    <div class="exec-head">
+      <h3>Execução em paralelo</h3>
+      <span class="exec-status" id="execStatus"><span class="dot"></span> <span id="execStatusText">ocioso</span></span>
+      <button class="btn btn-outline" id="clearQueueBtn" onclick="clearQueue()" style="display:none;">Limpar fila</button>
+    </div>
+    <div class="exec-queue" id="execQueue">
+      <div class="exec-empty">Nada rodando. Escolha um contrato e clique em <b>Executar</b> em um ou mais apps — eles rodam em paralelo.</div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <span>Mission Control · TM Sempre Tecnologia</span>
+  <span class="f-right">Protótipo v5 · DS Oráculo (Zinc/Indigo) · dados-contratos.json</span>
+</footer>
+
+<script>
+/* ═══════════════════════════════════════════════════════════
+   DADOS REAIS — extraídos de dados-contratos.json (não inventado)
+   ═══════════════════════════════════════════════════════════ */
+const CONTRATOS = [
+  { codigo: "0908", nome: "SAO PAULO",   lote: "03", secoes: 62, itens: 467 },
+  { codigo: "1507", nome: "CUIABA",      lote: "",   secoes: 61, itens: 446 },
+  { codigo: "1565", nome: "SJRP",        lote: "04", secoes: 62, itens: 467 },
+  { codigo: "2056", nome: "DIVINOPOLIS", lote: "03", secoes: 20, itens: 447 },
+  { codigo: "2057", nome: "VARGINHA",    lote: "04", secoes: 30, itens: 478 },
+  { codigo: "2626", nome: "SALINAS",     lote: "01", secoes: 30, itens: 499 },
+  { codigo: "2627", nome: "VALADARES",   lote: "02", secoes: 30, itens: 499 },
+  { codigo: "3575", nome: "TANGARA",     lote: "",   secoes: 30, itens: 477 },
+  { codigo: "6122", nome: "MATO GROSSO DO SUL", lote: "07", secoes: 20, itens: 447 }
+];
+
+/* Apps = skills executáveis do fluxo preventivo */
+const APPS = [
+  { id: "rel-sp2",      ic: "📄", nome: "Gerar Relatório SP2",        desc: "Relatório preventivo modo SP2 — memória de cálculo + fotos 7cm.",           cat: "relatorio",    grupo: "rel" },
+  { id: "rel-trad",     ic: "📑", nome: "Gerar Relatório Tradicional",desc: "Relatório preventivo modo Tradicional — fotos 10cm.",                     cat: "relatorio",    grupo: "rel" },
+  { id: "rel-sp1",      ic: "🗂️", nome: "Gerar Relatório SP1",        desc: "Relatório preventivo modo SP1.",                                          cat: "relatorio",    grupo: "rel" },
+  { id: "memorial",     ic: "📘", nome: "Gerar Memorial Final",       desc: "Memorial descritivo final consolidado do contrato.",                     cat: "documento",    grupo: "doc" },
+  { id: "descricoes",   ic: "✍️", nome: "Validar / Gerar Descrições", desc: "Valida placeholders e gera descrições dos itens no relatório.",           cat: "documento",    grupo: "doc" },
+  { id: "docx",         ic: "⬇️", nome: "Baixar .docx",               desc: "Baixa o relatório .docx gerado para a pasta do contrato.",                cat: "download",     grupo: "doc" },
+  { id: "fotos",        ic: "📷", nome: "Ver Fotos",                  desc: "Abre e analisa as fotos da vistoria (contagem, pastas, imagens).",         cat: "visualizacao", grupo: "view" },
+  { id: "pasta",        ic: "📁", nome: "Abrir Pasta",                desc: "Abre a pasta do contrato no disco.",                                       cat: "visualizacao", grupo: "view" },
+  { id: "orcamento",    ic: "💰", nome: "Previsão Orçamentária",      desc: "Gera e baixa a planilha de previsão orçamentária (download .xlsx).",        cat: "download",     grupo: "doc" },
+  { id: "memorial-calc",ic: "🧮", nome: "Memorial de Cálculo",        desc: "Gera e baixa o memorial de cálculo do contrato (download .xlsx).",          cat: "download",     grupo: "doc" }
+];
+
+/* Agentes do time (orquestração) — paleta neutra/indigo estilo Oráculo */
+const AGENTES = [
+  { nome: "Oráculo",     avatar: "🦉", cor: "#6366F1", role: "Orquestrador" },
+  { nome: "Relatórios",  avatar: "R",  cor: "#52525B", role: "Pipeline V5" },
+  { nome: "Documentos",  avatar: "D",  cor: "#0284C7", role: "Memorial/Descrições" },
+  { nome: "Visual",      avatar: "V",  cor: "#059669", role: "Fotos/Pastas" },
+  { nome: "Downloads",   avatar: "DL", cor: "#64748B", role: ".docx / .xlsx" }
+];
+
+/* ═══════════════════════════════════════════════════════════
+   ESTADO
+   ═══════════════════════════════════════════════════════════ */
+let contratoAtivo = "0908";
+let filter = "all";
+let search = "";
+let queue = [];      // { id, nome, contrato, pct, state: 'queued'|'running'|'done' }
+let runningCount = 0;
+let dark = false;
+
+/* ═══════════════════════════════════════════════════════════
+   RENDER
+   ═══════════════════════════════════════════════════════════ */
+function renderContratos() {
+  const picker = document.getElementById("contratoPicker");
+  picker.innerHTML = "";
+  CONTRATOS.forEach(c => {
+    const el = document.createElement("div");
+    el.className = "contrato-chip" + (c.codigo === contratoAtivo ? " active" : "");
+    el.innerHTML = `
+      <span class="cc-cod">${c.codigo}</span>
+      <span class="cc-nome">${c.nome}</span>
+      <span class="cc-lote">${c.lote ? "Lote " + c.lote : "Sem lote"} · ${c.secoes} seções</span>`;
+    el.onclick = () => { contratoAtivo = c.codigo; renderContratos(); renderApps(); renderDetail(); };
+    picker.appendChild(el);
+  });
+}
+
+function renderDetail() {
+  const c = CONTRATOS.find(x => x.codigo === contratoAtivo);
+  const el = document.getElementById("contratoDetail");
+  el.innerHTML = `
+    <div class="kv"><label>Contrato</label><span>${c.codigo} — ${c.nome}</span></div>
+    <div class="kv"><label>Lote</label><span>${c.lote || "—"}</span></div>
+    <div class="kv"><label>Seções</label><span>${c.secoes}</span></div>
+    <div class="kv"><label>Itens</label><span>${c.itens}</span></div>
+    <div class="kv"><label>Pasta</label><span class="font-mono" style="font-size:12px;font-weight:500;">Minha Demanda/…/${c.codigo}</span></div>`;
+  document.getElementById("metaItens").textContent = c.itens;
+}
+
+function renderApps() {
+  const grid = document.getElementById("appsGrid");
+  grid.innerHTML = "";
+  const list = APPS.filter(a =>
+    (filter === "all" || a.cat === filter) &&
+    (!search || (a.nome + a.desc).toLowerCase().includes(search.toLowerCase()))
+  );
+  if (!list.length) {
+    grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;color:hsl(var(--subtle));padding:30px;">Nenhum app encontrado.</div>`;
+    return;
+  }
+  list.forEach(a => {
+    const q = queue.find(x => x.id === a.id && x.contrato === contratoAtivo);
+    let statusCls = "avail", statusTxt = "Disponível", disabled = false, btnLabel = "▶ Executar";
+    let barHtml = "";
+    if (q) {
+      if (q.state === "queued") { statusCls = "queued"; statusTxt = "Na fila"; disabled = true; btnLabel = "⏳ Fila"; }
+      else if (q.state === "running") { statusCls = "running"; statusTxt = "Rodando…"; disabled = true; btnLabel = "⏳ Rodando"; barHtml = `<div class="progress"><i style="width:${q.pct}%"></i></div>`; }
+      else if (q.state === "done") { statusCls = "done"; statusTxt = "Concluído"; disabled = true; btnLabel = "✓ Concluído"; barHtml = `<div class="progress"><i style="width:100%"></i></div>`; }
+    }
+    const card = document.createElement("div");
+    card.className = "app-card" + (q ? (q.state === "running" ? " running" : q.state === "done" ? " done" : "") : "");
+    card.id = "app-" + a.id;
+    card.innerHTML = `
+      <div class="app-top">
+        <div class="app-ic">${a.ic}</div>
+        <div class="app-body">
+          <div class="app-name">${a.nome}</div>
+          <div class="app-desc">${a.desc}</div>
+          <div class="app-tags">
+            <span class="tag">${contratoAtivo}</span>
+            <span class="tag">${a.grupo}</span>
+          </div>
+        </div>
+      </div>
+      <div class="status-row">
+        <span class="status ${statusCls}"><span class="sdot"></span>${statusTxt}</span>
+        <button class="btn ${q && q.state === 'done' ? 'btn-ghost' : 'btn-primary'}" ${disabled ? "disabled" : ""} onclick="launch('${a.id}')">${btnLabel}</button>
+      </div>
+      ${barHtml}`;
+    grid.appendChild(card);
+  });
+}
+
+function renderTeam() {
+  const strip = document.getElementById("teamStrip");
+  strip.innerHTML = "";
+  AGENTES.forEach(a => {
+    const working = runningCount > 0 && a.nome !== "Oráculo";
+    const el = document.createElement("div");
+    el.className = "agent-pill" + (working ? " working" : "");
+    el.innerHTML = `
+      <span class="agent-avatar" style="background:${a.cor};">${a.avatar}</span>
+      <span><span class="a-name">${a.nome}</span> <span class="a-role">· ${a.role}</span></span>
+      <span class="a-st">${working ? "trabalhando" : "ativo"}</span>`;
+    strip.appendChild(el);
+  });
+}
+
+function renderQueue() {
+  const box = document.getElementById("execQueue");
+  const status = document.getElementById("execStatus");
+  const statusTxt = document.getElementById("execStatusText");
+  const clearBtn = document.getElementById("clearQueueBtn");
+
+  if (!queue.length) {
+    box.innerHTML = `<div class="exec-empty">Nada rodando. Escolha um contrato e clique em <b>Executar</b> em um ou mais apps — eles rodam em paralelo.</div>`;
+    status.className = "exec-status";
+    statusTxt.textContent = "ocioso";
+    clearBtn.style.display = "none";
+    return;
+  }
+  status.className = "exec-status on";
+  statusTxt.textContent = runningCount > 0 ? `${runningCount} em execução` : "todos concluídos";
+  clearBtn.style.display = "inline-flex";
+
+  box.innerHTML = "";
+  queue.forEach(q => {
+    const app = APPS.find(a => a.id === q.id);
+    const cls = q.state === "done" ? "qi-done" : q.state === "running" ? "qi-run" : "";
+    const stateTxt = q.state === "done" ? "✓ concluído" : q.state === "running" ? q.pct + "%" : "⏳ na fila";
+    const pctWidth = q.state === "done" ? 100 : q.state === "running" ? q.pct : 0;
+    const item = document.createElement("div");
+    item.className = "queue-item " + cls;
+    item.innerHTML = `
+      <span class="qi-ic">${app ? app.ic : "⚙️"}</span>
+      <div style="min-width:150px;">
+        <div class="qi-name">${app ? app.nome : q.id}</div>
+        <div class="qi-contract">contrato ${q.contrato}</div>
+      </div>
+      <div class="qi-bar"><div class="progress"><i style="width:${pctWidth}%"></i></div></div>
+      <span class="qi-pct">${q.state === "running" ? q.pct + "%" : q.state === "done" ? "100%" : "—"}</span>
+      <span class="qi-state">${stateTxt}</span>`;
+    box.appendChild(item);
+  });
+  box.scrollTop = box.scrollHeight;
+}
+
+function renderAll() {
+  renderContratos();
+  renderDetail();
+  renderApps();
+  renderTeam();
+  renderQueue();
+}
+
+/* ═══════════════════════════════════════════════════════════
+   EXECUÇÃO EM PARALELO (simulação de orquestração)
+   ═══════════════════════════════════════════════════════════ */
+function launch(appId) {
+  const app = APPS.find(a => a.id === appId);
+  if (!app) return;
+  // não duplica execução do mesmo app+contrato
+  if (queue.some(q => q.id === appId && q.contrato === contratoAtivo && q.state !== "done")) return;
+
+  const q = { id: appId, nome: app.nome, contrato: contratoAtivo, pct: 0, state: "queued" };
+  queue.push(q);
+  renderAll();
+
+  // simula escalonamento: entra em running após pequeno atraso (fila)
+  const startDelay = (queue.filter(x => x.state === "queued").length - 1) * 350;
+  setTimeout(() => {
+    q.state = "running";
+    runningCount++;
+    renderAll();
+    const timer = setInterval(() => {
+      q.pct = Math.min(100, q.pct + Math.random() * 18 + 6);
+      renderQueue();
+      renderApps();
+      if (q.pct >= 100) {
+        clearInterval(timer);
+        q.state = "done";
+        runningCount = Math.max(0, runningCount - 1);
+        renderAll();
+      }
+    }, 260);
+  }, startDelay);
+}
+
+function clearQueue() {
+  queue = [];
+  runningCount = 0;
+  renderAll();
+}
+
+function resetAll() {
+  clearQueue();
+  contratoAtivo = "0908";
+  filter = "all";
+  search = "";
+  document.getElementById("searchInput").value = "";
+  document.querySelectorAll(".filter-pill").forEach(p => p.classList.toggle("active", p.dataset.f === "all"));
+  renderAll();
+}
+
+function toggleTheme() {
+  dark = !dark;
+  document.documentElement.classList.toggle("dark", dark);
+  document.getElementById("themeBtn").textContent = dark ? "☀️" : "🌙";
+}
+
+/* eventos */
+document.getElementById("searchInput").addEventListener("input", e => {
+  search = e.target.value.trim();
+  renderApps();
+});
+document.getElementById("filterGroup").addEventListener("click", e => {
+  if (!e.target.classList.contains("filter-pill")) return;
+  document.querySelectorAll(".filter-pill").forEach(p => p.classList.remove("active"));
+  e.target.classList.add("active");
+  filter = e.target.dataset.f;
+  renderApps();
+});
+
+/* init */
+document.getElementById("metaContratos").textContent = CONTRATOS.length;
+document.getElementById("metaApps").textContent = APPS.length;
+renderAll();
+</script>
+</body>
+</html>

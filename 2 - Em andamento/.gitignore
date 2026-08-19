@@ -1,0 +1,37 @@
+# Ambientes e Variaveis Sensiveis
+.env
+.env.*
+*.env
+auth.json
+config.yaml
+memories/
+SOUL.md
+state.db
+cron/
+gateway/
+profiles/
+.hermes/
+
+# Dependencias e Builds
+node_modules/
+.next/
+dist/
+build/
+out/
+.cache/
+.turbo/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+venv/
+.venv/
+env/
+
+# Arquivos temporarios do Sistema e Office
+~$*
+*.tmp
+*.log
+Thumbs.db
+desktop.ini
+.DS_Store

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HUB de Contratos — V2 Painel Lateral | TM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ── TM Design System v3 — tokens canônicos ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --TM-primary: #C8541C; --TM-primary-hover: #A6451A;
+    --TM-primary-light: #FBEDE3; --TM-primary-light-alpha: rgba(200,84,28,0.12);
+    --tm-bg: #F5F4F1; --tm-bg-card: #FFFFFF; --tm-bg-hover: #ECEAE5;
+    --tm-bg-sidebar: #FAF9F6; --tm-bg-secondary: #E8E5DE; --tm-bg-accent: #FBEDE3; --tm-bg-muted: #EFEDE8;
+    --tm-text: #1A1A1A; --tm-text-muted: #5C5A55; --tm-text-subtle: #8C8A85;
+    --tm-border: #DAD7D0; --tm-border-hover: #B8B5AD; --tm-border-strong: #1A1A1A;
+    --tm-success: #4F7A3A; --tm-info: #345878; --tm-warning: #C8541C; --tm-destructive: #A33B2A;
+    --TM-font-serif: "Roboto Slab", Georgia, serif; --TM-font-sans: "Inter", system-ui, sans-serif; --TM-font-mono: "JetBrains Mono", ui-monospace, monospace;
+    --TM-radius-sm: 4px; --TM-radius-md: 6px; --TM-radius-lg: 8px; --TM-radius-xl: 12px;
+    --TM-shadow-sm: 0 1px 0 rgba(26,26,26,.04), 0 1px 2px rgba(26,26,26,.04);
+    --TM-shadow-md: 0 2px 4px -1px rgba(26,26,26,.08), 0 1px 2px rgba(26,26,26,.04);
+    --TM-shadow-lg: 0 8px 16px -4px rgba(26,26,26,.10), 0 2px 4px -1px rgba(26,26,26,.06);
+  }
+  html.dark {
+    --TM-primary: #E47A4A; --TM-primary-hover: #C8541C; --TM-primary-light: #2B2520; --TM-primary-light-alpha: rgba(228,122,74,0.18);
+    --tm-bg: #161513; --tm-bg-card: #1F1E1B; --tm-bg-hover: #2A2926; --tm-bg-sidebar: #1A1916;
+    --tm-bg-secondary: #2A2926; --tm-bg-accent: #2B2520; --tm-bg-muted: #232220;
+    --tm-text: #EFEDE8; --tm-text-muted: #A8A6A0; --tm-text-subtle: #6E6C66;
+    --tm-border: #34322E; --tm-border-hover: #4A4842; --tm-border-strong: #EFEDE8;
+  }
+  body { font-family: var(--TM-font-sans); background: var(--tm-bg); color: var(--tm-text); font-size: 14px; line-height: 1.6; transition: background .3s, color .3s; }
+
+  /* ── HEADER ── */
+  header { background: var(--tm-bg-card); border-bottom: 1px solid var(--tm-border); padding: 0 24px; height: 56px; display: flex; align-items: center; gap: 14px; position: sticky; top: 0; z-index: 100; box-shadow: var(--TM-shadow-sm); }
+  .hdr-brand { display: flex; align-items: center; gap: 10px; flex-shrink: 0; cursor: pointer; }
+  .hdr-logo-mark { width: 28px; height: 28px; background: var(--TM-primary); border-radius: var(--TM-radius-md); display: flex; align-items: center; justify-content: center; }
+  .hdr-logo-mark svg { width: 16px; height: 16px; stroke: #fff; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+  .hdr-wordmark { font-family: var(--TM-font-serif); font-weight: 600; font-size: 14px; letter-spacing: -0.01em; white-space: nowrap; }
+  .hdr-div { width: 1px; height: 20px; background: var(--tm-border); }
+  .hdr-crumb { font-size: 12px; color: var(--tm-text-subtle); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .hdr-crumb b { color: var(--tm-text-muted); font-weight: 600; }
+  .hdr-right { margin-left: auto; display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+  .version-badge { font-family: var(--TM-font-mono); font-size: 10px; font-weight: 600; letter-spacing: .08em; color: var(--tm-text-subtle); border: 1px solid var(--tm-border); background: var(--tm-bg); padding: 2px 8px; border-radius: var(--TM-radius-sm); white-space: nowrap; }
+  .version-badge .dot { color: var(--tm-success); }
+  .user-chip { display: flex; align-items: center; gap: 8px; border: 1px solid var(--tm-border); border-radius: 20px; padding: 3px 6px 3px 4px; background: var(--tm-bg); }
+  .user-avatar { width: 24px; height: 24px; border-radius: 50%; background: var(--TM-primary); color: #fff; font-size: 10px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+  .user-chip .u-name { font-size: 12px; font-weight: 600; }
+  .role-tag { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; padding: 1px 6px; border-radius: var(--TM-radius-sm); }
+  .role-dev { background: var(--TM-primary-light); color: var(--TM-primary); }
+  .role-gerente { background: rgba(52,88,120,.12); color: var(--tm-info); }
+  .role-usuario { background: rgba(79,122,58,.12); color: var(--tm-success); }
+  .dark-toggle { width: 32px; height: 32px; border: 1px solid var(--tm-border); border-radius: var(--TM-radius-md); background: var(--tm-bg); cursor: pointer; display: flex; align-items: center; justify-content: center; }
+  .dark-toggle svg { width: 15px; height: 15px; stroke: var(--tm-text-muted); fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* ── LOGIN ── */
+  .login-screen { min-height: calc(100vh - 56px); display: flex; align-items: center; justify-content: center; padding: 32px; }
+  .login-card { width: 100%; max-width: 420px; background: var(--tm-bg-card); border: 1px solid var(--tm-border); border-radius: var(--TM-radius-xl); padding: 32px; box-shadow: var(--TM-shadow-lg); }
+  .login-card .tm-mark { width: 44px; height: 44px; background: var(--TM-primary); border-radius: var(--TM-radius-lg); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+  .login-card .tm-mark svg { width: 22px; height: 22px; stroke: #fff; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+  .login-title { font-family: var(--TM-font-serif); font-size: 22px; font-weight: 600; margin-bottom: 4px; }
+  .login-sub { font-size: 13px; color: var(--tm-text-muted); margin-bottom: 24px; }
+  .login-field { margin-bottom: 16px; }
+  .login-field label { display: block; font-size: 12px; font-weight: 600; color: var(--tm-text-muted); margin-bottom: 6px; }
+  .login-field input { width: 100%; padding: 9px 12px; border: 1px solid var(--tm-border); border-radius: var(--TM-radius-md); background: var(--tm-bg-card); color: var(--tm-text); font-family: var(--TM-font-sans); font-size: 14px; }
+  .login-field input:focus { outline: none; border-color: var(--TM-primary); box-shadow: 0 0 0 3px var(--TM-primary-light-alpha); }
+  .role-options { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+  .role-option { display: flex; align-items: center; gap: 12px; padding: 12px; border: 1px solid var(--tm-border); border-radius: var(--TM-radius-lg); cursor: pointer; transition: border-color .15s, background .15s; }
+  .role-option:hover { border-color: var(--tm-border-hover); background: var(--tm-bg-hover); }
+  .role-option.sel { border-color: var(--TM-primary); background: var(--TM-primary-light); }
+  .role-option input { accent-color: var(--TM-primary); }
+  .role-option .ro-name { font-weight: 600; font-size: 14px; }
+  .role-option .ro-desc { font-size: 12px; color: var(--tm-text-muted); }
+  .btn-primary { width: 100%; padding: 11px; border: none; border-radius: var(--TM-radius-md); background: var(--TM-primary); color: #fff; font-family: var(--TM-font-sans); font-size: 14px; font-weight: 600; cursor: pointer; transition: background .15s; }
+  .btn-primary:hover { background: var(--TM-primary-hover); }
+  .login-hint { margin-top: 14px; font-size: 11px; color: var(--tm-text-subtle); text-align: center; }
+
+  /* ── HUB ── */
+  .page { padding: 24px; max-width: 1200px; margin: 0 auto; }
+  .page-title { font-family: var(--TM-font-serif); font-size: 20px; font-weight: 600; margin-bottom: 4px; }
+  .page-sub { font-size: 13px; color: var(--tm-text-muted); margin-bottom: 20px; }
+  .hub-toolbar { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+  .hub-search { flex: 1; min-width: 220px; padding: 9px 12px; border: 1px solid var(--tm-border); border-radius: var(--TM-radius-md); background: var(--tm-bg-card); font-family: var(--TM-font-sans); font-size: 14px; color: var(--tm-text); }
+  .hub-search:focus { outline: none; border-color: var(--TM-primary); box-shadow: 0 0 0 3px var(--TM-primary-light-alpha); }
+  .hub-cnt { font-size: 12px; color: var(--tm-text-subtle); font-family: var(--TM-font-mono); }
+  .hub-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+  .contract-card { background: var(--tm-bg-card); border: 1px solid var(--tm-border); border-radius: var(--TM-radius-xl); padding: 16px; cursor: pointer; transition: border-color .15s, box-shadow .15s, transform .15s; display: flex; flex-direction: column; gap: 10px; }
+  .contract-card:hover { border-color: var(--TM-primary); box-shadow: var(--TM-shadow-md); transform: translateY(-1px); }
+  .contract-card .cc-top { display: flex; align-items: center; gap: 10px; }
+  .contract-card .cc-code { font-family: var(--TM-font-mono); font-size: 12px; font-weight: 700; color: var(--TM-primary); background: var(--TM-primary-light); padding: 3px 8px; border-radius: var(--TM-radius-sm); }
+  .contract-card .cc-alert-dot { margin-left: auto; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; }
+  .cc-alert-dot.has { background: rgba(200,84,28,.14); color: var(--TM-primary); }
+  .contract-card .cc-name { font-family: var(--TM-font-serif); font-size: 16px; font-weight: 600; }
+  .contract-card .cc-meta { font-size: 12px; color: var(--tm-text-muted); display: flex; flex-direction: column; gap: 2px; }
+  .contract-card .cc-meta b { color: var(--tm-text); font-weight: 600; }
+  .cc-footer { margin-top: auto; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--tm-border); padding-top: 10px; font-size: 11px; color: var(--tm-text-subtle); }
+
+  /* ── CONTRATO VIEW (V2: layout 2 colunas — conteúdo + painel de alerta) ── */
+  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--tm-text-muted); cursor: pointer; margin-bottom: 16px; background: none; border: none; font-family: var(--TM-font-sans); }
+  .back-link:hover { color: var(--TM-primary); }
+  .contract-head { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 8px; flex-wrap: wrap; }
+  .contract-head .ch-title { font-family: var(--TM-font-serif); font-size: 22px; font-weight: 600; }
+  .contract-head .ch-meta { font-size: 12px; color: var(--tm-text-muted); margin-top: 2px; }
+  .contract-layout { display: grid; grid-template-columns: 1fr 340px; gap: 18px; align-items: start; }
+  @media (max-width: 900px) { .contract-layout { grid-template-columns: 1fr; } }
+
+  /* Painel lateral de alerta — área PRÓPRIA, não sobrepõe itens */
+  .alert-panel { border: 1px solid rgba(200,84,28,.35); border-top: 4px solid var(--TM-primary); background: var(--tm-bg-card); border-radius: var(--TM-radius-xl); padding: 16px; box-shadow: var(--TM-shadow-sm); position: sticky; top: 72px; }
+  .alert-panel .ap-head { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+  .alert-panel .ap-title { font-weight: 700; font-size: 13px; color: var(--TM-primary); }
+  .alert-panel .ap-count { font-family: var(--TM-font-mono); font-size: 11px; background: var(--TM-primary-light); color: var(--TM-primary); padding: 1px 7px; border-radius: 20px; margin-left: auto; }
+  .alert-panel .ap-item { border: 1px solid var(--tm-border); border-left: 3px solid var(--TM-primary); border-radius: var(--TM-radius-md); padding: 10px 12px; margin-bottom: 8px; font-size: 12.5px; }
+  .alert-panel .ap-item b { color: var(--TM-primary); }
+  .alert-panel .ap-item .ap-tag { display: inline-block; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; background: var(--TM-primary-light); color: var(--TM-primary); border-radius: var(--TM-radius-sm); padding: 1px 6px; margin-bottom: 4px; }
+  .alert-panel .ap-empty { font-size: 12.5px; color: var(--tm-text-subtle); padding: 8px 2px; }
+
+  /* ── ITENS ── */
+  .secao { margin-bottom: 18px; background: var(--tm-bg-card); border: 1px solid var(--tm-border); border-radius: var(--TM-radius-xl); overflow: hidden; }
+  .secao-header { display: flex; align-items: center; gap: 10px; padding: 12px 16px; background: var(--tm-bg-muted); border-bottom: 1px solid var(--tm-border); }
+  .secao-num { font-family: var(--TM-font-mono); font-size: 12px; font-weight: 700; color: var(--TM-primary); background: var(--TM-primary-light); padding: 2px 8px; border-radius: var(--TM-radius-sm); }
+  .secao-nome { font-family: var(--TM-font-serif); font-weight: 600; font-size: 14px; }
+  .secao-cnt { margin-left: auto; font-size: 11px; color: var(--tm-text-subtle); font-family: var(--TM-font-mono); }
+  table { width: 100%; border-collapse: collapse; }
+  th { text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--tm-text-subtle); font-weight: 600; padding: 8px 16px; border-bottom: 1px solid var(--tm-border); }
+  td { padding: 10px 16px; border-bottom: 1px solid var(--tm-border); font-size: 14px; vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  td.item-code { font-family: var(--TM-font-mono); font-size: 13px; font-weight: 600; color: var(--tm-text-muted); white-space: nowrap; width: 70px; }
+  td.un-chip { font-size: 12px; color: var(--tm-text-muted); white-space: nowrap; width: 80px; }
+  .footer-bar { display: flex; align-items: center; gap: 12px; margin-top: 20px; padding: 12px 0; border-top: 1px solid var(--tm-border); font-size: 12px; color: var(--tm-text-subtle); }
+  .footer-bar .fb-ver { font-family: var(--TM-font-mono); font-size: 11px; color: var(--tm-text-subtle); border: 1px solid var(--tm-border); padding: 2px 8px; border-radius: var(--TM-radius-sm); }
+  .footer-bar .fb-msg { margin-left: auto; }
+
+  .hidden { display: none !important; }
+  @media (max-width: 720px) { header { padding: 0 14px; } .page { padding: 16px; } }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="hdr-brand" onclick="goHub()">
+    <div class="hdr-logo-mark"><svg viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3z"/><path d="M9 12l2 2 4-4"/></svg></div>
+    <div class="hdr-wordmark">TM&nbsp;Hub de Contratos</div>
+  </div>
+  <div class="hdr-div"></div>
+  <div class="hdr-crumb" id="hdr-crumb">Seleção de contrato</div>
+  <div class="hdr-right">
+    <span class="version-badge"><span class="dot">●</span> v1.1.0-rc.1</span>
+    <div class="user-chip" id="user-chip">
+      <div class="user-avatar" id="user-avatar">T</div>
+      <span class="u-name" id="user-name">Thiago</span>
+      <span class="role-tag role-dev" id="user-role-tag">Dev</span>
+    </div>
+    <button class="dark-toggle" onclick="toggleDark()" title="Tema"><svg viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+  </div>
+</header>
+
+<!-- LOGIN -->
+<div id="login-screen" class="login-screen">
+  <div class="login-card">
+    <div class="tm-mark"><svg viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3z"/><path d="M9 12l2 2 4-4"/></svg></div>
+    <div class="login-title">Acesso ao Hub de Contratos</div>
+    <div class="login-sub">Preventivas 2026 — Apoio operacional. Escolha o papel para simular a permissão.</div>
+    <div class="login-field">
+      <label>Usuário</label>
+      <input id="login-user" value="Thiago" />
+    </div>
+    <div class="login-field">
+      <label>Papel de acesso</label>
+      <div class="role-options" id="role-options">
+        <label class="role-option sel"><input type="radio" name="role" value="dev" checked><span><span class="ro-name">Dev <span class="role-tag role-dev">Dev</span></span><br><span class="ro-desc">Acesso total: edição, versões e publicar</span></span></label>
+        <label class="role-option"><input type="radio" name="role" value="gerente"><span><span class="ro-name">Gerente <span class="role-tag role-gerente">Gerente</span></span><br><span class="ro-desc">Visualiza tudo e aprova alterações</span></span></label>
+        <label class="role-option"><input type="radio" name="role" value="usuario"><span><span class="ro-name">Usuário comum <span class="role-tag role-usuario">Usuário</span></span><br><span class="ro-desc">Somente leitura dos itens e alertas</span></span></label>
+      </div>
+    </div>
+    <button class="btn-primary" onclick="doLogin()">Entrar</button>
+    <div class="login-hint">Protótipo de UI — autenticação real será implementada na Vercel (fase Workspace).</div>
+  </div>
+</div>
+
+<!-- HUB -->
+<div id="hub-screen" class="page hidden">
+  <div class="page-title">Selecione o contrato</div>
+  <div class="page-sub">Escolha um contrato para visualizar os itens do memorial. Contratos com alerta ativo mostram o indicador <b style="color:var(--TM-primary)">!</b>.</div>
+  <div class="hub-toolbar">
+    <input class="hub-search" id="hub-search" placeholder="Buscar por código ou cidade…" oninput="filterHub(this.value)">
+    <span class="hub-cnt" id="hub-cnt">9 contratos</span>
+  </div>
+  <div class="hub-grid" id="hub-grid"></div>
+</div>
+
+<!-- CONTRATO (V2) -->
+<div id="contract-screen" class="page hidden">
+  <button class="back-link" onclick="goHub()">← Voltar ao hub</button>
+  <div class="contract-head">
+    <div>
+      <div class="ch-title" id="c-title">0908 — SÃO PAULO</div>
+      <div class="ch-meta" id="c-meta">Lote 03 · MAFFENG ENGENHARIA E MANUTENÇÃO LTDA · BDI 28,82%</div>
+    </div>
+  </div>
+
+  <div class="contract-layout">
+    <div>
+      <div id="items"></div>
+    </div>
+
+    <!-- V2: alerta em painel lateral dedicado — nunca sobrepõe a tabela -->
+    <aside class="alert-panel" id="alert-panel">
+      <div class="ap-head">
+        <span class="ap-title">⚠️ Atenção</span>
+        <span class="ap-count" id="ap-count">2 avisos</span>
+      </div>
+      <div id="ap-body">
+        <div class="ap-item"><span class="ap-tag">Ordem</span><br><b>Detalhes das paredes:</b> colocar logo abaixo dela. NÃO colocar todos os detalhes no final do tópico.</div>
+        <div class="ap-item"><span class="ap-tag">Orçamentos</span><br><b>Formato PDF:</b> enviar apenas em PDF com assinatura eletrônica. NÃO enviar em Excel.</div>
+      </div>
+    </aside>
+  </div>
+
+  <div class="footer-bar">
+    <span class="fb-ver">v1.1.0-rc.1</span>
+    <span>Publicado em produção via Vercel · versão estável protegida</span>
+    <span class="fb-msg">Feito por TM Sempre Tecnologia</span>
+  </div>
+</div>
+
+<script>
+const CONTRATOS = [
+  { codigo: "0908", nome: "SÃO PAULO", lote: "03", proponente: "MAFFENG ENGENHARIA E MANUTENÇÃO LTDA", alerta: 2 },
+  { codigo: "1507", nome: "CUIABÁ", lote: "01", proponente: "MAFFENG ENGENHARIA E MANUTENÇÃO LTDA", alerta: 0 },
+  { codigo: "1565", nome: "SÃO JOSÉ DO RIO PRETO", lote: "02", proponente: "MAFFENG ENGENHARIA E MANUTENÇÃO LTDA", alerta: 1 },
+  { codigo: "2056", nome: "DIVINÓPOLIS", lote: "01", proponente: "MAFFENG ENGENHARIA E MANUTENÇÃO LTDA", alerta: 0 },
+  { codigo: "2057", nome: "VARGINHA", lote: "02", proponente: "MAFFENG ENGENHARIA E MANUTENÇÃO LTDA", alerta: 0 },
+  { codigo: "2626", nome: "SALINAS", lote: "01", proponente: "MAFFENG ENGENHARIA E MANUTENÇÃO LTDA", alerta: 3 },
+  { codigo: "2627", nome: "GOVERNADOR VALADARES", lote: "01", proponente: "MAFFENG ENGENHARIA E MANUTENÇÃO LTDA", alerta: 0 },
+  { codigo: "3575", nome: "TANGARÁ DA SERRA", lote: "02", proponente: "MAFFENG ENGENHARIA E MANUTENÇÃO LTDA", alerta: 1 },
+  { codigo: "6122", nome: "MATO GROSSO DO SUL", lote: "01", proponente: "MAFFENG ENGENHARIA E MANUTENÇÃO LTDA", alerta: 0 },
+];
+
+const ITENS_EXEMPLO = [
+  { secao: "1", nome: "PRELIMINARES", itens: [
+    { item: "1.1", descricao: "Chamado", unidade: "un" },
+    { item: "1.2", descricao: "Deslocamento", unidade: "km" },
+    { item: "1.3", descricao: "Revisão de instalações", unidade: "un" },
+  ]},
+  { secao: "17", nome: "PINTURA", itens: [
+    { item: "17.1", descricao: "Preparação de superfície — lixamento e limpeza", unidade: "m²" },
+    { item: "17.2", descricao: "Aplicação de fundo selador acrílico", unidade: "m²" },
+    { item: "17.3", descricao: "Pintura acrílica fosca PVA — paredes internas", unidade: "m²" },
+    { item: "17.4", descricao: "Pintura esmalte sintético — esquadrias", unidade: "m²" },
+  ]},
+];
+
+let user = null, current = null;
+
+function toggleDark() { document.documentElement.classList.toggle('dark'); }
+
+function doLogin() {
+  const name = document.getElementById('login-user').value.trim() || "Usuário";
+  const role = document.querySelector('input[name="role"]:checked').value;
+  user = { name, role };
+  const map = { dev: ["Thiago", "T", "role-dev", "Dev"], gerente: [name, name[0], "role-gerente", "Gerente"], usuario: [name, name[0], "role-usuario", "Usuário"] };
+  const [un, av, rc, rt] = map[role];
+  document.getElementById('user-name').textContent = un;
+  document.getElementById('user-avatar').textContent = av;
+  const tag = document.getElementById('user-role-tag');
+  tag.className = 'role-tag ' + rc;
+  tag.textContent = rt;
+  document.getElementById('login-screen').classList.add('hidden');
+  goHub();
+}
+
+function goHub() {
+  current = null;
+  document.getElementById('contract-screen').classList.add('hidden');
+  document.getElementById('hub-screen').classList.remove('hidden');
+  document.getElementById('hdr-crumb').textContent = "Seleção de contrato";
+  renderHub();
+}
+
+function renderHub() {
+  const grid = document.getElementById('hub-grid');
+  const q = (document.getElementById('hub-search').value || '').toLowerCase();
+  const list = CONTRATOS.filter(c => (c.codigo + ' ' + c.nome).toLowerCase().includes(q));
+  document.getElementById('hub-cnt').textContent = list.length + ' contrato' + (list.length === 1 ? '' : 's');
+  grid.innerHTML = list.map(c => `
+    <div class="contract-card" onclick="openContract('${c.codigo}')">
+      <div class="cc-top">
+        <span class="cc-code">${c.codigo}</span>
+        ${c.alerta ? `<span class="cc-alert-dot has" title="${c.alerta} alertas">${c.alerta}</span>` : ''}
+      </div>
+      <div class="cc-name">${c.nome}</div>
+      <div class="cc-meta"><span>Lote <b>${c.lote}</b></span><span>${c.proponente}</span></div>
+      <div class="cc-footer"><span>${c.alerta ? '⚠️ possui alertas' : 'Sem alertas'}</span><span>›</span></div>
+    </div>`).join('');
+}
+
+function filterHub(v) { renderHub(); }
+
+function openContract(codigo) {
+  current = CONTRATOS.find(c => c.codigo === codigo);
+  document.getElementById('hub-screen').classList.add('hidden');
+  document.getElementById('contract-screen').classList.remove('hidden');
+  document.getElementById('hdr-crumb').innerHTML = `Contrato <b>${current.codigo} — ${current.nome}</b>`;
+  document.getElementById('c-title').textContent = `${current.codigo} — ${current.nome}`;
+  document.getElementById('c-meta').textContent = `Lote ${current.lote} · ${current.proponente} · BDI 28,82%`;
+  const ap = document.getElementById('ap-body');
+  const cnt = document.getElementById('ap-count');
+  if (current.alerta > 0) {
+    cnt.textContent = current.alerta + (current.alerta === 1 ? ' aviso' : ' avisos');
+    ap.innerHTML = `<div class="ap-item"><span class="ap-tag">Ordem</span><br><b>Detalhes das paredes:</b> colocar logo abaixo dela. NÃO colocar todos os detalhes no final do tópico.</div>
+      <div class="ap-item"><span class="ap-tag">Orçamentos</span><br><b>Formato PDF:</b> enviar apenas em PDF com assinatura eletrônica. NÃO enviar em Excel.</div>`;
+  } else {
+    cnt.textContent = "0 avisos";
+    ap.innerHTML = `<div class="ap-empty">Sem alertas ativos para este contrato. ✔</div>`;
+  }
+  renderItems();
+  window.scrollTo(0, 0);
+}
+
+function renderItems() {
+  const box = document.getElementById('items');
+  box.innerHTML = ITENS_EXEMPLO.map(s => `
+    <div class="secao">
+      <div class="secao-header">
+        <span class="secao-num">${s.secao}</span>
+        <span class="secao-nome">${s.nome}</span>
+        <span class="secao-cnt">${s.itens.length} itens</span>
+      </div>
+      <table>
+        <thead><tr><th>Código</th><th>Descrição</th><th>Un.</th></tr></thead>
+        <tbody>${s.itens.map(i => `
+          <tr>
+            <td class="item-code">${i.item}</td>
+            <td>${i.descricao}</td>
+            <td class="un-chip">${i.unidade}</td>
+          </tr>`).join('')}
+        </tbody>
+      </table>
+    </div>`).join('');
+}
+
+renderHub();
+</script>
+</body>
+</html>

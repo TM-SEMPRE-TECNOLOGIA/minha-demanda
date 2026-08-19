@@ -27,15 +27,17 @@ def main(md_path):
         content = f.read()
 
     # Fix: skip TOC entry, find the real section
+    memorial_pos = -1
     idx = 0
     while True:
         pos = content.find("- Memorial de cálculo e itens:", idx)
-        if pos == -1: break
-        if pos > 50000: memorial_pos = pos; break
+        if pos == -1:
+            break
+        if pos > 1000:
+            memorial_pos = pos
+            break
         idx = pos + 1
-    else:
-        memorial_pos = -1
-    # memorial_pos = content.find('- Memorial de cálculo e itens:')
+
     body = content[:memorial_pos] if memorial_pos > 0 else content
     body_lines = body.split('\n')
 

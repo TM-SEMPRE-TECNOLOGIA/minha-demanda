@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mission Control · Pipeline de Apps | UX 02 — Produção</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════════════
+   DS ORÁCULO (Mission Control) — tokens 1:1 do index.css do Mission Control
+   Tema Zinc/Neutro shadcn · primary quase preto · accent INDIGO
+   UX 02 — PIPELINE / FILA DE PRODUÇÃO (montar receita → fases)
+   ═══════════════════════════════════════════════════════════════ */
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --card-border: 240 5.9% 90%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --popover-border: 240 5.9% 90%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 239 84% 67%;
+    --sidebar: 240 20% 98%;
+    --sidebar-foreground: 240 10% 18%;
+    --sidebar-border: 240 18% 88%;
+    --sidebar-primary: 239 84% 67%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 239 100% 97%;
+    --sidebar-accent-foreground: 240 16% 14%;
+    --sidebar-ring: 239 84% 67%;
+    --primary-hover: 240 5.9% 20%;
+    --oracle: 239 84% 67%;
+    --oracle-deep: 239 84% 55%;
+    --oracle-soft: 239 100% 97%;
+    --bg-hover: 240 4.8% 95.9%;
+    --bg-secondary: 240 4.8% 95.9%;
+    --subtle: 240 5% 55%;
+    --success: 142 71% 45%;
+    --success-soft: 142 70% 96%;
+    --info: 239 84% 67%;
+    --radius: 0.5rem;
+  }
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --card-border: 240 3.7% 15.9%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --popover-border: 240 3.7% 15.9%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 238 92% 76%;
+    --sidebar: 240 14% 9%;
+    --sidebar-foreground: 240 10% 92%;
+    --sidebar-border: 240 16% 20%;
+    --sidebar-primary: 238 92% 76%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 22% 15%;
+    --sidebar-accent-foreground: 240 12% 96%;
+    --sidebar-ring: 238 92% 76%;
+    --primary-hover: 0 0% 90%;
+    --oracle: 238 92% 76%;
+    --oracle-deep: 238 92% 70%;
+    --oracle-soft: 240 22% 15%;
+    --bg-hover: 240 3.7% 15.9%;
+    --bg-secondary: 240 3.7% 15.9%;
+    --subtle: 240 5% 55%;
+    --success: 142 69% 58%;
+    --success-soft: 142 30% 18%;
+    --info: 238 92% 76%;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-font-smoothing: antialiased; }
+  body {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-size: 14px; line-height: 1.55;
+    min-height: 100vh;
+    transition: background .25s, color .25s;
+  }
+  .font-mono { font-family: "JetBrains Mono", ui-monospace, monospace; }
+
+  header {
+    position: sticky; top: 0; z-index: 50;
+    background: hsl(var(--background) / .8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid hsl(var(--border));
+    padding: 0 24px; height: 56px;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .brand { display: flex; align-items: center; gap: 11px; cursor: pointer; }
+  .brand-mark { width: 28px; height: 28px; border-radius: 8px; background: hsl(var(--primary)); display: grid; place-items: center; color: hsl(var(--primary-foreground)); font-weight: 700; font-size: 13px; }
+  .brand-name { font-weight: 600; font-size: 14.5px; letter-spacing: -.01em; }
+  .brand-sub { font-family: "JetBrains Mono", monospace; font-size: 9.5px; text-transform: uppercase; letter-spacing: .18em; color: hsl(var(--muted-foreground)); }
+  .hdr-div { width: 1px; height: 24px; background: hsl(var(--border)); }
+  .hdr-crumb { display: flex; align-items: center; gap: 8px; color: hsl(var(--muted-foreground)); font-size: 13px; }
+  .hdr-crumb b { color: hsl(var(--foreground)); font-weight: 600; }
+  .hdr-right { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+  .icon-btn { width: 32px; height: 32px; border-radius: 8px; border: 1px solid hsl(var(--border)); background: hsl(var(--card)); color: hsl(var(--muted-foreground)); cursor: pointer; display: grid; place-items: center; font-size: 15px; transition: all .15s; }
+  .icon-btn:hover { border-color: hsl(var(--sidebar-primary)); color: hsl(var(--foreground)); background: hsl(var(--bg-hover)); }
+
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 26px 24px 70px; }
+
+  .hero { margin-bottom: 24px; }
+  .hero .eyebrow { font-family: "JetBrains Mono", monospace; font-size: 11px; text-transform: uppercase; letter-spacing: .16em; color: hsl(var(--oracle-deep)); font-weight: 600; display: inline-flex; align-items: center; gap: 8px; }
+  .hero .eyebrow::before { content: ""; width: 22px; height: 2px; background: hsl(var(--oracle)); border-radius: 2px; }
+  .hero h1 { font-size: 30px; font-weight: 800; margin: 8px 0 6px; letter-spacing: -.025em; }
+  .hero p { color: hsl(var(--muted-foreground)); max-width: 660px; font-size: 14px; }
+  .hero-meta { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+  .chip { display: inline-flex; align-items: center; gap: 7px; padding: 4px 11px; border-radius: 999px; background: hsl(var(--card)); border: 1px solid hsl(var(--border)); font-size: 11.5px; color: hsl(var(--muted-foreground)); }
+  .chip .dot { width: 7px; height: 7px; border-radius: 50%; background: hsl(var(--success)); }
+  .chip strong { color: hsl(var(--foreground)); font-weight: 600; }
+
+  .section-title { font-weight: 600; font-size: 15px; margin-bottom: 4px; display: flex; align-items: center; gap: 9px; letter-spacing: -.01em; }
+  .section-title .num { font-family: "JetBrains Mono", monospace; font-size: 10px; font-weight: 600; color: hsl(var(--oracle-deep)); background: hsl(var(--oracle-soft)); border: 1px solid hsl(var(--oracle) / .3); padding: 2px 8px; border-radius: 6px; }
+  .section-sub { color: hsl(var(--muted-foreground)); font-size: 12.5px; margin-bottom: 14px; }
+
+  .contrato-picker { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+  .contrato-chip { border: 1px solid hsl(var(--border)); background: hsl(var(--card)); border-radius: 10px; padding: 8px 13px; cursor: pointer; display: flex; flex-direction: column; gap: 1px; min-width: 128px; transition: all .15s; text-align: left; }
+  .contrato-chip:hover { border-color: hsl(var(--sidebar-primary)); background: hsl(var(--bg-hover)); }
+  .contrato-chip.active { border-color: hsl(var(--oracle)); background: hsl(var(--oracle-soft)); box-shadow: 0 0 0 1px hsl(var(--oracle) / .4); }
+  .contrato-chip .cc-cod { font-family: "JetBrains Mono", monospace; font-weight: 600; font-size: 14px; color: hsl(var(--foreground)); }
+  .contrato-chip.active .cc-cod { color: hsl(var(--oracle-deep)); }
+  .contrato-chip .cc-nome { font-size: 11px; color: hsl(var(--muted-foreground)); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+  /* ── MONTAR RECEITA (seleção de apps por fase) ──────────── */
+  .recipe-bar {
+    display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+    background: hsl(var(--card)); border: 1px solid hsl(var(--border));
+    border-radius: 12px; padding: 13px 18px; margin: 14px 0 20px;
+  }
+  .recipe-bar .rb-label { font-family: "JetBrains Mono", monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: .1em; color: hsl(var(--subtle)); }
+  .recipe-bar .rb-count { font-weight: 700; font-size: 17px; }
+  .recipe-bar .rb-hint { color: hsl(var(--muted-foreground)); font-size: 12.5px; }
+  .recipe-bar .rb-actions { margin-left: auto; display: flex; gap: 9px; }
+  .btn { border: none; border-radius: 9px; cursor: pointer; font-family: "Inter", sans-serif; font-weight: 600; font-size: 13px; padding: 9px 18px; display: inline-flex; align-items: center; gap: 8px; transition: all .15s; }
+  .btn-primary { background: hsl(var(--primary)); color: hsl(var(--primary-foreground)); }
+  .btn-primary:hover:not(:disabled) { background: hsl(var(--primary-hover)); }
+  .btn-outline { background: transparent; border: 1px solid hsl(var(--border)); color: hsl(var(--foreground)); }
+  .btn-outline:hover:not(:disabled) { background: hsl(var(--bg-hover)); }
+  .btn:disabled { opacity: .5; cursor: not-allowed; }
+
+  .phases { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); margin-bottom: 26px; }
+  .phase {
+    background: hsl(var(--card)); border: 1px solid hsl(var(--border));
+    border-radius: 14px; padding: 14px; position: relative; overflow: hidden;
+    transition: border-color .2s;
+  }
+  .phase.active { border-color: hsl(var(--oracle) / .6); box-shadow: 0 0 0 1px hsl(var(--oracle) / .25); }
+  .phase.done { border-color: hsl(var(--success) / .5); }
+  .phase-head { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .phase-ic { width: 36px; height: 36px; border-radius: 9px; display: grid; place-items: center; font-size: 17px; background: hsl(var(--bg-secondary)); border: 1px solid hsl(var(--border)); }
+  .phase.active .phase-ic { background: hsl(var(--oracle-soft)); border-color: hsl(var(--oracle) / .3); color: hsl(var(--oracle-deep)); }
+  .phase.done .phase-ic { background: hsl(var(--success-soft)); border-color: hsl(var(--success) / .3); color: hsl(var(--success)); }
+  .phase-name { font-weight: 600; font-size: 13.5px; }
+  .phase-eta { font-family: "JetBrains Mono", monospace; font-size: 10px; color: hsl(var(--subtle)); }
+  .phase-st {
+    margin-left: auto; font-family: "JetBrains Mono", monospace; font-size: 10px;
+    padding: 3px 9px; border-radius: 99px; text-transform: uppercase; letter-spacing: .06em;
+    background: hsl(var(--bg-secondary)); color: hsl(var(--subtle));
+  }
+  .phase.active .phase-st { background: hsl(var(--oracle-soft)); color: hsl(var(--oracle-deep)); }
+  .phase.done .phase-st { background: hsl(var(--success-soft)); color: hsl(var(--success)); }
+  .phase-progress { height: 5px; border-radius: 99px; background: hsl(var(--bg-secondary)); overflow: hidden; margin-bottom: 10px; }
+  .phase-progress > i { display: block; height: 100%; background: hsl(var(--oracle)); width: 0%; transition: width .3s; }
+  .phase.done .phase-progress > i { background: hsl(var(--success)); }
+  .phase-apps { display: flex; flex-direction: column; gap: 6px; }
+  .papp {
+    display: flex; align-items: center; gap: 9px;
+    border: 1px solid hsl(var(--border)); border-radius: 8px;
+    padding: 7px 10px; font-size: 12px; cursor: pointer; user-select: none;
+    background: hsl(var(--background)); transition: all .15s;
+  }
+  .papp:hover { border-color: hsl(var(--sidebar-primary)); }
+  .papp .p-ic { font-size: 14px; }
+  .papp .p-name { flex: 1; font-weight: 500; }
+  .papp .p-check {
+    width: 17px; height: 17px; border-radius: 5px; border: 1.5px solid hsl(var(--border));
+    display: grid; place-items: center; font-size: 11px; color: transparent; transition: all .15s;
+  }
+  .papp.checked { border-color: hsl(var(--oracle) / .6); background: hsl(var(--oracle-soft)); }
+  .papp.checked .p-check { background: hsl(var(--oracle)); border-color: hsl(var(--oracle)); color: #fff; }
+  .papp.locked { opacity: .45; cursor: not-allowed; pointer-events: none; }
+  .papp.running { border-color: hsl(var(--oracle)); background: hsl(var(--oracle-soft)); }
+  .papp.done-app { border-color: hsl(var(--success) / .5); background: hsl(var(--success-soft)); }
+  .papp .p-bar { width: 46px; height: 4px; border-radius: 99px; background: hsl(var(--bg-secondary)); overflow: hidden; }
+  .papp .p-bar > i { display: block; height: 100%; background: hsl(var(--oracle)); width: 0%; transition: width .3s; }
+  .papp .p-state { font-family: "JetBrains Mono", monospace; font-size: 10px; color: hsl(var(--subtle)); width: 58px; text-align: right; }
+  .papp.done-app .p-state { color: hsl(var(--success)); }
+
+  /* ── BARRA GERAL / PROGRESSO DO FLUXO ───────────────────── */
+  .flow-bar {
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+    background: hsl(var(--card)); border: 1px solid hsl(var(--border));
+    border-radius: 12px; padding: 16px 18px; margin-bottom: 20px;
+  }
+  .flow-bar .fb-title { font-weight: 600; font-size: 14px; }
+  .flow-bar .fb-sub { color: hsl(var(--muted-foreground)); font-size: 12px; }
+  .flow-bar .fb-progress { flex: 1; min-width: 180px; height: 8px; border-radius: 99px; background: hsl(var(--bg-secondary)); overflow: hidden; }
+  .flow-bar .fb-progress > i { display: block; height: 100%; border-radius: 99px; background: linear-gradient(90deg, hsl(var(--oracle)), hsl(258 90% 66%)); width: 0%; transition: width .4s; }
+  .flow-bar .fb-pct { font-family: "JetBrains Mono", monospace; font-weight: 600; font-size: 16px; }
+
+  /* ── LOG DE FASES ───────────────────────────────────────── */
+  .log-box {
+    background: hsl(var(--card)); border: 1px solid hsl(var(--border));
+    border-radius: 12px; overflow: hidden; margin-top: 8px;
+  }
+  .log-head { padding: 12px 16px; border-bottom: 1px solid hsl(var(--border)); display: flex; align-items: center; gap: 10px; }
+  .log-head h3 { font-size: 13.5px; font-weight: 600; }
+  .log-body { padding: 10px 16px; max-height: 190px; overflow-y: auto; font-family: "JetBrains Mono", monospace; font-size: 11.5px; display: flex; flex-direction: column; gap: 4px; }
+  .log-line { display: flex; gap: 10px; color: hsl(var(--muted-foreground)); }
+  .log-line .t { color: hsl(var(--subtle)); flex-shrink: 0; }
+  .log-line .agent { color: hsl(var(--oracle-deep)); flex-shrink: 0; font-weight: 600; }
+  .log-line.ok { color: hsl(var(--success)); }
+  .log-empty { color: hsl(var(--subtle)); padding: 6px 0; }
+
+  footer { border-top: 1px solid hsl(var(--border)); padding: 18px 24px; color: hsl(var(--subtle)); font-size: 12px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  footer .f-right { margin-left: auto; font-family: "JetBrains Mono", monospace; font-size: 11px; }
+  ::-webkit-scrollbar { width: 9px; height: 9px; }
+  ::-webkit-scrollbar-thumb { background: hsl(var(--border)); border-radius: 99px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  @media (max-width: 640px) {
+    .wrap { padding: 20px 14px 50px; }
+    .hero h1 { font-size: 24px; }
+    .hdr-crumb { display: none; }
+    .recipe-bar .rb-actions { margin-left: 0; width: 100%; }
+    .recipe-bar .rb-actions .btn { flex: 1; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand" onclick="toggleTheme()" title="alternar tema">
+    <div class="brand-mark">🦉</div>
+    <div>
+      <div class="brand-name">Mission Control</div>
+      <div class="brand-sub">Pipeline de Apps · UX 02 Produção</div>
+    </div>
+  </div>
+  <div class="hdr-div"></div>
+  <div class="hdr-crumb">Mission Control <span>›</span> <b>Pipeline</b></div>
+  <div class="hdr-right">
+    <button class="icon-btn" id="themeBtn" onclick="toggleTheme()" title="Alternar tema">🌙</button>
+    <button class="icon-btn" onclick="resetAll()" title="Limpar execuções">↺</button>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="hero">
+    <span class="eyebrow">Pipeline · Fluxo de produção</span>
+    <h1>Fila de Produção</h1>
+    <p>Monte a <b>receita</b> do contrato marcando as skills desejadas. O fluxo roda em <b>4 estações</b> (Coletar → Gerar → Validar → Entregar) — os apps de cada estação executam em paralelo, orquestrados pelo time de agentes, até o resultado final.</p>
+    <div class="hero-meta">
+      <span class="chip"><span class="dot"></span> <strong id="metaContratos">9</strong>&nbsp;contratos</span>
+      <span class="chip"><strong id="metaApps">10</strong>&nbsp;apps / skills</span>
+      <span class="chip"><strong id="metaItens">—</strong>&nbsp;itens no contrato ativo</span>
+      <span class="chip">⚙️ <strong>4</strong>&nbsp;estações</span>
+    </div>
+  </div>
+
+  <!-- CONTRATOS -->
+  <div class="section-title"><span class="num">01</span> Selecione o contrato</div>
+  <div class="section-sub">A receita pertence ao contrato ativo — trocar de contrato limpa a seleção.</div>
+  <div class="contrato-picker" id="contratoPicker"></div>
+
+  <!-- RECEITA -->
+  <div class="section-title" style="margin-top:24px;"><span class="num">02</span> Monte a receita</div>
+  <div class="section-sub">Clique nas skills para incluir na produção. Depois aperte <b>Executar receita</b>.</div>
+
+  <div class="phases" id="phases"></div>
+
+  <div class="recipe-bar">
+    <div>
+      <div class="rb-label">Receita do contrato</div>
+      <div class="rb-count"><span id="recCount">0</span> / 10 skills</div>
+    </div>
+    <span class="rb-hint" id="recHint">Selecione ao menos 1 skill para executar.</span>
+    <div class="rb-actions">
+      <button class="btn btn-outline" onclick="selectAll()">Selecionar tudo</button>
+      <button class="btn btn-primary" id="runRecipeBtn" onclick="runRecipe()">▶ Executar receita</button>
+    </div>
+  </div>
+
+  <!-- EXECUÇÃO -->
+  <div class="section-title"><span class="num">03</span> Acompanhe o fluxo</div>
+  <div class="section-sub">As estações liberam conforme as skills anteriores concluem — apps da mesma estação rodam em paralelo.</div>
+
+  <div class="flow-bar">
+    <div>
+      <div class="fb-title" id="flowTitle">Nenhuma produção iniciada</div>
+      <div class="fb-sub" id="flowSub">Monte a receita e clique em Executar receita.</div>
+    </div>
+    <div class="fb-progress"><i id="flowBar" style="width:0%"></i></div>
+    <span class="fb-pct" id="flowPct">0%</span>
+  </div>
+
+  <div class="log-box">
+    <div class="log-head">
+      <h3>Registro de produção</h3>
+      <span class="chip" id="logStatus"><span class="dot"></span> ocioso</span>
+    </div>
+    <div class="log-body" id="logBody">
+      <div class="log-empty">Ainda sem eventos. Execute uma receita para ver o log.</div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <span>Mission Control · TM Sempre Tecnologia</span>
+  <span class="f-right">UX 02 · Pipeline (4 estações) · DS Oráculo · dados-contratos.json</span>
+</footer>
+
+<script>
+/* ═══════════════════════════════════════════════════════════
+   DADOS REAIS — extraídos de dados-contratos.json (não inventado)
+   ═══════════════════════════════════════════════════════════ */
+const CONTRATOS = [
+  { codigo: "0908", nome: "SAO PAULO",   lote: "03", secoes: 62, itens: 467 },
+  { codigo: "1507", nome: "CUIABA",      lote: "",   secoes: 61, itens: 446 },
+  { codigo: "1565", nome: "SJRP",        lote: "04", secoes: 62, itens: 467 },
+  { codigo: "2056", nome: "DIVINOPOLIS", lote: "03", secoes: 20, itens: 447 },
+  { codigo: "2057", nome: "VARGINHA",    lote: "04", secoes: 30, itens: 478 },
+  { codigo: "2626", nome: "SALINAS",     lote: "01", secoes: 30, itens: 499 },
+  { codigo: "2627", nome: "VALADARES",   lote: "02", secoes: 30, itens: 499 },
+  { codigo: "3575", nome: "TANGARA",     lote: "",   secoes: 30, itens: 477 },
+  { codigo: "6122", nome: "MATO GROSSO DO SUL", lote: "07", secoes: 20, itens: 447 }
+];
+
+/* Apps organizados por ESTAÇÃO do pipeline */
+const FASES = [
+  { id: "coletar",  ic: "📥", nome: "Coletar dados",  apps: ["fotos", "pasta"] },
+  { id: "gerar",    ic: "🏭", nome: "Gerar",          apps: ["rel-sp2", "rel-trad", "rel-sp1", "memorial", "memorial-calc", "orcamento"] },
+  { id: "validar",  ic: "🔎", nome: "Validar",        apps: ["descricoes"] },
+  { id: "entregar", ic: "📦", nome: "Entregar",       apps: ["docx"] }
+];
+
+const APPS = {
+  "rel-sp2":       { ic: "📄", nome: "Gerar Relatório SP2",         desc: "Memória de cálculo + fotos 7cm.",  grupo: "rel" },
+  "rel-trad":      { ic: "📑", nome: "Gerar Relatório Tradicional", desc: "Fotos 10cm.",                      grupo: "rel" },
+  "rel-sp1":       { ic: "🗂️", nome: "Gerar Relatório SP1",         desc: "Modo SP1.",                        grupo: "rel" },
+  "memorial":      { ic: "📘", nome: "Gerar Memorial Final",        desc: "Memorial descritivo consolidado.", grupo: "doc" },
+  "descricoes":    { ic: "✍️", nome: "Validar / Gerar Descrições",  desc: "Placeholders + descrições.",        grupo: "doc" },
+  "docx":          { ic: "⬇️", nome: "Baixar .docx",                desc: "Relatório final para a pasta.",    grupo: "doc" },
+  "fotos":         { ic: "📷", nome: "Ver Fotos",                   desc: "Análise das fotos da vistoria.",   grupo: "view" },
+  "pasta":         { ic: "📁", nome: "Abrir Pasta",                 desc: "Pasta do contrato no disco.",      grupo: "view" },
+  "orcamento":     { ic: "💰", nome: "Previsão Orçamentária",       desc: "Planilha .xlsx.",                  grupo: "doc" },
+  "memorial-calc": { ic: "🧮", nome: "Memorial de Cálculo",         desc: "Planilha .xlsx.",                  grupo: "doc" }
+};
+
+const AGENTES = [
+  { nome: "Oráculo",     avatar: "🦉", cor: "#6366F1", role: "Orquestrador" },
+  { nome: "Relatórios",  avatar: "R",  cor: "#52525B", role: "Pipeline V5" },
+  { nome: "Documentos",  avatar: "D",  cor: "#0284C7", role: "Memorial/Descrições" },
+  { nome: "Visual",      avatar: "V",  cor: "#059669", role: "Fotos/Pastas" },
+  { nome: "Downloads",   avatar: "DL", cor: "#64748B", role: ".docx / .xlsx" }
+];
+
+let contratoAtivo = "0908";
+let selected = new Set();
+let tasks = [];          // { id, fase, pct, state }
+let running = 0;
+let dark = false;
+
+const fmt = () => {
+  const d = new Date();
+  return d.toTimeString().slice(0, 8);
+};
+
+function log(agent, msg, ok) {
+  const body = document.getElementById("logBody");
+  const empty = body.querySelector(".log-empty");
+  if (empty) empty.remove();
+  const line = document.createElement("div");
+  line.className = "log-line" + (ok ? " ok" : "");
+  line.innerHTML = `<span class="t">${fmt()}</span><span class="agent">[${agent}]</span><span>${msg}</span>`;
+  body.appendChild(line);
+  body.scrollTop = body.scrollHeight;
+}
+
+/* ── RENDER ─────────────────────────────────────────────── */
+function renderContratos() {
+  const picker = document.getElementById("contratoPicker");
+  picker.innerHTML = "";
+  CONTRATOS.forEach(c => {
+    const el = document.createElement("div");
+    el.className = "contrato-chip" + (c.codigo === contratoAtivo ? " active" : "");
+    el.innerHTML = `<span class="cc-cod">${c.codigo}</span><span class="cc-nome">${c.nome}</span>`;
+    el.onclick = () => { contratoAtivo = c.codigo; selected.clear(); tasks = []; running = 0; renderAll(); document.getElementById("metaItens").textContent = c.itens; log("Oráculo", "contrato trocado para " + c.codigo + " — receita zerada"); };
+    picker.appendChild(el);
+  });
+}
+
+function renderPhases() {
+  const box = document.getElementById("phases");
+  box.innerHTML = "";
+  FASES.forEach((f, fi) => {
+    const faseTasks = tasks.filter(t => t.fase === f.id);
+    const doneCount = faseTasks.filter(t => t.state === "done").length;
+    const anyRunning = faseTasks.some(t => t.state === "running");
+    const anyQueued = faseTasks.some(t => t.state === "queued");
+    const started = faseTasks.length > 0;
+    let stTxt = "parada", cls = "";
+    let pct = 0;
+    if (started) {
+      pct = Math.round(faseTasks.reduce((s, t) => s + (t.state === "done" ? 100 : t.state === "running" ? t.pct : 0), 0) / faseTasks.length);
+      if (doneCount === faseTasks.length) { stTxt = "✓ ok"; cls = "done"; }
+      else if (anyRunning || anyQueued) { stTxt = "rodando"; cls = "active"; }
+      else { stTxt = "aguardando"; }
+    }
+    const el = document.createElement("div");
+    el.className = "phase " + cls;
+    el.innerHTML = `
+      <div class="phase-head">
+        <div class="phase-ic">${f.ic}</div>
+        <div>
+          <div class="phase-name">${f.nome}</div>
+          <div class="phase-eta">${f.apps.length} skills · estação ${fi + 1}/4</div>
+        </div>
+        <span class="phase-st">${stTxt}</span>
+      </div>
+      <div class="phase-progress"><i style="width:${pct}%"></i></div>
+      <div class="phase-apps">${f.apps.map(id => renderPhaseApp(id)).join("")}</div>`;
+    box.appendChild(el);
+  });
+}
+
+function renderPhaseApp(id) {
+  const app = APPS[id];
+  const sel = selected.has(id);
+  const t = tasks.find(x => x.id === id);
+  let extra = "", stateTxt = "", bar = "";
+  if (t) {
+    if (t.state === "done") { extra = " done-app"; stateTxt = "✓ ok"; bar = `<div class="p-bar"><i style="width:100%"></i></div>`; }
+    else if (t.state === "running") { extra = " running"; stateTxt = Math.round(t.pct) + "%"; bar = `<div class="p-bar"><i style="width:${t.pct}%"></i></div>`; }
+    else { extra = " locked"; stateTxt = "fila"; }
+  } else if (sel) {
+    extra = " checked";
+    stateTxt = "na receita";
+  }
+  return `<div class="papp${extra}" data-id="${id}">
+    <span class="p-ic">${app.ic}</span>
+    <span class="p-name">${app.nome}</span>
+    ${bar}
+    <span class="p-state">${stateTxt}</span>
+    <span class="p-check">✓</span>
+  </div>`;
+}
+
+function updateRecipeBar() {
+  document.getElementById("recCount").textContent = selected.size;
+  const hint = document.getElementById("recHint");
+  const btn = document.getElementById("runRecipeBtn");
+  if (selected.size === 0) {
+    hint.textContent = "Selecione ao menos 1 skill para executar.";
+    btn.disabled = true;
+  } else {
+    hint.textContent = `${selected.size} skill(s) prontas. As estações liberam em sequência (Coletar → Gerar → Validar → Entregar).`;
+    btn.disabled = false;
+  }
+}
+
+function renderFlow() {
+  const title = document.getElementById("flowTitle");
+  const sub = document.getElementById("flowSub");
+  const bar = document.getElementById("flowBar");
+  const pct = document.getElementById("flowPct");
+  const st = document.getElementById("logStatus");
+  if (!tasks.length) {
+    title.textContent = "Nenhuma produção iniciada";
+    sub.textContent = "Monte a receita e clique em Executar receita.";
+    bar.style.width = "0%";
+    pct.textContent = "0%";
+    st.innerHTML = `<span class="dot"></span> ocioso`;
+    return;
+  }
+  const total = tasks.length;
+  const done = tasks.filter(t => t.state === "done").length;
+  const sum = tasks.reduce((s, t) => s + (t.state === "done" ? 100 : t.state === "running" ? t.pct : 0), 0);
+  const overall = Math.round(sum / total);
+  bar.style.width = overall + "%";
+  pct.textContent = overall + "%";
+  title.textContent = done === total ? "Produção concluída — resultado final pronto" : `${running} em execução · ${done}/${total} concluídos`;
+  sub.textContent = `contrato ${contratoAtivo} · ${total} skills na produção`;
+  st.innerHTML = done === total ? `<span class="dot"></span> concluído` : `<span class="dot"></span> rodando`;
+}
+
+function renderAll() {
+  renderContratos();
+  renderPhases();
+  updateRecipeBar();
+  renderFlow();
+}
+
+/* ── INTERAÇÃO ──────────────────────────────────────────── */
+document.getElementById("phases").addEventListener("click", e => {
+  const papp = e.target.closest(".papp");
+  if (!papp || tasks.length > 0) return;         // trava durante produção
+  const id = papp.dataset.id;
+  if (selected.has(id)) selected.delete(id); else selected.add(id);
+  renderPhases();
+  updateRecipeBar();
+});
+
+function selectAll() {
+  if (tasks.length > 0) return;
+  selected = new Set(Object.keys(APPS));
+  renderPhases();
+  updateRecipeBar();
+}
+
+/* ── EXECUÇÃO DA RECEITA ────────────────────────────────── */
+function runRecipe() {
+  if (tasks.length > 0 || selected.size === 0) return;
+  const allIds = Object.keys(APPS);
+  // ordena por estação
+  const order = [];
+  FASES.forEach(f => f.apps.forEach(id => { if (selected.has(id)) order.push(id); }));
+  order.forEach((id, i) => {
+    const fase = FASES.find(f => f.apps.includes(id));
+    tasks.push({ id, fase: fase.id, pct: 0, state: "queued", idx: i });
+  });
+  selected.clear();
+  renderAll();
+  log("Oráculo", `produção iniciada para contrato ${contratoAtivo} — ${order.length} skills em ${FASES.length} estações`, true);
+
+  order.forEach((id, idx) => {
+    const t = tasks.find(x => x.id === id);
+    const app = APPS[id];
+    const ag = agenteDe(id);
+    // atraso escalonado: estações anteriores liberam primeiro
+    const faseIdx = FASES.findIndex(f => f.apps.includes(id));
+    const startDelay = faseIdx * 900 + idx * 120;
+    setTimeout(() => {
+      t.state = "running";
+      running++;
+      log(ag, `${app.nome} iniciado (estação ${faseIdx + 1}/4)`);
+      renderAll();
+      const timer = setInterval(() => {
+        t.pct = Math.min(100, t.pct + Math.random() * 16 + 7);
+        renderPhases();
+        renderFlow();
+        if (t.pct >= 100) {
+          clearInterval(timer);
+          t.state = "done";
+          running = Math.max(0, running - 1);
+          log(ag, `${app.nome} concluído ✓`, true);
+          renderAll();
+        }
+      }, 240);
+    }, startDelay);
+  });
+}
+
+function agenteDe(id) {
+  const g = APPS[id].grupo;
+  if (g === "rel") return "Relatórios";
+  if (g === "doc") return "Documentos";
+  if (g === "view") return "Visual";
+  return "Downloads";
+}
+
+function resetAll() {
+  tasks = [];
+  running = 0;
+  selected.clear();
+  contratoAtivo = "0908";
+  document.getElementById("logBody").innerHTML = `<div class="log-empty">Ainda sem eventos. Execute uma receita para ver o log.</div>`;
+  renderAll();
+}
+
+function toggleTheme() {
+  dark = !dark;
+  document.documentElement.classList.toggle("dark", dark);
+  document.getElementById("themeBtn").textContent = dark ? "☀️" : "🌙";
+}
+
+/* init */
+document.getElementById("metaContratos").textContent = CONTRATOS.length;
+document.getElementById("metaApps").textContent = Object.keys(APPS).length;
+const c0 = CONTRATOS.find(x => x.codigo === contratoAtivo);
+document.getElementById("metaItens").textContent = c0.itens;
+renderAll();
+</script>
+</body>
+</html>

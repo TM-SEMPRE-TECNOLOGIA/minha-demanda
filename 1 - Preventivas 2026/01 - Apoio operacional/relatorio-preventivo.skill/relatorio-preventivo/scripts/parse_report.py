@@ -67,40 +67,37 @@ def parse_calc_occurrences(lines):
     i = 0
     while i < len(lines):
         line = lines[i].strip()
-        if 'REFERÊNCIA' in line.upper() or 'REFERNCIA' in line.upper():
+        line_up = line.upper()
+        if line.startswith('|') and any(h in line_up for h in ['REFERÊNCIA', 'REFERNCIA', 'FOTO']) and any(t in line_up for t in ['TOTAL', 'SUBTOTAL', 'COMP.', 'LARGURA', 'COMPRIMENTO', 'QUANTITATIVO']):
             # Cabeçalho da tabela encontrado
             # 1. Achar o título (subindo)
-            title = ""
-            code = None
+            title_parts = []
             j = i - 1
             while j >= 0:
                 row = lines[j].strip()
-                if row.startswith('+') and (':' in row or '=' in row):
-                    pass # separadores
+                if row.startswith('+'):
+                    pass
                 elif row.startswith('|'):
                     content = row.strip('|').strip()
-                    if content and not ('REFER' in content.upper() or 'REFERN' in content.upper()):
-                        title = content + " " + title
-                        if not code: code = extract_code(content)
+                    if content and not any(k in content.upper() for k in ['REFER', 'FOTO', 'ITENS', 'COMP.', 'LARGURA', 'SUBTOTAL', 'QUANTITATIVO']):
+                        title_parts.insert(0, content)
                 elif not row:
-                    if title: break # fim do bloco de título
+                    if title_parts: break
                 else:
-                    # Pode ser um título fora da tabela
-                    if not title:
-                        title = row
-                        code = extract_code(row)
+                    if not title_parts:
+                        title_parts.append(row)
                     break
                 j -= 1
             
-            title = strip_bold(title.strip())
-            if not code: code = extract_code(title)
+            title = strip_bold(' '.join(title_parts))
+            code = extract_code(title)
             
             if code:
                 # 2. Identificar htype e col1_label
                 hdr_parts = [strip_bold(c.strip()) for c in line.strip('|').split('|')]
                 if 'DESCONTO' in line.upper():
                     htype = 'full'
-                elif 'LARGURA' in line.upper() or 'COMPRIMENTO' in line.upper():
+                elif 'LARGURA' in line.upper() or 'COMPRIMENTO' in line.upper() or 'COMP.' in line.upper():
                     htype = 'nodiscount'
                 else:
                     htype = 'simple'
@@ -110,7 +107,7 @@ def parse_calc_occurrences(lines):
                 
                 col1_label = 'LARGURA (m)'
                 for p in hdr_parts:
-                    if 'LARGURA' in p.upper() or 'COMPRIMENTO' in p.upper():
+                    if 'LARGURA' in p.upper() or 'COMPRIMENTO' in p.upper() or 'COMP.' in p.upper():
                         col1_label = p
                         break
 
@@ -202,23 +199,24 @@ def parse_itens_tables(lines):
                     continue
                 if row.startswith('|'):
                     parts = [strip_bold(c.strip()) for c in row.strip('|').split('|')]
-                    if len(parts) >= 3 and re.match(r'^\d+\.\d+$', parts[0]):
+                    parts = [p for p in parts if p]
+                    if len(parts) >= 2 and re.match(r'^\d+\.\d+$', parts[0]):
                         code = parts[0]
                         desc = parts[1]
-                        # Tentar pegar qty e unit das últimas colunas
-                        try:
-                            # Achar o primeiro valor numérico de trás pra frente
-                            qty_idx = -2 if len(parts) >= 4 else -1
-                            qty_str = parts[qty_idx]
-                            nums = re.findall(r'\d+[,\.]\d+', qty_str)
-                            qty = float(nums[0].replace(',', '.')) if nums else 0.0
-                            unit = parts[-1] if len(parts) >= 4 else ""
+                        unit = ""
+                        qty = 0.0
+                        if len(parts) >= 3:
+                            nums = re.findall(r'\d+[,\.]\d+', parts[2])
+                            if nums:
+                                qty = float(nums[0].replace(',', '.'))
+                        if len(parts) >= 4:
+                            unit = parts[3]
+                        elif len(parts) == 3 and not re.search(r'\d', parts[2]):
+                            unit = parts[2]
                             
-                            if code not in items_info or not items_info[code]['desc']:
-                                items_info[code] = {'desc': desc, 'unit': unit}
-                            items_total[code] += qty
-                        except Exception:
-                            pass
+                        if code not in items_info or not items_info[code]['desc']:
+                            items_info[code] = {'desc': desc, 'unit': unit}
+                        items_total[code] += qty
                 j += 1
             i = j
             continue
@@ -259,3 +257,4 @@ def consolidate_occurrences(occurrences):
             d['final_label'] = 'Total'
 
     return consolidated
+

@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mission Control · Biblioteca de Apps | UX 01 — Launcher</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════════════
+   DS ORÁCULO (Mission Control) — tokens 1:1 do index.css do Mission Control
+   Tema Zinc/Neutro shadcn · primary quase preto · accent INDIGO
+   UX 01 — LAUNCHER estilo App Store
+   ═══════════════════════════════════════════════════════════════ */
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --card-border: 240 5.9% 90%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --popover-border: 240 5.9% 90%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 239 84% 67%;
+    --sidebar: 240 20% 98%;
+    --sidebar-foreground: 240 10% 18%;
+    --sidebar-border: 240 18% 88%;
+    --sidebar-primary: 239 84% 67%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 239 100% 97%;
+    --sidebar-accent-foreground: 240 16% 14%;
+    --sidebar-ring: 239 84% 67%;
+    --primary-hover: 240 5.9% 20%;
+    --oracle: 239 84% 67%;
+    --oracle-deep: 239 84% 55%;
+    --oracle-soft: 239 100% 97%;
+    --bg-hover: 240 4.8% 95.9%;
+    --bg-secondary: 240 4.8% 95.9%;
+    --subtle: 240 5% 55%;
+    --success: 142 71% 45%;
+    --success-soft: 142 70% 96%;
+    --info: 239 84% 67%;
+    --radius: 0.5rem;
+  }
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --card-border: 240 3.7% 15.9%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --popover-border: 240 3.7% 15.9%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 238 92% 76%;
+    --sidebar: 240 14% 9%;
+    --sidebar-foreground: 240 10% 92%;
+    --sidebar-border: 240 16% 20%;
+    --sidebar-primary: 238 92% 76%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 22% 15%;
+    --sidebar-accent-foreground: 240 12% 96%;
+    --sidebar-ring: 238 92% 76%;
+    --primary-hover: 0 0% 90%;
+    --oracle: 238 92% 76%;
+    --oracle-deep: 238 92% 70%;
+    --oracle-soft: 240 22% 15%;
+    --bg-hover: 240 3.7% 15.9%;
+    --bg-secondary: 240 3.7% 15.9%;
+    --subtle: 240 5% 55%;
+    --success: 142 69% 58%;
+    --success-soft: 142 30% 18%;
+    --info: 238 92% 76%;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-font-smoothing: antialiased; }
+  body {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-size: 14px; line-height: 1.55;
+    min-height: 100vh;
+    transition: background .25s, color .25s;
+  }
+  .font-mono { font-family: "JetBrains Mono", ui-monospace, monospace; }
+
+  /* ── HEADER ─────────────────────────────────────────────── */
+  header {
+    position: sticky; top: 0; z-index: 50;
+    background: hsl(var(--background) / .8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid hsl(var(--border));
+    padding: 0 24px; height: 56px;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .brand { display: flex; align-items: center; gap: 11px; cursor: pointer; }
+  .brand-mark {
+    width: 28px; height: 28px; border-radius: 8px;
+    background: hsl(var(--primary));
+    display: grid; place-items: center;
+    color: hsl(var(--primary-foreground));
+    font-weight: 700; font-size: 13px;
+  }
+  .brand-name { font-weight: 600; font-size: 14.5px; letter-spacing: -.01em; }
+  .brand-sub { font-family: "JetBrains Mono", monospace; font-size: 9.5px; text-transform: uppercase; letter-spacing: .18em; color: hsl(var(--muted-foreground)); }
+  .hdr-div { width: 1px; height: 24px; background: hsl(var(--border)); }
+  .hdr-crumb { display: flex; align-items: center; gap: 8px; color: hsl(var(--muted-foreground)); font-size: 13px; }
+  .hdr-crumb b { color: hsl(var(--foreground)); font-weight: 600; }
+  .hdr-right { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+  .icon-btn {
+    width: 32px; height: 32px; border-radius: 8px;
+    border: 1px solid hsl(var(--border)); background: hsl(var(--card));
+    color: hsl(var(--muted-foreground)); cursor: pointer;
+    display: grid; place-items: center; font-size: 15px;
+    transition: all .15s;
+  }
+  .icon-btn:hover { border-color: hsl(var(--sidebar-primary)); color: hsl(var(--foreground)); background: hsl(var(--bg-hover)); }
+
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 26px 24px 70px; }
+
+  /* ── HERO ESTILO LOJA ───────────────────────────────────── */
+  .hero {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    gap: 20px; flex-wrap: wrap; margin-bottom: 22px;
+  }
+  .hero .eyebrow {
+    font-family: "JetBrains Mono", monospace; font-size: 11px; text-transform: uppercase;
+    letter-spacing: .16em; color: hsl(var(--oracle-deep)); font-weight: 600;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .hero .eyebrow::before { content: ""; width: 22px; height: 2px; background: hsl(var(--oracle)); border-radius: 2px; }
+  .hero h1 { font-size: 30px; font-weight: 800; margin: 8px 0 6px; letter-spacing: -.025em; }
+  .hero p { color: hsl(var(--muted-foreground)); max-width: 620px; font-size: 14px; }
+  .hero-meta { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+  .chip {
+    display: inline-flex; align-items: center; gap: 7px;
+    padding: 4px 11px; border-radius: 999px;
+    background: hsl(var(--card)); border: 1px solid hsl(var(--border));
+    font-size: 11.5px; color: hsl(var(--muted-foreground));
+  }
+  .chip .dot { width: 7px; height: 7px; border-radius: 50%; background: hsl(var(--success)); }
+  .chip strong { color: hsl(var(--foreground)); font-weight: 600; }
+
+  /* ── SELEÇÃO DE CONTRATO ────────────────────────────────── */
+  .section-title { font-weight: 600; font-size: 15px; margin-bottom: 4px; display: flex; align-items: center; gap: 9px; letter-spacing: -.01em; }
+  .section-title .num {
+    font-family: "JetBrains Mono", monospace; font-size: 10px; font-weight: 600;
+    color: hsl(var(--oracle-deep)); background: hsl(var(--oracle-soft));
+    border: 1px solid hsl(var(--oracle) / .3);
+    padding: 2px 8px; border-radius: 6px;
+  }
+  .section-sub { color: hsl(var(--muted-foreground)); font-size: 12.5px; margin-bottom: 14px; }
+  .contrato-picker { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+  .contrato-chip {
+    border: 1px solid hsl(var(--border)); background: hsl(var(--card));
+    border-radius: 10px; padding: 8px 13px; cursor: pointer;
+    display: flex; flex-direction: column; gap: 1px; min-width: 128px;
+    transition: all .15s; text-align: left;
+  }
+  .contrato-chip:hover { border-color: hsl(var(--sidebar-primary)); background: hsl(var(--bg-hover)); }
+  .contrato-chip.active { border-color: hsl(var(--oracle)); background: hsl(var(--oracle-soft)); box-shadow: 0 0 0 1px hsl(var(--oracle) / .4); }
+  .contrato-chip .cc-cod { font-family: "JetBrains Mono", monospace; font-weight: 600; font-size: 14px; color: hsl(var(--foreground)); }
+  .contrato-chip.active .cc-cod { color: hsl(var(--oracle-deep)); }
+  .contrato-chip .cc-nome { font-size: 11px; color: hsl(var(--muted-foreground)); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+  /* ── CATEGORIAS (abas com contador) ─────────────────────── */
+  .cat-tabs { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 18px; }
+  .cat-tab {
+    border: 1px solid hsl(var(--border)); background: hsl(var(--card));
+    color: hsl(var(--muted-foreground)); border-radius: 10px;
+    padding: 8px 15px; font-size: 13px; font-weight: 500; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 8px; transition: all .15s;
+  }
+  .cat-tab:hover { border-color: hsl(var(--sidebar-primary)); }
+  .cat-tab .cnt {
+    font-family: "JetBrains Mono", monospace; font-size: 10.5px;
+    background: hsl(var(--bg-secondary)); border: 1px solid hsl(var(--border));
+    padding: 1px 7px; border-radius: 99px; color: hsl(var(--subtle));
+  }
+  .cat-tab.active { background: hsl(var(--primary)); border-color: hsl(var(--primary)); color: hsl(var(--primary-foreground)); }
+  .cat-tab.active .cnt { background: hsl(var(--primary-foreground) / .14); border-color: transparent; color: hsl(var(--primary-foreground)); }
+
+  /* ── GRID DE APPS (App Store) ───────────────────────────── */
+  .apps-grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+  .app-card {
+    background: hsl(var(--card)); border: 1px solid hsl(var(--border));
+    border-radius: 14px; padding: 16px;
+    display: flex; align-items: center; gap: 14px;
+    position: relative; overflow: hidden;
+    transition: transform .15s, box-shadow .15s, border-color .15s;
+  }
+  .app-card:hover { transform: translateY(-2px); box-shadow: 0 10px 26px -10px hsl(var(--foreground) / .2); border-color: hsl(var(--sidebar-primary)); }
+  .app-card.running { border-color: hsl(var(--oracle) / .65); box-shadow: 0 0 0 1px hsl(var(--oracle) / .3), 0 10px 26px -10px hsl(var(--oracle) / .25); }
+  .app-card.done { border-color: hsl(var(--success) / .5); }
+  .app-ic {
+    width: 52px; height: 52px; border-radius: 12px; flex-shrink: 0;
+    display: grid; place-items: center; font-size: 24px;
+    background: hsl(var(--oracle-soft)); color: hsl(var(--oracle-deep));
+    border: 1px solid hsl(var(--oracle) / .22);
+  }
+  .app-card.done .app-ic { background: hsl(var(--success-soft)); color: hsl(var(--success)); border-color: hsl(var(--success) / .25); }
+  .app-body { flex: 1; min-width: 0; }
+  .app-name { font-weight: 600; font-size: 14.5px; line-height: 1.25; letter-spacing: -.01em; }
+  .app-desc { color: hsl(var(--muted-foreground)); font-size: 12px; margin-top: 2px; line-height: 1.45; }
+  .app-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 6px; }
+  .tag {
+    font-size: 9.5px; font-family: "JetBrains Mono", monospace;
+    padding: 1px 7px; border-radius: 5px;
+    background: hsl(var(--bg-secondary)); color: hsl(var(--muted-foreground));
+    border: 1px solid hsl(var(--border));
+  }
+
+  /* botão estilo "GET" da App Store, à direita do card */
+  .store-side { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; flex-shrink: 0; }
+  .store-btn {
+    border: none; border-radius: 999px; cursor: pointer;
+    font-family: "Inter", sans-serif; font-weight: 600; font-size: 12.5px;
+    padding: 7px 18px; min-width: 96px; text-align: center;
+    background: hsl(var(--primary)); color: hsl(var(--primary-foreground));
+    transition: all .15s;
+  }
+  .store-btn:hover:not(:disabled) { background: hsl(var(--primary-hover)); }
+  .store-btn:disabled { opacity: .55; cursor: not-allowed; }
+  .store-btn.get { background: hsl(var(--bg-secondary)); color: hsl(var(--foreground)); border: 1px solid hsl(var(--border)); }
+  .store-btn.get:hover { background: hsl(var(--bg-hover)); }
+  .store-btn.done-btn { background: transparent; color: hsl(var(--success)); border: 1px solid hsl(var(--success) / .4); }
+  .store-btn .spinner {
+    width: 12px; height: 12px; border-radius: 50%; display: inline-block;
+    border: 2px solid hsl(var(--primary-foreground) / .4); border-top-color: hsl(var(--primary-foreground));
+    animation: spin .7s linear infinite; vertical-align: -2px;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .mini-status { display: inline-flex; align-items: center; gap: 5px; font-size: 10.5px; font-weight: 500; font-family: "JetBrains Mono", monospace; }
+  .mini-status .sdot { width: 7px; height: 7px; border-radius: 50%; }
+  .mini-status.avail { color: hsl(var(--subtle)); }
+  .mini-status.avail .sdot { background: hsl(var(--subtle)); }
+  .mini-status.queued { color: hsl(var(--info)); }
+  .mini-status.queued .sdot { background: hsl(var(--info)); }
+  .mini-status.running { color: hsl(var(--oracle-deep)); }
+  .mini-status.running .sdot { background: hsl(var(--oracle)); animation: pulse 1s infinite; }
+  .mini-status.done { color: hsl(var(--success)); }
+  .mini-status.done .sdot { background: hsl(var(--success)); }
+  @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: .4; transform: scale(.8); } }
+
+  .progress { height: 4px; border-radius: 99px; background: hsl(var(--bg-secondary)); overflow: hidden; margin-top: 6px; width: 96px; }
+  .progress > i { display: block; height: 100%; border-radius: 99px; background: hsl(var(--oracle)); width: 0%; transition: width .3s ease; }
+  .app-card.done .progress > i { background: hsl(var(--success)); }
+
+  /* ── PAINEL DE EXECUÇÃO EM PARALELO ─────────────────────── */
+  .exec-panel { margin-top: 30px; background: hsl(var(--card)); border: 1px solid hsl(var(--border)); border-radius: 12px; overflow: hidden; }
+  .exec-head { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; padding: 14px 18px; border-bottom: 1px solid hsl(var(--border)); }
+  .exec-head h3 { font-size: 15px; font-weight: 600; letter-spacing: -.01em; }
+  .exec-status {
+    margin-left: auto; display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; font-family: "JetBrains Mono", monospace;
+    padding: 5px 12px; border-radius: 999px;
+    background: hsl(var(--bg-secondary)); color: hsl(var(--muted-foreground));
+    border: 1px solid hsl(var(--border));
+  }
+  .exec-status.on { background: hsl(var(--oracle-soft)); color: hsl(var(--oracle-deep)); border-color: hsl(var(--oracle) / .3); }
+  .exec-status.on .dot { background: hsl(var(--oracle)); animation: pulse 1s infinite; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: hsl(var(--subtle)); }
+  .exec-queue { padding: 14px 18px; display: flex; flex-direction: column; gap: 8px; max-height: 320px; overflow-y: auto; }
+  .queue-item { display: flex; align-items: center; gap: 12px; padding: 10px 14px; border-radius: 10px; border: 1px solid hsl(var(--border)); background: hsl(var(--background)); }
+  .queue-item .qi-ic { width: 28px; height: 28px; border-radius: 7px; background: hsl(var(--oracle-soft)); color: hsl(var(--oracle-deep)); display: grid; place-items: center; font-size: 13px; flex-shrink: 0; }
+  .queue-item .qi-name { font-weight: 500; font-size: 13px; }
+  .queue-item .qi-contract { font-size: 11px; color: hsl(var(--muted-foreground)); font-family: "JetBrains Mono", monospace; }
+  .queue-item .qi-bar { flex: 1; min-width: 90px; }
+  .queue-item .qi-pct { font-family: "JetBrains Mono", monospace; font-size: 11px; color: hsl(var(--muted-foreground)); width: 40px; text-align: right; }
+  .queue-item .qi-state { font-size: 11px; font-weight: 500; width: 86px; text-align: right; }
+  .queue-item.qi-done { border-color: hsl(var(--success) / .4); }
+  .queue-item.qi-done .qi-state { color: hsl(var(--success)); }
+  .queue-item.qi-run { border-color: hsl(var(--oracle) / .5); }
+  .queue-item.qi-run .qi-state { color: hsl(var(--oracle-deep)); }
+  .exec-empty { padding: 26px; text-align: center; color: hsl(var(--subtle)); font-size: 13px; }
+  .btn-outline { border: 1px solid hsl(var(--border)); background: transparent; color: hsl(var(--foreground)); border-radius: 8px; padding: 7px 13px; font-size: 12.5px; cursor: pointer; transition: all .15s; }
+  .btn-outline:hover { background: hsl(var(--bg-hover)); }
+
+  /* ── TIME DE AGENTES ────────────────────────────────────── */
+  .team-strip { display: flex; flex-wrap: wrap; gap: 9px; align-items: center; margin: 16px 0 26px; }
+  .agent-pill {
+    display: inline-flex; align-items: center; gap: 9px;
+    background: hsl(var(--card)); border: 1px solid hsl(var(--border));
+    border-radius: 999px; padding: 6px 13px 6px 7px; font-size: 12px;
+  }
+  .agent-avatar { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font-size: 10px; font-weight: 700; color: #fff; }
+  .agent-pill .a-name { font-weight: 600; }
+  .agent-pill .a-role { color: hsl(var(--muted-foreground)); font-size: 11px; }
+  .agent-pill .a-st { font-family: "JetBrains Mono", monospace; font-size: 10px; text-transform: uppercase; letter-spacing: .06em; color: hsl(var(--success)); }
+  .agent-pill.working .a-st { color: hsl(var(--oracle-deep)); }
+  .agent-pill.working { border-color: hsl(var(--oracle) / .5); }
+
+  footer { border-top: 1px solid hsl(var(--border)); padding: 18px 24px; color: hsl(var(--subtle)); font-size: 12px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  footer .f-right { margin-left: auto; font-family: "JetBrains Mono", monospace; font-size: 11px; }
+
+  ::-webkit-scrollbar { width: 9px; height: 9px; }
+  ::-webkit-scrollbar-thumb { background: hsl(var(--border)); border-radius: 99px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+
+  @media (max-width: 640px) {
+    .wrap { padding: 20px 14px 50px; }
+    .hero h1 { font-size: 24px; }
+    .hdr-crumb { display: none; }
+    .apps-grid { grid-template-columns: 1fr; }
+    .store-btn { min-width: 82px; padding: 6px 13px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand" onclick="toggleTheme()" title="alternar tema">
+    <div class="brand-mark">🦉</div>
+    <div>
+      <div class="brand-name">Mission Control</div>
+      <div class="brand-sub">Biblioteca de Apps · UX 01 Launcher</div>
+    </div>
+  </div>
+  <div class="hdr-div"></div>
+  <div class="hdr-crumb">Mission Control <span>›</span> <b>Biblioteca de Apps</b></div>
+  <div class="hdr-right">
+    <button class="icon-btn" id="themeBtn" onclick="toggleTheme()" title="Alternar tema">🌙</button>
+    <button class="icon-btn" onclick="resetAll()" title="Limpar execuções">↺</button>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div>
+      <span class="eyebrow">Launcher · estilo App Store</span>
+      <h1>Biblioteca de Apps</h1>
+      <p>Toque no <b>Executar</b> de qualquer app — cada app é uma skill do fluxo preventivo. Dispare vários de uma vez: o time de agentes roda em paralelo e entrega o resultado final.</p>
+      <div class="hero-meta">
+        <span class="chip"><span class="dot"></span> <strong id="metaContratos">9</strong>&nbsp;contratos</span>
+        <span class="chip"><strong id="metaApps">10</strong>&nbsp;apps / skills</span>
+        <span class="chip"><strong id="metaItens">—</strong>&nbsp;itens no contrato ativo</span>
+        <span class="chip">⚙️ Execução <strong>paralela</strong></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTRATOS -->
+  <div class="section-title"><span class="num">01</span> Selecione o contrato</div>
+  <div class="section-sub">O contrato ativo filtra o contexto dos apps (caminho, fotos, .docx, orçamento).</div>
+  <div class="contrato-picker" id="contratoPicker"></div>
+
+  <!-- TIME -->
+  <div class="section-title" style="margin-top:22px;"><span class="num">TIME</span> Agentes orquestradores</div>
+  <div class="team-strip" id="teamStrip"></div>
+
+  <!-- APPS -->
+  <div class="section-title"><span class="num">02</span> Apps e skills</div>
+  <div class="section-sub">Navegue por categoria — o botão redondo à direita dispara a skill (estilo App Store).</div>
+  <div class="cat-tabs" id="catTabs"></div>
+  <div class="apps-grid" id="appsGrid"></div>
+
+  <!-- EXECUÇÃO -->
+  <div class="exec-panel">
+    <div class="exec-head">
+      <h3>Execução em paralelo</h3>
+      <span class="exec-status" id="execStatus"><span class="dot"></span> <span id="execStatusText">ocioso</span></span>
+      <button class="btn-outline" id="clearQueueBtn" onclick="clearQueue()" style="display:none;">Limpar fila</button>
+    </div>
+    <div class="exec-queue" id="execQueue">
+      <div class="exec-empty">Nada rodando. Clique em <b>Executar</b> em um ou mais apps — eles rodam em paralelo.</div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <span>Mission Control · TM Sempre Tecnologia</span>
+  <span class="f-right">UX 01 · Launcher (App Store) · DS Oráculo · dados-contratos.json</span>
+</footer>
+
+<script>
+/* ═══════════════════════════════════════════════════════════
+   DADOS REAIS — extraídos de dados-contratos.json (não inventado)
+   ═══════════════════════════════════════════════════════════ */
+const CONTRATOS = [
+  { codigo: "0908", nome: "SAO PAULO",   lote: "03", secoes: 62, itens: 467 },
+  { codigo: "1507", nome: "CUIABA",      lote: "",   secoes: 61, itens: 446 },
+  { codigo: "1565", nome: "SJRP",        lote: "04", secoes: 62, itens: 467 },
+  { codigo: "2056", nome: "DIVINOPOLIS", lote: "03", secoes: 20, itens: 447 },
+  { codigo: "2057", nome: "VARGINHA",    lote: "04", secoes: 30, itens: 478 },
+  { codigo: "2626", nome: "SALINAS",     lote: "01", secoes: 30, itens: 499 },
+  { codigo: "2627", nome: "VALADARES",   lote: "02", secoes: 30, itens: 499 },
+  { codigo: "3575", nome: "TANGARA",     lote: "",   secoes: 30, itens: 477 },
+  { codigo: "6122", nome: "MATO GROSSO DO SUL", lote: "07", secoes: 20, itens: 447 }
+];
+
+const APPS = [
+  { id: "rel-sp2",      ic: "📄", nome: "Gerar Relatório SP2",        desc: "Relatório preventivo modo SP2 — memória de cálculo + fotos 7cm.",           cat: "relatorio",    grupo: "rel" },
+  { id: "rel-trad",     ic: "📑", nome: "Gerar Relatório Tradicional",desc: "Relatório preventivo modo Tradicional — fotos 10cm.",                     cat: "relatorio",    grupo: "rel" },
+  { id: "rel-sp1",      ic: "🗂️", nome: "Gerar Relatório SP1",        desc: "Relatório preventivo modo SP1.",                                          cat: "relatorio",    grupo: "rel" },
+  { id: "memorial",     ic: "📘", nome: "Gerar Memorial Final",       desc: "Memorial descritivo final consolidado do contrato.",                     cat: "documento",    grupo: "doc" },
+  { id: "descricoes",   ic: "✍️", nome: "Validar / Gerar Descrições", desc: "Valida placeholders e gera descrições dos itens no relatório.",           cat: "documento",    grupo: "doc" },
+  { id: "docx",         ic: "⬇️", nome: "Baixar .docx",               desc: "Baixa o relatório .docx gerado para a pasta do contrato.",                cat: "download",     grupo: "doc" },
+  { id: "fotos",        ic: "📷", nome: "Ver Fotos",                  desc: "Abre e analisa as fotos da vistoria (contagem, pastas, imagens).",         cat: "visualizacao", grupo: "view" },
+  { id: "pasta",        ic: "📁", nome: "Abrir Pasta",                desc: "Abre a pasta do contrato no disco.",                                       cat: "visualizacao", grupo: "view" },
+  { id: "orcamento",    ic: "💰", nome: "Previsão Orçamentária",      desc: "Gera e baixa a planilha de previsão orçamentária (download .xlsx).",        cat: "download",     grupo: "doc" },
+  { id: "memorial-calc",ic: "🧮", nome: "Memorial de Cálculo",        desc: "Gera e baixa o memorial de cálculo do contrato (download .xlsx).",          cat: "download",     grupo: "doc" }
+];
+
+const AGENTES = [
+  { nome: "Oráculo",     avatar: "🦉", cor: "#6366F1", role: "Orquestrador" },
+  { nome: "Relatórios",  avatar: "R",  cor: "#52525B", role: "Pipeline V5" },
+  { nome: "Documentos",  avatar: "D",  cor: "#0284C7", role: "Memorial/Descrições" },
+  { nome: "Visual",      avatar: "V",  cor: "#059669", role: "Fotos/Pastas" },
+  { nome: "Downloads",   avatar: "DL", cor: "#64748B", role: ".docx / .xlsx" }
+];
+
+const CATS = [
+  { id: "all", label: "Todos" },
+  { id: "relatorio", label: "Relatórios" },
+  { id: "documento", label: "Documentos" },
+  { id: "visualizacao", label: "Visualização" },
+  { id: "download", label: "Download" }
+];
+
+let contratoAtivo = "0908";
+let filter = "all";
+let queue = [];
+let runningCount = 0;
+let dark = false;
+
+/* ── RENDER ─────────────────────────────────────────────── */
+function renderContratos() {
+  const picker = document.getElementById("contratoPicker");
+  picker.innerHTML = "";
+  CONTRATOS.forEach(c => {
+    const el = document.createElement("div");
+    el.className = "contrato-chip" + (c.codigo === contratoAtivo ? " active" : "");
+    el.innerHTML = `
+      <span class="cc-cod">${c.codigo}</span>
+      <span class="cc-nome">${c.nome}</span>`;
+    el.onclick = () => { contratoAtivo = c.codigo; renderContratos(); renderApps(); renderDetail(); };
+    picker.appendChild(el);
+  });
+}
+
+function renderDetail() {
+  const c = CONTRATOS.find(x => x.codigo === contratoAtivo);
+  document.getElementById("metaItens").textContent = c.itens;
+}
+
+function renderCatTabs() {
+  const tabs = document.getElementById("catTabs");
+  tabs.innerHTML = "";
+  CATS.forEach(cat => {
+    const n = cat.id === "all" ? APPS.length : APPS.filter(a => a.cat === cat.id).length;
+    const el = document.createElement("button");
+    el.className = "cat-tab" + (cat.id === filter ? " active" : "");
+    el.innerHTML = `${cat.label} <span class="cnt">${n}</span>`;
+    el.onclick = () => { filter = cat.id; renderCatTabs(); renderApps(); };
+    tabs.appendChild(el);
+  });
+}
+
+function renderApps() {
+  const grid = document.getElementById("appsGrid");
+  grid.innerHTML = "";
+  const list = APPS.filter(a => filter === "all" || a.cat === filter);
+  if (!list.length) {
+    grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;color:hsl(var(--subtle));padding:30px;">Nenhum app nesta categoria.</div>`;
+    return;
+  }
+  list.forEach(a => {
+    const q = queue.find(x => x.id === a.id && x.contrato === contratoAtivo);
+    let stCls = "avail", stTxt = "disponível", btnCls = "get", btnLabel = "▶ Executar", disabled = false, barHtml = "";
+    if (q) {
+      if (q.state === "queued") { stCls = "queued"; stTxt = "na fila"; btnCls = "get"; btnLabel = "⏳ Fila"; disabled = true; }
+      else if (q.state === "running") { stCls = "running"; stTxt = "rodando"; btnCls = "get"; btnLabel = ""; disabled = true; barHtml = `<div class="progress"><i style="width:${q.pct}%"></i></div>`; }
+      else if (q.state === "done") { stCls = "done"; stTxt = "concluído"; btnCls = "done-btn"; btnLabel = "✓ Feito"; disabled = true; barHtml = `<div class="progress"><i style="width:100%"></i></div>`; }
+    }
+    const card = document.createElement("div");
+    card.className = "app-card" + (q && q.state === "running" ? " running" : q && q.state === "done" ? " done" : "");
+    card.innerHTML = `
+      <div class="app-ic">${a.ic}</div>
+      <div class="app-body">
+        <div class="app-name">${a.nome}</div>
+        <div class="app-desc">${a.desc}</div>
+        <div class="app-tags">
+          <span class="tag">${contratoAtivo}</span>
+          <span class="tag">${a.grupo}</span>
+        </div>
+      </div>
+      <div class="store-side">
+        <button class="store-btn ${btnCls}" ${disabled ? "disabled" : ""} onclick="launch('${a.id}')">${btnLabel || `<span class="spinner"></span>`}</button>
+        <span class="mini-status ${stCls}"><span class="sdot"></span>${stTxt}</span>
+        ${barHtml}
+      </div>`;
+    grid.appendChild(card);
+  });
+}
+
+function renderTeam() {
+  const strip = document.getElementById("teamStrip");
+  strip.innerHTML = "";
+  AGENTES.forEach(a => {
+    const working = runningCount > 0 && a.nome !== "Oráculo";
+    const el = document.createElement("div");
+    el.className = "agent-pill" + (working ? " working" : "");
+    el.innerHTML = `
+      <span class="agent-avatar" style="background:${a.cor};">${a.avatar}</span>
+      <span><span class="a-name">${a.nome}</span> <span class="a-role">· ${a.role}</span></span>
+      <span class="a-st">${working ? "trabalhando" : "ativo"}</span>`;
+    strip.appendChild(el);
+  });
+}
+
+function renderQueue() {
+  const box = document.getElementById("execQueue");
+  const status = document.getElementById("execStatus");
+  const statusTxt = document.getElementById("execStatusText");
+  const clearBtn = document.getElementById("clearQueueBtn");
+  if (!queue.length) {
+    box.innerHTML = `<div class="exec-empty">Nada rodando. Clique em <b>Executar</b> em um ou mais apps — eles rodam em paralelo.</div>`;
+    status.className = "exec-status";
+    statusTxt.textContent = "ocioso";
+    clearBtn.style.display = "none";
+    return;
+  }
+  status.className = "exec-status on";
+  statusTxt.textContent = runningCount > 0 ? `${runningCount} em execução` : "todos concluídos";
+  clearBtn.style.display = "inline-flex";
+  box.innerHTML = "";
+  queue.forEach(q => {
+    const app = APPS.find(a => a.id === q.id);
+    const cls = q.state === "done" ? "qi-done" : q.state === "running" ? "qi-run" : "";
+    const stateTxt = q.state === "done" ? "✓ concluído" : q.state === "running" ? q.pct + "%" : "⏳ na fila";
+    const pctWidth = q.state === "done" ? 100 : q.state === "running" ? q.pct : 0;
+    const item = document.createElement("div");
+    item.className = "queue-item " + cls;
+    item.innerHTML = `
+      <span class="qi-ic">${app ? app.ic : "⚙️"}</span>
+      <div style="min-width:150px;">
+        <div class="qi-name">${app ? app.nome : q.id}</div>
+        <div class="qi-contract">contrato ${q.contrato}</div>
+      </div>
+      <div class="qi-bar"><div class="progress"><i style="width:${pctWidth}%"></i></div></div>
+      <span class="qi-pct">${q.state === "running" ? q.pct + "%" : q.state === "done" ? "100%" : "—"}</span>
+      <span class="qi-state">${stateTxt}</span>`;
+    box.appendChild(item);
+  });
+  box.scrollTop = box.scrollHeight;
+}
+
+function renderAll() {
+  renderContratos();
+  renderDetail();
+  renderCatTabs();
+  renderApps();
+  renderTeam();
+  renderQueue();
+}
+
+/* ── EXECUÇÃO EM PARALELO ───────────────────────────────── */
+function launch(appId) {
+  const app = APPS.find(a => a.id === appId);
+  if (!app) return;
+  if (queue.some(q => q.id === appId && q.contrato === contratoAtivo && q.state !== "done")) return;
+  const q = { id: appId, nome: app.nome, contrato: contratoAtivo, pct: 0, state: "queued" };
+  queue.push(q);
+  renderAll();
+  const startDelay = (queue.filter(x => x.state === "queued").length - 1) * 350;
+  setTimeout(() => {
+    q.state = "running";
+    runningCount++;
+    renderAll();
+    const timer = setInterval(() => {
+      q.pct = Math.min(100, q.pct + Math.random() * 18 + 6);
+      renderQueue();
+      renderApps();
+      if (q.pct >= 100) {
+        clearInterval(timer);
+        q.state = "done";
+        runningCount = Math.max(0, runningCount - 1);
+        renderAll();
+      }
+    }, 260);
+  }, startDelay);
+}
+
+function clearQueue() { queue = []; runningCount = 0; renderAll(); }
+function resetAll() { clearQueue(); contratoAtivo = "0908"; filter = "all"; renderAll(); }
+function toggleTheme() {
+  dark = !dark;
+  document.documentElement.classList.toggle("dark", dark);
+  document.getElementById("themeBtn").textContent = dark ? "☀️" : "🌙";
+}
+
+/* init */
+document.getElementById("metaContratos").textContent = CONTRATOS.length;
+document.getElementById("metaApps").textContent = APPS.length;
+renderAll();
+</script>
+</body>
+</html>

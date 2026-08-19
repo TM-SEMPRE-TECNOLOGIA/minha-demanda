@@ -63,7 +63,7 @@ def fix_docx(path):
             zout.writestr(item, data)
 
     os.replace(tmp, path)
-    print(f'✅ XML corrigido: {path}')
+    print(f'[OK] XML corrigido: {path}')
 
 
 if __name__ == '__main__':

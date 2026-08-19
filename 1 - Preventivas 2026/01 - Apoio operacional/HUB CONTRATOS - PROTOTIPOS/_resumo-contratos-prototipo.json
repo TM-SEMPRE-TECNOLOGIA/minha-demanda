@@ -1,0 +1,95 @@
+{
+  "_fonte": "dados-contratos.json (não inventado)",
+  "contratos": [
+    {
+      "codigo": "0908",
+      "nome": "SAO PAULO",
+      "lote": "03",
+      "bdi": 0.2882,
+      "desconto": 0.3786,
+      "proponente": "MAFFENG ENGENHARIA E MANUTENÇÃO LTDA",
+      "secoes": 62,
+      "itens": 467
+    },
+    {
+      "codigo": "1507",
+      "nome": "CUIABA",
+      "lote": "",
+      "bdi": 0.2882,
+      "desconto": null,
+      "proponente": "MAFFENG ENGENHARIA E MANUTENÇÃO",
+      "secoes": 61,
+      "itens": 446
+    },
+    {
+      "codigo": "1565",
+      "nome": "SJRP",
+      "lote": "04",
+      "bdi": 0.275,
+      "desconto": 0.3114,
+      "proponente": "MAFFENG ENGENHARIA E MANUTENÇÃO LTDA",
+      "secoes": 62,
+      "itens": 467
+    },
+    {
+      "codigo": "2056",
+      "nome": "DIVINOPOLIS",
+      "lote": "03",
+      "bdi": 0,
+      "desconto": 0,
+      "proponente": "MAFFENG ENGENHARIA E MANUTENCAO EIRELI",
+      "secoes": 20,
+      "itens": 447
+    },
+    {
+      "codigo": "2057",
+      "nome": "VARGINHA",
+      "lote": "04",
+      "bdi": 0.2882,
+      "desconto": 0.3101,
+      "proponente": "MAFFENG ENGENHARIA E MANUTENCAO EIRELI",
+      "secoes": 30,
+      "itens": 478
+    },
+    {
+      "codigo": "2626",
+      "nome": "SALINAS",
+      "lote": "01",
+      "bdi": 0.275,
+      "desconto": 0.2001,
+      "proponente": "MAFFENG ENGENHARIA E MANUTENÇÃO LTDA",
+      "secoes": 30,
+      "itens": 499
+    },
+    {
+      "codigo": "2627",
+      "nome": "VALADARES",
+      "lote": "02",
+      "bdi": 0.275,
+      "desconto": 0.2401,
+      "proponente": "MAFFENG ENGENHARIA E MANUTENÇÃO LTDA",
+      "secoes": 30,
+      "itens": 499
+    },
+    {
+      "codigo": "3575",
+      "nome": "TANGARA",
+      "lote": "",
+      "bdi": 0.2882,
+      "desconto": null,
+      "proponente": "MAFFENG ENGENHARIA E MANUTENÇÃO",
+      "secoes": 30,
+      "itens": 477
+    },
+    {
+      "codigo": "6122",
+      "nome": "MATO GROSSO DO SUL",
+      "lote": "07",
+      "bdi": 0,
+      "desconto": 0,
+      "proponente": "MAFFENG ENGENHARIA E MANUTENCAO EIRELI",
+      "secoes": 20,
+      "itens": 447
+    }
+  ]
+}

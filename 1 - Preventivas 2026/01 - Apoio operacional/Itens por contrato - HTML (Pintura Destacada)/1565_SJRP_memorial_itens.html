@@ -905,9 +905,10 @@
       </div>
       <div class="paint-panel" id="paint-panel">
         <span class="paint-panel-label">🎨 Pintura do contrato</span>
-      <div class="paint-pill paint-pill-17-6"><span class="paint-pill-code">17.6</span> Teto</div>
-      <div class="paint-pill paint-pill-17-11"><span class="paint-pill-code">17.11</span> TODA a pintura em PAREDES COLORIDAS</div>
-      <div class="paint-pill paint-pill-17-4"><span class="paint-pill-code">17.4</span> TODO o restante das paredes internas e externas e MUROS</div>
+      <div class="paint-pill paint-pill-17-6"><span class="paint-pill-code">17.6</span> parede INTERNA</div>
+      <div class="paint-pill paint-pill-17-4"><span class="paint-pill-code">17.4</span> parede EXTERNA</div>
+      <div class="paint-pill paint-pill-17-10"><span class="paint-pill-code">17.10</span> pintura em MUROS (divisão do BB com o Vizinho)</div>
+      <div class="paint-pill paint-pill-17-11"><span class="paint-pill-code">17.11</span> NAO ORÇAR</div>
       <button class="paint-alert-btn" id="paint-alert-btn" onclick="togglePaintAlert()">⚠️ Atenção</button>
         <div class="paint-sig">📝 <strong>Civil:</strong> Ygor &nbsp;|&nbsp; <strong>Eletr.:</strong> André Luis</div>
       </div>
@@ -5266,9 +5267,10 @@ DADOS.prefixos.forEach(p => {
 
 // -- PINTURA DO CONTRATO ---------------------------------
 const PINTURA_CONTRATO = {
-  '17.6': { desc: 'Teto', cls: 'paint-row-17-6' },
-  '17.11': { desc: 'TODA a pintura em PAREDES COLORIDAS', cls: 'paint-row-17-11' },
-  '17.4': { desc: 'TODO o restante das paredes internas e externas e MUROS', cls: 'paint-row-17-4' }
+  '17.6': { desc: 'parede INTERNA', cls: 'paint-row-17-6' },
+  '17.4': { desc: 'parede EXTERNA', cls: 'paint-row-17-4' },
+  '17.10': { desc: 'pintura em MUROS (divisão do BB com o Vizinho)', cls: 'paint-row-17-10' },
+  '17.11': { desc: 'NAO ORÇAR', cls: 'paint-row-17-11' }
 };
 
 // ── normalização (remove acentos, lowercase) ────────────────────────
